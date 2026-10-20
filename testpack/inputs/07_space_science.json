@@ -1,0 +1,8 @@
+{
+  "script": "Mars is a cold desert world. Rovers have spent years driving across its red surface, drilling into rocks and sending pictures back to Earth. Scientists hope these samples will tell us whether life ever existed there.",
+  "voice": "en-US-female",
+  "aspect_ratios": [
+    "16:9",
+    "9:16"
+  ]
+}

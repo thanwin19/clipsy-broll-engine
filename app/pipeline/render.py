@@ -84,8 +84,9 @@ def render_segment(scene, cand, ratio: str, frames: int, seg_dir: Path, burn: bo
     b = max(-0.12, min(0.12, (TARGET_LUMA - (cand.brightness or TARGET_LUMA)) * 0.5))
     norm = f"eq=brightness={b:.3f}:saturation=1.05"
     sub = ""
-    if burn and scene.words:
-        srt = write_srt(scene_cues(scene), seg_dir / f"{name}.srt", offset=scene.start)
+    cues = scene_cues(scene) if burn and scene.words else []
+    if cues:  # an empty .srt makes ffmpeg's subtitles filter fail, so only burn when there is text
+        srt = write_srt(cues, seg_dir / f"{name}.srt", offset=scene.start)
         sub = f",subtitles={srt.name}:force_style='{_caption_style(W, H)}'"
     enc = ["-c:v", "libx264", "-preset", s.video_preset, "-crf", str(s.video_crf), "-pix_fmt", "yuv420p",
            "-profile:v", "high", "-r", str(s.fps), "-g", str(s.fps * 2), "-an", "-frames:v", str(frames)]

@@ -38,7 +38,7 @@ class Settings(BaseSettings):
     asr_provider: str = "whisper"          # whisper | mock
     whisper_model: str = "base"
     tts_provider: str = "gemini"           # gemini | mock
-    gemini_tts_model: str = "gemini-2.5-flash-preview-tts,gemini-3.1-flash-tts-preview"  # tried in order
+    gemini_tts_model: str = "gemini-3.8-flash-tts,gemini-3.8-flash-lite-tts,gemini-2.5-flash-preview-tts,gemini-3.1-flash-tts-preview"  # tried in order (free tier: ~10 requests/day each)
     llm_provider: str = "gemini"           # gemini | mock
     gemini_model: str = "gemini-3.5-flash,gemini-3.5-flash-lite,gemini-flash-lite-latest"  # tried in order
     rerank_provider: str = "clip"          # clip | mock

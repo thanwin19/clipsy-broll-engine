@@ -138,7 +138,7 @@ class GeminiTTS:
         self.model, self.key, self.timeout = s.gemini_tts_model, s.gemini_api_key, 120
         self.version = self.model
 
-    def _chunk(self, text: str, limit: int = 1500) -> list[str]:
+    def _chunk(self, text: str, limit: int = 4000) -> list[str]:
         sents = re.split(r"(?<=[.!?।])\s+", text.strip())
         chunks, cur = [], ""
         for snt in sents:
@@ -156,27 +156,42 @@ class GeminiTTS:
         locale = "-".join(voice.split("-")[:2]) if voice else "en-IN"
         gender = "male" if "male" in voice and "female" not in voice else "female"
         accent = ACCENTS.get(locale, "neutral English")
+        import hashlib
+        cache_dir = get_settings().data_dir / "tts_cache"
+        cache_dir.mkdir(parents=True, exist_ok=True)
+        models = [m.strip() for m in self.model.split(",") if m.strip()]
         pcm = b""
         for chunk in self._chunk(text):
-            prompt = f"Read this aloud as a clear, warm documentary narrator with a natural {accent} accent:\n\n{chunk}"
+            key = hashlib.sha256(f"{voice}|{chunk}".encode()).hexdigest()[:32]
+            cached = cache_dir / f"{key}.pcm"
+            if cached.exists():                       # same text + voice never spends quota twice
+                pcm += cached.read_bytes()
+                continue
+            # plain text only: newer TTS models read any style instruction aloud
+            prompt = chunk
             body = {"contents": [{"parts": [{"text": prompt}]}],
                     "generationConfig": {"responseModalities": ["AUDIO"], "speechConfig": {
                         "voiceConfig": {"prebuiltVoiceConfig": {"voiceName": VOICES[gender]}}}}}
-            last = None
-            for model in [m.strip() for m in self.model.split(",") if m.strip()] * 2:
+            errors = []
+            for attempt, model in enumerate(models + models[:2]):
                 try:
                     r = httpx.post(f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
                                    headers={"x-goog-api-key": self.key}, json=body, timeout=self.timeout)
+                    if r.status_code in (404, 429):       # model retired / daily free quota used -> next model
+                        errors.append(f"{model}: HTTP {r.status_code}")
+                        continue
                     r.raise_for_status()
                     data = r.json()["candidates"][0]["content"]["parts"][0]["inlineData"]["data"]
-                    pcm += base64.b64decode(data)
+                    audio = base64.b64decode(data)
+                    cached.write_bytes(audio)
+                    pcm += audio
                     self.version = model
-                    last = None
                     break
-                except Exception as e:  # retry transient failures
-                    last = e
-            if last:
-                raise ApiError("TTS_FAILED", "Gemini TTS failed", {"reason": str(last)[:300]})
+                except Exception as e:
+                    errors.append(f"{model}: {type(e).__name__}")
+            else:
+                raise ApiError("TTS_FAILED", "All TTS models failed or their free daily quota is used up; "
+                               "try again later or send a voiceover file", {"attempts": errors[-6:]})
         with wave.open(str(out_wav), "wb") as w:
             w.setnchannels(1)
             w.setsampwidth(2)

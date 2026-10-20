@@ -296,6 +296,13 @@ def ui():
 
 @app.on_event("startup")
 def _startup():
+    import importlib
+    # import heavy native libraries once in the main thread; first imports racing in worker threads can deadlock
+    for mod in ("numpy", "cv2", "PIL.Image", "torch", "open_clip", "faster_whisper"):
+        try:
+            importlib.import_module(mod)
+        except Exception as e:
+            log.warning("preload of %s failed: %s", mod, e)
     db.init_db()
     jobs.recover()
     log.info("service started")

@@ -1,0 +1,6 @@
+{
+  "audio_url": "https://example.com/does-not-exist/voice.mp3",
+  "aspect_ratios": [
+    "16:9"
+  ]
+}

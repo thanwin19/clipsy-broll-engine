@@ -69,7 +69,14 @@ def run_case(api: str, headers: dict, out: Path, name: str, body: dict, audio: P
         job_id = r.json()["job_id"]
         row["job_id"] = job_id
         while True:
-            j = c.get(f"{api}/api/v1/jobs/{job_id}", headers=headers).json()
+            try:
+                j = c.get(f"{api}/api/v1/jobs/{job_id}", headers=headers).json()
+            except httpx.TransportError:  # server restarting: keep polling (jobs are requeued on restart)
+                time.sleep(5)
+                if time.time() - t0 > timeout:
+                    j = {"status": "timeout"}
+                    break
+                continue
             if j["status"] in ("succeeded", "failed") or time.time() - t0 > timeout:
                 break
             time.sleep(2)

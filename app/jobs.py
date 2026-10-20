@@ -12,6 +12,7 @@ from app import db
 from app.config import get_settings
 from app.errors import ApiError
 from app.logs import correlation_id_var, get_logger, job_id_var
+from app.pipeline import engine  # imported here (main thread): concurrent first imports in worker threads can deadlock
 
 log = get_logger("jobs")
 _pool: ThreadPoolExecutor | None = None
@@ -61,7 +62,6 @@ def _execute(job_id: str):
             last["p"] = p
             db.update_job(job_id, progress=p, stage=stage)
 
-    from app.pipeline import engine
     try:
         if job.kind == "swap":
             result = engine.swap_scene(job.parent_job_id, job_id, int(req["scene_index"]), req, progress)

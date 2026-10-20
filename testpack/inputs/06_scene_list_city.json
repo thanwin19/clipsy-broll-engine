@@ -1,0 +1,25 @@
+{
+  "scenes": [
+    {
+      "text": "Our city wakes up before sunrise.",
+      "visual_hint": "city skyline at dawn"
+    },
+    {
+      "text": "Thousands of commuters rush to work.",
+      "visual_hint": "busy train station"
+    },
+    {
+      "text": "Street vendors set up their stalls.",
+      "visual_hint": "street food market"
+    },
+    {
+      "text": "By night, the roads glow with light.",
+      "visual_hint": "night traffic light trails"
+    }
+  ],
+  "voice": "en-IN-female",
+  "aspect_ratios": [
+    "16:9",
+    "9:16"
+  ]
+}

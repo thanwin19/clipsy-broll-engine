@@ -109,6 +109,13 @@ def build_narration(req: dict, work: Path, warnings: list[str]) -> tuple[Narrati
         tts = get_tts()
         raw = tts.synthesize(script, req.get("voice") or "en-IN-female", work / "tts.wav")
         providers["tts"] = {"name": tts.name, "version": tts.version, "voice": req.get("voice")}
+        # TTS output can start/end with long silences: trim them (keeping ~0.3 s padding) so narration covers the video
+        trimmed = work / "tts_trimmed.wav"
+        media.ffmpeg("-i", raw, "-af", "silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.3,"
+                     "areverse,silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.4,areverse",
+                     trimmed)
+        if media.duration(trimmed) > 0.5:
+            raw = trimmed
         mix = media.to_wav(raw, work / "narration.wav", 48000)
         total = media.duration(mix)
         if asr.name == "mock-asr":

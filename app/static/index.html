@@ -114,9 +114,7 @@ const H=()=>TOKEN?{Authorization:'Bearer '+TOKEN}:{};
 document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{tab=b.dataset.t;document.querySelectorAll('.tabs button').forEach(x=>x.classList.toggle('on',x===b));
   ['script','audio'].forEach(t=>$('#t-'+t).hidden=t!==tab)});
 $('#addshot').onclick=()=>{const t=$('#script'),p=t.selectionStart??t.value.length,ins='[shot: describe the footage] ';
-  const nl=p>0&&t.value[p-1]!=='
-'?'
-':'';t.value=t.value.slice(0,p)+nl+ins+t.value.slice(p);t.focus();
+  const nl=p>0&&t.value[p-1]!=='\n'?'\n':'';t.value=t.value.slice(0,p)+nl+ins+t.value.slice(p);t.focus();
   const st=p+nl.length+7;t.setSelectionRange(st,st+20)};
 $('#drop').onclick=()=>$('#file').click();
 $('#file').onchange=e=>setFile(e.target.files[0]);
