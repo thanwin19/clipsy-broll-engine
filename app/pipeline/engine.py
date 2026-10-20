@@ -13,7 +13,7 @@ from app.errors import ApiError
 from app.logs import get_logger
 from app.pipeline import media
 from app.pipeline.music import find_music
-from app.pipeline.narration import Narration, Word, even_words, get_asr, get_tts
+from app.pipeline.narration import Narration, Word, align_script, even_words, get_asr, get_tts
 from app.pipeline.planner import Scene, plan_scenes, scenes_from_words, segment
 from app.pipeline.qa import check_video
 from app.pipeline.render import RATIOS, concat_and_mux, frame_bounds, render_segment, scene_cues, write_srt
@@ -115,6 +115,8 @@ def build_narration(req: dict, work: Path, warnings: list[str]) -> tuple[Narrati
             words, lang = even_words(script, 0.2, total - 0.2), "en"
         else:
             words, lang = asr.transcribe(media.to_wav(raw, work / "asr.wav", 16000), req.get("language"))
+            if len(words) >= 2:
+                words = align_script(script, words)
             if len(words) < 2:
                 words, lang = even_words(script, 0.2, total - 0.2), "en"
                 warnings.append("ASR_ON_TTS_EMPTY: timestamps estimated evenly over TTS audio")

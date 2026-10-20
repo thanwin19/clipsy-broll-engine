@@ -87,6 +87,39 @@ def even_words(text: str, start: float, end: float) -> list[Word]:
     return [Word(t, start + i * step, start + (i + 1) * step - 0.02) for i, t in enumerate(toks)]
 
 
+def align_script(script: str, asr_words: list[Word]) -> list[Word]:
+    """Give the exact script words the ASR timings (captions show what was written, not mis-hearings).
+    Matched tokens take the ASR time; unmatched runs are spread over the gap between their neighbours."""
+    import difflib
+    toks = script.split()
+    if not toks or not asr_words:
+        return asr_words
+    norm = lambda t: re.sub(r"[^\w]", "", t.lower())
+    sm = difflib.SequenceMatcher(a=[norm(t) for t in toks], b=[norm(w.text) for w in asr_words], autojunk=False)
+    times: list[tuple[float, float] | None] = [None] * len(toks)
+    for a, b, n in sm.get_matching_blocks():
+        for k in range(n):
+            times[a + k] = (asr_words[b + k].start, asr_words[b + k].end)
+    for tag, a1, a2, b1, b2 in sm.get_opcodes():
+        if tag in ("replace", "insert") and a2 > a1:
+            if b2 > b1:
+                start, end = asr_words[b1].start, asr_words[b2 - 1].end
+            else:
+                start = times[a1 - 1][1] if a1 > 0 and times[a1 - 1] else asr_words[0].start
+                nxt = next((times[j] for j in range(a2, len(toks)) if times[j]), None)
+                end = nxt[0] if nxt else asr_words[-1].end
+            step = max(end - start, 0.05 * (a2 - a1)) / (a2 - a1)
+            for k in range(a1, a2):
+                times[k] = (start + (k - a1) * step, start + (k - a1 + 1) * step)
+    out, last = [], 0.0
+    for t, tm in zip(toks, times):
+        st, en = tm if tm else (last, last + 0.2)
+        st = max(st, last)
+        out.append(Word(t, st, max(en, st + 0.01)))
+        last = out[-1].end
+    return out
+
+
 def get_asr():
     return MockASR() if get_settings().asr_provider == "mock" else WhisperASR()
 

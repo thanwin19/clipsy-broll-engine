@@ -46,15 +46,16 @@ def render_card(path: Path, w: int, h: int, headline: str, body: str = "", kind:
     if kind == "stat" and headline:
         big = _font(int(unit * 0.26))
         bb = d.textbbox((0, 0), headline, font=big)
-        y = h * 0.5 - (bb[3] - bb[1]) * 0.85
-        _center(d, headline, big, y, w, TEAL)
+        gh = bb[3] - bb[1]                       # glyph height
+        top = h * 0.42 - gh / 2 - bb[1]          # draw so the glyphs are centred at 42% height
+        _center(d, headline, big, top, w, TEAL)
+        line_y = top + bb[3] + unit * 0.04       # bar sits below the glyphs, never through them
         bar_w = int(w * 0.18)
-        d.rounded_rectangle([(w - bar_w) / 2, y + (bb[3] - bb[1]) * 1.25, (w + bar_w) / 2,
-                             y + (bb[3] - bb[1]) * 1.25 + unit * 0.012], radius=6, fill=WHITE)
+        d.rounded_rectangle([(w - bar_w) / 2, line_y, (w + bar_w) / 2, line_y + unit * 0.012], radius=6, fill=WHITE)
         f = _font(int(unit * 0.055))
         chars = max(14, int(w / (unit * 0.032)))
         for i, line in enumerate(textwrap.wrap(body, chars)[:3]):
-            _center(d, line, f, y + (bb[3] - bb[1]) * 1.45 + unit * 0.03 + i * unit * 0.075, w, WHITE)
+            _center(d, line, f, line_y + unit * 0.05 + i * unit * 0.075, w, WHITE)
     else:
         f = _font(int(unit * 0.075))
         chars = max(12, int(w / (unit * 0.045)))
