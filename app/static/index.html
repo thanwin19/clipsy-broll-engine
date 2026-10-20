@@ -201,6 +201,10 @@ textarea:focus,input:focus,select:focus{border-color:var(--vio);box-shadow:0 0 0
 .clip.vo{background:rgba(34,211,238,.06) center/100% 100% no-repeat;border-color:rgba(34,211,238,.22)}
 .playhead{position:absolute;top:0;bottom:0;width:2px;background:var(--bad);pointer-events:none;z-index:5}
 .playhead:before{content:"";position:absolute;top:0;left:-5px;border:6px solid transparent;border-top-color:var(--bad)}
+.stagewrap.theater{position:fixed;inset:0;z-index:200;background:#000}
+.stagewrap.theater .sugg{display:none}
+.stagewrap.theater .screen{padding:0}.stagewrap.theater .frame{border-radius:0;box-shadow:none}
+.sugg.min .sg,.sugg.min .sghead button{display:none}.sugg.min{width:auto;cursor:pointer}
 .sugg{position:absolute;right:14px;bottom:14px;width:320px;max-height:60%;overflow:auto;z-index:6}
 .sg{padding:10px 12px;border-bottom:1px solid #1f2430;font-size:12.5px}
 .sg:last-child{border:0}
@@ -590,7 +594,7 @@ async function Editor(v,id){
     <button class="btn sm" id="sharebtn">${svg('share')}Share</button><button class="btn pri sm" onclick="go('#/export/${id}')">${svg('export')}Export</button></div>
    <aside class="epanel l"><div class="tabs">${['Scenes','B-roll','Audio','Text'].map((t,i)=>`<button class="${i?'':'on'}" data-lt="${t}">${t}</button>`).join('')}</div><div id="ltab" style="padding:8px"></div></aside>
    <section class="stagewrap"><div class="screen"><div class="frame" id="frame"><video id="vid" src="${links[S.ratio]}" preload="auto" playsinline></video><div class="safe" id="safe"></div></div>
-     ${sugg.length?`<div class="card sugg" id="sugg"><div class="row between pad" style="padding:10px 12px;border-bottom:1px solid var(--line)"><b style="font-size:13px">${svg('studio')} AI suggestions · ${sugg.length}</b><button class="tbtn" onclick="this.closest('#sugg').remove()">${svg('x')}</button></div>
+     ${sugg.length?`<div class="card sugg min" id="sugg" onclick="if(this.classList.contains('min')){this.classList.remove('min')}"><div class="row between pad sghead" style="padding:10px 12px"><b style="font-size:13px">${svg('studio')} AI suggestions · ${sugg.length}</b><button class="tbtn" onclick="event.stopPropagation();this.closest('#sugg').classList.add('min')">${svg('x')}</button></div>
       ${sugg.map((x,k)=>`<div class="sg"><div class="row between"><b>${esc(x.t)}</b>${x.s!=null?`<a href="#" onclick="event.preventDefault();selectScene(${x.s},true)">Scene ${x.s+1}</a>`:''}</div><div class="hint" style="margin:3px 0 8px">${esc(x.d)}</div>
        <div class="row">${x.noswap||x.s==null?'':`<button class="btn sm cy" onclick="swapScene('${id}',${x.s},{})">Accept · find better</button>`}<button class="btn sm" onclick="S.dismissed.add('${id}:${esc(x.t)}:${x.s}');this.closest('.sg').remove()">Dismiss</button></div></div>`).join('')}</div>`:''}</div>
      <div class="pctl"><button class="tbtn" id="pv">${svg('prev')}</button><button class="tbtn" id="pp" style="background:var(--vio);color:#fff">${svg('play')}</button><button class="tbtn" id="nx">${svg('next')}</button>
@@ -644,7 +648,9 @@ async function Editor(v,id){
   const pp=$('#pp');const setPP=()=>pp.innerHTML=svg(vid.paused?'play':'pause');pp.onclick=()=>vid.paused?vid.play():vid.pause();vid.onplay=setPP;vid.onpause=setPP;
   vid.ontimeupdate=movePH;$('#pv').onclick=()=>selectScene(Math.max(0,S.sel-1),true);$('#nx').onclick=()=>selectScene(Math.min(sc.length-1,S.sel+1),true);
   $('#volr').oninput=e=>vid.volume=+e.target.value;$('#mute').onclick=()=>{vid.muted=!vid.muted;$('#mute').style.color=vid.muted?'var(--bad)':''};
-  $('#fs').onclick=()=>$('#frame').requestFullscreen&&$('#frame').requestFullscreen();
+  const theater=on=>{$('.stagewrap').classList.toggle('theater',on);toast(on?'Theater mode — press Esc to exit':'')};
+  $('#fs').onclick=async()=>{if(document.fullscreenElement){document.exitFullscreen();return}if($('.stagewrap').classList.contains('theater')){theater(false);return}
+    try{await $('#frame').requestFullscreen()}catch{theater(true)}};
   $('#safebtn').onclick=()=>{$('#safe').classList.toggle('on');$('#safebtn').classList.toggle('on')};
   $('#zoom').oninput=e=>{pxs=+e.target.value;drawTL()};
   const setRatio=k=>{S.ratio=k;const t=vid.currentTime;vid.src=links[k];vid.currentTime=t;const [w,h]=k.replace('video_','').split('x');$('#frame').style.aspectRatio=`${w}/${h}`};
@@ -654,7 +660,7 @@ async function Editor(v,id){
   S.keys=e=>{if(!location.hash.startsWith('#/editor')||e.target.matches('input,textarea,select'))return;
     if(e.code==='Space'){e.preventDefault();pp.click()}if(e.key==='l'||e.key==='L')$('#nx').click();if(e.key==='j'||e.key==='J')$('#pv').click();
     if(e.key==='ArrowRight')vid.currentTime+=1/30;if(e.key==='ArrowLeft')vid.currentTime-=1/30};}
-document.addEventListener('keydown',e=>{S.keys&&S.keys(e);if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();palette()}if(e.key==='Escape')$('#layer').innerHTML=''});
+document.addEventListener('keydown',e=>{S.keys&&S.keys(e);if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();palette()}if(e.key==='Escape'){$('#layer').innerHTML='';const sw=$('.stagewrap.theater');if(sw)sw.classList.remove('theater')}});
 
 /* ===================== Export ===================== */
 const PRESETS=[['YouTube','16:9','YT','1920×1080 · H.264 · AAC'],['YouTube Shorts','9:16','SH','1080×1920 · H.264 · AAC'],['Instagram Reels','9:16','IG','1080×1920 · H.264 · AAC'],['TikTok','9:16','TT','1080×1920 · H.264 · AAC'],['Instagram Feed','1:1','IG','1080×1080 · H.264 · AAC']];
