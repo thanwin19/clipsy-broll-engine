@@ -107,7 +107,9 @@ h3{font-size:13px;margin:0;font-weight:600;color:var(--muted);text-transform:upp
 .act .i:last-child{border:0}
 
 /* ---------- studio ---------- */
-.studio{display:grid;grid-template-columns:360px 1fr 330px;height:100%;min-height:0}
+.studio{display:grid;grid-template-columns:440px 1fr;height:100%;min-height:0}
+.studio.has-dir{grid-template-columns:400px 1fr 330px}
+#script{min-height:300px;font-size:15px}
 .col{overflow:auto;min-height:0;padding:20px}
 .col.l{border-right:1px solid var(--line);background:#0d1016}
 .col.r{border-left:1px solid var(--line);background:#0d1016}
@@ -407,7 +409,7 @@ async function Studio(v,id){
   let voices={styles:[],voices:[]};try{voices=await api('/api/v1/voices')}catch{}
   v.innerHTML=`<div class="studio">
   <section class="col l">
-    <div class="row between"><h2>Input & direction</h2><span class="chip ai">AI Studio</span></div>
+    <h2>Your script</h2>
     <div class="seg" style="margin-top:14px"><button data-t="script">${svg('script')} Script</button><button data-t="audio">${svg('mic')} Voiceover</button></div>
     <div id="t-script"><div class="row between"><label class="lb">Script or brief</label><button class="btn sm" id="addshot" style="margin-top:6px">+ Shot description</button></div>
      <textarea id="script" placeholder="Write the narration. Paste a full brief with “Visual:”, “Voiceover:” and “Text overlay:” sections and Clipsy speaks only the voiceover. Text in [square brackets] is a shot description."></textarea>
@@ -417,8 +419,8 @@ async function Studio(v,id){
      <audio id="aprev" controls style="width:100%;margin-top:10px" hidden></audio>
      <label class="lb">…or audio URL</label><input type="url" id="aurl" placeholder="https://…/voiceover.mp3">
      <label class="row" style="margin-top:10px;font-size:13px"><input type="checkbox" id="clean" checked> Clean up voiceover (noise + loudness)</label></div>
-    <label class="lb">Target platform</label><div class="pills" id="plat">${Object.keys(PLATFORMS).map(k=>`<button class="pill" data-p="${k}">${k}</button>`).join('')}</div>
     <label class="lb">Formats</label><div class="pills" id="ratios">${['16:9','9:16','1:1'].map(r=>`<button class="pill" data-r="${r}">${r}</button>`).join('')}</div>
+    <details id="adv" style="margin-top:16px;border-top:1px solid var(--line);padding-top:6px"><summary style="cursor:pointer;color:var(--muted);font-weight:600;font-size:13px;padding:8px 0">Advanced options</summary>
     <label class="lb">Visual style</label><div class="pills" id="vstyle">${STYLES.map(s=>`<button class="pill" data-s="${s}">${s}</button>`).join('')}</div>
     <label class="lb">Narration language</label><select id="nlang"><option value="">Same as the script</option>${[['ta','Tamil'],['hi','Hindi'],['te','Telugu'],['kn','Kannada'],['ml','Malayalam'],['bn','Bengali'],['mr','Marathi'],['en','English']].map(([c,n])=>`<option value="${c}">${n} (translate script)</option>`).join('')}</select>
     <label class="lb">Voice</label><select id="voice"><optgroup label="Automatic (best available)">${(voices.generic||['en-IN-female']).map(g=>`<option value="${g}">${g}</option>`).join('')}</optgroup>
@@ -427,20 +429,19 @@ async function Studio(v,id){
     <label class="lb">Pacing · speaking speed <span class="mono" id="spv">1.00×</span></label><input type="range" id="speed" min="0.75" max="1.25" step="0.05" value="1" style="width:100%;accent-color:var(--vio)">
     <label class="lb">Avoid</label><input type="text" id="avoid" placeholder="people's faces, alcohol">
     <div class="row" style="margin-top:12px;gap:16px;font-size:13px"><label class="row"><input type="checkbox" id="burn" checked> Burn-in captions</label><label class="row"><input type="checkbox" id="music" checked> Music</label></div>
-    <label class="lb">Reference media</label><div class="hint" style="margin:0">Not available yet — describe the look in a [shot description] instead.</div>
+    </details>
     <button class="btn pri" id="gen" style="width:100%;justify-content:center;margin-top:20px;padding:12px">${svg('studio')}Generate Storyboard & Video</button>
     <div id="err"></div>
   </section>
   <section class="col"><div class="row between"><h2>Storyboard</h2><div class="row" id="sbact"></div></div><div id="center" style="margin-top:14px"></div></section>
-  <aside class="col r"><div class="row between"><h2>AI Director</h2><span class="chip ai">live analysis</span></div><div id="director" style="margin-top:8px"></div></aside>
+  <aside class="col r" id="dircol" hidden><div class="row between"><h2>AI Director</h2><span class="chip ai">live analysis</span></div><div id="director" style="margin-top:8px"></div></aside>
   </div>`;
   if(innerWidth<760){}
   const st={ratios:new Set(['16:9','9:16']),style:'Cinematic',tone:'auto'};
   const tabs=t=>{S.studioTab=t;$$('.seg button').forEach(b=>b.classList.toggle('on',b.dataset.t===t));$('#t-script').hidden=t!=='script';$('#t-audio').hidden=t!=='audio'};
   $$('.seg button').forEach(b=>b.onclick=()=>tabs(b.dataset.t));tabs(S.studioTab);
   const sync=()=>{$$('#ratios .pill').forEach(b=>b.classList.toggle('on',st.ratios.has(b.dataset.r)));$$('#vstyle .pill').forEach(b=>b.classList.toggle('on',b.dataset.s===st.style));$$('#tone .pill').forEach(b=>b.classList.toggle('on',b.dataset.v===st.tone))};
-  $$('#ratios .pill').forEach(b=>b.onclick=()=>{st.ratios.has(b.dataset.r)?st.ratios.delete(b.dataset.r):st.ratios.add(b.dataset.r);if(!st.ratios.size)st.ratios.add(b.dataset.r);$$('#plat .pill').forEach(x=>x.classList.remove('on'));sync()});
-  $$('#plat .pill').forEach(b=>b.onclick=()=>{$$('#plat .pill').forEach(x=>x.classList.toggle('on',x===b));const r=PLATFORMS[b.dataset.p];if(r)st.ratios=new Set(r);sync()});
+  $$('#ratios .pill').forEach(b=>b.onclick=()=>{st.ratios.has(b.dataset.r)?st.ratios.delete(b.dataset.r):st.ratios.add(b.dataset.r);if(!st.ratios.size)st.ratios.add(b.dataset.r);sync()});
   $$('#vstyle .pill').forEach(b=>b.onclick=()=>{st.style=b.dataset.s;sync()});$$('#tone .pill').forEach(b=>b.onclick=()=>{st.tone=b.dataset.v;sync()});sync();
   $('#speed').oninput=e=>$('#spv').textContent=(+e.target.value).toFixed(2)+'×';
   const est=()=>{const w=$('#script').value.replace(/\[[^\]]*\]/g,'').split(/\s+/).filter(Boolean).length;$('#est').textContent=w?`${w} words · about ${mmss(w/2.5)} of narration — the voice sets the final length`:'The narration sets the video length.'};
@@ -456,7 +457,7 @@ async function Studio(v,id){
   if(S.audioFile)setAudio(S.audioFile);
   director(null);
   const center=$('#center');
-  center.innerHTML=`<div class="card empty" style="min-height:420px"><div>${svg('board')}<h2 style="margin-top:4px">Your storyboard appears here</h2><p class="muted" style="max-width:420px">Clipsy splits the narration into scenes, finds footage that matches each line's meaning, and renders every format. Each step below is real progress from the engine.</p></div></div>`;
+  center.innerHTML=`<div class="card empty" style="min-height:420px"><div>${svg('board')}<h2 style="margin-top:4px">Your storyboard appears here</h2><p class="muted" style="max-width:420px">Write or paste your script, then press Generate.</p></div></div>`;
   if(id){track(id);return}
   $('#gen').onclick=async()=>{
     $('#err').innerHTML='';const req={aspect_ratios:[...st.ratios],style:`${st.style.toLowerCase()}, real-world footage`,voice_style:st.tone,
@@ -488,7 +489,7 @@ function sceneCard(s,i){const ai=s.clip.ai_generated,card=s.clip.kind==='card';
   <div class="b"><div class="row between"><span class="mono dim">${mmss(s.start)}–${mmss(s.end)}</span>${card?'<span class="chip vio">Card</span>':ai?'<span class="chip ai">AI image</span>':`<span class="chip">${esc(s.clip.source)}</span>`}</div>
   <div class="nar">${esc(s.narration)}</div>${s.visual_hint?`<div class="hint" style="margin:0 0 6px">🎬 ${esc(s.visual_hint.slice(0,90))}</div>`:''}
   <div class="row between"><span class="hint" style="margin:0">${s.relevance_score!=null?'Relevance '+s.relevance_score.toFixed(2):'Rendered card'}</span>${s.judge?`<span class="chip ${s.judge.score>=4?'ok':s.judge.score<=2?'bad':''}">Judge ${s.judge.score}/5</span>`:''}</div></div></div>`}
-function director(c){const d=$('#director');if(!d)return;
+function director(c){const d=$('#director');if(!d)return;const col=$('#dircol');if(col){col.hidden=!(c&&c.tl);$('.studio').classList.toggle('has-dir',!!(c&&c.tl))}
   if(!c||!c.tl){d.innerHTML=`<div class="sect"><p class="muted" style="margin:0">The AI Director explains every decision once the script is analysed: what each scene means, the footage it chose and why, relevance, pacing and safety.</p></div>
    ${['Script understanding','Detected topics & entities','Emotional tone','Scene segmentation','Visual intent per scene','B-roll relevance','Recommended pacing','Estimated duration'].map(x=>`<div class="sect row between"><span class="muted">${x}</span><span class="dim">—</span></div>`).join('')}`;return}
   const tl=c.tl,mf=c.mf,sc=tl.scenes;const types={};sc.forEach(s=>types[s.scene_type]=(types[s.scene_type]||0)+1);
