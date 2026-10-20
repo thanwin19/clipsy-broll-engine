@@ -71,15 +71,15 @@ def _cover(sw: int, sh: int, W: int, H: int) -> tuple[int, int]:
 
 def overlay_filter(scene, seg_dir: Path, name: str, W: int, H: int, rel: str = "") -> str:
     """On-screen text from the prompt as a boxed title at the top of the frame for the whole scene."""
-    if not getattr(scene, "overlay", None):
+    if not getattr(scene, "overlay", None) or getattr(scene, "_overlay_on_card", False):
         return ""
     import textwrap
-    text = "\n".join(textwrap.wrap(scene.overlay, 34 if W >= H else 22)[:3])
+    text = "\n".join(textwrap.wrap(scene.overlay, 38 if W >= H else 26)[:4])
     path = seg_dir / f"{name}_title.srt"
     path.write_text(f"1\n00:00:00,000 --> 00:59:59,000\n{text}\n", encoding="utf-8")
     size = 17 if W >= H else 12
     style = (f"FontName=DejaVu Sans,FontSize={size},Bold=1,PrimaryColour=&H00FFFFFF,BackColour=&H66000000,"
-             f"BorderStyle=3,Outline=6,Shadow=0,Alignment=8,MarginV={20 if W >= H else 70}")
+             f"BorderStyle=3,Outline=6,Shadow=0,Alignment=6,MarginV={24 if W >= H else 40}")  # 6 = top centre (SSA numbering)
     return f",subtitles={rel}{path.name}:force_style='{style}'"
 
 

@@ -182,6 +182,13 @@ def build_narration(req: dict, work: Path, warnings: list[str]) -> tuple[Narrati
 
 # ------------------------------------------------------------------ selection
 def card_for(scene: Scene) -> Candidate:
+    if scene.overlay and not scene.stat:   # the prompt's on-screen text becomes the card itself (no double text)
+        scene._overlay_on_card = True
+        c = Candidate(id=f"card:{scene.index}", provider="card-renderer", kind="card", title=f"Card: {scene.overlay[:60]}",
+                      page_url="", download_url="", thumb_url="", licence="Rendered by this service (no third-party rights)",
+                      licence_url="", attribution="Generated card (IncuBrix B-roll engine)")
+        c.score_detail.update({"headline": scene.overlay, "body": "", "card_kind": "text"})
+        return c
     if scene.stat:
         head, body, kind = str(scene.stat.get("value", "")), scene.stat.get("label") or scene.text, "stat"
     else:
