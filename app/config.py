@@ -56,7 +56,7 @@ class Settings(BaseSettings):
     cloudflare_model: str = "@cf/black-forest-labs/flux-1-schnell"
     music_provider: str = "openverse"      # openverse | none | mock
     provider_timeout_seconds: float = 20.0
-    llm_timeout_seconds: float = 10.0
+    llm_timeout_seconds: float = 30.0
     disabled_providers: str = ""           # comma list, used to simulate an outage
 
     # keys

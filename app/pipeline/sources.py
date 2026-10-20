@@ -553,7 +553,9 @@ def _thumbs() -> httpx.Client:
     global _thumb_client
     with _thumb_lock:
         if _thumb_client is None:
-            _thumb_client = httpx.Client(headers=UA, timeout=8, follow_redirects=True,
+            # pool=60: with two jobs at once many threads wait for one of the 24 connections; waiting must not
+            # count as a failed download (a missing thumbnail scores 0 and the scene falls back to a text card)
+            _thumb_client = httpx.Client(headers=UA, timeout=httpx.Timeout(10.0, pool=60.0), follow_redirects=True,
                                          limits=httpx.Limits(max_connections=24, max_keepalive_connections=24))
     return _thumb_client
 
@@ -565,13 +567,16 @@ def fetch_thumb(cand: Candidate, dest_dir: Path) -> Path | None:
     path = dest_dir / (re.sub(r"[^A-Za-z0-9_-]", "_", cand.id) + ".jpg")
     if path.exists():
         return path
-    try:
-        r = _thumbs().get(cand.thumb_url.replace(" ", "%20"))
-        r.raise_for_status()
-        path.write_bytes(r.content)
-        return path
-    except Exception:
-        return None
+    for attempt in range(2):   # one retry: a dropped CDN connection should not cost the clip its score
+        try:
+            r = _thumbs().get(cand.thumb_url.replace(" ", "%20"))
+            r.raise_for_status()
+            path.write_bytes(r.content)
+            return path
+        except Exception as e:
+            if attempt:
+                log.warning("thumbnail failed for %s: %s", cand.id, type(e).__name__)
+    return None
 
 
 # ------------------------------------------------------------- AI image (Cloudflare Workers AI)

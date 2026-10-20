@@ -97,7 +97,8 @@ async def context(request: Request, call_next):
     correlation_id_var.set(cid)
     start = time.perf_counter()
     if request.url.path.startswith("/api/v1") and request.method == "POST":
-        ip = request.client.host if request.client else "?"
+        # behind a Cloudflare tunnel every request comes from 127.0.0.1; use the visitor's address instead
+        ip = request.headers.get("cf-connecting-ip") or (request.client.host if request.client else "?")
         q, now = _hits[ip], time.time()
         while q and now - q[0] > 60:
             q.popleft()
