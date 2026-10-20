@@ -84,6 +84,10 @@ Unit tests (segmentation, coverage, captions, frame-exact timing, planner, error
 tests (API contract, idempotency, error codes, OpenAPI file == running service) and end-to-end tests
 (script → video, scene list → video → swap a clip, audio upload, silent audio, provider outage).
 
+CI: `.github/workflows/compose.yml` runs this on every push on a clean GitHub machine. It builds the image,
+runs every test inside `docker compose` with SeaweedFS storage, starts the stack, waits for `/ready` and
+smoke-tests the API.
+
 ## Batch runner
 
 ```bash
