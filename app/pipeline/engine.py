@@ -17,7 +17,7 @@ from app.pipeline.judge import judge_scenes
 from app.pipeline.translate import translate_lines
 from app.pipeline.voicestyle import resolve as resolve_style
 from app.pipeline.music import find_music
-from app.pipeline.narration import Narration, Word, align_script, detect_language, even_words, get_asr, get_tts
+from app.pipeline.narration import Narration, Word, align_script, detect_language, even_words, get_asr, get_tts, speech_words
 from app.pipeline.planner import Scene, _split_long, plan_scenes, scenes_from_words, script_to_scenes, segment
 from app.pipeline.qa import check_video
 from app.pipeline.render import RATIOS, concat_and_mux, frame_bounds, mix_audio, render_segment, render_video_multi, scene_cues, write_srt
@@ -76,7 +76,8 @@ def fetch_audio(url: str, work: Path) -> Path:
     return dest
 
 
-def build_narration(req: dict, work: Path, warnings: list[str]) -> tuple[Narration, list[list[Word]] | None, list]:
+def build_narration(req: dict, work: Path, warnings: list[str],
+                    progress: Progress = lambda *a: None) -> tuple[Narration, list[list[Word]] | None, list]:
     s = get_settings()
     asr, groups, hints = get_asr(), None, None
     providers = {"asr": {"name": asr.name, "version": asr.version}}
@@ -106,6 +107,7 @@ def build_narration(req: dict, work: Path, warnings: list[str]) -> tuple[Narrati
         source = "audio"
     else:
         if req.get("script") and not req.get("scenes"):
+            progress(6, "reading your prompt")
             read, info, rw = interpret(req["script"])  # prompt documents: speak only the voiceover
             warnings += rw
             if read is not None:
@@ -137,6 +139,7 @@ def build_narration(req: dict, work: Path, warnings: list[str]) -> tuple[Narrati
                 texts = [t for t in re.split(r"(?<=[.!?।])\s+", script) if t.strip()]
                 hints = [(None, None)] * len(texts)
             try:
+                progress(8, f"translating to {target}")
                 translated, model = translate_lines(texts, target)
                 hints = [(h or orig, ov) for (h, ov), orig in zip(hints, texts)]
                 providers["translation"] = {"to": target, "model": model, "lines": len(texts)}
@@ -149,6 +152,7 @@ def build_narration(req: dict, work: Path, warnings: list[str]) -> tuple[Narrati
                 warnings.append(f"TRANSLATION_FAILED: narrating in the original language ({e.message})")
         tts = get_tts()
         style, tts_voice, style_speed, style_af = resolve_style(req.get("voice_style"), req.get("voice") or "en-IN-female", script)
+        progress(10, "generating the voice")
         raw = tts.synthesize(script, tts_voice, work / "tts.wav")
         warnings += getattr(tts, "warnings", [])
         providers["tts"] = {"name": tts.name, "version": tts.version, "voice": req.get("voice"),
@@ -176,8 +180,13 @@ def build_narration(req: dict, work: Path, warnings: list[str]) -> tuple[Narrati
             req = {**req, "language": text_lang}
         providers["asr"] = {"name": asr.name, "version": asr.version, "purpose": "timing of known script words",
                             "script_language": text_lang}
+        progress(16, "timing every word")
         if asr.name == "mock-asr":
             words, lang = even_words(script, 0.2, total - 0.2), "en"
+        elif text_lang != "en":   # known non-English text: timing from the voice's speech regions (fast, no ASR)
+            words, lang = speech_words(script, raw), text_lang
+            providers["asr"] = {"name": "speech-region alignment", "version": "silencedetect",
+                                "purpose": "timing of known script words", "script_language": text_lang}
         else:
             words, lang = asr.transcribe(media.to_wav(raw, work / "asr.wav", 16000), req.get("language"))
             if len(words) >= 2:
@@ -512,38 +521,31 @@ def run_job(job_id: str, req: dict, progress: Progress) -> dict:
 
     progress(5, "preparing narration")
     with timer("narration"):
-        nar, groups, hints = build_narration(req, work, warnings)
+        nar, groups, hints = build_narration(req, work, warnings, progress)
     progress(20, "planning scenes")
     with timer("planning"):
         scenes = scenes_from_words(nar.words, nar.duration, s.min_scene_seconds, s.max_scene_seconds, groups, hints)
         plan = plan_scenes(scenes, nar.transcript, req.get("style") or "", req.get("avoid") or [])
         warnings += plan.warnings
     progress(30, "finding footage")
-    chosen, reasons, pools = select_clips(plan, nar, req, work, warnings, progress, timer)
-
-    music = None
-    if req.get("music", True):
-        with timer("music"):
-            music, mw = find_music(plan.mood, nar.duration, work)
+    from concurrent.futures import ThreadPoolExecutor
+    with ThreadPoolExecutor(max_workers=1) as ex:   # music (needs only the mood) downloads while footage is found
+        t_music = time.perf_counter()
+        music_future = ex.submit(find_music, plan.mood, nar.duration, work) if req.get("music", True) else None
+        chosen, reasons, pools = select_clips(plan, nar, req, work, warnings, progress, timer)
+        music = None
+        if music_future:
+            music, mw = music_future.result()
             warnings += mw
+        timer.t["music_parallel"] = round(time.perf_counter() - t_music, 3)
     with timer("render"):
         outputs = render_all(plan.scenes, chosen, nar, music, ratios, burn, work, progress)
-    progress(92, "quality checks + independent relevance check")
-    from concurrent.futures import ThreadPoolExecutor
+    progress(92, "quality checks")
     first = ratio_key(ratios[0])
     segs = {sc.index: work / "segments" / first / f"seg_{sc.index:03d}.mp4" for sc in plan.scenes}
-    with ThreadPoolExecutor(max_workers=1) as ex:   # the judge (network) runs while QA (CPU) checks the files
-        t_judge = time.perf_counter()
-        judge_future = ex.submit(judge_scenes, plan.scenes, segs, work)
-        with timer("qa"):
-            n_warn = len(warnings)
-            qa = qa_and_fix(outputs, plan.scenes, chosen, pools, nar, music, burn, work, warnings, reasons)
-        judged, judge_model, jw = judge_future.result()
-        if any(w.startswith("QA_AUTOFIX") for w in warnings[n_warn:]):   # replaced scenes: judge the final frames
-            judged, judge_model, jw = judge_scenes(plan.scenes, segs, work)
-        timer.t["judge"] = round(time.perf_counter() - t_judge, 3)
-        if jw:
-            warnings.append(jw)
+    with timer("qa"):
+        qa = qa_and_fix(outputs, plan.scenes, chosen, pools, nar, music, burn, work, warnings, reasons)
+    judged, judge_model = {}, "pending"   # the independent judge runs after delivery (see finish_judge)
     srt = write_srt([c for sc in plan.scenes for c in scene_cues(sc)], work / "captions.srt")
     timeline = {"job_id": job_id, "version": 1, "narration_seconds": round(nar.duration, 3), "language": nar.language,
                 "transcript": nar.transcript, "aspect_ratios": ratios, "mood": plan.mood,
@@ -567,9 +569,35 @@ def run_job(job_id: str, req: dict, progress: Progress) -> dict:
     if caps.get("srt", True):
         files["captions_srt"] = srt
     links = publish(job_id, 1, files)
+    if get_settings().judge_provider != "none":
+        threading.Thread(target=finish_judge, args=(job_id, work, plan.scenes, segs), daemon=True).start()
     return {"version": 1, "links": links, "warnings": warnings, "scenes": len(plan.scenes),
             "narration_seconds": round(nar.duration, 3), "timings_seconds": timer.t,
             "qa_passed": all(r["passed"] for r in qa.values())}
+
+
+def finish_judge(job_id: str, work: Path, scenes, segs: dict) -> None:
+    """Runs the independent VLM judge after the video was delivered, then updates timeline.json and
+    manifest.json in place (same download links)."""
+    try:
+        t = time.perf_counter()
+        judged, model, jw = judge_scenes(scenes, segs, work)
+        tl = json.loads((work / "timeline.json").read_text(encoding="utf-8"))
+        mf = json.loads((work / "manifest.json").read_text(encoding="utf-8"))
+        for rec in tl["scenes"]:
+            rec["judge"] = judged.get(rec["scene"])
+        scores = [v["score"] for v in judged.values()]
+        mf["independent_judge"] = {"model": model, "scenes_scored": len(scores), "of": len(scenes),
+                                   "mean_score_1_to_5": round(sum(scores) / len(scores), 2) if scores else None,
+                                   "share_scored_4_or_5": round(sum(x >= 4 for x in scores) / len(scores), 3) if scores else None,
+                                   "seconds_after_delivery": round(time.perf_counter() - t, 2)}
+        if jw:
+            mf["warnings"].append(jw)
+        (work / "timeline.json").write_text(json.dumps(tl, indent=2, default=str), encoding="utf-8")
+        (work / "manifest.json").write_text(json.dumps(mf, indent=2, default=str), encoding="utf-8")
+        publish(job_id, 1, {"timeline": work / "timeline.json", "manifest": work / "manifest.json"})
+    except Exception as e:
+        log.warning("background judge failed for %s: %s", job_id, e)
 
 
 def selection_rule_text() -> str:

@@ -80,6 +80,48 @@ class MockASR:
         return even_words(src, 0.0, dur), "en"
 
 
+def speech_words(text: str, wav: Path) -> list[Word]:
+    """Word timings for KNOWN text without speech recognition: find where the voice is speaking (silence
+    detection) and spread the words over that speech time in proportion to their length. Takes well under a
+    second; used for translated / non-English narration, where Whisper is slow and adds nothing."""
+    import subprocess
+    toks = text.split()
+    if not toks:
+        return []
+    total = media.duration(wav)
+    proc = subprocess.run([media.FFMPEG, "-hide_banner", "-nostdin", "-i", str(wav), "-af",
+                           "silencedetect=noise=-35dB:d=0.18", "-f", "null", "-"],
+                          capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=120)
+    starts = [float(x) for x in re.findall(r"silence_start: ([\d\.]+)", proc.stderr)]
+    ends = [float(x) for x in re.findall(r"silence_end: ([\d\.]+)", proc.stderr)]
+    speech, cursor = [], 0.0
+    for i, st in enumerate(starts):
+        if st - cursor > 0.05:
+            speech.append((cursor, st))
+        cursor = ends[i] if i < len(ends) else total
+    if total - cursor > 0.05:
+        speech.append((cursor, total))
+    if not speech:
+        return even_words(text, 0.0, total)
+    talk = sum(b - a for a, b in speech)
+    weights = [len(t) + 2 for t in toks]
+    unit = talk / sum(weights)
+
+    def real(x: float) -> float:   # position on the speech-only clock -> real time
+        for a, b in speech:
+            if x <= b - a + 1e-9:
+                return a + x
+            x -= b - a
+        return speech[-1][1]
+
+    out, clock = [], 0.0
+    for tok, w in zip(toks, weights):
+        a = real(clock + 1e-6)
+        clock += w * unit
+        out.append(Word(tok, round(a, 3), round(max(real(clock), a + 0.01), 3)))
+    return out
+
+
 def even_words(text: str, start: float, end: float) -> list[Word]:
     toks = text.split()
     if not toks:
