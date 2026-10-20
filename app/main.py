@@ -17,6 +17,7 @@ from app.config import get_settings
 from app.errors import ERROR_CODES, ApiError, install_handlers
 from app.logs import correlation_id_var, get_logger, setup_logging
 from app.pipeline import media
+from app.pipeline.planner import script_to_scenes
 from app.storage import get_storage
 
 settings = get_settings()
@@ -111,31 +112,6 @@ def _validate(req: dict, has_upload: bool):
         raise ApiError("EMPTY_SCRIPT", "Every scene text is empty")
     if len(req.get("script") or "") > settings.max_script_chars:
         raise ApiError("SCRIPT_TOO_LONG", details={"max_chars": settings.max_script_chars})
-
-
-SHOT = re.compile(r"\[([^\[\]]*)\]")
-
-
-def script_to_scenes(script: str) -> list[dict] | None:
-    """One script box, with shot descriptions inline: text in [square brackets] is a shot description
-    for the words that follow it and is never spoken.  "[city skyline at dawn] Our city wakes up."
-    Header lines such as "Scene 2 (5-10 sec):" are dropped from the narration."""
-    if "[" not in script:
-        return None
-    script = re.sub(r"(?im)^\s*scene\s*\d+\s*(\([^)]*\))?\s*[:.-]?\s*$", "", script)
-    parts = SHOT.split(script)              # text, hint, text, hint, text ...
-    scenes, hint = [], None
-    for i, part in enumerate(parts):
-        if i % 2 == 1:
-            hint = re.sub(r"(?i)^\s*(shot|visual|b-?roll)\s*:\s*", "", part).strip() or None
-            continue
-        text = " ".join(part.split())
-        if text:
-            scenes.append({"text": text, "visual_hint": hint})
-            hint = None
-        elif hint and scenes and not scenes[-1]["visual_hint"]:
-            pass
-    return scenes or []
 
 
 def _check_audio_file(path: Path, filename: str):

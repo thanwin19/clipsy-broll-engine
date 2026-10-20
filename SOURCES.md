@@ -8,7 +8,8 @@ models or media are used. No AGPL code ships in the service.
 | Name | Used for | Licence / terms | Default path |
 |---|---|---|---|
 | Google Gemini API: `gemini-3.5-flash` (fallbacks `gemini-3.5-flash-lite`, `gemini-flash-lite-latest`) | Beat Planner: scene type, word sense, search queries, safety flags, mood | Gemini API Terms (output owned by the user, commercial use allowed); free tier | yes |
-| Google Gemini TTS: `gemini-2.5-flash-preview-tts` (fallback `gemini-3.1-flash-tts-preview`) | Narration for script / scene-list input (synthetic prebuilt voices, no real person) | Gemini API Terms; free tier | yes |
+| Google Gemini TTS: `gemini-3.8-flash-tts`, `gemini-3.8-flash-lite-tts`, `gemini-2.5-flash-preview-tts`, `gemini-3.1-flash-tts-preview` (tried in order; free tier about 10 requests/day each) | Narration for script / scene-list input (synthetic prebuilt voices, no real person) | Gemini API Terms; free tier | yes |
+| Kokoro-82M (hexgrad) via kokoro-onnx | Local fallback narration when the Gemini free TTS quota is used up (US/UK English, Hindi voices; synthetic voices) | Apache-2.0 weights; kokoro-onnx MIT | yes (fallback) |
 | faster-whisper (SYSTRAN) with OpenAI Whisper `base` weights | Speech-to-text with word timestamps (English, Hindi, Tamil, …) | MIT (code and weights) | yes |
 | OpenCLIP `ViT-B-32` / `laion2b_s34b_b79k` | Relevance score of each candidate clip vs. the scene | MIT (code), weights released under MIT | yes |
 | FLUX.1-schnell on Cloudflare Workers AI | Optional AI still images (flagged `ai_generated: true`) | Apache-2.0 model; Cloudflare free tier | when `CLOUDFLARE_ACCOUNT_ID` set |
@@ -43,6 +44,10 @@ models or media are used. No AGPL code ships in the service.
 | Pillow | MIT-CMU (HPND) |
 | opencv-python-headless | Apache-2.0 |
 | PyYAML | MIT |
+| kokoro-onnx | MIT |
+| onnxruntime | MIT |
+| soundfile | BSD-3 |
+| espeakng-loader / eSpeak NG (phonemes for Kokoro) | eSpeak NG is GPL-3.0 (loaded as an unmodified shared library; not AGPL) |
 | pytest | MIT |
 | FFmpeg (system binary; Debian `ffmpeg` package in the container) | LGPL-2.1+/GPL depending on build; invoked as a separate process, not linked |
 | DejaVu fonts | Bitstream Vera / DejaVu licence (free, commercial use) |

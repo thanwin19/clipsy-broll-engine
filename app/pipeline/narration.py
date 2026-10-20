@@ -212,5 +212,81 @@ class MockTTS:
         return out_wav
 
 
+class KokoroTTS:
+    """Local, unlimited fallback: Kokoro-82M (Apache-2.0 weights) via kokoro-onnx, CPU only."""
+    name = "kokoro-82m"
+    version = "kokoro-v1.0-onnx"
+    _model = None
+    _lock = threading.Lock()
+    # locale+gender -> (voice, language). Kokoro has no Indian-English voice; British voices are used for en-IN.
+    VOICE_MAP = {("en-US", "female"): ("af_heart", "en-us"), ("en-US", "male"): ("am_michael", "en-us"),
+                 ("en-GB", "female"): ("bf_emma", "en-gb"), ("en-GB", "male"): ("bm_george", "en-gb"),
+                 ("en-IN", "female"): ("bf_emma", "en-gb"), ("en-IN", "male"): ("bm_george", "en-gb"),
+                 ("hi-IN", "female"): ("hf_alpha", "hi"), ("hi-IN", "male"): ("hm_omega", "hi")}
+
+    def _load(self):
+        with KokoroTTS._lock:
+            if KokoroTTS._model is None:
+                from kokoro_onnx import Kokoro
+                d = get_settings().data_dir / "models" / "kokoro"
+                if not (d / "kokoro-v1.0.onnx").exists():
+                    d.mkdir(parents=True, exist_ok=True)
+                    base = "https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/"
+                    for f in ("kokoro-v1.0.onnx", "voices-v1.0.bin"):
+                        with httpx.stream("GET", base + f, follow_redirects=True, timeout=600) as r, open(d / f, "wb") as out:
+                            r.raise_for_status()
+                            for chunk in r.iter_bytes(1 << 20):
+                                out.write(chunk)
+                KokoroTTS._model = Kokoro(str(d / "kokoro-v1.0.onnx"), str(d / "voices-v1.0.bin"))
+        return KokoroTTS._model
+
+    def synthesize(self, text: str, voice: str, out_wav: Path) -> Path:
+        import numpy as np
+        import soundfile as sf
+        locale = "-".join((voice or "en-IN-female").split("-")[:2])
+        gender = "male" if "male" in voice and "female" not in voice else "female"
+        if (locale, gender) not in self.VOICE_MAP:
+            raise ApiError("TTS_FAILED", f"Local TTS has no voice for {locale}; send a voiceover file instead",
+                           {"voice": voice, "supported": sorted({k[0] for k in self.VOICE_MAP})})
+        kv, lang = self.VOICE_MAP[(locale, gender)]
+        model = self._load()
+        parts = []
+        with KokoroTTS._lock:
+            for chunk in re.split(r"(?<=[.!?।])\s+", text.strip()):
+                if chunk.strip():
+                    audio, sr = model.create(chunk, voice=kv, speed=1.0, lang=lang)
+                    parts += [audio, np.zeros(int(sr * 0.18), dtype=audio.dtype)]
+        sf.write(str(out_wav), np.concatenate(parts), sr)
+        self.version = f"kokoro-v1.0-onnx/{kv}"
+        return out_wav
+
+
+class ChainTTS:
+    """Tries each TTS in order (e.g. Gemini, then local Kokoro when the free quota is used up)."""
+
+    def __init__(self, providers: list):
+        self.providers = providers
+        self.name, self.version, self.warnings = providers[0].name, providers[0].version, []
+
+    def synthesize(self, text: str, voice: str, out_wav: Path) -> Path:
+        errors = []
+        for i, p in enumerate(self.providers):
+            try:
+                out = p.synthesize(text, voice, out_wav)
+                self.name, self.version = p.name, p.version
+                if i > 0:
+                    self.warnings.append(f"TTS_FALLBACK: {self.providers[0].name} unavailable "
+                                         f"({errors[0][:120]}); narration generated locally with {p.name}")
+                return out
+            except ApiError as e:
+                errors.append(f"{p.name}: {e.message}")
+        raise ApiError("TTS_FAILED", "No TTS provider could generate the narration", {"attempts": errors})
+
+
 def get_tts():
-    return MockTTS() if get_settings().tts_provider == "mock" else GeminiTTS()
+    s = get_settings()
+    if s.tts_provider == "mock":
+        return MockTTS()
+    table = {"gemini": GeminiTTS, "kokoro": KokoroTTS}
+    chain = [table[n.strip()]() for n in s.tts_provider.split(",") if n.strip() in table]
+    return ChainTTS(chain or [GeminiTTS()])

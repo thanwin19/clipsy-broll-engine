@@ -14,7 +14,7 @@ from app.logs import get_logger
 from app.pipeline import media
 from app.pipeline.music import find_music
 from app.pipeline.narration import Narration, Word, align_script, even_words, get_asr, get_tts
-from app.pipeline.planner import Scene, _split_long, plan_scenes, scenes_from_words, segment
+from app.pipeline.planner import Scene, _split_long, plan_scenes, scenes_from_words, script_to_scenes, segment
 from app.pipeline.qa import check_video
 from app.pipeline.render import RATIOS, concat_and_mux, frame_bounds, render_segment, scene_cues, write_srt
 from app.pipeline.rerank import get_scorer, score_candidates
@@ -97,6 +97,12 @@ def build_narration(req: dict, work: Path, warnings: list[str]) -> tuple[Narrati
         total = media.duration(mix)
         source = "audio"
     else:
+        if req.get("script") and not req.get("scenes"):
+            shots = script_to_scenes(req["script"])   # inline [shot descriptions] are never spoken
+            if shots is not None:
+                if not shots:
+                    raise ApiError("EMPTY_SCRIPT", "Only shot descriptions in [brackets] were given")
+                req = {**req, "scenes": shots, "script": None}
         if req.get("scenes"):
             texts = [(sc.get("text") or "").strip() for sc in req["scenes"]]
             hints = [sc.get("visual_hint") for sc in req["scenes"] if (sc.get("text") or "").strip()]
@@ -108,6 +114,7 @@ def build_narration(req: dict, work: Path, warnings: list[str]) -> tuple[Narrati
             raise ApiError("EMPTY_SCRIPT")
         tts = get_tts()
         raw = tts.synthesize(script, req.get("voice") or "en-IN-female", work / "tts.wav")
+        warnings += getattr(tts, "warnings", [])
         providers["tts"] = {"name": tts.name, "version": tts.version, "voice": req.get("voice")}
         # TTS output can start/end with long silences: trim them (keeping ~0.3 s padding) so narration covers the video
         trimmed = work / "tts_trimmed.wav"

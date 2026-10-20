@@ -38,7 +38,7 @@ class Settings(BaseSettings):
     # adapters (each has a "mock" implementation so tests need no keys)
     asr_provider: str = "whisper"          # whisper | mock
     whisper_model: str = "base"
-    tts_provider: str = "gemini"           # gemini | mock
+    tts_provider: str = "gemini,kokoro"    # tried in order: gemini | kokoro | mock
     gemini_tts_model: str = "gemini-3.8-flash-tts,gemini-3.8-flash-lite-tts,gemini-2.5-flash-preview-tts,gemini-3.1-flash-tts-preview"  # tried in order (free tier: ~10 requests/day each)
     llm_provider: str = "gemini"           # gemini | mock
     gemini_model: str = "gemini-3.5-flash,gemini-3.5-flash-lite,gemini-flash-lite-latest"  # tried in order

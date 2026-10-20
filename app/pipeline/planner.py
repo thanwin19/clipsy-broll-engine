@@ -262,3 +262,28 @@ def plan_scenes(scenes: list[Scene], transcript: str, style: str, avoid: list[st
         mood = "sombre"
     return Plan(scenes=scenes, mood=mood, topic=data.get("topic", ""), avoid_terms=avoid_terms,
                 planner=f"{planner.name}" + (f"/{getattr(planner, 'used_model', '')}" if planner.name == "gemini" else ""), warnings=warnings)
+
+
+SHOT = re.compile(r"\[([^\[\]]*)\]")
+
+
+def script_to_scenes(script: str) -> list[dict] | None:
+    """One script box, with shot descriptions inline: text in [square brackets] is a shot description
+    for the words that follow it and is never spoken.  "[city skyline at dawn] Our city wakes up."
+    Header lines such as "Scene 2 (5-10 sec):" are dropped from the narration."""
+    if "[" not in script:
+        return None
+    script = re.sub(r"(?im)^\s*scene\s*\d+\s*(\([^)]*\))?\s*[:.-]?\s*$", "", script)
+    parts = SHOT.split(script)              # text, hint, text, hint, text ...
+    scenes, hint = [], None
+    for i, part in enumerate(parts):
+        if i % 2 == 1:
+            hint = re.sub(r"(?i)^\s*(shot|visual|b-?roll)\s*:\s*", "", part).strip() or None
+            continue
+        text = " ".join(part.split())
+        if text:
+            scenes.append({"text": text, "visual_hint": hint})
+            hint = None
+        elif hint and scenes and not scenes[-1]["visual_hint"]:
+            pass
+    return scenes or []
