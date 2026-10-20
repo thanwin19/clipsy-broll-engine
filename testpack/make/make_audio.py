@@ -1,10 +1,13 @@
 """Builds the audio test inputs (synthetic TTS voices only - no real person's voice):
-   python -m testpack.make.make_audio   (run from the repo root, needs GEMINI_API_KEY)"""
+   python -m testpack.make.make_audio   (run from the repo root, needs GEMINI_API_KEY)
+   python -m testpack.make.make_audio local   (only the local Kokoro voiceovers: 5-minute English, Hindi)"""
+import json
+import sys
 from pathlib import Path
 
 from app.pipeline import media
 from app.pipeline.music import procedural_bed
-from app.pipeline.narration import GeminiTTS
+from app.pipeline.narration import GeminiTTS, KokoroTTS
 
 OUT = Path("testpack/inputs")
 VOICES = {
@@ -44,5 +47,24 @@ def main():
     print("done")
 
 
+def local():
+    """Voiceovers made with the local Kokoro-82M model (Apache-2.0, synthetic voices): an uploaded 5-minute
+    voiceover (hard case) and a Hindi voiceover. Texts are the same as the matching script inputs."""
+    tts = KokoroTTS()
+    jobs = {"audio_07_hindi_tutorial": ("hi-IN-female", "09_hindi_tutorial.json"),
+            "audio_08_long_5min_agriculture": ("en-US-female", "10_long_5min_agriculture.json")}
+    for name, (voice, src) in jobs.items():
+        mp3 = OUT / f"{name}.mp3"
+        if mp3.exists():
+            continue
+        text = json.loads((OUT / src).read_text(encoding="utf-8"))["script"]
+        wav = tts.synthesize(text, voice, OUT / f"{name}.wav")
+        # Kokoro reads the long script in ~3.4 min; slow it (pitch kept) to the 5 minutes the hard case asks for
+        tempo = ["-af", "atempo=0.68"] if "5min" in name else []
+        media.ffmpeg("-i", wav, *tempo, "-c:a", "libmp3lame", "-b:a", "96k", mp3)
+        wav.unlink()
+        print("made", mp3)
+
+
 if __name__ == "__main__":
-    main()
+    local() if sys.argv[1:] == ["local"] else main()

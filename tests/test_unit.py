@@ -116,3 +116,26 @@ def test_espeak_tamil_offline(tmp_path):
     from app.pipeline import espeak, media
     out = espeak.synthesize("வணக்கம். இது ஒரு சோதனை.", "ta-IN", tmp_path / "ta.wav")
     assert media.duration(out) > 0.5
+
+
+def test_avoid_phrase_needs_all_words_and_llm_cannot_invent_avoid_terms(tmp_path):
+    """Regression: the planner suggested avoiding "instant coffee" for a coffee tutorial and every clip tagged
+    "coffee" was rejected, so most scenes became text cards."""
+    from types import SimpleNamespace
+
+    from app.pipeline.planner import merge_avoid
+    from app.pipeline.rerank import MockScorer, score_candidates
+    from app.pipeline.sources import Candidate
+
+    def clip(i, tags):
+        return Candidate(id=f"t:{i}", provider="t", kind="video", title=tags, page_url="", download_url="",
+                         thumb_url="", licence="x", licence_url="", attribution="", tags=tags, duration=10)
+
+    scene = SimpleNamespace(queries=["filter coffee"], visual="coffee cup", text="Make filter coffee.", negative=[],
+                            ai_allowed=True, duration=4.0)
+    kept = score_candidates(scene, [clip(1, "coffee, cup, filter"), clip(2, "instant coffee, jar"),
+                                    clip(3, "beer, alcohol, bar")], ["instant coffee", "alcohol"], False,
+                            MockScorer(), tmp_path)
+    assert [c.id for c in kept] == ["t:1"]
+    assert merge_avoid([], {"avoid_terms": ["instant coffee"]}) == []
+    assert merge_avoid(["alcohol"], {"avoid_terms": ["beer"]}) == ["alcohol", "beer"]

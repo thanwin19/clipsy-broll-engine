@@ -158,6 +158,12 @@ Return ONLY JSON:
 """
 
 
+def merge_avoid(avoid: list[str], data: dict) -> list[str]:
+    """The LLM may only widen an avoid list the user gave ("alcohol" -> "beer"). With none, its own guesses
+    ("instant coffee" for a coffee tutorial) would filter out the very footage the script needs."""
+    return list(dict.fromkeys([*avoid, *(data.get("avoid_terms") or [])])) if avoid else []
+
+
 class GeminiPlanner:
     name = "gemini"
 
@@ -259,7 +265,7 @@ def plan_scenes(scenes: list[Scene], transcript: str, style: str, avoid: list[st
         sc.sensitive = bool(d.get("sensitive")) or sc.type == "sensitive"
         sc.ai_allowed = bool(d.get("ai_allowed", True)) and sc.type not in ("named_entity", "sensitive") and not sc.sensitive
         sc.ai_prompt = d.get("ai_prompt") or sc.visual
-    avoid_terms = list(dict.fromkeys([*avoid, *(data.get("avoid_terms") or [])]))
+    avoid_terms = merge_avoid(avoid, data)
     mood = data.get("mood") or "calm"
     if any(sc.sensitive for sc in scenes):
         mood = "sombre"

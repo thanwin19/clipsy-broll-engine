@@ -130,11 +130,13 @@ def score_candidates(scene, cands: list[Candidate], avoid_terms: list[str], avoi
     for c, t in zip(cands, thumbs):
         c.thumb_path = t
 
-    avoid_tokens = set().union(*[_tokens(a) for a in avoid_terms]) - {"people", "faces", "face", "people's"} if avoid_terms else set()
+    # an avoid phrase matches when ALL its words are in the tags ("instant coffee" must not reject every coffee clip)
+    face_words = {"people", "faces", "face", "people's"}
+    avoid_phrases = [p for p in (_tokens(a) - face_words for a in avoid_terms) if p]
     kept = []
     for c in cands:
         tag_toks = _tokens(c.tags + " " + c.title)
-        hit = tag_toks & avoid_tokens
+        hit = next((p for p in avoid_phrases if p <= tag_toks), None)
         if hit:
             c.score_detail["rejected"] = f"avoid list match in tags: {sorted(hit)[:3]}"
             continue
