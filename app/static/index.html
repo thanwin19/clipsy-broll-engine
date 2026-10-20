@@ -79,20 +79,21 @@ tr:hover td{background:#0f1930}
 </header>
 <main>
   <section class="card">
-    <h2>New video</h2><p class="hint">Upload a voiceover, paste a script, or send an IncuBrix scene list.</p>
-    <div class="tabs"><button data-t="script" class="on">Script</button><button data-t="audio">Voiceover</button><button data-t="scenes">Scene list</button></div>
-    <div id="t-script"><label>Script</label><textarea id="script" placeholder="Write the narration…">A few years ago I had no savings at all. Then I learned to track every rupee I spent. Value is not about spending less, it is about spending on what matters. My savings grew 40% in one year.</textarea>
-      <label>Voice</label><select id="voice"><option value="en-IN-female">English (India) · female</option><option value="en-IN-male">English (India) · male</option>
+    <h2>New video</h2><p class="hint">Paste a script (with optional shot descriptions) or upload a voiceover.</p>
+    <div class="tabs"><button data-t="script" class="on">Script</button><button data-t="audio">Voiceover</button></div>
+    <div id="t-script"><div class="row" style="justify-content:space-between;align-items:flex-end"><label>Script</label>
+      <button type="button" class="btn ghost" id="addshot" style="padding:5px 10px;font-size:12px">+ Shot description</button></div>
+      <textarea id="script" placeholder="Write the words to be spoken…">[sailboat on a calm sea at golden hour] The sea was calm that evening, and the light turned everything gold.
+[close-up of white sails in the wind] We let the wind decide where to go.
+A few years ago I had no savings at all. My savings grew 40% in one year.</textarea>
+      <p class="hint" style="margin:6px 0 0">Text in <b>[square brackets]</b> is a shot description for the words after it — it is shown, not spoken. Lines without one get footage chosen automatically.</p>
+<label>Voice</label><select id="voice"><option value="en-IN-female">English (India) · female</option><option value="en-IN-male">English (India) · male</option>
         <option value="en-US-female">English (US) · female</option><option value="en-GB-male">English (UK) · male</option>
         <option value="hi-IN-female">Hindi · female</option><option value="ta-IN-female">Tamil · female</option></select></div>
     <div id="t-audio" hidden><label>Voiceover file (mp3, wav, m4a · up to 10 min)</label>
       <div class="drop" id="drop">Click or drop an audio file here<input type="file" id="file" accept=".mp3,.wav,.m4a" hidden></div>
       <label>…or audio URL</label><input type="url" id="audio_url" placeholder="https://…/voiceover.mp3"></div>
-    <div id="t-scenes" hidden><label>Scenes (JSON)</label><textarea id="scenes" spellcheck="false">[
-  {"text": "Our city wakes up before sunrise.", "visual_hint": "city skyline at dawn"},
-  {"text": "Thousands of commuters head to work.", "visual_hint": "busy train station"},
-  {"text": "By night, the streets glow again.", "visual_hint": "night traffic light trails"}
-]</textarea></div>
+    
     <label>Aspect ratios</label>
     <div class="row"><label class="chk"><input type="checkbox" name="ar" value="16:9" checked>16:9</label>
       <label class="chk"><input type="checkbox" name="ar" value="9:16" checked>9:16</label><label class="chk"><input type="checkbox" name="ar" value="1:1">1:1</label></div>
@@ -111,7 +112,12 @@ const $=s=>document.querySelector(s); let tab='script', file=null, timer=null;
 const TOKEN=new URLSearchParams(location.search).get('token')||localStorage.getItem('broll_token')||'';
 const H=()=>TOKEN?{Authorization:'Bearer '+TOKEN}:{};
 document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{tab=b.dataset.t;document.querySelectorAll('.tabs button').forEach(x=>x.classList.toggle('on',x===b));
-  ['script','audio','scenes'].forEach(t=>$('#t-'+t).hidden=t!==tab)});
+  ['script','audio'].forEach(t=>$('#t-'+t).hidden=t!==tab)});
+$('#addshot').onclick=()=>{const t=$('#script'),p=t.selectionStart??t.value.length,ins='[shot: describe the footage] ';
+  const nl=p>0&&t.value[p-1]!=='
+'?'
+':'';t.value=t.value.slice(0,p)+nl+ins+t.value.slice(p);t.focus();
+  const st=p+nl.length+7;t.setSelectionRange(st,st+20)};
 $('#drop').onclick=()=>$('#file').click();
 $('#file').onchange=e=>setFile(e.target.files[0]);
 $('#drop').ondragover=e=>{e.preventDefault()}; $('#drop').ondrop=e=>{e.preventDefault();setFile(e.dataTransfer.files[0])};
@@ -126,7 +132,6 @@ $('#go').onclick=async()=>{
     avoid:$('#avoid').value.split(',').map(s=>s.trim()).filter(Boolean),captions:{burn_in:$('#burn').checked,srt:true},music:$('#music').checked};
   let body, headers={...H(),'Idempotency-Key':crypto.randomUUID(),'X-Correlation-Id':'ui-'+Date.now()};
   if(tab==='script'){req.script=$('#script').value;req.voice=$('#voice').value}
-  if(tab==='scenes'){try{req.scenes=JSON.parse($('#scenes').value)}catch{return showErr({code:'VALIDATION_ERROR',message:'Scene list is not valid JSON'})}}
   if(tab==='audio'&&!file&&$('#audio_url').value)req.audio_url=$('#audio_url').value;
   if(tab==='audio'&&file){body=new FormData();body.append('file',file);body.append('request',JSON.stringify(req))}
   else{body=JSON.stringify(req);headers['Content-Type']='application/json'}

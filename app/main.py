@@ -1,6 +1,7 @@
 """HTTP API. All routes under /api/v1 plus /health, /ready, the demo UI (/) and local file links (/files)."""
 import hashlib
 import json
+import re
 import time
 import uuid
 from collections import defaultdict, deque
@@ -42,7 +43,8 @@ class SceneIn(BaseModel):
 
 class BrollRequest(BaseModel):
     audio_url: HttpUrl | None = Field(None, description="mp3, wav or m4a, up to 10 minutes")
-    script: str | None = Field(None, description="Plain-text script; narration is generated with TTS")
+    script: str | None = Field(None, description="Plain-text script; narration is generated with TTS. Text in "
+                                                "[square brackets] is a shot description for the words after it and is not spoken.")
     scenes: list[SceneIn] | None = Field(None, description="IncuBrix scene list: text plus optional visual hint")
     voice: str = Field("en-IN-female", description="Used only for text input, e.g. en-IN-female, en-US-male, hi-IN-female")
     aspect_ratios: list[Literal["16:9", "9:16", "1:1"]] = Field(default_factory=lambda: ["16:9"], min_length=1)
@@ -109,6 +111,31 @@ def _validate(req: dict, has_upload: bool):
         raise ApiError("EMPTY_SCRIPT", "Every scene text is empty")
     if len(req.get("script") or "") > settings.max_script_chars:
         raise ApiError("SCRIPT_TOO_LONG", details={"max_chars": settings.max_script_chars})
+
+
+SHOT = re.compile(r"\[([^\[\]]*)\]")
+
+
+def script_to_scenes(script: str) -> list[dict] | None:
+    """One script box, with shot descriptions inline: text in [square brackets] is a shot description
+    for the words that follow it and is never spoken.  "[city skyline at dawn] Our city wakes up."
+    Header lines such as "Scene 2 (5-10 sec):" are dropped from the narration."""
+    if "[" not in script:
+        return None
+    script = re.sub(r"(?im)^\s*scene\s*\d+\s*(\([^)]*\))?\s*[:.-]?\s*$", "", script)
+    parts = SHOT.split(script)              # text, hint, text, hint, text ...
+    scenes, hint = [], None
+    for i, part in enumerate(parts):
+        if i % 2 == 1:
+            hint = re.sub(r"(?i)^\s*(shot|visual|b-?roll)\s*:\s*", "", part).strip() or None
+            continue
+        text = " ".join(part.split())
+        if text:
+            scenes.append({"text": text, "visual_hint": hint})
+            hint = None
+        elif hint and scenes and not scenes[-1]["visual_hint"]:
+            pass
+    return scenes or []
 
 
 def _check_audio_file(path: Path, filename: str):
@@ -192,6 +219,12 @@ async def create_broll_job(request: Request, idempotency_key: str | None = Heade
             raise ApiError("UNSUPPORTED_FILE_TYPE", details={"url": req["audio_url"], "allowed": list(AUDIO_EXT)})
     if upload_path:
         req["audio_path"] = str(upload_path)
+    if req.get("script") and not req.get("scenes"):
+        shots = script_to_scenes(req["script"])
+        if shots is not None:
+            if not shots:
+                raise ApiError("EMPTY_SCRIPT", "Only shot descriptions in [brackets] were given; add words to speak")
+            req["scenes"], req["script"] = shots, None
     _validate(req, upload_path is not None)
     req["aspect_ratios"] = list(dict.fromkeys(req["aspect_ratios"]))
     return _accept(req, idempotency_key, body_hash)

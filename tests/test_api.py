@@ -173,3 +173,15 @@ def test_e2e_provider_down_still_finishes(client, monkeypatch):
     assert j["status"] == "succeeded", j["error"]
     tl = json.loads(read(j["result"]["links"]["timeline"]))
     assert all(s["clip"]["kind"] == "card" for s in tl["scenes"])
+
+
+def test_script_with_inline_shot_descriptions(client):
+    script = ("Scene 1 (0-5 sec):\n[city skyline at dawn] The city wakes up before sunrise.\n"
+              "[shot: busy train station] Thousands of commuters head to work every day.")
+    j = wait(client, client.post("/api/v1/broll/jobs", json={"script": script, "aspect_ratios": ["16:9"]}).json()["job_id"])
+    assert j["status"] == "succeeded", j["error"]
+    tl = json.loads(read(j["result"]["links"]["timeline"]))
+    assert [s["visual_hint"] for s in tl["scenes"]][:2] == ["city skyline at dawn", "busy train station"]
+    assert "[" not in tl["transcript"] and "Scene 1" not in tl["transcript"]   # descriptions are not spoken
+    r = client.post("/api/v1/broll/jobs", json={"script": "[only a shot description]"})
+    assert r.json()["error"]["code"] == "EMPTY_SCRIPT"

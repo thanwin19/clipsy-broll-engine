@@ -14,7 +14,7 @@ from app.logs import get_logger
 from app.pipeline import media
 from app.pipeline.music import find_music
 from app.pipeline.narration import Narration, Word, align_script, even_words, get_asr, get_tts
-from app.pipeline.planner import Scene, plan_scenes, scenes_from_words, segment
+from app.pipeline.planner import Scene, _split_long, plan_scenes, scenes_from_words, segment
 from app.pipeline.qa import check_video
 from app.pipeline.render import RATIOS, concat_and_mux, frame_bounds, render_segment, scene_cues, write_srt
 from app.pipeline.rerank import get_scorer, score_candidates
@@ -131,6 +131,13 @@ def build_narration(req: dict, work: Path, warnings: list[str]) -> tuple[Narrati
                     prev = cut
             if len(groups) != len(hints):
                 hints = (hints + [None] * len(groups))[: len(groups)]
+            # a long shot is split on phrase boundaries into several clips that share its description
+            split_g, split_h = [], []
+            for g, h in zip(groups, hints):
+                for piece in _split_long(g, s.max_scene_seconds, s.min_scene_seconds):
+                    split_g.append(piece)
+                    split_h.append(h)
+            groups, hints = split_g, split_h
         source = "scenes" if texts else "script"
     transcript = " ".join(w.text for w in words)
     nar = Narration(audio_path=mix, words=words, duration=total, language=lang, transcript=transcript, providers=providers)
