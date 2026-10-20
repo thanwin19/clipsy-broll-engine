@@ -2,6 +2,7 @@
 captions burned in, so segments can be joined without re-encoding and a swapped scene re-renders alone."""
 import math
 import re
+import time
 from pathlib import Path
 
 from app.config import get_settings
@@ -169,8 +170,14 @@ def render_segment(scene, cand, ratio: str, frames: int, seg_dir: Path, burn: bo
     try:
         return _render_segment(scene, cand, ratio, frames, seg_dir, burn, name, s.video_encoder)
     except Exception:
-        if s.video_encoder == "libx264":
-            raise
+        if s.video_encoder != "libx264":
+            try:
+                return _render_segment(scene, cand, ratio, frames, seg_dir, burn, name, "libx264")
+            except Exception:
+                pass
+        # last try after a pause: on a small machine the usual cause is a moment of memory pressure
+        # (other encoders of the same or another job), which clears once they finish
+        time.sleep(4)
         return _render_segment(scene, cand, ratio, frames, seg_dir, burn, name, "libx264")
 
 

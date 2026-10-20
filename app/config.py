@@ -84,7 +84,7 @@ class Settings(BaseSettings):
     fps: int = 30
     video_encoder: str = "libx264"   # libx264 (CPU) | h264_amf | h264_nvenc | h264_qsv (GPU video engines)
     video_preset: str = "veryfast"
-    render_parallel: int = 6         # scenes rendered at once
+    render_parallel: int = 3         # scenes rendered at once per job (each runs one ffmpeg; 3 x 2 jobs fits 7 GB RAM)
     multi_ratio_render: bool = True  # decode each clip once and split into all aspect ratios
     hw_decode: bool = True           # let ffmpeg use the GPU video decoder when available
     parallax: bool = True            # 2.5D depth parallax for still images (Depth-Anything-V2-Small)
