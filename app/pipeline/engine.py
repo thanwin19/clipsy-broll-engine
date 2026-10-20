@@ -532,7 +532,8 @@ def run_job(job_id: str, req: dict, progress: Progress) -> dict:
     from concurrent.futures import ThreadPoolExecutor
     with ThreadPoolExecutor(max_workers=1) as ex:   # music (needs only the mood) downloads while footage is found
         t_music = time.perf_counter()
-        music_future = ex.submit(find_music, plan.mood, nar.duration, work) if req.get("music", True) else None
+        music_mood = req.get("music_mood") if req.get("music_mood") not in (None, "auto") else plan.mood
+        music_future = ex.submit(find_music, music_mood, nar.duration, work) if req.get("music", True) else None
         chosen, reasons, pools = select_clips(plan, nar, req, work, warnings, progress, timer)
         music = None
         if music_future:

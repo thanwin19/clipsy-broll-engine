@@ -201,6 +201,7 @@ textarea:focus,input:focus,select:focus{border-color:var(--vio);box-shadow:0 0 0
 .clip.vo{background:rgba(34,211,238,.06) center/100% 100% no-repeat;border-color:rgba(34,211,238,.22)}
 .playhead{position:absolute;top:0;bottom:0;width:2px;background:var(--bad);pointer-events:none;z-index:5}
 .playhead:before{content:"";position:absolute;top:0;left:-5px;border:6px solid transparent;border-top-color:var(--bad)}
+.theaterbox{position:fixed;inset:0;z-index:300;background:#000;display:grid;place-items:center}
 .stagewrap.theater{position:fixed;inset:0;z-index:200;background:#000}
 .stagewrap.theater .sugg{display:none}
 .stagewrap.theater .screen{padding:0}.stagewrap.theater .frame{border-radius:0;box-shadow:none}
@@ -427,7 +428,9 @@ async function Studio(v,id){
     <label class="lb">Tone</label><div class="pills" id="tone">${(voices.styles||[]).map(s=>`<button class="pill" data-v="${s.id}">${esc(s.label.split(' (')[0])}</button>`).join('')}</div>
     <label class="lb">Pacing · speaking speed <span class="mono" id="spv">1.00×</span></label><input type="range" id="speed" min="0.75" max="1.25" step="0.05" value="1" style="width:100%;accent-color:var(--vio)">
     <label class="lb">Avoid</label><input type="text" id="avoid" placeholder="people's faces, alcohol">
-    <div class="row" style="margin-top:12px;gap:16px;font-size:13px"><label class="row"><input type="checkbox" id="burn" checked> Burn-in captions</label><label class="row"><input type="checkbox" id="music" checked> Music</label></div>
+    <div class="row" style="margin-top:12px;gap:16px;font-size:13px"><label class="row"><input type="checkbox" id="burn" checked> Burn-in captions</label></div>
+    <label class="lb">Background music</label><div class="pills" id="mmood">${[['auto','✨ Auto'],['lofi','🎧 Lo-fi'],['calm','🌙 Calm'],['upbeat','⚡ Upbeat'],['cinematic','🎬 Cinematic'],['corporate','💼 Corporate'],['none','🔇 None']].map(([k,l])=>`<button class="pill ${k==='auto'?'on':''}" data-m="${k}">${l}</button>`).join('')}</div>
+    <div class="hint">Licensed music, automatically lowered under the voice.</div>
     </details>
     <button class="btn pri" id="gen" style="width:100%;justify-content:center;margin-top:20px;padding:12px">${svg('studio')}Generate Storyboard & Video</button>
     <div id="err"></div>
@@ -441,7 +444,7 @@ async function Studio(v,id){
   $$('.seg button').forEach(b=>b.onclick=()=>tabs(b.dataset.t));tabs(S.studioTab);
   const sync=()=>{$$('#ratios .pill').forEach(b=>b.classList.toggle('on',st.ratios.has(b.dataset.r)));$$('#vstyle .pill').forEach(b=>b.classList.toggle('on',b.dataset.s===st.style));$$('#tone .pill').forEach(b=>b.classList.toggle('on',b.dataset.v===st.tone))};
   $$('#ratios .pill').forEach(b=>b.onclick=()=>{st.ratios.has(b.dataset.r)?st.ratios.delete(b.dataset.r):st.ratios.add(b.dataset.r);if(!st.ratios.size)st.ratios.add(b.dataset.r);sync()});
-  $$('#vstyle .pill').forEach(b=>b.onclick=()=>{st.style=b.dataset.s;sync()});$$('#tone .pill').forEach(b=>b.onclick=()=>{st.tone=b.dataset.v;sync()});sync();
+  $$('#vstyle .pill').forEach(b=>b.onclick=()=>{st.style=b.dataset.s;sync()});st.music='auto';$$('#mmood .pill').forEach(b=>b.onclick=()=>{st.music=b.dataset.m;$$('#mmood .pill').forEach(x=>x.classList.toggle('on',x===b))});$$('#tone .pill').forEach(b=>b.onclick=()=>{st.tone=b.dataset.v;sync()});sync();
   $('#speed').oninput=e=>$('#spv').textContent=(+e.target.value).toFixed(2)+'×';
   const est=()=>{const w=$('#script').value.replace(/\[[^\]]*\]/g,'').split(/\s+/).filter(Boolean).length;$('#est').textContent=w?`${w} words · about ${mmss(w/2.5)} of narration — the voice sets the final length`:'The narration sets the video length.'};
   $('#script').oninput=est;if(S.draft){$('#script').value=S.draft;S.draft=null}
@@ -460,7 +463,7 @@ async function Studio(v,id){
   if(id){track(id);return}
   $('#gen').onclick=async()=>{
     $('#err').innerHTML='';const req={aspect_ratios:[...st.ratios],style:`${st.style.toLowerCase()}, real-world footage`,voice_style:st.tone,
-      avoid:$('#avoid').value.split(',').map(s=>s.trim()).filter(Boolean),captions:{burn_in:$('#burn').checked,srt:true},music:$('#music').checked};
+      avoid:$('#avoid').value.split(',').map(s=>s.trim()).filter(Boolean),captions:{burn_in:$('#burn').checked,srt:true},music:st.music!=='none',music_mood:st.music==='none'?'auto':st.music};
     let body,headers={'Idempotency-Key':crypto.randomUUID(),'X-Correlation-Id':'clipsy-'+Date.now()};
     if(S.studioTab==='script'){req.script=$('#script').value;req.voice=$('#voice').value;req.voice_speed=+$('#speed').value;if($('#nlang').value)req.narration_language=$('#nlang').value}
     else{req.clean_audio=$('#clean').checked;if(!S.audioFile&&$('#aurl').value)req.audio_url=$('#aurl').value;if(!S.audioFile&&!req.audio_url){showErr({code:'NO_INPUT',message:'Choose a voiceover file or give a URL'});return}}
@@ -501,7 +504,10 @@ const L=c.links,vids=Object.keys(L).filter(k=>k.startsWith('video_'));let cur=vi
     <div style="background:#000;display:grid;place-items:center;height:62vh"><video id="rvid" controls autoplay playsinline style="max-width:100%;max-height:62vh"></video></div></div>
     <div class="tabs" style="position:static;margin-top:14px;border:0;padding:0;max-width:420px"><button class="on" data-rt="sb">Storyboard</button><button data-rt="dir">AI Director</button><button data-rt="notes">Notes${(c.mf.warnings||[]).length?' · '+c.mf.warnings.length:''}</button></div><div id="rtab" style="margin-top:12px"></div>`;
   const setV=k=>{cur=k;$('#rvid').src=L[k];$('#rdl').href=L[k];$$('#rv button').forEach(b=>b.classList.toggle('on',b.dataset.k===k))};
-  $$('#rv button').forEach(b=>b.onclick=()=>setV(b.dataset.k));setV(cur);$('#rfs').onclick=()=>$('#rvid').requestFullscreen&&$('#rvid').requestFullscreen();
+  $$('#rv button').forEach(b=>b.onclick=()=>setV(b.dataset.k));setV(cur);$('#rfs').onclick=async()=>{try{await $('#rvid').requestFullscreen()}catch{const v=$('#rvid');const o=document.createElement('div');o.className='theaterbox';
+    o.innerHTML='<button class="btn sm" style="position:absolute;top:14px;right:14px;z-index:2">✕ Close (Esc)</button>';const t=v.currentTime;const nv=v.cloneNode();nv.style.cssText='width:100%;height:100%;object-fit:contain';
+    v.pause();o.appendChild(nv);document.body.appendChild(o);nv.currentTime=t;nv.play();const close=()=>{v.currentTime=nv.currentTime;o.remove();document.removeEventListener('keydown',k)};
+    const k=e=>{if(e.key==='Escape')close()};document.addEventListener('keydown',k);o.querySelector('button').onclick=close}};
   const tab=t=>{$$('[data-rt]').forEach(b=>b.classList.toggle('on',b.dataset.rt===t));const R=$('#rtab');
     if(t==='sb')R.innerHTML=`<div class="scenes">${c.tl.scenes.map((s,i)=>sceneCard(s,i)).join('')}</div>`;
     if(t==='dir'){R.innerHTML='<div class="card pad" id="director"></div>';director(c,true)}

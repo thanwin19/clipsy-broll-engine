@@ -63,6 +63,8 @@ class BrollRequest(BaseModel):
     avoid: list[str] = Field(default_factory=list)
     captions: Captions = Field(default_factory=Captions)
     music: bool = True
+    music_mood: Literal["auto", "lofi", "calm", "upbeat", "cinematic", "corporate", "inspiring", "sombre"] = Field(
+        "auto", description="Background music character; 'auto' follows the script's mood. Use music=false for none")
     language: str | None = Field(None, description="Optional ISO code hint for the voiceover, e.g. en, hi, ta")
     callback_url: HttpUrl | None = Field(None, description="POSTed when the job ends; signed with X-IncuBrix-Signature")
 
