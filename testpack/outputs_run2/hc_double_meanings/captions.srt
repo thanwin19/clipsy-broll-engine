@@ -1,0 +1,23 @@
+1
+00:00:00,000 --> 00:00:02,820
+I deposited my salary at the bank.
+
+2
+00:00:02,820 --> 00:00:06,400
+Later we had a picnic on the river bank.
+
+3
+00:00:06,400 --> 00:00:09,240
+Our app runs on cloud computing and
+
+4
+00:00:09,240 --> 00:00:11,040
+is written in Python.
+
+5
+00:00:11,040 --> 00:00:14,240
+I clicked the mouse to buy a new laptop.
+
+6
+00:00:14,240 --> 00:00:18,288
+The real value of a habit shows over time.

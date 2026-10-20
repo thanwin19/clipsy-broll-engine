@@ -1,0 +1,4 @@
+2 cases -> testpack\outputs_run3
+  05_finance_money_value         succeeded   97.49s
+  hc_named_person_brand          succeeded   67.35s
+done: 2/2 succeeded; summary at testpack\outputs_run3\summary.csv

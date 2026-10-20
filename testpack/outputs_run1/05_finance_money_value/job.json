@@ -1,0 +1,18 @@
+{
+  "job_id": "job_ed30b95156834e5c92da",
+  "kind": "broll",
+  "status": "failed",
+  "progress": 30,
+  "stage": "failed",
+  "created_at": "2026-10-20T04:46:52.874625",
+  "updated_at": "2026-10-20T04:51:08.230236",
+  "result": null,
+  "error": {
+    "code": "INTERNAL_ERROR",
+    "message": "module 'cv2' has no attribute 'CascadeClassifier'",
+    "retryable": true,
+    "details": {
+      "type": "AttributeError"
+    }
+  }
+}

@@ -7,3 +7,13 @@ data/
 models_cache/
 data_test/
 *.part
+
+# design references (not part of the product)
+Clipsy/
+# rendered test videos are large: published as a GitHub release instead; JSON/SRT evidence stays in git
+testpack/outputs_run*/**/*.mp4
+testpack/outputs_run*/**/*.jpg
+testpack/outputs_run*/**/*.png
+# local tooling
+.claude/
+*.log

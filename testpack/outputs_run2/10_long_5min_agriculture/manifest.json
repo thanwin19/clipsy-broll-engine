@@ -1,0 +1,398 @@
+{
+  "job_id": "job_d7b0bf8f139a49e6aee0",
+  "version": 1,
+  "service": {
+    "name": "incubrix-broll-engine",
+    "version": "1.0.0"
+  },
+  "providers": {
+    "asr": {
+      "name": "faster-whisper",
+      "version": "faster-whisper/base"
+    },
+    "tts": {
+      "name": "gemini-tts",
+      "version": "gemini-3.8-flash-lite-tts",
+      "voice": "en-IN-male"
+    },
+    "input_type": "script",
+    "planner": "gemini/gemini-3.5-flash-lite",
+    "relevance_model": {
+      "name": "open_clip",
+      "version": "open_clip/ViT-B-32/laion2b_s34b_b79k"
+    },
+    "footage_sources_enabled": [
+      "pixabay",
+      "coverr",
+      "pexels",
+      "nasa",
+      "wikimedia"
+    ],
+    "footage_sources_used": [
+      "card-renderer",
+      "pixabay",
+      "wikimedia"
+    ],
+    "ai_image": null,
+    "music": "openverse/jamendo",
+    "renderer": "ffmpeg",
+    "face_detector": "opencv-haarcascade",
+    "saliency": "spectral-residual (numpy)"
+  },
+  "settings": {
+    "aspect_ratios": [
+      "16:9"
+    ],
+    "style": "bright, modern, real-world footage",
+    "avoid": [],
+    "captions": {
+      "burn_in": true,
+      "srt": true
+    },
+    "voice": "en-IN-male",
+    "fps": 30,
+    "stock_min_score_tau": 0.24,
+    "ai_margin": 0.02,
+    "min_scene_seconds": 2.0,
+    "max_scene_seconds": 8.0,
+    "video_preset": "veryfast",
+    "crf": 23
+  },
+  "seed": 1234,
+  "narration": {
+    "seconds": 336.168,
+    "language": "en",
+    "words": 536
+  },
+  "mood": "inspiring",
+  "topic": "Climate Change and Modern Agriculture",
+  "avoid_terms_expanded": [
+    "drought disaster",
+    "starvation",
+    "flooded town"
+  ],
+  "timings_seconds": {
+    "narration": 116.985,
+    "planning": 16.856,
+    "search_and_score": 330.641,
+    "ai_generation": 0.0,
+    "download": 597.355,
+    "music": 14.519,
+    "render": 331.187,
+    "qa": 149.883,
+    "total": 1557.551
+  },
+  "cost_estimate_usd": {
+    "total": 0.0,
+    "note": "All providers used on free tiers / open-source models; compute is the host machine."
+  },
+  "warnings": [
+    "PROVIDER_DOWN: 'coverr' failed repeatedly (HTTPStatusError); continuing with other sources",
+    "LOW_RELEVANCE: scene 9 best clip scored 0.212",
+    "LOW_RELEVANCE: scene 10 best clip scored 0.234",
+    "LOW_RELEVANCE: scene 13 best clip scored 0.217",
+    "LOW_RELEVANCE: scene 14 best clip scored 0.237",
+    "LOW_RELEVANCE: scene 18 best clip scored 0.218",
+    "LOW_RELEVANCE: scene 23 best clip scored 0.211",
+    "LOW_RELEVANCE: scene 29 best clip scored 0.224",
+    "LOW_RELEVANCE: scene 37 best clip scored 0.222",
+    "QA_AUTOFIX: scenes [7] had black/frozen frames and were replaced"
+  ],
+  "rights": {
+    "all_commercial_use": true,
+    "clips": [
+      {
+        "scene": 0,
+        "source": "pixabay",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "attribution": "Video by JohnKarton on Pixabay",
+        "ai_generated": false
+      },
+      {
+        "scene": 1,
+        "source": "wikimedia",
+        "licence": "Public domain",
+        "attribution": "USDAgov via Wikimedia Commons (Public domain)",
+        "ai_generated": false
+      },
+      {
+        "scene": 2,
+        "source": "pixabay",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "attribution": "Video by JustY\u00f8u on Pixabay",
+        "ai_generated": false
+      },
+      {
+        "scene": 3,
+        "source": "pixabay",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "attribution": "Video by FreeCreativeStuff on Pixabay",
+        "ai_generated": false
+      },
+      {
+        "scene": 4,
+        "source": "pixabay",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "attribution": "Video by SdCPro on Pixabay",
+        "ai_generated": false
+      },
+      {
+        "scene": 5,
+        "source": "pixabay",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "attribution": "Video by MrWashingt0n on Pixabay",
+        "ai_generated": false
+      },
+      {
+        "scene": 6,
+        "source": "pixabay",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "attribution": "Video by Kanenori on Pixabay",
+        "ai_generated": false
+      },
+      {
+        "scene": 7,
+        "source": "pixabay",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "attribution": "Video by mephala1980 on Pixabay",
+        "ai_generated": false
+      },
+      {
+        "scene": 8,
+        "source": "card-renderer",
+        "licence": "Rendered by this service (no third-party rights)",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "ai_generated": false
+      },
+      {
+        "scene": 9,
+        "source": "pixabay",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "attribution": "Video by kingimaging on Pixabay",
+        "ai_generated": false
+      },
+      {
+        "scene": 10,
+        "source": "pixabay",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "attribution": "Video by RoyBuri on Pixabay",
+        "ai_generated": false
+      },
+      {
+        "scene": 11,
+        "source": "pixabay",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "attribution": "Video by gbarchetta on Pixabay",
+        "ai_generated": false
+      },
+      {
+        "scene": 12,
+        "source": "wikimedia",
+        "licence": "Public domain",
+        "attribution": "USDAgov via Wikimedia Commons (Public domain)",
+        "ai_generated": false
+      },
+      {
+        "scene": 13,
+        "source": "pixabay",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "attribution": "Video by Thomas-Ritter on Pixabay",
+        "ai_generated": false
+      },
+      {
+        "scene": 14,
+        "source": "pixabay",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "attribution": "Video by NickyPe on Pixabay",
+        "ai_generated": false
+      },
+      {
+        "scene": 15,
+        "source": "pixabay",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "attribution": "Video by SdCPro on Pixabay",
+        "ai_generated": false
+      },
+      {
+        "scene": 16,
+        "source": "card-renderer",
+        "licence": "Rendered by this service (no third-party rights)",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "ai_generated": false
+      },
+      {
+        "scene": 17,
+        "source": "pixabay",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "attribution": "Video by MingMedia on Pixabay",
+        "ai_generated": false
+      },
+      {
+        "scene": 18,
+        "source": "pixabay",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "attribution": "Video by u_etjkkdz15b on Pixabay",
+        "ai_generated": false
+      },
+      {
+        "scene": 19,
+        "source": "card-renderer",
+        "licence": "Rendered by this service (no third-party rights)",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "ai_generated": false
+      },
+      {
+        "scene": 20,
+        "source": "card-renderer",
+        "licence": "Rendered by this service (no third-party rights)",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "ai_generated": false
+      },
+      {
+        "scene": 21,
+        "source": "pixabay",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "attribution": "Video by Aenigmatis-3D on Pixabay",
+        "ai_generated": false
+      },
+      {
+        "scene": 22,
+        "source": "pixabay",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "attribution": "Video by Hans on Pixabay",
+        "ai_generated": false
+      },
+      {
+        "scene": 23,
+        "source": "pixabay",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "attribution": "Video by Thomas-Ritter on Pixabay",
+        "ai_generated": false
+      },
+      {
+        "scene": 24,
+        "source": "card-renderer",
+        "licence": "Rendered by this service (no third-party rights)",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "ai_generated": false
+      },
+      {
+        "scene": 25,
+        "source": "pixabay",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "attribution": "Video by SdCPro on Pixabay",
+        "ai_generated": false
+      },
+      {
+        "scene": 26,
+        "source": "card-renderer",
+        "licence": "Rendered by this service (no third-party rights)",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "ai_generated": false
+      },
+      {
+        "scene": 27,
+        "source": "pixabay",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "attribution": "Video by waterlettuce on Pixabay",
+        "ai_generated": false
+      },
+      {
+        "scene": 28,
+        "source": "card-renderer",
+        "licence": "Rendered by this service (no third-party rights)",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "ai_generated": false
+      },
+      {
+        "scene": 29,
+        "source": "pixabay",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "attribution": "Video by Amirirani on Pixabay",
+        "ai_generated": false
+      },
+      {
+        "scene": 30,
+        "source": "pixabay",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "attribution": "Video by izhar-ahamed on Pixabay",
+        "ai_generated": false
+      },
+      {
+        "scene": 31,
+        "source": "card-renderer",
+        "licence": "Rendered by this service (no third-party rights)",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "ai_generated": false
+      },
+      {
+        "scene": 32,
+        "source": "card-renderer",
+        "licence": "Rendered by this service (no third-party rights)",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "ai_generated": false
+      },
+      {
+        "scene": 33,
+        "source": "pixabay",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "attribution": "Video by SdCPro on Pixabay",
+        "ai_generated": false
+      },
+      {
+        "scene": 34,
+        "source": "card-renderer",
+        "licence": "Rendered by this service (no third-party rights)",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "ai_generated": false
+      },
+      {
+        "scene": 35,
+        "source": "pixabay",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "attribution": "Video by Kanenori on Pixabay",
+        "ai_generated": false
+      },
+      {
+        "scene": 36,
+        "source": "card-renderer",
+        "licence": "Rendered by this service (no third-party rights)",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "ai_generated": false
+      },
+      {
+        "scene": 37,
+        "source": "pixabay",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "attribution": "Video by Oleh_77 on Pixabay",
+        "ai_generated": false
+      }
+    ],
+    "music": {
+      "title": "The Place That I Call Home",
+      "source": "openverse/jamendo",
+      "licence": "CC BY 3.0",
+      "attribution": "\"The Place That I Call Home\" by Muted Symphony (CC BY 3.0)",
+      "url": "https://www.jamendo.com/track/2038459"
+    },
+    "narration": "synthetic TTS voice (no real person)"
+  },
+  "qa": {
+    "16:9": {
+      "file": "video_16x9.mp4",
+      "video_codec": "h264",
+      "audio_codec": "aac",
+      "width": 1920,
+      "height": 1080,
+      "pix_fmt": "yuv420p",
+      "fps": 30.0,
+      "video_seconds": 336.266,
+      "audio_seconds": 336.168,
+      "av_drift_seconds": 0.098,
+      "narration_seconds": 336.168,
+      "black_segments": [],
+      "freeze_starts": [],
+      "passed": true
+    }
+  }
+}

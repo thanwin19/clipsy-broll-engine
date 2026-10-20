@@ -1,0 +1,45 @@
+{
+  "job_id": "job_d7b0bf8f139a49e6aee0",
+  "kind": "broll",
+  "status": "succeeded",
+  "progress": 100,
+  "stage": "done",
+  "created_at": "2026-10-20T05:46:53.804435",
+  "updated_at": "2026-10-20T06:12:51.675520",
+  "result": {
+    "version": 1,
+    "links": {
+      "video_16x9": "http://localhost:8000/files/jobs/job_d7b0bf8f139a49e6aee0/v1/video_16x9.mp4",
+      "timeline": "http://localhost:8000/files/jobs/job_d7b0bf8f139a49e6aee0/v1/timeline.json",
+      "manifest": "http://localhost:8000/files/jobs/job_d7b0bf8f139a49e6aee0/v1/manifest.json",
+      "captions_srt": "http://localhost:8000/files/jobs/job_d7b0bf8f139a49e6aee0/v1/captions.srt"
+    },
+    "warnings": [
+      "PROVIDER_DOWN: 'coverr' failed repeatedly (HTTPStatusError); continuing with other sources",
+      "LOW_RELEVANCE: scene 9 best clip scored 0.212",
+      "LOW_RELEVANCE: scene 10 best clip scored 0.234",
+      "LOW_RELEVANCE: scene 13 best clip scored 0.217",
+      "LOW_RELEVANCE: scene 14 best clip scored 0.237",
+      "LOW_RELEVANCE: scene 18 best clip scored 0.218",
+      "LOW_RELEVANCE: scene 23 best clip scored 0.211",
+      "LOW_RELEVANCE: scene 29 best clip scored 0.224",
+      "LOW_RELEVANCE: scene 37 best clip scored 0.222",
+      "QA_AUTOFIX: scenes [7] had black/frozen frames and were replaced"
+    ],
+    "scenes": 38,
+    "narration_seconds": 336.168,
+    "timings_seconds": {
+      "narration": 116.985,
+      "planning": 16.856,
+      "search_and_score": 330.641,
+      "ai_generation": 0.0,
+      "download": 597.355,
+      "music": 14.519,
+      "render": 331.187,
+      "qa": 149.883,
+      "total": 1557.551
+    },
+    "qa_passed": true
+  },
+  "error": null
+}

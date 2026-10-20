@@ -1,0 +1,299 @@
+{
+  "job_id": "job_695cb3007a6d4bfcae7e",
+  "version": 1,
+  "narration_seconds": 15.408,
+  "language": "en",
+  "transcript": "A few years ago I had no savings at all. Then I learned to track every rupee I spent. Value is not about spending less, it is about spending on what matters. My savings grew forty percent in one year.",
+  "aspect_ratios": [
+    "16:9",
+    "9:16"
+  ],
+  "mood": "upbeat",
+  "selection_rule": "Per scene: (1) statistics -> animated stat card. (2) Stock candidates from category-suited sources are scored with CLIP (image vs scene visual plan + narration, minus penalty for negative/avoid terms); unsafe candidates (avoid list, faces when avoided, AI for people/brands/sensitive) are removed. (3) Global assignment takes the highest (scene, clip) pairs first, each clip used once, if score >= tau=0.24. (4) If a scene's best stock score < tau+0.03 and AI is allowed, an AI image is generated and wins only if its CLIP score >= stock + 0.02. (5) Otherwise the best unused clip within 0.03 of tau, else a text card.",
+  "scenes": [
+    {
+      "scene": 0,
+      "start": 0.0,
+      "end": 3.6,
+      "duration": 3.6,
+      "narration": "A few years ago I had no savings at all.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "business",
+      "visual_plan": "Empty wallet and coins on a wooden desk, representing a lack of savings.",
+      "queries": [
+        "empty leather wallet",
+        "coins on desk",
+        "piggy bank empty"
+      ],
+      "negative_terms": [
+        "person smiling",
+        "rich people",
+        "luxury"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:12564",
+        "kind": "video",
+        "title": "coin, back, money, slowly",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-12564/",
+        "media_url": "https://cdn.pixabay.com/video/2017/10/22/12564-240358890_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by ARTXROOM on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "coins on desk"
+      },
+      "reason": "stock (low confidence): pixabay scored 0.232 (< tau 0.24, within 0.03); no AI option",
+      "relevance_score": 0.2321,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2321,
+        "negative_max": 0.2044,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.466,
+      "alternatives": [
+        {
+          "id": "pixabay:12564",
+          "source": "pixabay",
+          "score": 0.2321,
+          "title": "coin, back, money, slowly"
+        },
+        {
+          "id": "pixabay:19456",
+          "source": "pixabay",
+          "score": 0.1529,
+          "title": "shoes, nervous, fidget, think, tension, leather shoe"
+        },
+        {
+          "id": "pixabay:12922",
+          "source": "pixabay",
+          "score": 0.1513,
+          "title": "piggy, bank, dollars, flying, money, finance, business, banking, currency, piggy"
+        },
+        {
+          "id": "pixabay:93550",
+          "source": "pixabay",
+          "score": 0.1446,
+          "title": "piggy bank, world savings day, coins, dollar bill, paper money, money, currency,"
+        },
+        {
+          "id": "pixabay:12924",
+          "source": "pixabay",
+          "score": 0.1391,
+          "title": "piggy, bank, money, finance, business, banking, currency, piggy bank, pig, savin"
+        }
+      ]
+    },
+    {
+      "scene": 1,
+      "start": 3.6,
+      "end": 7.32,
+      "duration": 3.72,
+      "narration": "Then I learned to track every rupee I spent.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "business",
+      "visual_plan": "Close up of hands typing expenses on a calculator and financial ledger.",
+      "queries": [
+        "calculator on desk",
+        "financial ledger notebook",
+        "budget planning writing"
+      ],
+      "negative_terms": [
+        "person face",
+        "happy family"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:5441",
+        "kind": "video",
+        "title": "business books, profits, financial, accounting, finance, income, budget, beautiful wallpaper, management, planning, background",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-5441/",
+        "media_url": "https://cdn.pixabay.com/video/2016/09/21/5441-184226793_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by tommyvideo on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "budget planning writing"
+      },
+      "reason": "stock: pixabay clip scored 0.260 >= tau 0.24; best unused of 18 safe candidates",
+      "relevance_score": 0.2602,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2602,
+        "negative_max": 0.1226,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.494,
+      "alternatives": [
+        {
+          "id": "pixabay:5441",
+          "source": "pixabay",
+          "score": 0.2602,
+          "title": "business books, profits, financial, accounting, finance, income, budget, beautif"
+        },
+        {
+          "id": "pixabay:59139",
+          "source": "pixabay",
+          "score": 0.2142,
+          "title": "money, budget, count, cash, counting, calculator, finance, mortgage, economy, pa"
+        },
+        {
+          "id": "pixabay:10822",
+          "source": "pixabay",
+          "score": 0.2088,
+          "title": "keyboard, typing, writing, notebook, computer, technology, laptop, business, int"
+        },
+        {
+          "id": "pixabay:4952",
+          "source": "pixabay",
+          "score": 0.1996,
+          "title": "book, write, pen, diary, letter, hands, girl, notebook"
+        },
+        {
+          "id": "pixabay:232538",
+          "source": "pixabay",
+          "score": 0.1968,
+          "title": "keyboard, writing, digital, technology, desk, hardware, job, electronics, comput"
+        }
+      ]
+    },
+    {
+      "scene": 2,
+      "start": 7.32,
+      "end": 12.1,
+      "duration": 4.78,
+      "narration": "Value is not about spending less, it is about spending on what matters.",
+      "visual_hint": null,
+      "scene_type": "metaphor",
+      "category": "everyday",
+      "visual_plan": "A shopping cart in a modern grocery store aisle, highlighting conscious spending choices.",
+      "queries": [
+        "shopping cart aisle",
+        "grocery store shelves",
+        "conscious shopping"
+      ],
+      "negative_terms": [
+        "people shopping",
+        "crowded store",
+        "cashier face"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:137247",
+        "kind": "video",
+        "title": "cartoon, 3d, shop, shopping, commerce, business, sale, walk, fruit, strawberry, food, grocery, groceries, supermarket, store",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-137247/",
+        "media_url": "https://cdn.pixabay.com/video/2022/10/31/137247-766338227_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by julientromeur on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "grocery store shelves"
+      },
+      "reason": "stock: pixabay clip scored 0.256 >= tau 0.24; best unused of 13 safe candidates",
+      "relevance_score": 0.2564,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2564,
+        "negative_max": 0.2097,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.466,
+      "alternatives": [
+        {
+          "id": "pixabay:137247",
+          "source": "pixabay",
+          "score": 0.2564,
+          "title": "cartoon, 3d, shop, shopping, commerce, business, sale, walk, fruit, strawberry, "
+        },
+        {
+          "id": "pixabay:137246",
+          "source": "pixabay",
+          "score": 0.2411,
+          "title": "cartoon, 3d, shop, shopping, commerce, business, sale, walk, mouse, computer, on"
+        },
+        {
+          "id": "pixabay:119856",
+          "source": "pixabay",
+          "score": 0.2208,
+          "title": "knight, 3d, cartoon, shop, shopping, cart, middle, ages, medieval, man, people, "
+        },
+        {
+          "id": "pixabay:1735",
+          "source": "pixabay",
+          "score": 0.2178,
+          "title": "supermarket, cart, market, mall, buy, retail, buyer, price, shopping, consumer, "
+        },
+        {
+          "id": "pixabay:119857",
+          "source": "pixabay",
+          "score": 0.1716,
+          "title": "backpacker, vacation, holidays, 3d, man, shop, shopping, cart, commerce, cartoon"
+        }
+      ]
+    },
+    {
+      "scene": 3,
+      "start": 12.1,
+      "end": 15.408,
+      "duration": 3.308,
+      "narration": "My savings grew forty percent in one year.",
+      "visual_hint": null,
+      "scene_type": "statistic",
+      "category": "business",
+      "visual_plan": "An animated upward financial growth chart showing a forty percent increase.",
+      "queries": [
+        "financial growth chart",
+        "savings growth graph",
+        "investment increase"
+      ],
+      "negative_terms": [
+        "stock market crash",
+        "red downward graph"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:3",
+        "kind": "card",
+        "title": "Card: 40%",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "statistic '40%' -> animated stat card (rule: numbers are shown, not searched)",
+      "relevance_score": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": []
+    }
+  ],
+  "music": {
+    "path": null,
+    "title": "Key, Kida &amp; Eddie (feat. ICD) - Sundalo (acoustic)",
+    "source": "openverse/jamendo",
+    "licence": "CC BY 3.0",
+    "licence_url": "https://creativecommons.org/licenses/by/3.0/",
+    "attribution": "\"Key, Kida &amp; Eddie (feat. ICD) - Sundalo (acoustic)\" by Key, Kida &amp; Eddie (CC BY 3.0)",
+    "page_url": "https://www.jamendo.com/track/1522600",
+    "ai_generated": false
+  }
+}

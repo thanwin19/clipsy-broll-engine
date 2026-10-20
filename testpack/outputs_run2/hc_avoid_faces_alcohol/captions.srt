@@ -1,0 +1,11 @@
+1
+00:00:00,000 --> 00:00:02,160
+Friday evening in the city.
+
+2
+00:00:02,160 --> 00:00:03,860
+Friends meet at a rooftop restaurant
+
+3
+00:00:03,860 --> 00:00:06,808
+and share dinner as the sun goes down.

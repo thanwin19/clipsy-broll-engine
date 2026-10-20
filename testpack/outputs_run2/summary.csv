@@ -1,0 +1,9 @@
+case,status,error_code,seconds,scenes,narration_seconds,qa_passed,warnings,job_id
+05_finance_money_value,failed,INTERNAL_ERROR,46.23,,,,0,job_cd9f5c4107724dc79057
+10_long_5min_agriculture,succeeded,,1559.78,38,336.168,True,10,job_d7b0bf8f139a49e6aee0
+hc_916_edge_subject,succeeded,,147.79,2,7.688,True,1,job_077ac237070a4f7db474
+hc_abstract_and_stats,succeeded,,130.67,3,10.768,True,1,job_bfb445cc09c04a489ef6
+hc_avoid_faces_alcohol,succeeded,,78.05,1,6.808,True,1,job_77a46df19955401ea8d9
+hc_double_meanings,succeeded,,140.82,5,18.288,True,2,job_c61078c63bc34fc8b17a
+hc_named_person_brand,failed,INTERNAL_ERROR,33.56,,,,0,job_9c2731632eed4ed6b030
+hc_sad_news,succeeded,,72.98,2,18.328,True,1,job_ade3e04c43c046b6855e

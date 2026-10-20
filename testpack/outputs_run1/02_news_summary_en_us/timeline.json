@@ -1,0 +1,307 @@
+{
+  "job_id": "job_1cb1a478812a40659e6c",
+  "version": 1,
+  "narration_seconds": 21.571,
+  "language": "en",
+  "transcript": "In today's technology news, electric car sales rose sharply across Europe this quarter. Cities are adding thousands of new charging stations along major highways. Meanwhile, battery prices continued to fall, making smaller models more affordable for families. Analysts expect the trend to continue next year.",
+  "aspect_ratios": [
+    "16:9",
+    "9:16"
+  ],
+  "mood": "upbeat",
+  "selection_rule": "Per scene: (1) statistics -> animated stat card. (2) Stock candidates from category-suited sources are scored with CLIP (image vs scene visual plan + narration, minus penalty for negative/avoid terms); unsafe candidates (avoid list, faces when avoided, AI for people/brands/sensitive) are removed. (3) Global assignment takes the highest (scene, clip) pairs first, each clip used once, if score >= tau=0.24. (4) If a scene's best stock score < tau+0.03 and AI is allowed, an AI image is generated and wins only if its CLIP score >= stock + 0.02. (5) Otherwise the best unused clip within 0.03 of tau, else a text card.",
+  "scenes": [
+    {
+      "scene": 0,
+      "start": 0.0,
+      "end": 6.71,
+      "duration": 6.71,
+      "narration": "In today's technology news, electric car sales rose sharply across Europe this quarter.",
+      "visual_hint": null,
+      "scene_type": "statistic",
+      "category": "technology",
+      "visual_plan": "A modern electric car driving smoothly along a scenic highway at sunrise.",
+      "queries": [
+        "electric car highway",
+        "ev driving road",
+        "modern electric vehicle",
+        "car showroom interior"
+      ],
+      "negative_terms": [
+        "gasoline car",
+        "exhaust pipe",
+        "smoke",
+        "petrol station"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:0",
+        "kind": "card",
+        "title": "Card: EV Sales",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "statistic 'EV Sales' -> animated stat card (rule: numbers are shown, not searched)",
+      "relevance_score": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": []
+    },
+    {
+      "scene": 1,
+      "start": 6.71,
+      "end": 11.65,
+      "duration": 4.94,
+      "narration": "Cities are adding thousands of new charging stations along major highways.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "technology",
+      "visual_plan": "A row of newly installed electric vehicle charging stations along a modern city road.",
+      "queries": [
+        "ev charging station",
+        "charging plug car",
+        "electric vehicle charger",
+        "highway charging hub"
+      ],
+      "negative_terms": [
+        "fuel pump",
+        "gas station attendant",
+        "oil refinery"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:344231",
+        "kind": "video",
+        "title": "electric vehicle charging, green energy technology, sustainable transportation, clean energy future, ev power station, future mobility, eco-friendly transport, automotive innovation, no people, renewable energy, electric car socket, charging port, power supply, environmental conservation, high tech lifestyle, battery power, urban infrastructure, modern automotive, close up, blue glow, silver, metallic texture, selective focus, dark background, horizontal composition, ai generated",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-344231/",
+        "media_url": "https://cdn.pixabay.com/video/2026/04/03/344231_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by MrWashingt0n on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "ev charging station"
+      },
+      "reason": "stock: pixabay clip scored 0.278 >= tau 0.24; best unused of 17 safe candidates",
+      "relevance_score": 0.2777,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2777,
+        "negative_max": 0.2551,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.55,
+      "alternatives": [
+        {
+          "id": "pixabay:344231",
+          "source": "pixabay",
+          "score": 0.2777,
+          "title": "electric vehicle charging, green energy technology, sustainable transportation, "
+        },
+        {
+          "id": "pixabay:372065",
+          "source": "pixabay",
+          "score": 0.235,
+          "title": "automobile, ev, electric, sola, battery, charge, energy, electricity, charging, "
+        },
+        {
+          "id": "pixabay:2165",
+          "source": "pixabay",
+          "score": 0.1838,
+          "title": "car, road, transportation, vehicle, driving, car on road, transport, drive, high"
+        },
+        {
+          "id": "pixabay:200682",
+          "source": "pixabay",
+          "score": 0.1775,
+          "title": "charging plug, e auto, electric car, charging station, e mobility, electric mobi"
+        },
+        {
+          "id": "pixabay:19627",
+          "source": "pixabay",
+          "score": 0.1718,
+          "title": "street, traffic, cars, city, night, view, car, skyscrapers, quick, vehicle, dyna"
+        }
+      ]
+    },
+    {
+      "scene": 2,
+      "start": 11.65,
+      "end": 17.71,
+      "duration": 6.06,
+      "narration": "Meanwhile, battery prices continued to fall, making smaller models more affordable for families.",
+      "visual_hint": null,
+      "scene_type": "metaphor",
+      "category": "technology",
+      "visual_plan": "A compact electric family car parked outside a modern suburban home.",
+      "queries": [
+        "ev battery technology",
+        "small electric car",
+        "family charging electric car",
+        "compact ev drive"
+      ],
+      "negative_terms": [
+        "aa batteries",
+        "phone battery",
+        "gasoline engine",
+        "expensive supercar"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:372065",
+        "kind": "video",
+        "title": "automobile, ev, electric, sola, battery, charge, energy, electricity, charging, car, power, vehicle, technology, station, green, recharge, batteries, parking",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-372065/",
+        "media_url": "https://cdn.pixabay.com/video/2026/08/22/372065_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by MotionFoxi on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "ev battery technology"
+      },
+      "reason": "stock (low confidence): pixabay scored 0.219 (< tau 0.24, within 0.03); no AI option",
+      "relevance_score": 0.2187,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2334,
+        "negative_max": 0.2281,
+        "penalty": 0.0147
+      },
+      "reframe_subject_x": 0.452,
+      "alternatives": [
+        {
+          "id": "pixabay:344231",
+          "source": "pixabay",
+          "score": 0.2204,
+          "title": "electric vehicle charging, green energy technology, sustainable transportation, "
+        },
+        {
+          "id": "pixabay:372065",
+          "source": "pixabay",
+          "score": 0.2187,
+          "title": "automobile, ev, electric, sola, battery, charge, energy, electricity, charging, "
+        },
+        {
+          "id": "pixabay:133083",
+          "source": "pixabay",
+          "score": 0.2171,
+          "title": "car, green, 3d, cartoon, ecology, electric, environment, energy, auto, speed, au"
+        },
+        {
+          "id": "pixabay:184734",
+          "source": "pixabay",
+          "score": 0.0882,
+          "title": "car, desert, driving, drone, sand, arial, tajikistan"
+        },
+        {
+          "id": "pixabay:199545",
+          "source": "pixabay",
+          "score": 0.0755,
+          "title": "beef, patty, hamburger, burger, grill, electric grill, meal, flesh, tasty, close"
+        }
+      ]
+    },
+    {
+      "scene": 3,
+      "start": 17.71,
+      "end": 21.571,
+      "duration": 3.861,
+      "narration": "Analysts expect the trend to continue next year.",
+      "visual_hint": null,
+      "scene_type": "abstract",
+      "category": "business",
+      "visual_plan": "Financial analyst working with modern data graphics overlay in a brightly lit office.",
+      "queries": [
+        "stock market growth chart",
+        "business chart screen",
+        "financial projection graph",
+        "analyst reviewing data"
+      ],
+      "negative_terms": [
+        "declining graph",
+        "crisis",
+        "bankrupt"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "coverr:9Fto6DPno2",
+        "kind": "video",
+        "title": "A screen showing financial analysis of a cryptocurrency",
+        "source": "coverr",
+        "source_url": "https://coverr.co/videos/a-screen-showing-financial-analysis-of-a-cryptocurrency-9fto6dpno2",
+        "media_url": "https://cdn.coverr.co/videos/coverr-a-screen-showing-financial-analysis-of-a-cryptocurrency-3490/1080p.mp4",
+        "licence": "Coverr License (free for commercial use, no attribution required)",
+        "licence_url": "https://coverr.co/license",
+        "attribution": "Video from Coverr",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "business chart screen"
+      },
+      "reason": "stock: coverr clip scored 0.273 >= tau 0.24; best unused of 23 safe candidates",
+      "relevance_score": 0.2732,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2732,
+        "negative_max": 0.2005,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.782,
+      "alternatives": [
+        {
+          "id": "coverr:9Fto6DPno2",
+          "source": "coverr",
+          "score": 0.2732,
+          "title": "A screen showing financial analysis of a cryptocurrency"
+        },
+        {
+          "id": "coverr:yDu2bAdVxR",
+          "source": "coverr",
+          "score": 0.2729,
+          "title": "A man shutting down his PC and walking away"
+        },
+        {
+          "id": "coverr:0ktmxLBzsG",
+          "source": "coverr",
+          "score": 0.2608,
+          "title": "Financial analysis of cryptocurrency"
+        },
+        {
+          "id": "pixabay:349089",
+          "source": "pixabay",
+          "score": 0.2473,
+          "title": "finance, money, currency, growth, investment, success, financial, banking, accou"
+        },
+        {
+          "id": "pixabay:298817",
+          "source": "pixabay",
+          "score": 0.2435,
+          "title": "global finance, stock market, world economy, financial data, trading, investment"
+        }
+      ]
+    }
+  ],
+  "music": {
+    "path": null,
+    "title": "Procedural ambient pad",
+    "source": "procedural",
+    "licence": "Generated by this service (no third-party rights)",
+    "licence_url": "",
+    "attribution": "Generated by IncuBrix B-roll engine",
+    "page_url": "",
+    "ai_generated": false
+  }
+}

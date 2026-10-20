@@ -1,0 +1,189 @@
+{
+  "job_id": "job_9e685323264f4187bc86",
+  "version": 1,
+  "narration_seconds": 6.768,
+  "language": "en",
+  "transcript": "Elon Musk announced that Tesla will open a new factory next year. Apple and Samsung also reported record phone sales.",
+  "aspect_ratios": [
+    "16:9",
+    "9:16"
+  ],
+  "mood": "corporate",
+  "selection_rule": "Per scene: (1) statistics -> animated stat card. (2) Stock candidates from category-suited sources are scored with CLIP (image vs scene visual plan + narration, minus penalty for negative/avoid terms); unsafe candidates (avoid list, faces when avoided, AI for people/brands/sensitive) are removed. (3) Global assignment takes the highest (scene, clip) pairs first, each clip used once, if score >= tau=0.24. (4) If a scene's best stock score < tau+0.03 and AI is allowed, an AI image is generated and wins only if its CLIP score >= stock + 0.02. (5) Otherwise the best unused clip within 0.03 of tau, else a text card.",
+  "scenes": [
+    {
+      "scene": 0,
+      "start": 0.0,
+      "end": 2.687,
+      "duration": 2.687,
+      "narration": "Elon Musk announced that Tesla will open a new factory next year.",
+      "visual_hint": null,
+      "scene_type": "named_entity",
+      "category": "technology",
+      "visual_plan": "A modern electric vehicle manufacturing plant with robotic assembly lines.",
+      "queries": [
+        "electric car factory",
+        "robot assembly line",
+        "modern manufacturing plant"
+      ],
+      "negative_terms": [
+        "elon musk",
+        "tesla logo",
+        "person face",
+        "brand name"
+      ],
+      "entities": [
+        "Elon Musk",
+        "Tesla"
+      ],
+      "clip": {
+        "id": "pixabay:3985",
+        "kind": "video",
+        "title": "gantry crane, animation, 3d, robot technology, machine, industry, rendering, sequence, motion study, assembly, transport, logistics, 3d concept",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-3985/",
+        "media_url": "https://cdn.pixabay.com/video/2016/07/24/3985-176061609_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by PIRO4D on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "robot assembly line"
+      },
+      "reason": "stock (low confidence): pixabay scored 0.214 (< tau 0.24, within 0.03); no AI option; safety: named person/brand -> neutral footage, no AI faces/logos",
+      "relevance_score": 0.2138,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2138,
+        "negative_max": 0.137,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.478,
+      "alternatives": [
+        {
+          "id": "pixabay:3985",
+          "source": "pixabay",
+          "score": 0.2138,
+          "title": "gantry crane, animation, 3d, robot technology, machine, industry, rendering, seq"
+        },
+        {
+          "id": "pixabay:12543",
+          "source": "pixabay",
+          "score": 0.2063,
+          "title": "sparkles, industry, worker, industrial, metal, steel, equipment, production, tec"
+        },
+        {
+          "id": "pixabay:3934",
+          "source": "pixabay",
+          "score": 0.2063,
+          "title": "robot, animation, machine, industry, rendering, sequence, motion study, micro as"
+        },
+        {
+          "id": "pixabay:3984",
+          "source": "pixabay",
+          "score": 0.1977,
+          "title": "robot, animation, technology, machine, industry, rendering, sequence, motion stu"
+        },
+        {
+          "id": "pixabay:3975",
+          "source": "pixabay",
+          "score": 0.1663,
+          "title": "robot, animation, technology, machine, industry, rendering, sequence, motion stu"
+        }
+      ]
+    },
+    {
+      "scene": 1,
+      "start": 2.687,
+      "end": 6.768,
+      "duration": 4.081,
+      "narration": "Apple and Samsung also reported record phone sales.",
+      "visual_hint": null,
+      "scene_type": "named_entity",
+      "category": "technology",
+      "visual_plan": "Sleek modern smartphones displayed on a minimalist table in a bright tech store.",
+      "queries": [
+        "modern smartphones display",
+        "new smartphones retail",
+        "latest mobile phones"
+      ],
+      "negative_terms": [
+        "apple logo",
+        "samsung logo",
+        "brand name",
+        "person face"
+      ],
+      "entities": [
+        "Apple",
+        "Samsung"
+      ],
+      "clip": {
+        "id": "pixabay:103",
+        "kind": "video",
+        "title": "apple iphone 6, smartphone, scroll, touchscreen, touch, navigation, communication, read, phone, device, electronics, modern, communicate, display, reading, browsing",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-103/",
+        "media_url": "https://cdn.pixabay.com/video/2015/08/08/103-135735608_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by Coverr-Free-Footage on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "modern smartphones display"
+      },
+      "reason": "stock (low confidence): pixabay scored 0.237 (< tau 0.24, within 0.03); no AI option; safety: named person/brand -> neutral footage, no AI faces/logos",
+      "relevance_score": 0.2368,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2368,
+        "negative_max": 0.1898,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.484,
+      "alternatives": [
+        {
+          "id": "pixabay:103",
+          "source": "pixabay",
+          "score": 0.2368,
+          "title": "apple iphone 6, smartphone, scroll, touchscreen, touch, navigation, communicatio"
+        },
+        {
+          "id": "coverr:cEuLlhHB8M",
+          "source": "coverr",
+          "score": 0.2357,
+          "title": "Close-Up of Young Man Engaged with iPhone 15 Indoors"
+        },
+        {
+          "id": "pixabay:204527",
+          "source": "pixabay",
+          "score": 0.2341,
+          "title": "smartphone, cellphone, text, message, woman, discuss, technology"
+        },
+        {
+          "id": "pixabay:736",
+          "source": "pixabay",
+          "score": 0.2239,
+          "title": "iphone, smartphone, scrolling, mobile, device, technology, cellphone, smart phon"
+        },
+        {
+          "id": "pixabay:735",
+          "source": "pixabay",
+          "score": 0.2195,
+          "title": "iphone, scrolling, technology, touchscreen, cellphone, digital, smartphone, comm"
+        }
+      ]
+    }
+  ],
+  "music": {
+    "path": null,
+    "title": "Procedural ambient pad",
+    "source": "procedural",
+    "licence": "Generated by this service (no third-party rights)",
+    "licence_url": "",
+    "attribution": "Generated by IncuBrix B-roll engine",
+    "page_url": "",
+    "ai_generated": false
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "job_id": "job_fe4658047c8a40098c2c",
+  "kind": "broll",
+  "status": "failed",
+  "progress": 5,
+  "stage": "failed",
+  "created_at": "2026-10-20T05:02:19.131434",
+  "updated_at": "2026-10-20T05:02:24.819543",
+  "result": null,
+  "error": {
+    "code": "NO_SPEECH_DETECTED",
+    "message": "No narration found (silent or music-only audio)",
+    "retryable": false,
+    "details": {
+      "words_found": 0,
+      "seconds": 21.1
+    }
+  }
+}

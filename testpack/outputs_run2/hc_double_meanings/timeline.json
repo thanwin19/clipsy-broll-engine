@@ -1,0 +1,405 @@
+{
+  "job_id": "job_c61078c63bc34fc8b17a",
+  "version": 1,
+  "narration_seconds": 18.288,
+  "language": "en",
+  "transcript": "I deposited my salary at the bank. Later we had a picnic on the river bank. Our app runs on cloud computing and is written in Python. I clicked the mouse to buy a new laptop. The real value of a habit shows over time.",
+  "aspect_ratios": [
+    "16:9",
+    "9:16"
+  ],
+  "mood": "upbeat",
+  "selection_rule": "Per scene: (1) statistics -> animated stat card. (2) Stock candidates from category-suited sources are scored with CLIP (image vs scene visual plan + narration, minus penalty for negative/avoid terms); unsafe candidates (avoid list, faces when avoided, AI for people/brands/sensitive) are removed. (3) Global assignment takes the highest (scene, clip) pairs first, each clip used once, if score >= tau=0.24. (4) If a scene's best stock score < tau+0.03 and AI is allowed, an AI image is generated and wins only if its CLIP score >= stock + 0.02. (5) Otherwise the best unused clip within 0.03 of tau, else a text card.",
+  "scenes": [
+    {
+      "scene": 0,
+      "start": 0.0,
+      "end": 2.82,
+      "duration": 2.82,
+      "narration": "I deposited my salary at the bank.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "business",
+      "visual_plan": "A person handing cash or a card to a teller at a modern bank counter.",
+      "queries": [
+        "bank counter teller",
+        "depositing money bank",
+        "atm cash deposit"
+      ],
+      "negative_terms": [
+        "river",
+        "water",
+        "nature",
+        "fish"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:0",
+        "kind": "card",
+        "title": "Card: I deposited my salary at the bank.",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [
+        {
+          "id": "pixabay:10853",
+          "source": "pixabay",
+          "score": 0.0909,
+          "title": "numbers, counter, digits, time, count, scoreboard, indicator, countdown, board, "
+        },
+        {
+          "id": "pixabay:122366",
+          "source": "pixabay",
+          "score": 0.058,
+          "title": "counter, technology, grid, numbers, hud, drive unit, movement"
+        },
+        {
+          "id": "pixabay:124746",
+          "source": "pixabay",
+          "score": 0.0161,
+          "title": "counter, numbers, one to ten, 1 to 10, time, progress, passing counter"
+        },
+        {
+          "id": "pixabay:10350",
+          "source": "pixabay",
+          "score": -0.0374,
+          "title": "counter, countdown, clock, timer, minute, hour, display, count"
+        },
+        {
+          "id": "pixabay:21163",
+          "source": "pixabay",
+          "score": -0.1304,
+          "title": "count, counter, digit, number, render, graphics, countdown"
+        }
+      ]
+    },
+    {
+      "scene": 1,
+      "start": 2.82,
+      "end": 6.4,
+      "duration": 3.58,
+      "narration": "Later we had a picnic on the river bank.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "nature",
+      "visual_plan": "Friends enjoying a peaceful picnic blanket spread out on green grass by a flowing river.",
+      "queries": [
+        "picnic by river",
+        "river bank nature",
+        "people having picnic"
+      ],
+      "negative_terms": [
+        "bank building",
+        "money",
+        "atm",
+        "finance"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:228129",
+        "kind": "video",
+        "title": "celebration, drink, picnic, christmas, family, wedding, kids, new years eve, festival",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-228129/",
+        "media_url": "https://cdn.pixabay.com/video/2024/08/24/228129_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by xBriantcx on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "people having picnic"
+      },
+      "reason": "stock (low confidence): pixabay scored 0.233 (< tau 0.24, within 0.03); no AI option",
+      "relevance_score": 0.2328,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2328,
+        "negative_max": 0.1759,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.481,
+      "alternatives": [
+        {
+          "id": "pixabay:228129",
+          "source": "pixabay",
+          "score": 0.2328,
+          "title": "celebration, drink, picnic, christmas, family, wedding, kids, new years eve, fes"
+        },
+        {
+          "id": "pixabay:56959",
+          "source": "pixabay",
+          "score": 0.1998,
+          "title": "tree, picnic, field, forest, garden, landscape"
+        },
+        {
+          "id": "wikimedia:70562430",
+          "source": "wikimedia",
+          "score": 0.1474,
+          "title": "File:The President- November 1966. MP879..webm"
+        },
+        {
+          "id": "wikimedia:199969491",
+          "source": "wikimedia",
+          "score": 0.043,
+          "title": "File:Baby Elephant on Vimeo.webm"
+        },
+        {
+          "id": "pixabay:88686",
+          "source": "pixabay",
+          "score": 0.0276,
+          "title": "phone, scrolling phone, woman, picnic, hands, girl, summer, nature"
+        }
+      ]
+    },
+    {
+      "scene": 2,
+      "start": 6.4,
+      "end": 11.04,
+      "duration": 4.64,
+      "narration": "Our app runs on cloud computing and is written in Python.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "technology",
+      "visual_plan": "Lines of colorful programming code displayed on a dual computer monitor setup in a modern office.",
+      "queries": [
+        "programming code screen",
+        "software development code",
+        "cloud computing servers"
+      ],
+      "negative_terms": [
+        "snake",
+        "reptile",
+        "python animal"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:4733",
+        "kind": "video",
+        "title": "source code, development, code, programming, typing, screen, developing, software, developer, coding, digital, information, application, computer, data, technology, web, internet, program, source, engineering, computing, platform, www, binary, web developer, programming code, programmer, php, java, javascript",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-4733/",
+        "media_url": "https://cdn.pixabay.com/video/2016/08/22/4733-179738669_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by Coverr-Free-Footage on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "programming code screen"
+      },
+      "reason": "stock: pixabay clip scored 0.304 >= tau 0.24; best unused of 17 safe candidates",
+      "relevance_score": 0.3042,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.3042,
+        "negative_max": 0.1956,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.404,
+      "alternatives": [
+        {
+          "id": "pixabay:4733",
+          "source": "pixabay",
+          "score": 0.3042,
+          "title": "source code, development, code, programming, typing, screen, developing, softwar"
+        },
+        {
+          "id": "pixabay:27706",
+          "source": "pixabay",
+          "score": 0.2716,
+          "title": "glitch, code, programming, hacker, data, technology, digital, matrix, binary, ne"
+        },
+        {
+          "id": "pixabay:32767",
+          "source": "pixabay",
+          "score": 0.2577,
+          "title": "code, coding, programming, programmer, computer, hacker, data, hacking, web, int"
+        },
+        {
+          "id": "pixabay:27920",
+          "source": "pixabay",
+          "score": 0.2524,
+          "title": "code, coding, programming, computer, technology, digital, data, programmer, inte"
+        },
+        {
+          "id": "pixabay:171",
+          "source": "pixabay",
+          "score": 0.2453,
+          "title": "source code, monitor, display, numbers, letters, programming, code, software dev"
+        }
+      ]
+    },
+    {
+      "scene": 3,
+      "start": 11.04,
+      "end": 14.24,
+      "duration": 3.2,
+      "narration": "I clicked the mouse to buy a new laptop.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "technology",
+      "visual_plan": "A hand clicking a sleek wireless computer mouse next to a new modern laptop on a wooden desk.",
+      "queries": [
+        "clicking computer mouse",
+        "buying online laptop",
+        "using laptop desk"
+      ],
+      "negative_terms": [
+        "animal mouse",
+        "rodent"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:127",
+        "kind": "video",
+        "title": "optical mouse, computer, navigation, control, device, mouse cursor, navigate, pc, wireless, black, hardware, periphery, red led",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-127/",
+        "media_url": "https://cdn.pixabay.com/video/2015/08/08/127-135736713_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by Coverr-Free-Footage on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "clicking computer mouse"
+      },
+      "reason": "stock: pixabay clip scored 0.309 >= tau 0.24; best unused of 16 safe candidates",
+      "relevance_score": 0.3093,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.3093,
+        "negative_max": 0.2589,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.412,
+      "alternatives": [
+        {
+          "id": "pixabay:127",
+          "source": "pixabay",
+          "score": 0.3093,
+          "title": "optical mouse, computer, navigation, control, device, mouse cursor, navigate, pc"
+        },
+        {
+          "id": "pixabay:336228",
+          "source": "pixabay",
+          "score": 0.3037,
+          "title": "gaming mouse, mouse, hand, click, clicking, scroll, wheel, rgb, led, light, glow"
+        },
+        {
+          "id": "pixabay:154373",
+          "source": "pixabay",
+          "score": 0.2821,
+          "title": "mouse, computer, office, technology, network, digital, click, hand, pc, study"
+        },
+        {
+          "id": "pixabay:203260",
+          "source": "pixabay",
+          "score": 0.2611,
+          "title": "woman, computer, laptop, typing, work, desk, business, marketing, communication,"
+        },
+        {
+          "id": "pixabay:232538",
+          "source": "pixabay",
+          "score": 0.2601,
+          "title": "keyboard, writing, digital, technology, desk, hardware, job, electronics, comput"
+        }
+      ]
+    },
+    {
+      "scene": 4,
+      "start": 14.24,
+      "end": 18.288,
+      "duration": 4.048,
+      "narration": "The real value of a habit shows over time.",
+      "visual_hint": null,
+      "scene_type": "metaphor",
+      "category": "everyday",
+      "visual_plan": "A time-lapse or close-up shot of coins slowly accumulating in a transparent glass jar.",
+      "queries": [
+        "saving coins jar",
+        "habit progress growth",
+        "financial savings jar"
+      ],
+      "negative_terms": [
+        "spending",
+        "empty"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:4",
+        "kind": "card",
+        "title": "Card: The real value of a habit shows over time.",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [
+        {
+          "id": "pixabay:276058",
+          "source": "pixabay",
+          "score": 0.0856,
+          "title": "fern, worm fern, plant, plant growth, nature, flora, grow, growth"
+        },
+        {
+          "id": "pixabay:265050",
+          "source": "pixabay",
+          "score": 0.0758,
+          "title": "seeds, growth, plant growth, germinate, seedlings, nature, plants, sprouts, sunf"
+        },
+        {
+          "id": "pixabay:13100",
+          "source": "pixabay",
+          "score": 0.0704,
+          "title": "universe, jar, colourful, experiment, close-up, particles, oil, ink, water, abst"
+        },
+        {
+          "id": "pixabay:283924",
+          "source": "pixabay",
+          "score": 0.0543,
+          "title": "houseleek, growth, plant growth, plant, nature, sempervivum hybrids"
+        },
+        {
+          "id": "pixabay:7924",
+          "source": "pixabay",
+          "score": 0.0278,
+          "title": "flowers, nature, time, blossom, leaf, petal, plant, summer, green, lapse, bloomi"
+        }
+      ]
+    }
+  ],
+  "music": {
+    "path": null,
+    "title": "Key, Kida &amp; Eddie (feat. ICD) - Sundalo (acoustic)",
+    "source": "openverse/jamendo",
+    "licence": "CC BY 3.0",
+    "licence_url": "https://creativecommons.org/licenses/by/3.0/",
+    "attribution": "\"Key, Kida &amp; Eddie (feat. ICD) - Sundalo (acoustic)\" by Key, Kida &amp; Eddie (CC BY 3.0)",
+    "page_url": "https://www.jamendo.com/track/1522600",
+    "ai_generated": false
+  }
+}

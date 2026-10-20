@@ -472,7 +472,7 @@ def download(cand: Candidate, dest_dir: Path, max_mb: int = 80) -> Path:
         path = dest_dir / f"{safe}.mp4"
         if not path.exists():
             hue = int(hashlib.md5(cand.id.encode()).hexdigest()[:2], 16) * 360 // 255
-            media.ffmpeg("-f", "lavfi", "-i", f"testsrc2=size=1280x720:rate=30:duration=10",
+            media.ffmpeg("-f", "lavfi", "-i", "testsrc2=size=1280x720:rate=30:duration=10",
                          "-vf", f"hue=h={hue}", "-c:v", "libx264", "-preset", "ultrafast", "-pix_fmt", "yuv420p", path)
         return path
     url = Nasa(s).resolve(cand) if cand.provider == "nasa" else cand.download_url

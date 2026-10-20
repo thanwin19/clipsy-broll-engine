@@ -1,0 +1,342 @@
+{
+  "job_id": "job_a3d6102a8bbc41b6ad27",
+  "version": 1,
+  "narration_seconds": 17.16,
+  "language": "en",
+  "transcript": "Meet the bottle that keeps your drink cold for twenty four hours. Take it on a mountain hike, to the gym, or to your desk at work. It is made from recycled steel and it never leaks. Stay fresh, wherever the day takes you.",
+  "aspect_ratios": [
+    "16:9",
+    "9:16",
+    "1:1"
+  ],
+  "mood": "upbeat",
+  "selection_rule": "Per scene: (1) statistics -> animated stat card. (2) Stock candidates from category-suited sources are scored with CLIP (image vs scene visual plan + narration, minus penalty for negative/avoid terms); unsafe candidates (avoid list, faces when avoided, AI for people/brands/sensitive) are removed. (3) Global assignment takes the highest (scene, clip) pairs first, each clip used once, if score >= tau=0.24. (4) If a scene's best stock score < tau+0.03 and AI is allowed, an AI image is generated and wins only if its CLIP score >= stock + 0.02. (5) Otherwise the best unused clip within 0.03 of tau, else a text card.",
+  "scenes": [
+    {
+      "scene": 0,
+      "start": 0.0,
+      "end": 5.02,
+      "duration": 5.02,
+      "narration": "Meet the bottle that keeps your drink cold for twenty four hours.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "everyday",
+      "visual_plan": "Extreme closeup of ice cold water being poured into a sleek metal reusable water bottle with condensation droplets.",
+      "queries": [
+        "reusable water bottle ice",
+        "cold drink condensation bottle",
+        "pouring cold water bottle",
+        "stainless steel bottle ice"
+      ],
+      "negative_terms": [
+        "plastic disposable bottle",
+        "hot coffee mug",
+        "dirty glass"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:209665",
+        "kind": "video",
+        "title": "drink, refreshment, water, ice, cold water, refreshing, ice cubes",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-209665/",
+        "media_url": "https://cdn.pixabay.com/video/2024/04/27/209665_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by Afzaal0001 on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "reusable water bottle ice"
+      },
+      "reason": "stock: pixabay clip scored 0.266 >= tau 0.24; best unused of 15 safe candidates",
+      "relevance_score": 0.2664,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2787,
+        "negative_max": 0.271,
+        "penalty": 0.0123
+      },
+      "reframe_subject_x": 0.586,
+      "alternatives": [
+        {
+          "id": "pixabay:209665",
+          "source": "pixabay",
+          "score": 0.2664,
+          "title": "drink, refreshment, water, ice, cold water, refreshing, ice cubes"
+        },
+        {
+          "id": "pixabay:133507",
+          "source": "pixabay",
+          "score": 0.2493,
+          "title": "cup, bottle, drink, beverage, water, lake, ocean, sea, vertical video"
+        },
+        {
+          "id": "pixabay:7951",
+          "source": "pixabay",
+          "score": 0.2119,
+          "title": "snow, melt, water, cold, ice cream, nature, black, white, frost, spring"
+        },
+        {
+          "id": "pixabay:257265",
+          "source": "pixabay",
+          "score": 0.2086,
+          "title": "pouring vine, vine, pouring, drink, glass, pour, liquid, beverage, alcohol, bott"
+        },
+        {
+          "id": "pixabay:9535",
+          "source": "pixabay",
+          "score": 0.1965,
+          "title": "beer, bottle, drink, foam, crown, drops"
+        }
+      ]
+    },
+    {
+      "scene": 1,
+      "start": 5.02,
+      "end": 9.88,
+      "duration": 4.86,
+      "narration": "Take it on a mountain hike, to the gym, or to your desk at work.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "people_free",
+      "visual_plan": "Fast-paced montage showing a scenic mountain hiking trail, modern gym equipment, and a bright desk setup.",
+      "queries": [
+        "mountain hiking trail sunny",
+        "modern gym weights background",
+        "bright office desk aesthetic",
+        "outdoor adventure gear"
+      ],
+      "negative_terms": [
+        "dark office night",
+        "empty dirty gym",
+        "city traffic jam"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "coverr:O265qfIUGG",
+        "kind": "video",
+        "title": "Hiking in the hills",
+        "source": "coverr",
+        "source_url": "https://coverr.co/videos/hiking-in-the-hills-o265qfiugg",
+        "media_url": "https://cdn.coverr.co/videos/coverr-hiking-in-the-hills-1431/1080p.mp4",
+        "licence": "Coverr License (free for commercial use, no attribution required)",
+        "licence_url": "https://coverr.co/license",
+        "attribution": "Video from Coverr",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "mountain hiking trail sunny"
+      },
+      "reason": "stock (low confidence): coverr scored 0.239 (< tau 0.24, within 0.03); no AI option",
+      "relevance_score": 0.239,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.239,
+        "negative_max": 0.1204,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.469,
+      "alternatives": [
+        {
+          "id": "coverr:O265qfIUGG",
+          "source": "coverr",
+          "score": 0.239,
+          "title": "Hiking in the hills"
+        },
+        {
+          "id": "pixabay:148204",
+          "source": "pixabay",
+          "score": 0.2286,
+          "title": "fitness, workout, gym, sport, equipment, healthy, lifestyle, training, exercise,"
+        },
+        {
+          "id": "pixabay:148212",
+          "source": "pixabay",
+          "score": 0.2163,
+          "title": "fitness, workout, gym, sport, equipment, healthy, lifestyle, training, exercise,"
+        },
+        {
+          "id": "pixabay:8921",
+          "source": "pixabay",
+          "score": 0.1944,
+          "title": "forest, trees, nature, green, spring, landscape, plants, rest, mountains, meadow"
+        },
+        {
+          "id": "pixabay:8918",
+          "source": "pixabay",
+          "score": 0.1876,
+          "title": "forest, trees, nature, green, spring, landscape, plants, rest, mountains, meadow"
+        }
+      ]
+    },
+    {
+      "scene": 2,
+      "start": 9.88,
+      "end": 14.26,
+      "duration": 4.38,
+      "narration": "It is made from recycled steel and it never leaks.",
+      "visual_hint": null,
+      "scene_type": "metaphor",
+      "category": "technology",
+      "visual_plan": "A steel water bottle tipped over on its side with no water leaking out at all.",
+      "queries": [
+        "recycled stainless steel texture",
+        "water bottle leak proof",
+        "steel manufacturing close up",
+        "water drops on metal surface"
+      ],
+      "negative_terms": [
+        "leaking tap water",
+        "spilled drink mess",
+        "rusty scrap metal"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:19543",
+        "kind": "video",
+        "title": "bottle, garbage, waste, beach, recycling, trash, environment, ecology, sea, water",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-19543/",
+        "media_url": "https://cdn.pixabay.com/video/2018/11/24/19543-302628044_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by Matthias_Groeneveld on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "water bottle leak proof"
+      },
+      "reason": "stock: pixabay clip scored 0.260 >= tau 0.24; best unused of 16 safe candidates",
+      "relevance_score": 0.2598,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2598,
+        "negative_max": 0.2327,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.474,
+      "alternatives": [
+        {
+          "id": "pixabay:19543",
+          "source": "pixabay",
+          "score": 0.2598,
+          "title": "bottle, garbage, waste, beach, recycling, trash, environment, ecology, sea, wate"
+        },
+        {
+          "id": "pixabay:133507",
+          "source": "pixabay",
+          "score": 0.2172,
+          "title": "cup, bottle, drink, beverage, water, lake, ocean, sea, vertical video"
+        },
+        {
+          "id": "pixabay:251932",
+          "source": "pixabay",
+          "score": 0.1884,
+          "title": "twisted, metal, rotation, hydraulic, steel, close-up, manufacture, decorative, o"
+        },
+        {
+          "id": "pixabay:202560",
+          "source": "pixabay",
+          "score": 0.169,
+          "title": "recycling, dump, recycle, process, load, transport, port"
+        },
+        {
+          "id": "pixabay:19258",
+          "source": "pixabay",
+          "score": 0.1635,
+          "title": "water, young, bottle, woman, person, drink, beautiful, portrait, sed"
+        }
+      ]
+    },
+    {
+      "scene": 3,
+      "start": 14.26,
+      "end": 17.16,
+      "duration": 2.9,
+      "narration": "Stay fresh, wherever the day takes you.",
+      "visual_hint": null,
+      "scene_type": "abstract",
+      "category": "everyday",
+      "visual_plan": "A bright energetic shot of an active person picking up their water bottle outdoors in the sun.",
+      "queries": [
+        "person drinking water outdoors",
+        "sunny lifestyle water bottle",
+        "active summer lifestyle outdoors",
+        "refreshing drink sunshine"
+      ],
+      "negative_terms": [
+        "tired sad person",
+        "rainy gloomy weather",
+        "dehydrated desert"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:8281",
+        "kind": "video",
+        "title": "water, health, nature, healthy, natural, drink, person, thirst, thirsty",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-8281/",
+        "media_url": "https://cdn.pixabay.com/video/2017/03/10/8281-208046155_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by Lademenorca on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "person drinking water outdoors"
+      },
+      "reason": "stock: pixabay clip scored 0.307 >= tau 0.24; best unused of 26 safe candidates",
+      "relevance_score": 0.3072,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.3072,
+        "negative_max": 0.1874,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.411,
+      "alternatives": [
+        {
+          "id": "pixabay:8281",
+          "source": "pixabay",
+          "score": 0.3072,
+          "title": "water, health, nature, healthy, natural, drink, person, thirst, thirsty"
+        },
+        {
+          "id": "pixabay:19258",
+          "source": "pixabay",
+          "score": 0.2531,
+          "title": "water, young, bottle, woman, person, drink, beautiful, portrait, sed"
+        },
+        {
+          "id": "coverr:oLpGcu7OAL",
+          "source": "coverr",
+          "score": 0.2246,
+          "title": "Stretching in the park "
+        },
+        {
+          "id": "pixabay:3599",
+          "source": "pixabay",
+          "score": 0.206,
+          "title": "running, people, bokeh, blur, beautiful wallpaper, background, legs, feet, sport"
+        },
+        {
+          "id": "coverr:NViG7Zao8b",
+          "source": "coverr",
+          "score": 0.2056,
+          "title": "Woman walking down steps with a surfboard"
+        }
+      ]
+    }
+  ],
+  "music": {
+    "path": null,
+    "title": "Key, Kida &amp; Eddie (feat. ICD) - Sundalo (acoustic)",
+    "source": "openverse/jamendo",
+    "licence": "CC BY 3.0",
+    "licence_url": "https://creativecommons.org/licenses/by/3.0/",
+    "attribution": "\"Key, Kida &amp; Eddie (feat. ICD) - Sundalo (acoustic)\" by Key, Kida &amp; Eddie (CC BY 3.0)",
+    "page_url": "https://www.jamendo.com/track/1522600",
+    "ai_generated": false
+  }
+}

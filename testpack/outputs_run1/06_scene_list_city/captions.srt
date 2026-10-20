@@ -1,0 +1,15 @@
+1
+00:00:00,000 --> 00:00:03,300
+Our city wakes up before sunrise.
+
+2
+00:00:03,300 --> 00:00:05,880
+Thousands of commuters rush to work.
+
+3
+00:00:05,880 --> 00:00:08,580
+Street vendors set up their stalls.
+
+4
+00:00:08,580 --> 00:00:11,560
+By night, the roads glow with light.

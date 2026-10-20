@@ -1,0 +1,314 @@
+{
+  "job_id": "job_5f12d948c90240588412",
+  "version": 1,
+  "narration_seconds": 11.56,
+  "language": "en",
+  "transcript": "Our city wakes up before sunrise. Thousands of commuters rush to work. Street vendors set up their stalls. By night, the roads glow with light.",
+  "aspect_ratios": [
+    "16:9",
+    "9:16"
+  ],
+  "mood": "upbeat",
+  "selection_rule": "Per scene: (1) statistics -> animated stat card. (2) Stock candidates from category-suited sources are scored with CLIP (image vs scene visual plan + narration, minus penalty for negative/avoid terms); unsafe candidates (avoid list, faces when avoided, AI for people/brands/sensitive) are removed. (3) Global assignment takes the highest (scene, clip) pairs first, each clip used once, if score >= tau=0.24. (4) If a scene's best stock score < tau+0.03 and AI is allowed, an AI image is generated and wins only if its CLIP score >= stock + 0.02. (5) Otherwise the best unused clip within 0.03 of tau, else a text card.",
+  "scenes": [
+    {
+      "scene": 0,
+      "start": 0.0,
+      "end": 3.3,
+      "duration": 3.3,
+      "narration": "Our city wakes up before sunrise.",
+      "visual_hint": "city skyline at dawn",
+      "scene_type": "literal",
+      "category": "place",
+      "visual_plan": "City skyline glowing softly as the sun begins to rise over the horizon.",
+      "queries": [
+        "city skyline sunrise",
+        "dawn urban landscape",
+        "morning city horizon"
+      ],
+      "negative_terms": [
+        "night",
+        "sunset",
+        "crowded streets"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:0",
+        "kind": "card",
+        "title": "Card: Our city wakes up before sunrise.",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [
+        {
+          "id": "pixabay:297281",
+          "source": "pixabay",
+          "score": 0.1758,
+          "title": "ai generated, meditation, rooftop, garden, sunrise, skyline, serenity, silhouett"
+        },
+        {
+          "id": "pixabay:284554",
+          "source": "pixabay",
+          "score": 0.1341,
+          "title": "sunset, sunrise, lake views, mountain scenery, river reflections, urban sunsets,"
+        }
+      ]
+    },
+    {
+      "scene": 1,
+      "start": 3.3,
+      "end": 5.88,
+      "duration": 2.58,
+      "narration": "Thousands of commuters rush to work.",
+      "visual_hint": "busy train station",
+      "scene_type": "literal",
+      "category": "everyday",
+      "visual_plan": "Busy train station platform with commuters rushing to catch their morning trains.",
+      "queries": [
+        "busy train station",
+        "commuters walking fast",
+        "morning rush hour crowd"
+      ],
+      "negative_terms": [
+        "empty station",
+        "night",
+        "cars"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:6387",
+        "kind": "video",
+        "title": "people, commerce, shop, busy, mall, walking",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-6387/",
+        "media_url": "https://cdn.pixabay.com/video/2016/11/15/6387-191695740_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by Coverr-Free-Footage on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "commuters walking fast"
+      },
+      "reason": "stock (low confidence): pixabay scored 0.239 (< tau 0.24, within 0.03); no AI option",
+      "relevance_score": 0.2393,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2608,
+        "negative_max": 0.2623,
+        "penalty": 0.0215
+      },
+      "reframe_subject_x": 0.516,
+      "alternatives": [
+        {
+          "id": "pixabay:6387",
+          "source": "pixabay",
+          "score": 0.2393,
+          "title": "people, commerce, shop, busy, mall, walking"
+        },
+        {
+          "id": "pixabay:3608",
+          "source": "pixabay",
+          "score": 0.2299,
+          "title": "reading, comics, subway, subway station, train, passenger, waiting, asian, man, "
+        },
+        {
+          "id": "pixabay:44968",
+          "source": "pixabay",
+          "score": 0.2199,
+          "title": "waterloo station, london, people, busy, station, fast"
+        },
+        {
+          "id": "pixabay:7502",
+          "source": "pixabay",
+          "score": 0.2007,
+          "title": "germany, station, railroad, train, db, deutsche bahn, train station, traffic, co"
+        },
+        {
+          "id": "pixabay:25208",
+          "source": "pixabay",
+          "score": 0.1716,
+          "title": "walking, fast, people, street"
+        }
+      ]
+    },
+    {
+      "scene": 2,
+      "start": 5.88,
+      "end": 8.58,
+      "duration": 2.7,
+      "narration": "Street vendors set up their stalls.",
+      "visual_hint": "street food market",
+      "scene_type": "literal",
+      "category": "everyday",
+      "visual_plan": "Street vendors cheerfully setting up their food stalls and preparing fresh ingredients.",
+      "queries": [
+        "street food market",
+        "vendor setting up stall",
+        "morning food market"
+      ],
+      "negative_terms": [
+        "restaurant interior",
+        "fine dining",
+        "empty stalls"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:44663",
+        "kind": "video",
+        "title": "street food, vendor, selling, market, people, seller, asia, business, natural, fresh, chinatown, food, sausage, fire, grill, charcoal",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-44663/",
+        "media_url": "https://cdn.pixabay.com/video/2020/07/14/44663-439982507_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by My_Walking_Diary on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "street food market"
+      },
+      "reason": "stock: pixabay clip scored 0.327 >= tau 0.24; best unused of 17 safe candidates",
+      "relevance_score": 0.3272,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.3272,
+        "negative_max": 0.2568,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.505,
+      "alternatives": [
+        {
+          "id": "pixabay:44663",
+          "source": "pixabay",
+          "score": 0.3272,
+          "title": "street food, vendor, selling, market, people, seller, asia, business, natural, f"
+        },
+        {
+          "id": "pixabay:199919",
+          "source": "pixabay",
+          "score": 0.2774,
+          "title": "people, market, street food, food, asia, vietnam, thailand"
+        },
+        {
+          "id": "pixabay:42932",
+          "source": "pixabay",
+          "score": 0.2437,
+          "title": "market, countryside, travel, farmer, vendor, beautiful, daily life"
+        },
+        {
+          "id": "pixabay:347278",
+          "source": "pixabay",
+          "score": 0.2411,
+          "title": "street food, cooking, deep fry, asian food, night market, crispy, sizzling, wok,"
+        },
+        {
+          "id": "pixabay:15421",
+          "source": "pixabay",
+          "score": 0.2308,
+          "title": "butcher, meat, food, asia, fresh market"
+        }
+      ]
+    },
+    {
+      "scene": 3,
+      "start": 8.58,
+      "end": 11.56,
+      "duration": 2.98,
+      "narration": "By night, the roads glow with light.",
+      "visual_hint": "night traffic light trails",
+      "scene_type": "literal",
+      "category": "place",
+      "visual_plan": "Long exposure night traffic creating vibrant streaks of light along city highways.",
+      "queries": [
+        "night traffic light trails",
+        "city highway at night",
+        "urban night lights"
+      ],
+      "negative_terms": [
+        "daytime",
+        "empty roads",
+        "day traffic"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:360754",
+        "kind": "video",
+        "title": "sky gate bridge, kansai airport, airport access bridge, osaka night view, road infrastructure, star gate hotel, rinku town, japan highway, bridge traffic, light trails, night timelapse, aerial view, high angle, japan travel, osaka bay, overpass, night cityscape, transportation, architecture, illuminated bridge, highway loops",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-360754/",
+        "media_url": "https://cdn.pixabay.com/video/2026/06/26/360754_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by Janhom_Footage on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "night traffic light trails"
+      },
+      "reason": "stock: pixabay clip scored 0.304 >= tau 0.24; best unused of 11 safe candidates",
+      "relevance_score": 0.3039,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.3039,
+        "negative_max": 0.2721,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.494,
+      "alternatives": [
+        {
+          "id": "pixabay:360754",
+          "source": "pixabay",
+          "score": 0.3039,
+          "title": "sky gate bridge, kansai airport, airport access bridge, osaka night view, road i"
+        },
+        {
+          "id": "wikimedia:146875361",
+          "source": "wikimedia",
+          "score": 0.1729,
+          "title": "File:20240315\u8c50\u539f\u5ba2\u904b270\u4e2d\u8208\u5dba\u4e0b\u5761.webm"
+        },
+        {
+          "id": "wikimedia:178353263",
+          "source": "wikimedia",
+          "score": 0.1388,
+          "title": "File:Walk on an Autumn Night in Shanghai, China 4K HDR.webm"
+        },
+        {
+          "id": "wikimedia:178923021",
+          "source": "wikimedia",
+          "score": 0.1303,
+          "title": "File:Dark Nights in Georgia (153394 - valdosta bmhd 20240928).webm"
+        },
+        {
+          "id": "wikimedia:178923045",
+          "source": "wikimedia",
+          "score": 0.1201,
+          "title": "File:Dark Nights in Georgia (153394 - savannah bmhd 20240928).webm"
+        }
+      ]
+    }
+  ],
+  "music": {
+    "path": null,
+    "title": "Key, Kida &amp; Eddie (feat. ICD) - Sundalo (acoustic)",
+    "source": "openverse/jamendo",
+    "licence": "CC BY 3.0",
+    "licence_url": "https://creativecommons.org/licenses/by/3.0/",
+    "attribution": "\"Key, Kida &amp; Eddie (feat. ICD) - Sundalo (acoustic)\" by Key, Kida &amp; Eddie (CC BY 3.0)",
+    "page_url": "https://www.jamendo.com/track/1522600",
+    "ai_generated": false
+  }
+}

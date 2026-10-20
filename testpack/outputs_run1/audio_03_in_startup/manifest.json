@@ -1,0 +1,127 @@
+{
+  "job_id": "job_f549332968e04583b5d1",
+  "version": 1,
+  "service": {
+    "name": "incubrix-broll-engine",
+    "version": "1.0.0"
+  },
+  "providers": {
+    "asr": {
+      "name": "faster-whisper",
+      "version": "faster-whisper/base"
+    },
+    "input_type": "audio",
+    "planner": "gemini/gemini-3.5-flash-lite",
+    "relevance_model": {
+      "name": "open_clip",
+      "version": "open_clip/ViT-B-32/laion2b_s34b_b79k"
+    },
+    "footage_sources_enabled": [
+      "pixabay",
+      "coverr",
+      "pexels",
+      "nasa",
+      "wikimedia"
+    ],
+    "footage_sources_used": [
+      "pixabay"
+    ],
+    "ai_image": null,
+    "music": "openverse/jamendo",
+    "renderer": "ffmpeg",
+    "face_detector": "opencv-haarcascade",
+    "saliency": "spectral-residual (numpy)"
+  },
+  "settings": {
+    "aspect_ratios": [
+      "16:9"
+    ],
+    "style": "bright, modern, real-world footage",
+    "avoid": [],
+    "captions": {
+      "burn_in": true,
+      "srt": true
+    },
+    "voice": "en-IN-female",
+    "fps": 30,
+    "stock_min_score_tau": 0.24,
+    "ai_margin": 0.02,
+    "min_scene_seconds": 2.0,
+    "max_scene_seconds": 8.0,
+    "video_preset": "veryfast",
+    "crf": 23
+  },
+  "seed": 1234,
+  "narration": {
+    "seconds": 11.811,
+    "language": "en",
+    "words": 32
+  },
+  "mood": "inspiring",
+  "topic": "Starting a business and customer payment",
+  "avoid_terms_expanded": [],
+  "timings_seconds": {
+    "narration": 6.0,
+    "planning": 3.659,
+    "search_and_score": 28.501,
+    "ai_generation": 0.0,
+    "download": 3.58,
+    "music": 7.108,
+    "render": 12.971,
+    "qa": 2.278,
+    "total": 64.165
+  },
+  "cost_estimate_usd": {
+    "total": 0.0,
+    "note": "All providers used on free tiers / open-source models; compute is the host machine."
+  },
+  "warnings": [
+    "PROVIDER_DOWN: 'coverr' failed repeatedly (HTTPStatusError); continuing with other sources",
+    "LOW_RELEVANCE: scene 1 best clip scored 0.214"
+  ],
+  "rights": {
+    "all_commercial_use": true,
+    "clips": [
+      {
+        "scene": 0,
+        "source": "pixabay",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "attribution": "Video by G3Remote on Pixabay",
+        "ai_generated": false
+      },
+      {
+        "scene": 1,
+        "source": "pixabay",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "attribution": "Video by Natures_Embrace on Pixabay",
+        "ai_generated": false
+      }
+    ],
+    "music": {
+      "title": "Inspiring Progress",
+      "source": "openverse/jamendo",
+      "licence": "CC BY 3.0",
+      "attribution": "\"Inspiring Progress\" by Soundrider/Dope (CC BY 3.0)",
+      "url": "https://www.jamendo.com/track/1670591"
+    },
+    "narration": "user-supplied audio"
+  },
+  "qa": {
+    "16:9": {
+      "file": "video_16x9.mp4",
+      "video_codec": "h264",
+      "audio_codec": "aac",
+      "width": 1920,
+      "height": 1080,
+      "pix_fmt": "yuv420p",
+      "fps": 30.0,
+      "video_seconds": 11.8,
+      "audio_seconds": 11.811,
+      "av_drift_seconds": 0.011,
+      "narration_seconds": 11.811,
+      "black_segments": [],
+      "freeze_starts": [],
+      "passed": true
+    }
+  }
+}

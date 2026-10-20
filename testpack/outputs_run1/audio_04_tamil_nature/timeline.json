@@ -1,0 +1,250 @@
+{
+  "job_id": "job_4731d9cacd364406aac6",
+  "version": 1,
+  "narration_seconds": 10.371,
+  "language": "ml",
+  "transcript": "\u0bae\u0691\u0bc8 \u0b95\u0bbe\u0bb2\u0ba4\u0bcd\u0ba4\u0bbf\u0bb2 \u0bae\u0bb2\u0bc8\u0b95\u0bb3\u0bcd \u0baa\u0b9a\u0bcd\u0b9a\u0bc8\u0baf\u0bbe\u0b95 \u0bae\u0bbe\u0bb1\u0bc1\u0b95\u0bbf\u0ba9\u0bcd\u0bb1\u0ba9. \u0b85\u0bb0\u0bc1\u0bb5\u0bbf\u0b95\u0bb3\u0bcd \u0bb5\u0bc7\u0b95\u0bae\u0bbe\u0b95\u0bcd \u0b95\u0bca\u0b9f\u0bc1\u0b95\u0bbf\u0ba9\u0bcd\u0bb1\u0ba9. \u0baa\u0bb0\u0bb5\u0bc8\u0b95\u0bb3\u0bcd \u0bae\u0bb0\u0b99\u0bcd\u0b95\u0bb3\u0bbf\u0bb2\u0bcd \u0baa\u0bbe\u0b9f\u0bc1\u0b95\u0bbf\u0ba9\u0bcd\u0bb1\u0ba9.",
+  "aspect_ratios": [
+    "16:9"
+  ],
+  "mood": "calm",
+  "selection_rule": "Per scene: (1) statistics -> animated stat card. (2) Stock candidates from category-suited sources are scored with CLIP (image vs scene visual plan + narration, minus penalty for negative/avoid terms); unsafe candidates (avoid list, faces when avoided, AI for people/brands/sensitive) are removed. (3) Global assignment takes the highest (scene, clip) pairs first, each clip used once, if score >= tau=0.24. (4) If a scene's best stock score < tau+0.03 and AI is allowed, an AI image is generated and wins only if its CLIP score >= stock + 0.02. (5) Otherwise the best unused clip within 0.03 of tau, else a text card.",
+  "scenes": [
+    {
+      "scene": 0,
+      "start": 0.0,
+      "end": 4.26,
+      "duration": 4.26,
+      "narration": "\u0bae\u0691\u0bc8 \u0b95\u0bbe\u0bb2\u0ba4\u0bcd\u0ba4\u0bbf\u0bb2 \u0bae\u0bb2\u0bc8\u0b95\u0bb3\u0bcd \u0baa\u0b9a\u0bcd\u0b9a\u0bc8\u0baf\u0bbe\u0b95 \u0bae\u0bbe\u0bb1\u0bc1\u0b95\u0bbf\u0ba9\u0bcd\u0bb1\u0ba9.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "nature",
+      "visual_plan": "Lush green mountains during monsoon rain with mist.",
+      "queries": [
+        "green mountains rain",
+        "monsoon hills nature",
+        "misty green mountains"
+      ],
+      "negative_terms": [
+        "dry desert",
+        "city buildings"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:367174",
+        "kind": "video",
+        "title": "ai generated, misty mountains, green hills, dense forest, fog in valley, rocky pinnacles, aerial drone view, overcast sky, rolling ridges, lush canopy, low clouds, mountain gorge, deciduous trees, tropical highlands, morning mist, cloud drifting, green slopes, remote mountains, serene nature",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-367174/",
+        "media_url": "https://cdn.pixabay.com/video/2026/07/29/367174_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by InfinityByte on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "misty green mountains"
+      },
+      "reason": "stock: pixabay clip scored 0.307 >= tau 0.24; best unused of 22 safe candidates",
+      "relevance_score": 0.3069,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.3069,
+        "negative_max": 0.2037,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.581,
+      "alternatives": [
+        {
+          "id": "pixabay:367174",
+          "source": "pixabay",
+          "score": 0.3069,
+          "title": "ai generated, misty mountains, green hills, dense forest, fog in valley, rocky p"
+        },
+        {
+          "id": "pixabay:369155",
+          "source": "pixabay",
+          "score": 0.3008,
+          "title": "misty mountains, mountain landscape, mountains, mist, fog, clouds, cloudy mounta"
+        },
+        {
+          "id": "pixabay:370444",
+          "source": "pixabay",
+          "score": 0.2756,
+          "title": "ha giang, vietnam, drone, 4k, mist, fog, clouds, terraced fields, rice terraces,"
+        },
+        {
+          "id": "pixabay:294617",
+          "source": "pixabay",
+          "score": 0.2684,
+          "title": "sikkim, monsoon, india, road trip, mountain road, mist, fog, rain, travel, himal"
+        },
+        {
+          "id": "wikimedia:167739314",
+          "source": "wikimedia",
+          "score": 0.2682,
+          "title": "File:From the mountain high, the forest stretches like a green ocean, kissed by "
+        }
+      ]
+    },
+    {
+      "scene": 1,
+      "start": 4.26,
+      "end": 7.44,
+      "duration": 3.18,
+      "narration": "\u0b85\u0bb0\u0bc1\u0bb5\u0bbf\u0b95\u0bb3\u0bcd \u0bb5\u0bc7\u0b95\u0bae\u0bbe\u0b95\u0bcd \u0b95\u0bca\u0b9f\u0bc1\u0b95\u0bbf\u0ba9\u0bcd\u0bb1\u0ba9.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "nature",
+      "visual_plan": "Fast flowing waterfall in a lush green forest during rainy season.",
+      "queries": [
+        "waterfall flowing fast",
+        "river rapids monsoon",
+        "forest waterfall nature"
+      ],
+      "negative_terms": [
+        "dry riverbed",
+        "arid landscape"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:1",
+        "kind": "card",
+        "title": "Card: \u0b85\u0bb0\u0bc1\u0bb5\u0bbf\u0b95\u0bb3\u0bcd \u0bb5\u0bc7\u0b95\u0bae\u0bbe\u0b95\u0bcd \u0b95\u0bca\u0b9f\u0bc1\u0b95\u0bbf\u0ba9\u0bcd\u0bb1\u0ba9.",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: all candidate downloads failed",
+      "relevance_score": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [
+        {
+          "id": "wikimedia:154923484",
+          "source": "wikimedia",
+          "score": 0.2544,
+          "title": "File:Toxaway Falls - Lake Toxaway, North Carolina -- 4K - Drone -- DJI Mavic Pro"
+        },
+        {
+          "id": "pixabay:228847",
+          "source": "pixabay",
+          "score": 0.2499,
+          "title": "waterfall, mountain stream, flow, stone, moss, forest, nature, japan"
+        },
+        {
+          "id": "pixabay:216134",
+          "source": "pixabay",
+          "score": 0.2474,
+          "title": "waterfall, stream, brook, forest, falls, green, rainforest, hidden, cove, water,"
+        },
+        {
+          "id": "wikimedia:165954509",
+          "source": "wikimedia",
+          "score": 0.2465,
+          "title": "File:-mypubliclandsroadtrip 2016- Beat the Heat, Cavitt Creek Falls Recreation S"
+        },
+        {
+          "id": "pixabay:350690",
+          "source": "pixabay",
+          "score": 0.2414,
+          "title": "river, rivers, nature, landscapes, water, whitewater, rapids, waterfall"
+        }
+      ]
+    },
+    {
+      "scene": 2,
+      "start": 7.44,
+      "end": 10.371,
+      "duration": 2.931,
+      "narration": "\u0baa\u0bb0\u0bb5\u0bc8\u0b95\u0bb3\u0bcd \u0bae\u0bb0\u0b99\u0bcd\u0b95\u0bb3\u0bbf\u0bb2\u0bcd \u0baa\u0bbe\u0b9f\u0bc1\u0b95\u0bbf\u0ba9\u0bcd\u0bb1\u0ba9.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "nature",
+      "visual_plan": "Birds sitting on lush green tree branches during rain.",
+      "queries": [
+        "birds on tree branch",
+        "wild birds nature green",
+        "rain forest birds"
+      ],
+      "negative_terms": [
+        "caged birds",
+        "urban pigeons"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "wikimedia:149255660",
+        "kind": "video",
+        "title": "File:Crested Tree Swift Parental Care.webm",
+        "source": "wikimedia",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Crested_Tree_Swift_Parental_Care.webm",
+        "media_url": "https://upload.wikimedia.org/wikipedia/commons/5/56/Crested_Tree_Swift_Parental_Care.webm?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "licence": "CC BY 4.0",
+        "licence_url": "https://creativecommons.org/licenses/by/4.0",
+        "attribution": "Shiv's fotografia via Wikimedia Commons (CC BY 4.0)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "birds on tree branch"
+      },
+      "reason": "stock: wikimedia clip scored 0.298 >= tau 0.24; best unused of 29 safe candidates",
+      "relevance_score": 0.2984,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2984,
+        "negative_max": 0.2375,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.413,
+      "alternatives": [
+        {
+          "id": "wikimedia:149255660",
+          "source": "wikimedia",
+          "score": 0.2984,
+          "title": "File:Crested Tree Swift Parental Care.webm"
+        },
+        {
+          "id": "pixabay:65801",
+          "source": "pixabay",
+          "score": 0.2198,
+          "title": "robin, bird, perched, branch, red throat, cute, petit, beak, feathers, animal, n"
+        },
+        {
+          "id": "pixabay:113628",
+          "source": "pixabay",
+          "score": 0.2128,
+          "title": "bird, hoopoe, animal, tree, branch, forest, nature"
+        },
+        {
+          "id": "wikimedia:196346764",
+          "source": "wikimedia",
+          "score": 0.209,
+          "title": "File:Owl on tree branch at night in Largo Datsko Park, Clearwater, Florida, US, "
+        },
+        {
+          "id": "pixabay:214669",
+          "source": "pixabay",
+          "score": 0.2087,
+          "title": "bird, kingfisher, trees, forest, animal, wildlife, nature"
+        }
+      ]
+    }
+  ],
+  "music": {
+    "path": null,
+    "title": "Procedural ambient pad",
+    "source": "procedural",
+    "licence": "Generated by this service (no third-party rights)",
+    "licence_url": "",
+    "attribution": "Generated by IncuBrix B-roll engine",
+    "page_url": "",
+    "ai_generated": false
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "job_id": "job_c96a0979194e4224a892",
+  "kind": "broll",
+  "status": "succeeded",
+  "progress": 100,
+  "stage": "done",
+  "created_at": "2026-10-20T04:56:21.124894",
+  "updated_at": "2026-10-20T04:57:30.661780",
+  "result": {
+    "version": 1,
+    "links": {
+      "video_16x9": "http://localhost:8000/files/jobs/job_c96a0979194e4224a892/v1/video_16x9.mp4",
+      "video_9x16": "http://localhost:8000/files/jobs/job_c96a0979194e4224a892/v1/video_9x16.mp4",
+      "timeline": "http://localhost:8000/files/jobs/job_c96a0979194e4224a892/v1/timeline.json",
+      "manifest": "http://localhost:8000/files/jobs/job_c96a0979194e4224a892/v1/manifest.json",
+      "captions_srt": "http://localhost:8000/files/jobs/job_c96a0979194e4224a892/v1/captions.srt"
+    },
+    "warnings": [
+      "PROVIDER_DOWN: 'coverr' failed repeatedly (HTTPStatusError); continuing with other sources"
+    ],
+    "scenes": 3,
+    "narration_seconds": 10.6,
+    "timings_seconds": {
+      "narration": 12.277,
+      "planning": 4.317,
+      "search_and_score": 18.807,
+      "ai_generation": 0.0,
+      "download": 5.105,
+      "music": 10.104,
+      "render": 17.002,
+      "qa": 1.785,
+      "total": 69.442
+    },
+    "qa_passed": true
+  },
+  "error": null
+}

@@ -1,0 +1,10 @@
+8 cases -> testpack\outputs_run2
+  05_finance_money_value         failed     INTERNAL_ERROR 46.23s
+  10_long_5min_agriculture       succeeded   1559.78s
+  hc_916_edge_subject            succeeded   147.79s
+  hc_abstract_and_stats          succeeded   130.67s
+  hc_avoid_faces_alcohol         succeeded   78.05s
+  hc_double_meanings             succeeded   140.82s
+  hc_named_person_brand          failed     INTERNAL_ERROR 33.56s
+  hc_sad_news                    succeeded   72.98s
+done: 6/8 succeeded; summary at testpack\outputs_run2\summary.csv

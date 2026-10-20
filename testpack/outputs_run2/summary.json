@@ -1,0 +1,90 @@
+[
+  {
+    "case": "05_finance_money_value",
+    "status": "failed",
+    "error_code": "INTERNAL_ERROR",
+    "seconds": 46.23,
+    "scenes": "",
+    "narration_seconds": "",
+    "qa_passed": "",
+    "warnings": 0,
+    "job_id": "job_cd9f5c4107724dc79057"
+  },
+  {
+    "case": "10_long_5min_agriculture",
+    "status": "succeeded",
+    "error_code": "",
+    "seconds": 1559.78,
+    "scenes": 38,
+    "narration_seconds": 336.168,
+    "qa_passed": true,
+    "warnings": 10,
+    "job_id": "job_d7b0bf8f139a49e6aee0"
+  },
+  {
+    "case": "hc_916_edge_subject",
+    "status": "succeeded",
+    "error_code": "",
+    "seconds": 147.79,
+    "scenes": 2,
+    "narration_seconds": 7.688,
+    "qa_passed": true,
+    "warnings": 1,
+    "job_id": "job_077ac237070a4f7db474"
+  },
+  {
+    "case": "hc_abstract_and_stats",
+    "status": "succeeded",
+    "error_code": "",
+    "seconds": 130.67,
+    "scenes": 3,
+    "narration_seconds": 10.768,
+    "qa_passed": true,
+    "warnings": 1,
+    "job_id": "job_bfb445cc09c04a489ef6"
+  },
+  {
+    "case": "hc_avoid_faces_alcohol",
+    "status": "succeeded",
+    "error_code": "",
+    "seconds": 78.05,
+    "scenes": 1,
+    "narration_seconds": 6.808,
+    "qa_passed": true,
+    "warnings": 1,
+    "job_id": "job_77a46df19955401ea8d9"
+  },
+  {
+    "case": "hc_double_meanings",
+    "status": "succeeded",
+    "error_code": "",
+    "seconds": 140.82,
+    "scenes": 5,
+    "narration_seconds": 18.288,
+    "qa_passed": true,
+    "warnings": 2,
+    "job_id": "job_c61078c63bc34fc8b17a"
+  },
+  {
+    "case": "hc_named_person_brand",
+    "status": "failed",
+    "error_code": "INTERNAL_ERROR",
+    "seconds": 33.56,
+    "scenes": "",
+    "narration_seconds": "",
+    "qa_passed": "",
+    "warnings": 0,
+    "job_id": "job_9c2731632eed4ed6b030"
+  },
+  {
+    "case": "hc_sad_news",
+    "status": "succeeded",
+    "error_code": "",
+    "seconds": 72.98,
+    "scenes": 2,
+    "narration_seconds": 18.328,
+    "qa_passed": true,
+    "warnings": 1,
+    "job_id": "job_ade3e04c43c046b6855e"
+  }
+]

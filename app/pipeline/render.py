@@ -193,8 +193,6 @@ def _render_segment(scene, cand, ratio: str, frames: int, seg_dir: Path, burn: b
     if cand.kind == "video":
         vs = media.video_stream(cand.local_path) or {}
         sw, sh = int(vs.get("width") or 1280), int(vs.get("height") or 720)
-        cw, ch = _cover(sw, sh, W, H)
-        x = int(min(max(cand.subject_x * cw - W / 2, 0), cw - W))
         src_dur = media.duration(cand.local_path)  # real file length (clips may be partial downloads)
         offset = min(1.0, max(0.0, (src_dur - dur) / 3)) if src_dur > dur else 0.0
         loop = ["-stream_loop", "-1"] if src_dur and src_dur < dur + offset else []
@@ -298,8 +296,6 @@ def render_video_multi(scene, cand, jobs: list[tuple[str, Path]], frames: int, b
     outs, maps = {}, []
     for k, (ratio, seg_dir) in enumerate(jobs):
         W, H = RATIOS[ratio]
-        cw, ch = _cover(sw, sh, W, H)
-        x = int(min(max(cand.subject_x * cw - W / 2, 0), cw - W))
         sub = ""
         if cues:
             srt = write_srt(cues, seg_dir / f"{name}.srt", offset=scene.start)

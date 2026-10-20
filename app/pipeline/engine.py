@@ -18,9 +18,9 @@ from app.pipeline.translate import translate_lines
 from app.pipeline.voicestyle import resolve as resolve_style
 from app.pipeline.music import find_music
 from app.pipeline.narration import Narration, Word, align_script, detect_language, even_words, get_asr, get_tts, speech_words
-from app.pipeline.planner import Scene, _split_long, plan_scenes, scenes_from_words, script_to_scenes, segment
+from app.pipeline.planner import Scene, _split_long, plan_scenes, scenes_from_words, script_to_scenes
 from app.pipeline.qa import check_video
-from app.pipeline.render import RATIOS, concat_and_mux, frame_bounds, mix_audio, render_segment, render_video_multi, scene_cues, write_srt
+from app.pipeline.render import concat_and_mux, frame_bounds, mix_audio, render_segment, render_video_multi, scene_cues, write_srt
 from app.pipeline.rerank import get_scorer, score_candidates
 from app.pipeline.sources import Candidate, CircuitBreaker, CloudflareFlux, download, download_part, search_all
 from app.storage import get_storage
@@ -534,7 +534,7 @@ def build_manifest(job_id, req, nar, plan, music, timer, warnings, qa, chosen, v
         "timings_seconds": timer.t,
         "cost_estimate_usd": {"total": 0.0, "note": "All providers used on free tiers / open-source models; "
                                                     "compute is the host machine."},
-        "warnings": warnings,
+        "warnings": list(dict.fromkeys(warnings)),
         "rights": {"all_commercial_use": True,
                    "clips": [{"scene": i, "source": c.provider, "licence": c.licence, "attribution": c.attribution,
                               "ai_generated": c.ai_generated or c.kind == "ai_image"} for i, c in sorted(chosen.items())],
@@ -617,7 +617,7 @@ def run_job(job_id: str, req: dict, progress: Progress) -> dict:
     links = publish(job_id, 1, files)
     if get_settings().judge_provider != "none":
         threading.Thread(target=finish_judge, args=(job_id, work, plan.scenes, segs), daemon=True).start()
-    return {"version": 1, "links": links, "warnings": warnings, "scenes": len(plan.scenes),
+    return {"version": 1, "links": links, "warnings": list(dict.fromkeys(warnings)), "scenes": len(plan.scenes),
             "narration_seconds": round(nar.duration, 3), "timings_seconds": timer.t,
             "qa_passed": all(r["passed"] for r in qa.values())}
 

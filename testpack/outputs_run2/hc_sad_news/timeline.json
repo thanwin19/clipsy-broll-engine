@@ -1,0 +1,182 @@
+{
+  "job_id": "job_ade3e04c43c046b6855e",
+  "version": 1,
+  "narration_seconds": 18.328,
+  "language": "en",
+  "transcript": "Heavy floods have displaced thousands of families in the region. Rescue teams are working through the night. Our thoughts are with everyone who lost their homes and loved ones.",
+  "aspect_ratios": [
+    "16:9",
+    "9:16"
+  ],
+  "mood": "sombre",
+  "selection_rule": "Per scene: (1) statistics -> animated stat card. (2) Stock candidates from category-suited sources are scored with CLIP (image vs scene visual plan + narration, minus penalty for negative/avoid terms); unsafe candidates (avoid list, faces when avoided, AI for people/brands/sensitive) are removed. (3) Global assignment takes the highest (scene, clip) pairs first, each clip used once, if score >= tau=0.24. (4) If a scene's best stock score < tau+0.03 and AI is allowed, an AI image is generated and wins only if its CLIP score >= stock + 0.02. (5) Otherwise the best unused clip within 0.03 of tau, else a text card.",
+  "scenes": [
+    {
+      "scene": 0,
+      "start": 0.0,
+      "end": 14.12,
+      "duration": 14.12,
+      "narration": "Heavy floods have displaced thousands of families in the region. Rescue teams are working through the night.",
+      "visual_hint": null,
+      "scene_type": "sensitive",
+      "category": "everyday",
+      "visual_plan": "Emergency rescue boats navigating flooded streets at night with searchlights.",
+      "queries": [
+        "flooded street rescue",
+        "night rescue boat",
+        "emergency flood response"
+      ],
+      "negative_terms": [
+        "sunny day",
+        "beach",
+        "pool"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:7012",
+        "kind": "video",
+        "title": "blue light, fire fighters, mission, rescue operation, accident, rescue, ambulance, fire truck",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-7012/",
+        "media_url": "https://cdn.pixabay.com/video/2017/01/03/7012-197962781_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by Thomas-Ritter on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "flooded street rescue calm"
+      },
+      "reason": "stock: pixabay clip scored 0.243 >= tau 0.24; best unused of 16 safe candidates; safety: sensitive topic -> calm respectful footage",
+      "relevance_score": 0.2432,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2532,
+        "negative_max": 0.1384,
+        "penalty": 0.0,
+        "short_clip_penalty": 0.01
+      },
+      "reframe_subject_x": 0.475,
+      "alternatives": [
+        {
+          "id": "pixabay:7012",
+          "source": "pixabay",
+          "score": 0.2432,
+          "title": "blue light, fire fighters, mission, rescue operation, accident, rescue, ambulanc"
+        },
+        {
+          "id": "pixabay:135765",
+          "source": "pixabay",
+          "score": 0.2254,
+          "title": "river, flooding, town, water, flood, damage, landscape"
+        },
+        {
+          "id": "pixabay:14324",
+          "source": "pixabay",
+          "score": 0.1968,
+          "title": "high water, flood, river, flooding, europe"
+        },
+        {
+          "id": "pixabay:50567",
+          "source": "pixabay",
+          "score": 0.1944,
+          "title": "vietnam, nature, green, flooding, calm, boat, travel, peace"
+        },
+        {
+          "id": "pixabay:54829",
+          "source": "pixabay",
+          "score": 0.1263,
+          "title": "ship, boat, night, sky, stars, galaxy"
+        }
+      ]
+    },
+    {
+      "scene": 1,
+      "start": 14.12,
+      "end": 18.328,
+      "duration": 4.208,
+      "narration": "Our thoughts are with everyone who lost their homes and loved ones.",
+      "visual_hint": null,
+      "scene_type": "sensitive",
+      "category": "everyday",
+      "visual_plan": "Raindrops on a window pane with a soft, blurred background, evoking empathy and reflection.",
+      "queries": [
+        "rain on window",
+        "calm rainy day",
+        "empty street rain"
+      ],
+      "negative_terms": [
+        "happy people",
+        "bright sunshine",
+        "smiling"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:28236",
+        "kind": "video",
+        "title": "rain, raindrop, wet, water, window, drop, weather, droplets, blue, rainy, dark, raining, background, beautiful wallpaper, live wallpaper",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-28236/",
+        "media_url": "https://cdn.pixabay.com/video/2019/10/24/28236-368501609_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by lawlaw91 on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "rain on window calm"
+      },
+      "reason": "stock: pixabay clip scored 0.294 >= tau 0.24; best unused of 18 safe candidates; safety: sensitive topic -> calm respectful footage",
+      "relevance_score": 0.294,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.294,
+        "negative_max": 0.2028,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.486,
+      "alternatives": [
+        {
+          "id": "pixabay:28236",
+          "source": "pixabay",
+          "score": 0.294,
+          "title": "rain, raindrop, wet, water, window, drop, weather, droplets, blue, rainy, dark, "
+        },
+        {
+          "id": "pixabay:205188",
+          "source": "pixabay",
+          "score": 0.2671,
+          "title": "ai generated, rain, rainy day, garden, calm, relaxation, comfort, atmosphere, na"
+        },
+        {
+          "id": "pixabay:11722",
+          "source": "pixabay",
+          "score": 0.255,
+          "title": "rain, water, window, wet, drops, dripping, rainy, night, light, sad"
+        },
+        {
+          "id": "pixabay:86746",
+          "source": "pixabay",
+          "score": 0.2522,
+          "title": "rain, sidewalk, storm, floor, tiles, thunderstorm, wet, street, city, scenic, ur"
+        },
+        {
+          "id": "pixabay:217713",
+          "source": "pixabay",
+          "score": 0.2386,
+          "title": "rain, puddle, water, raindrops, nature, wet, grass, greenery, outdoor, rainfall,"
+        }
+      ]
+    }
+  ],
+  "music": {
+    "path": null,
+    "title": "Procedural ambient pad",
+    "source": "procedural",
+    "licence": "Generated by this service (no third-party rights)",
+    "licence_url": "",
+    "attribution": "Generated by IncuBrix B-roll engine",
+    "page_url": "",
+    "ai_generated": false
+  }
+}

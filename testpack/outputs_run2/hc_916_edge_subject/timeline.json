@@ -1,0 +1,181 @@
+{
+  "job_id": "job_077ac237070a4f7db474",
+  "version": 1,
+  "narration_seconds": 7.688,
+  "language": "en",
+  "transcript": "A lone surfer paddles out along the edge of the frame. A cyclist rides past the coastline at sunset.",
+  "aspect_ratios": [
+    "16:9",
+    "9:16"
+  ],
+  "mood": "calm",
+  "selection_rule": "Per scene: (1) statistics -> animated stat card. (2) Stock candidates from category-suited sources are scored with CLIP (image vs scene visual plan + narration, minus penalty for negative/avoid terms); unsafe candidates (avoid list, faces when avoided, AI for people/brands/sensitive) are removed. (3) Global assignment takes the highest (scene, clip) pairs first, each clip used once, if score >= tau=0.24. (4) If a scene's best stock score < tau+0.03 and AI is allowed, an AI image is generated and wins only if its CLIP score >= stock + 0.02. (5) Otherwise the best unused clip within 0.03 of tau, else a text card.",
+  "scenes": [
+    {
+      "scene": 0,
+      "start": 0.0,
+      "end": 3.78,
+      "duration": 3.78,
+      "narration": "A lone surfer paddles out along the edge of the frame.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "nature",
+      "visual_plan": "A wide shot of a lone surfer paddling out on a calm ocean wave near the edge of the frame.",
+      "queries": [
+        "surfer paddling ocean",
+        "surfer catching wave",
+        "person surfing sunrise"
+      ],
+      "negative_terms": [
+        "crowded beach",
+        "indoor pool",
+        "jet ski"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "coverr:azeLzcJUiU",
+        "kind": "video",
+        "title": "Man paddling over the waves",
+        "source": "coverr",
+        "source_url": "https://coverr.co/videos/man-paddling-over-the-waves-azelzcjuiu",
+        "media_url": "https://cdn.coverr.co/videos/coverr-man-paddling-over-the-waves-4609/1080p.mp4",
+        "licence": "Coverr License (free for commercial use, no attribution required)",
+        "licence_url": "https://coverr.co/license",
+        "attribution": "Video from Coverr",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "surfer paddling ocean"
+      },
+      "reason": "stock: coverr clip scored 0.340 >= tau 0.24; best unused of 27 safe candidates",
+      "relevance_score": 0.3395,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.3395,
+        "negative_max": 0.2211,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.471,
+      "alternatives": [
+        {
+          "id": "coverr:azeLzcJUiU",
+          "source": "coverr",
+          "score": 0.3395,
+          "title": "Man paddling over the waves"
+        },
+        {
+          "id": "coverr:66JX3bWLsX",
+          "source": "coverr",
+          "score": 0.3357,
+          "title": "A surfer paddling in the ocean"
+        },
+        {
+          "id": "coverr:QpSBHZG0MJ",
+          "source": "coverr",
+          "score": 0.3357,
+          "title": "Surfer paddling"
+        },
+        {
+          "id": "coverr:WT8zh0zIWM",
+          "source": "coverr",
+          "score": 0.3257,
+          "title": "Surfer catching a wave on a surfboard"
+        },
+        {
+          "id": "pixabay:123523",
+          "source": "pixabay",
+          "score": 0.3255,
+          "title": "surf, surfer, sea, ocean, waves, coast, shore"
+        }
+      ]
+    },
+    {
+      "scene": 1,
+      "start": 3.78,
+      "end": 7.688,
+      "duration": 3.908,
+      "narration": "A cyclist rides past the coastline at sunset.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "nature",
+      "visual_plan": "A cyclist riding along a scenic coastal road during a vibrant sunset.",
+      "queries": [
+        "cyclist coastal road",
+        "bicycle riding sunset",
+        "coastline bicycle ride"
+      ],
+      "negative_terms": [
+        "indoor gym",
+        "mountain bike crash",
+        "city traffic"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:146420",
+        "kind": "video",
+        "title": "morning, exercise, bicycle, riding, health, republic of korea",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-146420/",
+        "media_url": "https://cdn.pixabay.com/video/2023/01/13/146420-789177047_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by KIMDAEJEUNG on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "bicycle riding sunset"
+      },
+      "reason": "stock (low confidence): pixabay scored 0.239 (< tau 0.24, within 0.03); no AI option",
+      "relevance_score": 0.2394,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2394,
+        "negative_max": 0.218,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.459,
+      "alternatives": [
+        {
+          "id": "pixabay:146420",
+          "source": "pixabay",
+          "score": 0.2394,
+          "title": "morning, exercise, bicycle, riding, health, republic of korea"
+        },
+        {
+          "id": "pixabay:82636",
+          "source": "pixabay",
+          "score": 0.2327,
+          "title": "bike, bicycle, cycling, fitness, sport, biking, leisure, healthy, ride, activity"
+        },
+        {
+          "id": "pixabay:111651",
+          "source": "pixabay",
+          "score": 0.2152,
+          "title": "bicycle, trail, riding, mom and daughter, gyeonggi do, yangju, republic of korea"
+        },
+        {
+          "id": "pixabay:39183",
+          "source": "pixabay",
+          "score": 0.213,
+          "title": "cycling, man, bike, helmet, road, cyclist, safety, sports, fitness"
+        },
+        {
+          "id": "pixabay:107859",
+          "source": "pixabay",
+          "score": 0.2082,
+          "title": "bicycle, riding, promenade, arboretum"
+        }
+      ]
+    }
+  ],
+  "music": {
+    "path": null,
+    "title": "Procedural ambient pad",
+    "source": "procedural",
+    "licence": "Generated by this service (no third-party rights)",
+    "licence_url": "",
+    "attribution": "Generated by IncuBrix B-roll engine",
+    "page_url": "",
+    "ai_generated": false
+  }
+}

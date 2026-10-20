@@ -1,0 +1,35 @@
+1
+00:00:00,110 --> 00:00:02,750
+In today's technology news,
+
+2
+00:00:02,750 --> 00:00:05,170
+electric car sales rose sharply across
+
+3
+00:00:05,170 --> 00:00:06,710
+Europe this quarter.
+
+4
+00:00:06,710 --> 00:00:08,770
+Cities are adding thousands of new
+
+5
+00:00:08,770 --> 00:00:11,650
+charging stations along major highways.
+
+6
+00:00:11,650 --> 00:00:14,210
+Meanwhile, battery prices continued to
+
+7
+00:00:14,210 --> 00:00:16,430
+fall, making smaller models more
+
+8
+00:00:16,430 --> 00:00:17,710
+affordable for families.
+
+9
+00:00:17,710 --> 00:00:21,571
+Analysts expect the trend to continue next year.

@@ -1,0 +1,30 @@
+28 cases -> testpack\outputs
+  01_tutorial_en_in              succeeded   158.37s
+  02_news_summary_en_us          succeeded   156.29s
+  03_product_promo_en_gb         succeeded   110.7s
+  04_story_en_in                 succeeded   322.45s
+  05_finance_money_value         failed     INTERNAL_ERROR 257.25s
+  06_scene_list_city             succeeded   199.97s
+  07_space_science               succeeded   308.93s
+  08_health_short_20s            succeeded   206.5s
+  09_hindi_tutorial              succeeded   70.79s
+  10_long_5min_agriculture       failed     TTS_FAILED 114.38s
+  audio_01_us_tutorial           succeeded   61.05s
+  audio_02_gb_travel             succeeded   71.1s
+  audio_03_in_startup            succeeded   66.35s
+  audio_04_tamil_nature          succeeded   197.45s
+  audio_05_in_startup            succeeded   90.9s
+  hc_916_edge_subject            failed     TTS_FAILED 4.49s
+  hc_abstract_and_stats          failed     TTS_FAILED 4.44s
+  hc_audio_url_404               failed     INPUT_DOWNLOAD_FAILED 2.4s
+  hc_avoid_faces_alcohol         failed     TTS_FAILED 6.45s
+  hc_bad_ratio                   rejected   INVALID_ASPECT_RATIO 0.44s
+  hc_corrupted_audio             rejected   AUDIO_UNREADABLE 0.83s
+  hc_double_meanings             failed     TTS_FAILED 5.62s
+  hc_empty_script                rejected   EMPTY_SCRIPT 0.38s
+  hc_music_only                  failed     NO_SPEECH_DETECTED 7.49s
+  hc_named_person_brand          failed     TTS_FAILED 4.44s
+  hc_sad_news                    failed     TTS_FAILED 4.46s
+  hc_silent_audio                failed     NO_SPEECH_DETECTED 2.95s
+  hc_wrong_file_type_pdf         rejected   UNSUPPORTED_FILE_TYPE 0.4s
+done: 13/28 succeeded; summary at testpack\outputs\summary.csv

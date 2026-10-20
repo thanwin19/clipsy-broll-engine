@@ -1,0 +1,180 @@
+{
+  "job_id": "job_f549332968e04583b5d1",
+  "version": 1,
+  "narration_seconds": 11.811,
+  "language": "en",
+  "transcript": "Starting a business is hard. You will build a product, talk to customers and fix problems every single day. But when the first customer pays you, every late night feels worth it.",
+  "aspect_ratios": [
+    "16:9"
+  ],
+  "mood": "inspiring",
+  "selection_rule": "Per scene: (1) statistics -> animated stat card. (2) Stock candidates from category-suited sources are scored with CLIP (image vs scene visual plan + narration, minus penalty for negative/avoid terms); unsafe candidates (avoid list, faces when avoided, AI for people/brands/sensitive) are removed. (3) Global assignment takes the highest (scene, clip) pairs first, each clip used once, if score >= tau=0.24. (4) If a scene's best stock score < tau+0.03 and AI is allowed, an AI image is generated and wins only if its CLIP score >= stock + 0.02. (5) Otherwise the best unused clip within 0.03 of tau, else a text card.",
+  "scenes": [
+    {
+      "scene": 0,
+      "start": 0.0,
+      "end": 7.62,
+      "duration": 7.62,
+      "narration": "Starting a business is hard. You will build a product, talk to customers and fix problems every single day.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "business",
+      "visual_plan": "A determined entrepreneur working late at a desk with a laptop and coffee.",
+      "queries": [
+        "entrepreneur working late",
+        "person building product",
+        "frustrated office worker"
+      ],
+      "negative_terms": [
+        "party",
+        "relaxation",
+        "beach"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:215751",
+        "kind": "video",
+        "title": "man, office work, business, payroll, payroll management, working late night, computer, digital, tired",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-215751/",
+        "media_url": "https://cdn.pixabay.com/video/2024/06/07/215751_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by G3Remote on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "entrepreneur working late"
+      },
+      "reason": "stock: pixabay clip scored 0.301 >= tau 0.24; best unused of 18 safe candidates",
+      "relevance_score": 0.3012,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.3012,
+        "negative_max": 0.1488,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.503,
+      "alternatives": [
+        {
+          "id": "pixabay:215751",
+          "source": "pixabay",
+          "score": 0.3012,
+          "title": "man, office work, business, payroll, payroll management, working late night, com"
+        },
+        {
+          "id": "pixabay:92480",
+          "source": "pixabay",
+          "score": 0.2292,
+          "title": "laptop, work, internet, business, occupation, sitting, social media, typing, hom"
+        },
+        {
+          "id": "pixabay:2340",
+          "source": "pixabay",
+          "score": 0.2025,
+          "title": "meeting, planning, marketing, business, team, people, office, teamwork, group, d"
+        },
+        {
+          "id": "pixabay:130646",
+          "source": "pixabay",
+          "score": 0.1961,
+          "title": "typing, technology, computer, working, professional, home, business, studio, you"
+        },
+        {
+          "id": "pixabay:1046",
+          "source": "pixabay",
+          "score": 0.1868,
+          "title": "keyboard, hands, writing, computer, mouse, typing, project, design, coffee mug, "
+        }
+      ]
+    },
+    {
+      "scene": 1,
+      "start": 7.62,
+      "end": 11.811,
+      "duration": 4.191,
+      "narration": "But when the first customer pays you, every late night feels worth it.",
+      "visual_hint": null,
+      "scene_type": "metaphor",
+      "category": "business",
+      "visual_plan": "A notification pop-up on a smartphone showing a payment received, with a relieved smile.",
+      "queries": [
+        "mobile payment notification",
+        "happy business owner",
+        "successful online transaction"
+      ],
+      "negative_terms": [
+        "debt",
+        "bankruptcy",
+        "loss"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:202987",
+        "kind": "video",
+        "title": "phone, smartphone, mobile, portable, screen, digital, communication, texting, business, work",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-202987/",
+        "media_url": "https://cdn.pixabay.com/video/2024/03/04/202987-919379330_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by Natures_Embrace on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "mobile payment notification"
+      },
+      "reason": "stock (low confidence): pixabay scored 0.214 (< tau 0.24, within 0.03); no AI option",
+      "relevance_score": 0.2144,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.218,
+        "negative_max": 0.2015,
+        "penalty": 0.0035
+      },
+      "reframe_subject_x": 0.408,
+      "alternatives": [
+        {
+          "id": "pixabay:202987",
+          "source": "pixabay",
+          "score": 0.2144,
+          "title": "phone, smartphone, mobile, portable, screen, digital, communication, texting, bu"
+        },
+        {
+          "id": "pixabay:49049",
+          "source": "pixabay",
+          "score": 0.2139,
+          "title": "money transfer, mobile banking, business, buy, communication, concept, customer,"
+        },
+        {
+          "id": "pixabay:174003",
+          "source": "pixabay",
+          "score": 0.209,
+          "title": "woman, social networking, post, website management, communication, network, onli"
+        },
+        {
+          "id": "pixabay:38084",
+          "source": "pixabay",
+          "score": 0.2021,
+          "title": "woman, phone, smartphone, technology, mobile, telephone, cellphone, person, fema"
+        },
+        {
+          "id": "pixabay:130652",
+          "source": "pixabay",
+          "score": 0.2012,
+          "title": "woman, smartphone, education, navigation, lifestyle, mobile, money safe, store, "
+        }
+      ]
+    }
+  ],
+  "music": {
+    "path": null,
+    "title": "Inspiring Progress",
+    "source": "openverse/jamendo",
+    "licence": "CC BY 3.0",
+    "licence_url": "https://creativecommons.org/licenses/by/3.0/",
+    "attribution": "\"Inspiring Progress\" by Soundrider/Dope (CC BY 3.0)",
+    "page_url": "https://www.jamendo.com/track/1670591",
+    "ai_generated": false
+  }
+}

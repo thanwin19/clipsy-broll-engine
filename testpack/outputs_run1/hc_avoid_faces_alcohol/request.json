@@ -1,0 +1,13 @@
+{
+  "script": "Friday evening in the city. Friends meet at a rooftop restaurant and share dinner as the sun goes down.",
+  "voice": "en-IN-male",
+  "aspect_ratios": [
+    "16:9",
+    "9:16"
+  ],
+  "avoid": [
+    "people's faces",
+    "alcohol"
+  ],
+  "file": null
+}

@@ -1,0 +1,15 @@
+{
+  "error": {
+    "code": "UNSUPPORTED_FILE_TYPE",
+    "message": "Audio must be mp3, wav or m4a.",
+    "retryable": false,
+    "details": {
+      "filename": "hc_wrong_file_type.pdf",
+      "allowed": [
+        ".mp3",
+        ".wav",
+        ".m4a"
+      ]
+    }
+  }
+}

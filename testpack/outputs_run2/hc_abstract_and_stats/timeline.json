@@ -1,0 +1,218 @@
+{
+  "job_id": "job_bfb445cc09c04a489ef6",
+  "version": 1,
+  "narration_seconds": 10.768,
+  "language": "en",
+  "transcript": "Trust is earned slowly and lost in seconds. Sales grew 40% in 2025. Only one in three startups survives five years.",
+  "aspect_ratios": [
+    "16:9",
+    "9:16"
+  ],
+  "mood": "corporate",
+  "selection_rule": "Per scene: (1) statistics -> animated stat card. (2) Stock candidates from category-suited sources are scored with CLIP (image vs scene visual plan + narration, minus penalty for negative/avoid terms); unsafe candidates (avoid list, faces when avoided, AI for people/brands/sensitive) are removed. (3) Global assignment takes the highest (scene, clip) pairs first, each clip used once, if score >= tau=0.24. (4) If a scene's best stock score < tau+0.03 and AI is allowed, an AI image is generated and wins only if its CLIP score >= stock + 0.02. (5) Otherwise the best unused clip within 0.03 of tau, else a text card.",
+  "scenes": [
+    {
+      "scene": 0,
+      "start": 0.0,
+      "end": 4.48,
+      "duration": 4.48,
+      "narration": "Trust is earned slowly and lost in seconds.",
+      "visual_hint": null,
+      "scene_type": "metaphor",
+      "category": "business",
+      "visual_plan": "Close-up of a person building a structure with wooden blocks carefully.",
+      "queries": [
+        "building wooden blocks",
+        "careful planning hands",
+        "balancing stones stack"
+      ],
+      "negative_terms": [
+        "falling blocks",
+        "destruction",
+        "children playing"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:0",
+        "kind": "card",
+        "title": "Card: Trust is earned slowly and lost in seconds.",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [
+        {
+          "id": "pixabay:38079",
+          "source": "pixabay",
+          "score": 0.1833,
+          "title": "hands, hand cream, cream, health, skin, care"
+        },
+        {
+          "id": "pixabay:2340",
+          "source": "pixabay",
+          "score": 0.1684,
+          "title": "meeting, planning, marketing, business, team, people, office, teamwork, group, d"
+        },
+        {
+          "id": "pixabay:73847",
+          "source": "pixabay",
+          "score": 0.1644,
+          "title": "sand, hand, beach, dessert, sea, live wallpaper"
+        },
+        {
+          "id": "pixabay:2303",
+          "source": "pixabay",
+          "score": 0.1478,
+          "title": "whiteboard, sketch, planning, business, strategy, plan, office, people, developm"
+        },
+        {
+          "id": "pixabay:34091",
+          "source": "pixabay",
+          "score": 0.1247,
+          "title": "washing hands, coronavirus, stop the spread, covid 19, water, hands, female, hyg"
+        }
+      ]
+    },
+    {
+      "scene": 1,
+      "start": 4.48,
+      "end": 7.5,
+      "duration": 3.02,
+      "narration": "Sales grew 40% in 2025.",
+      "visual_hint": null,
+      "scene_type": "statistic",
+      "category": "business",
+      "visual_plan": "Animated chart showing an upward sales growth trend with a 40 percent metric.",
+      "queries": [
+        "business chart growth",
+        "upward financial graph",
+        "sales analytics screen"
+      ],
+      "negative_terms": [
+        "downward trend",
+        "falling graph",
+        "stock market crash"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:1",
+        "kind": "card",
+        "title": "Card: 40%",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "statistic '40%' -> animated stat card (rule: numbers are shown, not searched)",
+      "relevance_score": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": []
+    },
+    {
+      "scene": 2,
+      "start": 7.5,
+      "end": 10.768,
+      "duration": 3.268,
+      "narration": "Only one in three startups survives five years.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "business",
+      "visual_plan": "Modern collaborative office workspace with focused startup entrepreneurs working together.",
+      "queries": [
+        "startup team working",
+        "modern office collaboration",
+        "entrepreneurs in meeting"
+      ],
+      "negative_terms": [
+        "empty office",
+        "bored workers",
+        "stress"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:69952",
+        "kind": "video",
+        "title": "office, meeting, working, discussion, startup, business, computer, work, team, plan, brainstorming, teamwork, table, corporate, casual, people, company, writing, desk, conference, group, colleagues, teacher, project, coffee",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-69952/",
+        "media_url": "https://cdn.pixabay.com/video/2021/04/04/69952-533273133_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by zameenaasman172 on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "startup team working"
+      },
+      "reason": "stock: pixabay clip scored 0.297 >= tau 0.24; best unused of 16 safe candidates",
+      "relevance_score": 0.2971,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2971,
+        "negative_max": 0.2657,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.511,
+      "alternatives": [
+        {
+          "id": "pixabay:69952",
+          "source": "pixabay",
+          "score": 0.2971,
+          "title": "office, meeting, working, discussion, startup, business, computer, work, team, p"
+        },
+        {
+          "id": "pixabay:54326",
+          "source": "pixabay",
+          "score": 0.2706,
+          "title": "meeting, meeting in office, conversation"
+        },
+        {
+          "id": "pixabay:1035",
+          "source": "pixabay",
+          "score": 0.2705,
+          "title": "meeting, conference, talk, blur, bokeh, business, people, corporate, group, pres"
+        },
+        {
+          "id": "pixabay:369817",
+          "source": "pixabay",
+          "score": 0.2295,
+          "title": "academic, administration, university, study, business, business communication, b"
+        },
+        {
+          "id": "pixabay:268230",
+          "source": "pixabay",
+          "score": 0.2227,
+          "title": "business, office, computer, man, laptop, company, corporate, meeting, work, mark"
+        }
+      ]
+    }
+  ],
+  "music": {
+    "path": null,
+    "title": "Procedural ambient pad",
+    "source": "procedural",
+    "licence": "Generated by this service (no third-party rights)",
+    "licence_url": "",
+    "attribution": "Generated by IncuBrix B-roll engine",
+    "page_url": "",
+    "ai_generated": false
+  }
+}

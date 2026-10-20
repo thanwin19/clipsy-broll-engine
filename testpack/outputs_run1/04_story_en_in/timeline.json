@@ -1,0 +1,410 @@
+{
+  "job_id": "job_038d9ea68b024b3fa6ec",
+  "version": 1,
+  "narration_seconds": 21.72,
+  "language": "en",
+  "transcript": "Every morning, an old fisherman pushed his small boat into the sea before sunrise. The waves were cold and the nets were heavy. One stormy day he came back with nothing. But the next morning, he went out again. That is how he taught his grandson that patience is a kind of courage.",
+  "aspect_ratios": [
+    "16:9",
+    "9:16"
+  ],
+  "mood": "inspiring",
+  "selection_rule": "Per scene: (1) statistics -> animated stat card. (2) Stock candidates from category-suited sources are scored with CLIP (image vs scene visual plan + narration, minus penalty for negative/avoid terms); unsafe candidates (avoid list, faces when avoided, AI for people/brands/sensitive) are removed. (3) Global assignment takes the highest (scene, clip) pairs first, each clip used once, if score >= tau=0.24. (4) If a scene's best stock score < tau+0.03 and AI is allowed, an AI image is generated and wins only if its CLIP score >= stock + 0.02. (5) Otherwise the best unused clip within 0.03 of tau, else a text card.",
+  "scenes": [
+    {
+      "scene": 0,
+      "start": 0.0,
+      "end": 7.06,
+      "duration": 7.06,
+      "narration": "Every morning, an old fisherman pushed his small boat into the sea before sunrise.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "nature",
+      "visual_plan": "A silhouette of an elderly fisherman pushing a small wooden boat into the ocean at dawn.",
+      "queries": [
+        "fisherman pushing boat sunrise",
+        "wooden boat ocean morning",
+        "sunrise over calm sea"
+      ],
+      "negative_terms": [
+        "cruise ship",
+        "speed boat",
+        "modern port"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:313006",
+        "kind": "video",
+        "title": "the sun, twilight, lake, landscape, the fisherman, boat, bird",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-313006/",
+        "media_url": "https://cdn.pixabay.com/video/2025/10/30/313006_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by redkitetrees on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "fisherman pushing boat sunrise"
+      },
+      "reason": "stock: pixabay clip scored 0.281 >= tau 0.24; best unused of 17 safe candidates",
+      "relevance_score": 0.2806,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2806,
+        "negative_max": 0.2047,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.522,
+      "alternatives": [
+        {
+          "id": "pixabay:313006",
+          "source": "pixabay",
+          "score": 0.2806,
+          "title": "the sun, twilight, lake, landscape, the fisherman, boat, bird"
+        },
+        {
+          "id": "pixabay:293788",
+          "source": "pixabay",
+          "score": 0.2781,
+          "title": "ocean, sea, water, coastline, beach, shoreline, turquoise water, blue sea, aeria"
+        },
+        {
+          "id": "pixabay:302098",
+          "source": "pixabay",
+          "score": 0.2654,
+          "title": "people, fisherman, fishing, sea, landscape, man, water, sunset, twilight, dusk, "
+        },
+        {
+          "id": "pixabay:21175",
+          "source": "pixabay",
+          "score": 0.2561,
+          "title": "ocean, horizon, yellow clouds, waves, sunset, sea, calm"
+        },
+        {
+          "id": "pixabay:218714",
+          "source": "pixabay",
+          "score": 0.2422,
+          "title": "beach, ocean, sea, beautiful wallpaper, summer, holiday, wave, nature, beautiful"
+        }
+      ]
+    },
+    {
+      "scene": 1,
+      "start": 7.06,
+      "end": 10.5,
+      "duration": 3.44,
+      "narration": "The waves were cold and the nets were heavy.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "nature",
+      "visual_plan": "Choppy, dark ocean waves crashing against the shore with fishing nets resting on the sand.",
+      "queries": [
+        "rough ocean waves",
+        "heavy fishing nets",
+        "cold sea waves"
+      ],
+      "negative_terms": [
+        "tropical beach",
+        "calm pool",
+        "swimming"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:217848",
+        "kind": "video",
+        "title": "sunset, wave, sea, water, seascape, sun, crashing, sunlight, breaking wave, reflection, splash, storm, cinematic, crash, gold, spray, rough",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-217848/",
+        "media_url": "https://cdn.pixabay.com/video/2024/06/23/217848_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by Mario_Krimer on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "rough ocean waves"
+      },
+      "reason": "replacement after failed download: pixabay scored 0.292",
+      "relevance_score": 0.2925,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2925,
+        "negative_max": 0.2557,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.471,
+      "alternatives": [
+        {
+          "id": "pixabay:154325",
+          "source": "pixabay",
+          "score": 0.3116,
+          "title": "waves, sea, beach, storm, snow, ice, winter storm, water, sea beach, cold water,"
+        },
+        {
+          "id": "pixabay:217848",
+          "source": "pixabay",
+          "score": 0.2925,
+          "title": "sunset, wave, sea, water, seascape, sun, crashing, sunlight, breaking wave, refl"
+        },
+        {
+          "id": "pixabay:20435",
+          "source": "pixabay",
+          "score": 0.2894,
+          "title": "dock, wave, storm, cloudy, winter, autumn, cold, beach, sea, that, waves, sky, t"
+        },
+        {
+          "id": "pixabay:182970",
+          "source": "pixabay",
+          "score": 0.2741,
+          "title": "sea, waves, water, crash, beach, shore, splash, spray, coastline, wind, coast, r"
+        },
+        {
+          "id": "pixabay:224807",
+          "source": "pixabay",
+          "score": 0.2696,
+          "title": "ocean, sea, waves, water, spray, splashing, breaking, foam, power, rough, splash"
+        }
+      ]
+    },
+    {
+      "scene": 2,
+      "start": 10.5,
+      "end": 13.84,
+      "duration": 3.34,
+      "narration": "One stormy day he came back with nothing.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "nature",
+      "visual_plan": "A stormy grey sea under dark clouds, capturing a sense of hardship and empty effort.",
+      "queries": [
+        "stormy sea grey waves",
+        "dark stormy ocean",
+        "empty boat stormy weather"
+      ],
+      "negative_terms": [
+        "sunny day",
+        "bright beach",
+        "happy people"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:362475",
+        "kind": "video",
+        "title": "storm, breakwater, lighthouse, ocean, loop, waves, sea, tempest, jetty, harbor, stormy weather, rough sea, coast, maritime, rain, dark clouds, surf, beacon, navigation, dramatic, nature, cinematic, water, moody, travel, ai generated",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-362475/",
+        "media_url": "https://cdn.pixabay.com/video/2026/07/06/362475_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by doktorkleinmusic on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "dark stormy ocean"
+      },
+      "reason": "stock: pixabay clip scored 0.316 >= tau 0.24; best unused of 16 safe candidates",
+      "relevance_score": 0.3155,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.3155,
+        "negative_max": 0.1952,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.484,
+      "alternatives": [
+        {
+          "id": "pixabay:362475",
+          "source": "pixabay",
+          "score": 0.3155,
+          "title": "storm, breakwater, lighthouse, ocean, loop, waves, sea, tempest, jetty, harbor, "
+        },
+        {
+          "id": "pixabay:370186",
+          "source": "pixabay",
+          "score": 0.2976,
+          "title": "ai generated, ocean, sea, waves, storm, atlantic, rough sea, stormy sea, ocean w"
+        },
+        {
+          "id": "pixabay:329470",
+          "source": "pixabay",
+          "score": 0.2951,
+          "title": "storm, stormy sea, rugged coastline, ocean waves, crashing waves, cliffs, dramat"
+        },
+        {
+          "id": "pixabay:222008",
+          "source": "pixabay",
+          "score": 0.2838,
+          "title": "lake, mountains, fog, rain, rainy day, raindrops, rain drops, rainy weather, win"
+        },
+        {
+          "id": "pixabay:233772",
+          "source": "pixabay",
+          "score": 0.2785,
+          "title": "ocean, cloud, storm, sea, dark, sky, stormy, sun, water, cloudy, coastline, spla"
+        }
+      ]
+    },
+    {
+      "scene": 3,
+      "start": 13.84,
+      "end": 16.86,
+      "duration": 3.02,
+      "narration": "But the next morning, he went out again.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "nature",
+      "visual_plan": "A fresh morning sunrise over the ocean as a small boat prepares to set sail once more.",
+      "queries": [
+        "morning ocean sunrise",
+        "boat sailing sunrise",
+        "new day sea horizon"
+      ],
+      "negative_terms": [
+        "sunset",
+        "night",
+        "storm"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:348105",
+        "kind": "video",
+        "title": "sunset, nature, sky, twilight, dusk, beach, dark, sea, ocean, clouds, horizon, love, sailboat, boat, sailing",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-348105/",
+        "media_url": "https://cdn.pixabay.com/video/2026/04/22/348105_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by TonyDias7 on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "boat sailing sunrise"
+      },
+      "reason": "stock: pixabay clip scored 0.258 >= tau 0.24; best unused of 22 safe candidates",
+      "relevance_score": 0.2579,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.273,
+        "negative_max": 0.268,
+        "penalty": 0.015
+      },
+      "reframe_subject_x": 0.491,
+      "alternatives": [
+        {
+          "id": "pixabay:348105",
+          "source": "pixabay",
+          "score": 0.2579,
+          "title": "sunset, nature, sky, twilight, dusk, beach, dark, sea, ocean, clouds, horizon, l"
+        },
+        {
+          "id": "pixabay:21175",
+          "source": "pixabay",
+          "score": 0.2458,
+          "title": "ocean, horizon, yellow clouds, waves, sunset, sea, calm"
+        },
+        {
+          "id": "pixabay:199001",
+          "source": "pixabay",
+          "score": 0.2175,
+          "title": "sunrise, sea, ocean, waves, beach, lanzarote, spain, canary islands, morning, ea"
+        },
+        {
+          "id": "pixabay:223459",
+          "source": "pixabay",
+          "score": 0.2152,
+          "title": "sunset, boat, sea, ocean, dusk, twilight, sky, water, clouds, beach, horizon, su"
+        },
+        {
+          "id": "pixabay:8011",
+          "source": "pixabay",
+          "score": 0.2115,
+          "title": "beach, sea, ocean, water, coast, paradise, sunset, twilight, sunrise, evening, m"
+        }
+      ]
+    },
+    {
+      "scene": 4,
+      "start": 16.86,
+      "end": 21.72,
+      "duration": 4.86,
+      "narration": "That is how he taught his grandson that patience is a kind of courage.",
+      "visual_hint": null,
+      "scene_type": "metaphor",
+      "category": "people_free",
+      "visual_plan": "An old weathered wooden oar resting against a weathered dock, symbolizing legacy and patience.",
+      "queries": [
+        "wooden oar on dock",
+        "old fishing gear",
+        "patience perseverance symbol"
+      ],
+      "negative_terms": [
+        "modern technology",
+        "city street",
+        "indoor room"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:4",
+        "kind": "card",
+        "title": "Card: That is how he taught his grandson that patience is a kind o",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [
+        {
+          "id": "pixabay:181376",
+          "source": "pixabay",
+          "score": 0.1624,
+          "title": "boat, man, fishing boat, wooden boat, water, lake, mountains, landscape, zille, "
+        },
+        {
+          "id": "pixabay:44534",
+          "source": "pixabay",
+          "score": 0.1558,
+          "title": "fishing, fish, fisherman, water, animal, angler, blue, salmon, lake, boat, natur"
+        },
+        {
+          "id": "pixabay:87814",
+          "source": "pixabay",
+          "score": 0.1541,
+          "title": "sea, ocean, wave, that, dock, wooden, wood, blue, abstract, background, coast, b"
+        },
+        {
+          "id": "pixabay:15580",
+          "source": "pixabay",
+          "score": 0.1382,
+          "title": "boats, boat, long boat, river, yangon river, yangon, myanmar, burma, island, shr"
+        },
+        {
+          "id": "pixabay:20681",
+          "source": "pixabay",
+          "score": 0.0698,
+          "title": "pier, ocean, waves, splash, infinity, meditation, spiritual, peace, love, sea, c"
+        }
+      ]
+    }
+  ],
+  "music": {
+    "path": null,
+    "title": "Inspiring Progress",
+    "source": "openverse/jamendo",
+    "licence": "CC BY 3.0",
+    "licence_url": "https://creativecommons.org/licenses/by/3.0/",
+    "attribution": "\"Inspiring Progress\" by Soundrider/Dope (CC BY 3.0)",
+    "page_url": "https://www.jamendo.com/track/1670591",
+    "ai_generated": false
+  }
+}

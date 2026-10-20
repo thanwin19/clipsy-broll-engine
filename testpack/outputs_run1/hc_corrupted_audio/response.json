@@ -1,0 +1,10 @@
+{
+  "error": {
+    "code": "AUDIO_UNREADABLE",
+    "message": "The audio file is corrupt or cannot be decoded.",
+    "retryable": false,
+    "details": {
+      "filename": "hc_corrupted_audio.mp3"
+    }
+  }
+}

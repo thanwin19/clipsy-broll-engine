@@ -1,12 +1,18 @@
-# IncuBrix B-roll Engine
+# clipsy
 
-Turns a **voiceover, a script, or an IncuBrix scene list** into finished, licence-clean B-roll videos,
+**Your story. The right shot.**
+
+clipsy turns a **voiceover, a script, or an IncuBrix scene list** into finished, licence-clean B-roll videos,
 scene by scene: footage that matches the *meaning* of each line, timed to the narration, with captions,
 background music and a full record of where every clip came from.
 
 ```
 POST /api/v1/broll/jobs  ->  video_16x9.mp4, video_9x16.mp4, video_1x1.mp4, captions.srt, timeline.json, manifest.json
 ```
+
+The web app (served at `/`) has an editorial landing page, **AI Studio** (script or voiceover in, live progress,
+the finished video, storyboard and AI Director), a multitrack **Editor** (preview, B-roll / captions / voiceover /
+music tracks, inspector with alternatives and clip swap), **Export**, **Projects** and **Settings**.
 
 ## What makes it different
 
@@ -24,6 +30,9 @@ POST /api/v1/broll/jobs  ->  video_16x9.mp4, video_9x16.mp4, video_1x1.mp4, capt
 | **2.5D parallax** | Still images (AI images, Openverse photos) get a depth-based camera move from Depth-Anything-V2-Small, so they read as real footage. |
 | **Voices** | Pick any of ~56 voices (`GET /api/v1/voices`: Gemini cloud voices or unlimited local Kokoro voices), set `voice_speed` 0.75–1.25, and uploaded voiceovers are cleaned (noise reduction + −16 LUFS loudness). |
 | **Fast rendering** | Each clip is decoded once for all aspect ratios, segments render in parallel, the GPU encoder is used when present (`VIDEO_ENCODER=h264_amf`/`h264_nvenc`/`h264_qsv`), and audio is mixed once and stream-copied. |
+| **Prompt reader** | Paste a whole brief: only the voiceover is spoken, visual prompts become shot descriptions, on-screen text becomes titles; titles, timings and notes are dropped. |
+| **Languages** | English, Hindi and Tamil voiceovers; scripts can be narrated in Tamil, Hindi, Telugu, Kannada, Malayalam, Bengali, Marathi (translated, footage follows the original meaning). |
+| **Creative controls** | Voice styles (soft, cute, warm, deep, calm, energetic, storyteller, news, auto), target duration, background music mood (lo-fi, calm, upbeat, cinematic, corporate, none), caption colour / size / font / position / box with live preview. |
 | **Resilience** | Per-job circuit breaker: a source that fails is skipped and the job finishes with other sources, then cards. |
 
 ## Architecture

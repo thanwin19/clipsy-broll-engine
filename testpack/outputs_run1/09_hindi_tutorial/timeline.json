@@ -1,0 +1,254 @@
+{
+  "job_id": "job_c96a0979194e4224a892",
+  "version": 1,
+  "narration_seconds": 10.6,
+  "language": "hi",
+  "transcript": "\u0938\u0941\u092c\u0939 \u091c\u0932\u094d\u0926\u0940 \u0909\u0920\u0928\u093e \u090f\u0915 \u0905\u091a\u094d\u091b\u0940 \u0906\u0926\u0924 \u0939\u0948\u0964 \u0925\u094b\u0921\u093c\u0940 \u0926\u0947\u0930 \u091f\u0939\u0932\u0947\u0902, \u0924\u093e\u091c\u093c\u0940 \u0939\u0935\u093e \u0932\u0947\u0902 \u0914\u0930 \u0926\u093f\u0928 \u0915\u0940 \u092f\u094b\u091c\u0928\u093e \u092c\u0928\u093e\u090f\u0902\u0964 \u0907\u0938\u0938\u0947 \u092a\u0942\u0930\u093e \u0926\u093f\u0928 \u090a\u0930\u094d\u091c\u093e \u0938\u0947 \u092d\u0930\u093e \u0930\u0939\u0924\u093e \u0939\u0948\u0964",
+  "aspect_ratios": [
+    "16:9",
+    "9:16"
+  ],
+  "mood": "upbeat",
+  "selection_rule": "Per scene: (1) statistics -> animated stat card. (2) Stock candidates from category-suited sources are scored with CLIP (image vs scene visual plan + narration, minus penalty for negative/avoid terms); unsafe candidates (avoid list, faces when avoided, AI for people/brands/sensitive) are removed. (3) Global assignment takes the highest (scene, clip) pairs first, each clip used once, if score >= tau=0.24. (4) If a scene's best stock score < tau+0.03 and AI is allowed, an AI image is generated and wins only if its CLIP score >= stock + 0.02. (5) Otherwise the best unused clip within 0.03 of tau, else a text card.",
+  "scenes": [
+    {
+      "scene": 0,
+      "start": 0.0,
+      "end": 2.788,
+      "duration": 2.788,
+      "narration": "\u0938\u0941\u092c\u0939 \u091c\u0932\u094d\u0926\u0940 \u0909\u0920\u0928\u093e \u090f\u0915 \u0905\u091a\u094d\u091b\u0940 \u0906\u0926\u0924 \u0939\u0948\u0964",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "everyday",
+      "visual_plan": "A person waking up early with sunlight streaming through the window in a cozy bedroom.",
+      "queries": [
+        "sunrise morning bedroom",
+        "sunlight through window",
+        "waking up morning"
+      ],
+      "negative_terms": [
+        "night",
+        "dark room",
+        "sunset"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:375259",
+        "kind": "video",
+        "title": "sunlight, indoor plants, houseplants, natural light, greenery, foliage, sunlight movement, light and shadow, plant shadows, window light, plant decor, home decor, interior, botanical, indoor garden, houseplant, leaves, warm light, peaceful, relaxing, nature, lifestyle, cinematic, botanical decor, sunlight through window, ai generated",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-375259/",
+        "media_url": "https://cdn.pixabay.com/video/2026/09/09/375259_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by Openly on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "sunlight through window"
+      },
+      "reason": "stock: pixabay clip scored 0.269 >= tau 0.24; best unused of 18 safe candidates",
+      "relevance_score": 0.269,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.269,
+        "negative_max": 0.1932,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.648,
+      "alternatives": [
+        {
+          "id": "pixabay:375259",
+          "source": "pixabay",
+          "score": 0.269,
+          "title": "sunlight, indoor plants, houseplants, natural light, greenery, foliage, sunlight"
+        },
+        {
+          "id": "pixabay:37918",
+          "source": "pixabay",
+          "score": 0.2664,
+          "title": "rest, house, home, quarantine, silent, mood, wake, apartment, nature, wake-up, m"
+        },
+        {
+          "id": "pixabay:151297",
+          "source": "pixabay",
+          "score": 0.2313,
+          "title": "woman, wake-up, morning, bed, smile, cute"
+        },
+        {
+          "id": "pixabay:151295",
+          "source": "pixabay",
+          "score": 0.2097,
+          "title": "woman, wake up, bed, sleep, pose, morning"
+        },
+        {
+          "id": "pixabay:375257",
+          "source": "pixabay",
+          "score": 0.1919,
+          "title": "sunlight, indoor plants, houseplants, natural light, greenery, foliage, sunlight"
+        }
+      ]
+    },
+    {
+      "scene": 1,
+      "start": 2.788,
+      "end": 7.137,
+      "duration": 4.349,
+      "narration": "\u0925\u094b\u0921\u093c\u0940 \u0926\u0947\u0930 \u091f\u0939\u0932\u0947\u0902, \u0924\u093e\u091c\u093c\u0940 \u0939\u0935\u093e \u0932\u0947\u0902 \u0914\u0930 \u0926\u093f\u0928 \u0915\u0940 \u092f\u094b\u091c\u0928\u093e \u092c\u0928\u093e\u090f\u0902\u0964",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "nature",
+      "visual_plan": "A person walking peacefully in a green park during early morning with fresh air.",
+      "queries": [
+        "morning park walk",
+        "person walking nature",
+        "green park sunrise"
+      ],
+      "negative_terms": [
+        "crowded city",
+        "traffic",
+        "night"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:177081",
+        "kind": "video",
+        "title": "man, alone, walking, hiking, morning, fog, national park, netherlands, drenthe, dwingelderveld, nature, scenic, landscape",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-177081/",
+        "media_url": "https://cdn.pixabay.com/video/2023/08/21/177081-857004160_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by Matthias_Groeneveld on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "morning park walk"
+      },
+      "reason": "stock: pixabay clip scored 0.304 >= tau 0.24; best unused of 17 safe candidates",
+      "relevance_score": 0.3045,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.3045,
+        "negative_max": 0.2216,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.391,
+      "alternatives": [
+        {
+          "id": "pixabay:177081",
+          "source": "pixabay",
+          "score": 0.3045,
+          "title": "man, alone, walking, hiking, morning, fog, national park, netherlands, drenthe, "
+        },
+        {
+          "id": "pixabay:177092",
+          "source": "pixabay",
+          "score": 0.2685,
+          "title": "man, walking, hiking, morning, fog, national park, netherlands, drenthe, dwingel"
+        },
+        {
+          "id": "pixabay:146135",
+          "source": "pixabay",
+          "score": 0.2608,
+          "title": "woman, model, dress, walk, path, park, colorful, young, nature"
+        },
+        {
+          "id": "pixabay:8667",
+          "source": "pixabay",
+          "score": 0.2269,
+          "title": "forest, walking, walk, nature, man, adventure, outdoor, activity, trail, woods, "
+        },
+        {
+          "id": "pixabay:1105",
+          "source": "pixabay",
+          "score": 0.2092,
+          "title": "feet, balance, walking, balancing, bridge, trunk, crossing, walk, legs, barefoot"
+        }
+      ]
+    },
+    {
+      "scene": 2,
+      "start": 7.137,
+      "end": 10.6,
+      "duration": 3.463,
+      "narration": "\u0907\u0938\u0938\u0947 \u092a\u0942\u0930\u093e \u0926\u093f\u0928 \u090a\u0930\u094d\u091c\u093e \u0938\u0947 \u092d\u0930\u093e \u0930\u0939\u0924\u093e \u0939\u0948\u0964",
+      "visual_hint": null,
+      "scene_type": "metaphor",
+      "category": "everyday",
+      "visual_plan": "An energetic and vibrant morning scene showing productivity and positive energy.",
+      "queries": [
+        "energetic morning lifestyle",
+        "productive day start",
+        "happy person morning"
+      ],
+      "negative_terms": [
+        "tired",
+        "sleepy",
+        "sad"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:2",
+        "kind": "card",
+        "title": "Card: \u0907\u0938\u0938\u0947 \u092a\u0942\u0930\u093e \u0926\u093f\u0928 \u090a\u0930\u094d\u091c\u093e \u0938\u0947 \u092d\u0930\u093e \u0930\u0939\u0924\u093e \u0939\u0948\u0964",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [
+        {
+          "id": "pixabay:293083",
+          "source": "pixabay",
+          "score": 0.2018,
+          "title": "asian woman, coffee break, working from home, remote work, happy moment, cozy li"
+        },
+        {
+          "id": "pixabay:164360",
+          "source": "pixabay",
+          "score": 0.1706,
+          "title": "fogging, landscape, forest, grasslands, nature, morning mist, fog"
+        },
+        {
+          "id": "pixabay:27111",
+          "source": "pixabay",
+          "score": 0.154,
+          "title": "morning mist, fog, nature, morning hour, south-tirol, italy, hill, mountains, ti"
+        },
+        {
+          "id": "pixabay:7374",
+          "source": "pixabay",
+          "score": 0.1497,
+          "title": "countdown, timer, begin, startup, start sequence, count, pay, zero, writing, nin"
+        },
+        {
+          "id": "pixabay:173522",
+          "source": "pixabay",
+          "score": 0.1321,
+          "title": "mount fuji, morning, clouds, japan, landscape"
+        }
+      ]
+    }
+  ],
+  "music": {
+    "path": null,
+    "title": "Key, Kida &amp; Eddie (feat. ICD) - Sundalo (acoustic)",
+    "source": "openverse/jamendo",
+    "licence": "CC BY 3.0",
+    "licence_url": "https://creativecommons.org/licenses/by/3.0/",
+    "attribution": "\"Key, Kida &amp; Eddie (feat. ICD) - Sundalo (acoustic)\" by Key, Kida &amp; Eddie (CC BY 3.0)",
+    "page_url": "https://www.jamendo.com/track/1522600",
+    "ai_generated": false
+  }
+}

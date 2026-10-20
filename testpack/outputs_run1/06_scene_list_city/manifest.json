@@ -1,0 +1,168 @@
+{
+  "job_id": "job_5f12d948c90240588412",
+  "version": 1,
+  "service": {
+    "name": "incubrix-broll-engine",
+    "version": "1.0.0"
+  },
+  "providers": {
+    "asr": {
+      "name": "faster-whisper",
+      "version": "faster-whisper/base"
+    },
+    "tts": {
+      "name": "gemini-tts",
+      "version": "gemini-3.1-flash-tts-preview",
+      "voice": "en-IN-female"
+    },
+    "input_type": "scenes",
+    "planner": "gemini/gemini-3.5-flash-lite",
+    "relevance_model": {
+      "name": "open_clip",
+      "version": "open_clip/ViT-B-32/laion2b_s34b_b79k"
+    },
+    "footage_sources_enabled": [
+      "pixabay",
+      "coverr",
+      "pexels",
+      "nasa",
+      "wikimedia"
+    ],
+    "footage_sources_used": [
+      "card-renderer",
+      "pixabay"
+    ],
+    "ai_image": null,
+    "music": "openverse/jamendo",
+    "renderer": "ffmpeg",
+    "face_detector": "opencv-haarcascade",
+    "saliency": "spectral-residual (numpy)"
+  },
+  "settings": {
+    "aspect_ratios": [
+      "16:9",
+      "9:16"
+    ],
+    "style": "bright, modern, real-world footage",
+    "avoid": [],
+    "captions": {
+      "burn_in": true,
+      "srt": true
+    },
+    "voice": "en-IN-female",
+    "fps": 30,
+    "stock_min_score_tau": 0.24,
+    "ai_margin": 0.02,
+    "min_scene_seconds": 2.0,
+    "max_scene_seconds": 8.0,
+    "video_preset": "veryfast",
+    "crf": 23
+  },
+  "seed": 1234,
+  "narration": {
+    "seconds": 11.56,
+    "language": "en",
+    "words": 25
+  },
+  "mood": "upbeat",
+  "topic": "City life from dawn to night",
+  "avoid_terms_expanded": [
+    "empty city",
+    "abandoned streets",
+    "darkness"
+  ],
+  "timings_seconds": {
+    "narration": 14.832,
+    "planning": 7.304,
+    "search_and_score": 44.877,
+    "ai_generation": 0.0,
+    "download": 21.151,
+    "music": 40.521,
+    "render": 23.918,
+    "qa": 2.322,
+    "total": 154.986
+  },
+  "cost_estimate_usd": {
+    "total": 0.0,
+    "note": "All providers used on free tiers / open-source models; compute is the host machine."
+  },
+  "warnings": [
+    "PROVIDER_DOWN: 'coverr' failed repeatedly (HTTPStatusError); continuing with other sources",
+    "LOW_RELEVANCE: scene 1 best clip scored 0.239"
+  ],
+  "rights": {
+    "all_commercial_use": true,
+    "clips": [
+      {
+        "scene": 0,
+        "source": "card-renderer",
+        "licence": "Rendered by this service (no third-party rights)",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "ai_generated": false
+      },
+      {
+        "scene": 1,
+        "source": "pixabay",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "attribution": "Video by Coverr-Free-Footage on Pixabay",
+        "ai_generated": false
+      },
+      {
+        "scene": 2,
+        "source": "pixabay",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "attribution": "Video by My_Walking_Diary on Pixabay",
+        "ai_generated": false
+      },
+      {
+        "scene": 3,
+        "source": "pixabay",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "attribution": "Video by Janhom_Footage on Pixabay",
+        "ai_generated": false
+      }
+    ],
+    "music": {
+      "title": "Key, Kida &amp; Eddie (feat. ICD) - Sundalo (acoustic)",
+      "source": "openverse/jamendo",
+      "licence": "CC BY 3.0",
+      "attribution": "\"Key, Kida &amp; Eddie (feat. ICD) - Sundalo (acoustic)\" by Key, Kida &amp; Eddie (CC BY 3.0)",
+      "url": "https://www.jamendo.com/track/1522600"
+    },
+    "narration": "synthetic TTS voice (no real person)"
+  },
+  "qa": {
+    "16:9": {
+      "file": "video_16x9.mp4",
+      "video_codec": "h264",
+      "audio_codec": "aac",
+      "width": 1920,
+      "height": 1080,
+      "pix_fmt": "yuv420p",
+      "fps": 30.0,
+      "video_seconds": 11.567,
+      "audio_seconds": 11.56,
+      "av_drift_seconds": 0.007,
+      "narration_seconds": 11.56,
+      "black_segments": [],
+      "freeze_starts": [],
+      "passed": true
+    },
+    "9:16": {
+      "file": "video_9x16.mp4",
+      "video_codec": "h264",
+      "audio_codec": "aac",
+      "width": 1080,
+      "height": 1920,
+      "pix_fmt": "yuv420p",
+      "fps": 30.0,
+      "video_seconds": 11.567,
+      "audio_seconds": 11.56,
+      "av_drift_seconds": 0.007,
+      "narration_seconds": 11.56,
+      "black_segments": [],
+      "freeze_starts": [],
+      "passed": true
+    }
+  }
+}

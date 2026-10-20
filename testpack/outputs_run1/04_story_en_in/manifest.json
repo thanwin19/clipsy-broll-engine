@@ -1,0 +1,175 @@
+{
+  "job_id": "job_038d9ea68b024b3fa6ec",
+  "version": 1,
+  "service": {
+    "name": "incubrix-broll-engine",
+    "version": "1.0.0"
+  },
+  "providers": {
+    "asr": {
+      "name": "faster-whisper",
+      "version": "faster-whisper/base"
+    },
+    "tts": {
+      "name": "gemini-tts",
+      "version": "gemini-3.1-flash-tts-preview",
+      "voice": "en-IN-male"
+    },
+    "input_type": "script",
+    "planner": "gemini/gemini-3.5-flash-lite",
+    "relevance_model": {
+      "name": "open_clip",
+      "version": "open_clip/ViT-B-32/laion2b_s34b_b79k"
+    },
+    "footage_sources_enabled": [
+      "pixabay",
+      "coverr",
+      "pexels",
+      "nasa",
+      "wikimedia"
+    ],
+    "footage_sources_used": [
+      "card-renderer",
+      "pixabay"
+    ],
+    "ai_image": null,
+    "music": "openverse/jamendo",
+    "renderer": "ffmpeg",
+    "face_detector": "opencv-haarcascade",
+    "saliency": "spectral-residual (numpy)"
+  },
+  "settings": {
+    "aspect_ratios": [
+      "16:9",
+      "9:16"
+    ],
+    "style": "bright, modern, real-world footage",
+    "avoid": [],
+    "captions": {
+      "burn_in": true,
+      "srt": true
+    },
+    "voice": "en-IN-male",
+    "fps": 30,
+    "stock_min_score_tau": 0.24,
+    "ai_margin": 0.02,
+    "min_scene_seconds": 2.0,
+    "max_scene_seconds": 8.0,
+    "video_preset": "veryfast",
+    "crf": 23
+  },
+  "seed": 1234,
+  "narration": {
+    "seconds": 21.72,
+    "language": "en",
+    "words": 53
+  },
+  "mood": "inspiring",
+  "topic": "fisherman resilience",
+  "avoid_terms_expanded": [
+    "luxury",
+    "yacht",
+    "modern ship"
+  ],
+  "timings_seconds": {
+    "narration": 17.871,
+    "planning": 13.554,
+    "search_and_score": 67.999,
+    "ai_generation": 0.001,
+    "download": 53.525,
+    "music": 6.556,
+    "render": 47.466,
+    "qa": 6.829,
+    "total": 213.874
+  },
+  "cost_estimate_usd": {
+    "total": 0.0,
+    "note": "All providers used on free tiers / open-source models; compute is the host machine."
+  },
+  "warnings": [
+    "PROVIDER_DOWN: 'coverr' failed repeatedly (HTTPStatusError); continuing with other sources",
+    "CLIP_DOWNLOAD_FAILED: scene 1 pixabay:154325 (ProviderDown); replaced"
+  ],
+  "rights": {
+    "all_commercial_use": true,
+    "clips": [
+      {
+        "scene": 0,
+        "source": "pixabay",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "attribution": "Video by redkitetrees on Pixabay",
+        "ai_generated": false
+      },
+      {
+        "scene": 1,
+        "source": "pixabay",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "attribution": "Video by Mario_Krimer on Pixabay",
+        "ai_generated": false
+      },
+      {
+        "scene": 2,
+        "source": "pixabay",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "attribution": "Video by doktorkleinmusic on Pixabay",
+        "ai_generated": false
+      },
+      {
+        "scene": 3,
+        "source": "pixabay",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "attribution": "Video by TonyDias7 on Pixabay",
+        "ai_generated": false
+      },
+      {
+        "scene": 4,
+        "source": "card-renderer",
+        "licence": "Rendered by this service (no third-party rights)",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "ai_generated": false
+      }
+    ],
+    "music": {
+      "title": "Inspiring Progress",
+      "source": "openverse/jamendo",
+      "licence": "CC BY 3.0",
+      "attribution": "\"Inspiring Progress\" by Soundrider/Dope (CC BY 3.0)",
+      "url": "https://www.jamendo.com/track/1670591"
+    },
+    "narration": "synthetic TTS voice (no real person)"
+  },
+  "qa": {
+    "16:9": {
+      "file": "video_16x9.mp4",
+      "video_codec": "h264",
+      "audio_codec": "aac",
+      "width": 1920,
+      "height": 1080,
+      "pix_fmt": "yuv420p",
+      "fps": 30.0,
+      "video_seconds": 21.733,
+      "audio_seconds": 21.72,
+      "av_drift_seconds": 0.013,
+      "narration_seconds": 21.72,
+      "black_segments": [],
+      "freeze_starts": [],
+      "passed": true
+    },
+    "9:16": {
+      "file": "video_9x16.mp4",
+      "video_codec": "h264",
+      "audio_codec": "aac",
+      "width": 1080,
+      "height": 1920,
+      "pix_fmt": "yuv420p",
+      "fps": 30.0,
+      "video_seconds": 21.733,
+      "audio_seconds": 21.72,
+      "av_drift_seconds": 0.013,
+      "narration_seconds": 21.72,
+      "black_segments": [],
+      "freeze_starts": [],
+      "passed": true
+    }
+  }
+}

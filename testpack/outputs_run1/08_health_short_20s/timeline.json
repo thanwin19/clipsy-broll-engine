@@ -1,0 +1,181 @@
+{
+  "job_id": "job_00104de584dc44e1aa35",
+  "version": 1,
+  "narration_seconds": 8.24,
+  "language": "en",
+  "transcript": "Drinking enough water keeps your body and mind sharp. Start every morning with a full glass.",
+  "aspect_ratios": [
+    "16:9",
+    "9:16"
+  ],
+  "mood": "upbeat",
+  "selection_rule": "Per scene: (1) statistics -> animated stat card. (2) Stock candidates from category-suited sources are scored with CLIP (image vs scene visual plan + narration, minus penalty for negative/avoid terms); unsafe candidates (avoid list, faces when avoided, AI for people/brands/sensitive) are removed. (3) Global assignment takes the highest (scene, clip) pairs first, each clip used once, if score >= tau=0.24. (4) If a scene's best stock score < tau+0.03 and AI is allowed, an AI image is generated and wins only if its CLIP score >= stock + 0.02. (5) Otherwise the best unused clip within 0.03 of tau, else a text card.",
+  "scenes": [
+    {
+      "scene": 0,
+      "start": 0.0,
+      "end": 4.88,
+      "duration": 4.88,
+      "narration": "Drinking enough water keeps your body and mind sharp.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "health",
+      "visual_plan": "A person drinking clean water from a clear glass in bright morning sunlight.",
+      "queries": [
+        "drinking fresh water",
+        "glass of water",
+        "hydration healthy lifestyle"
+      ],
+      "negative_terms": [
+        "dirty water",
+        "plastic bottle",
+        "soda"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:3697",
+        "kind": "video",
+        "title": "water, glass, liquid, drink, health",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-3697/",
+        "media_url": "https://cdn.pixabay.com/video/2016/07/03/3697-173530293_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by igna1973 on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "glass of water"
+      },
+      "reason": "stock: pixabay clip scored 0.312 >= tau 0.24; best unused of 17 safe candidates",
+      "relevance_score": 0.312,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.312,
+        "negative_max": 0.2588,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.528,
+      "alternatives": [
+        {
+          "id": "pixabay:3697",
+          "source": "pixabay",
+          "score": 0.312,
+          "title": "water, glass, liquid, drink, health"
+        },
+        {
+          "id": "pixabay:95",
+          "source": "pixabay",
+          "score": 0.285,
+          "title": "drink, water, glass, pouring, refreshment, refreshing, reflection, liquid, full,"
+        },
+        {
+          "id": "pixabay:81173",
+          "source": "pixabay",
+          "score": 0.2666,
+          "title": "water, drink, glass, beverage, liquid, drop of water"
+        },
+        {
+          "id": "pixabay:5288",
+          "source": "pixabay",
+          "score": 0.246,
+          "title": "water, drink, drinking fountain, fontana, thirst, fresh, distributor"
+        },
+        {
+          "id": "pixabay:79872",
+          "source": "pixabay",
+          "score": 0.2449,
+          "title": "glass, mineral water, blow, vitamins, fresh, water, healthy, water glass, refres"
+        }
+      ]
+    },
+    {
+      "scene": 1,
+      "start": 4.88,
+      "end": 8.24,
+      "duration": 3.36,
+      "narration": "Start every morning with a full glass.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "health",
+      "visual_plan": "Pouring fresh water into a glass on a bright kitchen counter at the start of the day.",
+      "queries": [
+        "pouring water glass",
+        "morning routine water",
+        "fresh water pitcher"
+      ],
+      "negative_terms": [
+        "night time",
+        "dirty glass",
+        "juice"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:25174",
+        "kind": "video",
+        "title": "glass, drink, liquid, pouring, water, natural, relax, bubbles, bubble",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-25174/",
+        "media_url": "https://cdn.pixabay.com/video/2019/07/12/25174-348110791_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by moshehar on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "pouring water glass"
+      },
+      "reason": "stock: pixabay clip scored 0.270 >= tau 0.24; best unused of 17 safe candidates",
+      "relevance_score": 0.2698,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2963,
+        "negative_max": 0.3029,
+        "penalty": 0.0265
+      },
+      "reframe_subject_x": 0.526,
+      "alternatives": [
+        {
+          "id": "pixabay:25174",
+          "source": "pixabay",
+          "score": 0.2698,
+          "title": "glass, drink, liquid, pouring, water, natural, relax, bubbles, bubble"
+        },
+        {
+          "id": "pixabay:23955",
+          "source": "pixabay",
+          "score": 0.2695,
+          "title": "tea, kettle, hot, pour, glass, drink, liquid, pouring, water, natural"
+        },
+        {
+          "id": "pixabay:95",
+          "source": "pixabay",
+          "score": 0.2614,
+          "title": "drink, water, glass, pouring, refreshment, refreshing, reflection, liquid, full,"
+        },
+        {
+          "id": "pixabay:8253",
+          "source": "pixabay",
+          "score": 0.1885,
+          "title": "water, pouring, glass, liquid, thirst, thirsty, clean, blue, clear, drink, fresh"
+        },
+        {
+          "id": "pixabay:79872",
+          "source": "pixabay",
+          "score": 0.1419,
+          "title": "glass, mineral water, blow, vitamins, fresh, water, healthy, water glass, refres"
+        }
+      ]
+    }
+  ],
+  "music": {
+    "path": null,
+    "title": "Key, Kida &amp; Eddie (feat. ICD) - Sundalo (acoustic)",
+    "source": "openverse/jamendo",
+    "licence": "CC BY 3.0",
+    "licence_url": "https://creativecommons.org/licenses/by/3.0/",
+    "attribution": "\"Key, Kida &amp; Eddie (feat. ICD) - Sundalo (acoustic)\" by Key, Kida &amp; Eddie (CC BY 3.0)",
+    "page_url": "https://www.jamendo.com/track/1522600",
+    "ai_generated": false
+  }
+}

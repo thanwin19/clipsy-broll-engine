@@ -1,0 +1,105 @@
+{
+  "job_id": "job_77a46df19955401ea8d9",
+  "version": 1,
+  "narration_seconds": 6.808,
+  "language": "en",
+  "transcript": "Friday evening in the city. Friends meet at a rooftop restaurant and share dinner as the sun goes down.",
+  "aspect_ratios": [
+    "16:9",
+    "9:16"
+  ],
+  "mood": "upbeat",
+  "selection_rule": "Per scene: (1) statistics -> animated stat card. (2) Stock candidates from category-suited sources are scored with CLIP (image vs scene visual plan + narration, minus penalty for negative/avoid terms); unsafe candidates (avoid list, faces when avoided, AI for people/brands/sensitive) are removed. (3) Global assignment takes the highest (scene, clip) pairs first, each clip used once, if score >= tau=0.24. (4) If a scene's best stock score < tau+0.03 and AI is allowed, an AI image is generated and wins only if its CLIP score >= stock + 0.02. (5) Otherwise the best unused clip within 0.03 of tau, else a text card.",
+  "scenes": [
+    {
+      "scene": 0,
+      "start": 0.0,
+      "end": 6.808,
+      "duration": 6.808,
+      "narration": "Friday evening in the city. Friends meet at a rooftop restaurant and share dinner as the sun goes down.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "everyday",
+      "visual_plan": "A cinematic wide shot of a vibrant rooftop restaurant in a city during sunset, with silhouettes of people enjoying dinner.",
+      "queries": [
+        "rooftop restaurant sunset",
+        "city skyline evening",
+        "friends dining outdoors",
+        "golden hour city view"
+      ],
+      "negative_terms": [
+        "close up face",
+        "alcohol bottle",
+        "bar counter",
+        "indoor dark"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:1192",
+        "kind": "video",
+        "title": "restaurant, buffet, cuisine, dinner, lunch, food, dining, meal, delicious, restaurant food, fresh, service, banquet, dish, catering, tasty, gourmet, decorative, luxury, prepared, gourmet food, appetizer, 133411649",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-1192/",
+        "media_url": "https://cdn.pixabay.com/video/2015/10/27/1192-143842659_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by Vimeo-Free-Videos on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "rooftop restaurant sunset"
+      },
+      "reason": "stock: pixabay clip scored 0.285 >= tau 0.24; best unused of 16 safe candidates",
+      "relevance_score": 0.2846,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2846,
+        "negative_max": 0.2603,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.521,
+      "alternatives": [
+        {
+          "id": "pixabay:1192",
+          "source": "pixabay",
+          "score": 0.2846,
+          "title": "restaurant, buffet, cuisine, dinner, lunch, food, dining, meal, delicious, resta"
+        },
+        {
+          "id": "pixabay:4726",
+          "source": "pixabay",
+          "score": 0.257,
+          "title": "city, urban, dusk, twilight, sunset, evening, romantic, setting sun, sundown, to"
+        },
+        {
+          "id": "pixabay:2339",
+          "source": "pixabay",
+          "score": 0.2336,
+          "title": "lunch, meal, people, tea cup, tea, couple, table, restaurant, diner, service, fo"
+        },
+        {
+          "id": "pixabay:154276",
+          "source": "pixabay",
+          "score": 0.2297,
+          "title": "sunset, lake, restaurant, pier, clouds, afternoon, water"
+        },
+        {
+          "id": "pixabay:3134",
+          "source": "pixabay",
+          "score": 0.2224,
+          "title": "city, night, lights, urban, cityscape, skyline, architecture, skyscraper, downto"
+        }
+      ]
+    }
+  ],
+  "music": {
+    "path": null,
+    "title": "Key, Kida &amp; Eddie (feat. ICD) - Sundalo (acoustic)",
+    "source": "openverse/jamendo",
+    "licence": "CC BY 3.0",
+    "licence_url": "https://creativecommons.org/licenses/by/3.0/",
+    "attribution": "\"Key, Kida &amp; Eddie (feat. ICD) - Sundalo (acoustic)\" by Key, Kida &amp; Eddie (CC BY 3.0)",
+    "page_url": "https://www.jamendo.com/track/1522600",
+    "ai_generated": false
+  }
+}

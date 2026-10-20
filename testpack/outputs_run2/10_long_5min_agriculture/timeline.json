@@ -1,0 +1,2892 @@
+{
+  "job_id": "job_d7b0bf8f139a49e6aee0",
+  "version": 1,
+  "narration_seconds": 336.168,
+  "language": "en",
+  "transcript": "Climate change is reshaping the way we grow food. Farmers in many regions now face longer dry seasons and sudden heavy rains. Some are switching to crops that need less water, like millets and pulses. Others use drip irrigation to deliver water straight to the roots. Solar pumps are replacing diesel engines in many villages, cutting both cost and pollution. In cities, rooftop gardens and vertical farms grow vegetables close to the people who eat them. Scientists are breeding rice that can survive under water for two weeks. Weather apps on simple phones warn farmers before storms arrive. Cooperatives help small farmers share tractors, storage and fair prices. Soil health cards tell each farmer exactly which nutrients the field needs. Planting trees along field borders protects crops from wind and keeps the soil moist. Climate change is reshaping the way we grow food. Farmers in many regions now face longer dry seasons and sudden heavy rains. Some are switching to crops that need less water, like millets and pulses. Others use drip irrigation to deliver water straight to the roots. Solar pumps are replacing diesel engines in many villages, cutting both cost and pollution. In cities, rooftop gardens and vertical farms grow vegetables close to the people who eat them. Scientists are breeding rice that can survive under water for two weeks. Weather apps on simple phones warn farmers before storms arrive. Cooperatives help small farmers share tractors, storage and fair prices. Soil health cards tell each farmer exactly which nutrients the field needs. Planting trees along field borders protects crops from wind and keeps the soil moist. Climate change is reshaping the way we grow food. Farmers in many regions now face longer dry seasons and sudden heavy rains. Some are switching to crops that need less water, like millets and pulses. Others use drip irrigation to deliver water straight to the roots. Solar pumps are replacing diesel engines in many villages, cutting both cost and pollution. In cities, rooftop gardens and vertical farms grow vegetables close to the people who eat them. Scientists are breeding rice that can survive under water for two weeks. Weather apps on simple phones warn farmers before storms arrive. Cooperatives help small farmers share tractors, storage and fair prices. Soil health cards tell each farmer exactly which nutrients the field needs. Planting trees along field borders protects crops from wind and keeps the soil moist. Climate change is reshaping the way we grow food. Farmers in many regions now face longer dry seasons and sudden heavy rains. Some are switching to crops that need less water, like millets and pulses. Others use drip irrigation to deliver water straight to the roots. Solar pumps are replacing diesel engines in many villages, cutting both cost and pollution. In cities, rooftop gardens and vertical farms grow vegetables close to the people who eat them. Scientists are breeding rice that can survive under water for two weeks. Weather apps on simple phones warn farmers before storms arrive. Cooperatives help small farmers share tractors, storage and fair prices. Soil health cards tell each farmer exactly which nutrients the field needs. Planting trees along field borders protects crops from wind and keeps the soil moist.",
+  "aspect_ratios": [
+    "16:9"
+  ],
+  "mood": "inspiring",
+  "selection_rule": "Per scene: (1) statistics -> animated stat card. (2) Stock candidates from category-suited sources are scored with CLIP (image vs scene visual plan + narration, minus penalty for negative/avoid terms); unsafe candidates (avoid list, faces when avoided, AI for people/brands/sensitive) are removed. (3) Global assignment takes the highest (scene, clip) pairs first, each clip used once, if score >= tau=0.24. (4) If a scene's best stock score < tau+0.03 and AI is allowed, an AI image is generated and wins only if its CLIP score >= stock + 0.02. (5) Otherwise the best unused clip within 0.03 of tau, else a text card.",
+  "scenes": [
+    {
+      "scene": 0,
+      "start": 0.0,
+      "end": 3.28,
+      "duration": 3.28,
+      "narration": "Climate change is reshaping the way we grow food.",
+      "visual_hint": null,
+      "scene_type": "metaphor",
+      "category": "nature",
+      "visual_plan": "A wide-angle shot of a green agricultural field under a dynamic sky.",
+      "queries": [
+        "green farm field",
+        "agriculture landscape drone",
+        "farming crops aerial"
+      ],
+      "negative_terms": [
+        "barren land",
+        "factory"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:121951",
+        "kind": "video",
+        "title": "drone, corn, field, nature, landscape, agriculture, farming, sky",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-121951/",
+        "media_url": "https://cdn.pixabay.com/video/2022/06/24/121951-724732134_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by JohnKarton on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "agriculture landscape drone"
+      },
+      "reason": "stock: pixabay clip scored 0.312 >= tau 0.24; best unused of 34 safe candidates",
+      "relevance_score": 0.3124,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.3124,
+        "negative_max": 0.2274,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.508,
+      "alternatives": [
+        {
+          "id": "pixabay:121951",
+          "source": "pixabay",
+          "score": 0.3124,
+          "title": "drone, corn, field, nature, landscape, agriculture, farming, sky"
+        },
+        {
+          "id": "pixabay:182918",
+          "source": "pixabay",
+          "score": 0.3026,
+          "title": "fields, green fields, grass, agriculture, drone, nature, landscape"
+        },
+        {
+          "id": "pixabay:313652",
+          "source": "pixabay",
+          "score": 0.2914,
+          "title": "corn field, maize field, young corn, sprouting corn, planted field, crop rows, a"
+        },
+        {
+          "id": "coverr:Bdr5NfQZ19",
+          "source": "coverr",
+          "score": 0.2616,
+          "title": "Barley crop field"
+        },
+        {
+          "id": "coverr:tHO30foset",
+          "source": "coverr",
+          "score": 0.253,
+          "title": "Sun setting over a barley crop field"
+        }
+      ]
+    },
+    {
+      "scene": 1,
+      "start": 3.28,
+      "end": 8.34,
+      "duration": 5.06,
+      "narration": "Farmers in many regions now face longer dry seasons and sudden heavy rains.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "nature",
+      "visual_plan": "A split conceptual view or sequence of dry cracked earth and heavy rain over a field.",
+      "queries": [
+        "heavy rain on crops",
+        "cracked dry soil",
+        "storm clouds farm"
+      ],
+      "negative_terms": [
+        "flooded city",
+        "severe disaster"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "wikimedia:186473790",
+        "kind": "video",
+        "title": "File:Irrigation and Water (20210604-NRCS-LSC-0543).webm",
+        "source": "wikimedia",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Irrigation_and_Water_(20210604-NRCS-LSC-0543).webm",
+        "media_url": "https://upload.wikimedia.org/wikipedia/commons/b/b4/Irrigation_and_Water_%2820210604-NRCS-LSC-0543%29.webm?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "licence": "Public domain",
+        "licence_url": "",
+        "attribution": "USDAgov via Wikimedia Commons (Public domain)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "storm clouds farm"
+      },
+      "reason": "stock: wikimedia clip scored 0.288 >= tau 0.24; best unused of 17 safe candidates",
+      "relevance_score": 0.2876,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2876,
+        "negative_max": 0.2432,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.482,
+      "alternatives": [
+        {
+          "id": "wikimedia:186473790",
+          "source": "wikimedia",
+          "score": 0.2876,
+          "title": "File:Irrigation and Water (20210604-NRCS-LSC-0543).webm"
+        },
+        {
+          "id": "wikimedia:186474007",
+          "source": "wikimedia",
+          "score": 0.2741,
+          "title": "File:Irrigation and Water (20210603-NRCS-LSC-0004).webm"
+        },
+        {
+          "id": "pixabay:26369",
+          "source": "pixabay",
+          "score": 0.2532,
+          "title": "rain, heavy rain, country rain, downpour, cloudburst, raindrop, rainy season, ra"
+        },
+        {
+          "id": "pixabay:303917",
+          "source": "pixabay",
+          "score": 0.242,
+          "title": "wheat, field, barn, sky, clouds, dramatic, farm, rural, landscape, nature, golde"
+        },
+        {
+          "id": "wikimedia:186473863",
+          "source": "wikimedia",
+          "score": 0.2295,
+          "title": "File:Irrigation and Water (20210603-NRCS-LSC-0448).webm"
+        }
+      ]
+    },
+    {
+      "scene": 2,
+      "start": 8.34,
+      "end": 12.52,
+      "duration": 4.18,
+      "narration": "Some are switching to crops that need less water, like millets and pulses.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "business",
+      "visual_plan": "Close-up of harvested grains like millets in a farmer's hands.",
+      "queries": [
+        "millets in hands",
+        "grains harvest agriculture",
+        "pulses seeds crop"
+      ],
+      "negative_terms": [
+        "packaged food",
+        "supermarket shelf"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:73847",
+        "kind": "video",
+        "title": "sand, hand, beach, dessert, sea, live wallpaper",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-73847/",
+        "media_url": "https://cdn.pixabay.com/video/2021/05/11/73847-549547533_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by JustY\u00f8u on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "millets in hands"
+      },
+      "reason": "stock: pixabay clip scored 0.281 >= tau 0.24; best unused of 18 safe candidates",
+      "relevance_score": 0.2805,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2805,
+        "negative_max": 0.2408,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.528,
+      "alternatives": [
+        {
+          "id": "pixabay:73847",
+          "source": "pixabay",
+          "score": 0.2805,
+          "title": "sand, hand, beach, dessert, sea, live wallpaper"
+        },
+        {
+          "id": "pixabay:380106",
+          "source": "pixabay",
+          "score": 0.2626,
+          "title": "rice, grain, before harvest, yamada's rice fields, agriculture, countryside, win"
+        },
+        {
+          "id": "pixabay:86120",
+          "source": "pixabay",
+          "score": 0.2169,
+          "title": "harvest, grain harvest, agriculture, field, combine harvester, summer, agricultu"
+        },
+        {
+          "id": "pixabay:86119",
+          "source": "pixabay",
+          "score": 0.2111,
+          "title": "harvest, grain harvest, agriculture, field, combine harvester, summer, agricultu"
+        },
+        {
+          "id": "pixabay:86122",
+          "source": "pixabay",
+          "score": 0.1698,
+          "title": "harvest, grain harvest, agriculture, field, combine harvester, summer, agricultu"
+        }
+      ]
+    },
+    {
+      "scene": 3,
+      "start": 12.52,
+      "end": 16.58,
+      "duration": 4.06,
+      "narration": "Others use drip irrigation to deliver water straight to the roots.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "technology",
+      "visual_plan": "Drip irrigation tubes watering green plants in a neat row.",
+      "queries": [
+        "drip irrigation system",
+        "watering plants farm",
+        "modern crop irrigation"
+      ],
+      "negative_terms": [
+        "broken pipe",
+        "flood"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:44765",
+        "kind": "video",
+        "title": "watering, sprinkler, garden, green, agriculture, bio garden, irrigated, bio, irrigation, plant, water, food, grow, summer, growth, organic, farm, gardening, fresh, healthy, cultures, farmer, sun",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-44765/",
+        "media_url": "https://cdn.pixabay.com/video/2020/07/15/44765-440000959_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by FreeCreativeStuff on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "watering plants farm"
+      },
+      "reason": "stock: pixabay clip scored 0.282 >= tau 0.24; best unused of 16 safe candidates",
+      "relevance_score": 0.2825,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2825,
+        "negative_max": 0.2145,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.569,
+      "alternatives": [
+        {
+          "id": "pixabay:44765",
+          "source": "pixabay",
+          "score": 0.2825,
+          "title": "watering, sprinkler, garden, green, agriculture, bio garden, irrigated, bio, irr"
+        },
+        {
+          "id": "pixabay:48233",
+          "source": "pixabay",
+          "score": 0.237,
+          "title": "flower, water, watering can, to water, irrigation, slow motion, plant, blossom, "
+        },
+        {
+          "id": "pixabay:44758",
+          "source": "pixabay",
+          "score": 0.1862,
+          "title": "garden, green, sprinkler, agriculture, bio garden, irrigated, bio, irrigation, p"
+        },
+        {
+          "id": "pixabay:218389",
+          "source": "pixabay",
+          "score": 0.1818,
+          "title": "hemp, plant, crop, leaves, green, nature"
+        },
+        {
+          "id": "pixabay:82188",
+          "source": "pixabay",
+          "score": 0.1743,
+          "title": "flower, to water, watering can, irrigation, wet, water, gardening, slow motion"
+        }
+      ]
+    },
+    {
+      "scene": 4,
+      "start": 16.58,
+      "end": 22.0,
+      "duration": 5.42,
+      "narration": "Solar pumps are replacing diesel engines in many villages, cutting both cost and pollution.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "technology",
+      "visual_plan": "Solar panels installed near a farm field providing energy.",
+      "queries": [
+        "solar panels farm",
+        "solar pump agriculture",
+        "renewable energy rural"
+      ],
+      "negative_terms": [
+        "diesel generator",
+        "smoke pollution"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:230511",
+        "kind": "video",
+        "title": "solar panels, energy, green, photovoltaic, sustainable, tordesillas, valladolid, castilla, farming, wind",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-230511/",
+        "media_url": "https://cdn.pixabay.com/video/2024/09/09/230511_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by SdCPro on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "solar panels farm"
+      },
+      "reason": "stock: pixabay clip scored 0.283 >= tau 0.24; best unused of 16 safe candidates",
+      "relevance_score": 0.2833,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2833,
+        "negative_max": 0.1809,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.541,
+      "alternatives": [
+        {
+          "id": "pixabay:230511",
+          "source": "pixabay",
+          "score": 0.2833,
+          "title": "solar panels, energy, green, photovoltaic, sustainable, tordesillas, valladolid,"
+        },
+        {
+          "id": "pixabay:230510",
+          "source": "pixabay",
+          "score": 0.281,
+          "title": "solar panels, energy, green, photovoltaic, sustainable, tordesillas, valladolid,"
+        },
+        {
+          "id": "pixabay:230515",
+          "source": "pixabay",
+          "score": 0.2724,
+          "title": "solar panels, energy, green, photovoltaic, sustainable, tordesillas, valladolid,"
+        },
+        {
+          "id": "pixabay:230514",
+          "source": "pixabay",
+          "score": 0.272,
+          "title": "solar panels, energy, green, photovoltaic, sustainable, tordesillas, valladolid,"
+        },
+        {
+          "id": "pixabay:156444",
+          "source": "pixabay",
+          "score": 0.2585,
+          "title": "solar energy, sunlight, sun, energy, energy generation, energy production, renew"
+        }
+      ]
+    },
+    {
+      "scene": 5,
+      "start": 22.0,
+      "end": 27.42,
+      "duration": 5.42,
+      "narration": "In cities, rooftop gardens and vertical farms grow vegetables close to the people who eat them.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "business",
+      "visual_plan": "A modern rooftop urban farm with green leafy vegetables growing in rows.",
+      "queries": [
+        "rooftop farm city",
+        "vertical farming indoor",
+        "urban agriculture greens"
+      ],
+      "negative_terms": [
+        "abandoned roof",
+        "garbage"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:342536",
+        "kind": "video",
+        "title": "urban gardening, sustainable lifestyle, city farming, rooftop garden, environmental conservation, plant growth, eco-friendly living, organic food production, food security concept, gardening hobby, young man, nature in the city, urban agriculture, sustainability, hobby, growth, rooftop, city skyline, evening light, golden hour, close up, green, terracotta, blue, blurred background, ai generated",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-342536/",
+        "media_url": "https://cdn.pixabay.com/video/2026/03/26/342536_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by MrWashingt0n on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "rooftop farm city"
+      },
+      "reason": "stock: pixabay clip scored 0.254 >= tau 0.24; best unused of 13 safe candidates",
+      "relevance_score": 0.2539,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2539,
+        "negative_max": 0.1587,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.474,
+      "alternatives": [
+        {
+          "id": "pixabay:342536",
+          "source": "pixabay",
+          "score": 0.2539,
+          "title": "urban gardening, sustainable lifestyle, city farming, rooftop garden, environmen"
+        },
+        {
+          "id": "pixabay:144300",
+          "source": "pixabay",
+          "score": 0.1346,
+          "title": "village, house, farm, rural, drone, indonesia, green, trees, 4k, agriculture, ae"
+        },
+        {
+          "id": "pixabay:282084",
+          "source": "pixabay",
+          "score": 0.1317,
+          "title": "village, aerial view, residential district, house, suburb, city, europe, dutch c"
+        },
+        {
+          "id": "pixabay:66810",
+          "source": "pixabay",
+          "score": 0.1067,
+          "title": "grass, dew, field, fog, morning, nature, sunshine, green, grassland, farm, sunli"
+        },
+        {
+          "id": "pixabay:307864",
+          "source": "pixabay",
+          "score": 0.0939,
+          "title": "wind, electricity, windpower, rice, vietnam, nature, farming, green, sunset"
+        }
+      ]
+    },
+    {
+      "scene": 6,
+      "start": 27.42,
+      "end": 31.42,
+      "duration": 4.0,
+      "narration": "Scientists are breeding rice that can survive under water for two weeks.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "technology",
+      "visual_plan": "Rice seedlings growing in a flooded experimental paddy field.",
+      "queries": [
+        "rice paddy field",
+        "rice crop water",
+        "agriculture research plant"
+      ],
+      "negative_terms": [
+        "dry dirt"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:380106",
+        "kind": "video",
+        "title": "rice, grain, before harvest, yamada's rice fields, agriculture, countryside, wind, partly cloudy",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-380106/",
+        "media_url": "https://cdn.pixabay.com/video/2026/10/01/380106_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by Kanenori on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "rice crop water"
+      },
+      "reason": "stock: pixabay clip scored 0.315 >= tau 0.24; best unused of 18 safe candidates",
+      "relevance_score": 0.3151,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.3151,
+        "negative_max": 0.2424,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.505,
+      "alternatives": [
+        {
+          "id": "pixabay:380106",
+          "source": "pixabay",
+          "score": 0.3151,
+          "title": "rice, grain, before harvest, yamada's rice fields, agriculture, countryside, win"
+        },
+        {
+          "id": "pixabay:42092",
+          "source": "pixabay",
+          "score": 0.2935,
+          "title": "birds, paddy, rice, nature, peace, vietnam, field, countryside"
+        },
+        {
+          "id": "pixabay:11022",
+          "source": "pixabay",
+          "score": 0.2831,
+          "title": "rice field, agriculture, thailand, rice, asia, rural, food, land, country, count"
+        },
+        {
+          "id": "pixabay:283431",
+          "source": "pixabay",
+          "score": 0.2701,
+          "title": "night view, yamada's rice fields, rice farming, rice terraces, starry sky, milky"
+        },
+        {
+          "id": "pixabay:231246",
+          "source": "pixabay",
+          "score": 0.262,
+          "title": "field, paddy field, plantation, agriculture, rural, rice, plant, paddy, farmer, "
+        }
+      ]
+    },
+    {
+      "scene": 7,
+      "start": 31.42,
+      "end": 270.4,
+      "duration": 238.98,
+      "narration": "Weather apps on simple phones warn farmers before storms arrive.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "technology",
+      "visual_plan": "A smartphone displaying a weather forecast app outdoors on a farm.",
+      "queries": [
+        "weather app smartphone",
+        "mobile phone farm",
+        "digital agriculture app"
+      ],
+      "negative_terms": [
+        "broken screen",
+        "gaming"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:38084",
+        "kind": "video",
+        "title": "woman, phone, smartphone, technology, mobile, telephone, cellphone, person, female, wireless, device, media, communication, people, holding, business",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-38084/",
+        "media_url": "https://cdn.pixabay.com/video/2020/05/04/38084-416330724_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by mephala1980 on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "weather app smartphone"
+      },
+      "reason": "auto-replaced by QA (black/frozen frames); pixabay scored 0.172",
+      "relevance_score": 0.1716,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.1959,
+        "negative_max": 0.1901,
+        "penalty": 0.0143,
+        "short_clip_penalty": 0.01
+      },
+      "reframe_subject_x": 0.444,
+      "alternatives": [
+        {
+          "id": "pixabay:142641",
+          "source": "pixabay",
+          "score": 0.2081,
+          "title": "man, phone, smartphone, mobile"
+        },
+        {
+          "id": "pixabay:16685",
+          "source": "pixabay",
+          "score": 0.1728,
+          "title": "field, cornfield, agriculture, cereals, nature, summer, harvest, barley, spike, "
+        },
+        {
+          "id": "pixabay:38084",
+          "source": "pixabay",
+          "score": 0.1716,
+          "title": "woman, phone, smartphone, technology, mobile, telephone, cellphone, person, fema"
+        },
+        {
+          "id": "pixabay:736",
+          "source": "pixabay",
+          "score": 0.1662,
+          "title": "iphone, smartphone, scrolling, mobile, device, technology, cellphone, smart phon"
+        },
+        {
+          "id": "pixabay:8255",
+          "source": "pixabay",
+          "score": 0.1474,
+          "title": "iphone, photo, photography, pictures, smartphone, app, touchscreen, device, elec"
+        }
+      ]
+    },
+    {
+      "scene": 8,
+      "start": 270.4,
+      "end": 275.68,
+      "duration": 5.28,
+      "narration": "Cooperatives help small farmers share tractors, storage and fair prices.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "business",
+      "visual_plan": "A modern agricultural storage warehouse with organized crates and equipment.",
+      "queries": [
+        "agriculture storage warehouse",
+        "farm cooperative storage",
+        "farming equipment shed"
+      ],
+      "negative_terms": [
+        "empty warehouse",
+        "dark ruins"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:8",
+        "kind": "card",
+        "title": "Card: Cooperatives help small farmers share tractors, storage and ",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [
+        {
+          "id": "pixabay:43628",
+          "source": "pixabay",
+          "score": 0.1967,
+          "title": "forklift, loader, warehouse, vehicle, machine, pallet, equipment, freight, const"
+        },
+        {
+          "id": "pixabay:43658",
+          "source": "pixabay",
+          "score": 0.1844,
+          "title": "amazon, box, parcels, warehouse, post, shelf, rack, shipping, transport, cargo, "
+        },
+        {
+          "id": "pixabay:124122",
+          "source": "pixabay",
+          "score": 0.1585,
+          "title": "hay, bales, agriculture, summer, storage area"
+        },
+        {
+          "id": "pixabay:232561",
+          "source": "pixabay",
+          "score": 0.1487,
+          "title": "tractor, field, wheat, harvest, combine, agriculture, grain, farming, summer, ma"
+        },
+        {
+          "id": "pixabay:16685",
+          "source": "pixabay",
+          "score": 0.1421,
+          "title": "field, cornfield, agriculture, cereals, nature, summer, harvest, barley, spike, "
+        }
+      ]
+    },
+    {
+      "scene": 9,
+      "start": 275.68,
+      "end": 280.62,
+      "duration": 4.94,
+      "narration": "Soil health cards tell each farmer exactly which nutrients the field needs.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "technology",
+      "visual_plan": "A close-up of fertile soil being tested in a modern agricultural setup.",
+      "queries": [
+        "soil health test",
+        "fertle soil close up",
+        "agriculture soil sample"
+      ],
+      "negative_terms": [
+        "pollution",
+        "dry dust"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:166485",
+        "kind": "video",
+        "title": "tractor, crops, planting, soil, equipment, farming, agriculture, drone, aerial",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-166485/",
+        "media_url": "https://cdn.pixabay.com/video/2023/06/09/166485-834930379_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by kingimaging on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "agriculture soil sample"
+      },
+      "reason": "stock (low confidence): pixabay scored 0.212 (< tau 0.24, within 0.03); no AI option",
+      "relevance_score": 0.2125,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2359,
+        "negative_max": 0.2394,
+        "penalty": 0.0234
+      },
+      "reframe_subject_x": 0.473,
+      "alternatives": [
+        {
+          "id": "pixabay:166485",
+          "source": "pixabay",
+          "score": 0.2125,
+          "title": "tractor, crops, planting, soil, equipment, farming, agriculture, drone, aerial"
+        },
+        {
+          "id": "pixabay:99548",
+          "source": "pixabay",
+          "score": 0.1917,
+          "title": "grass, green, meadow, plain, agriculture, football, beautiful wallpaper, field, "
+        },
+        {
+          "id": "pixabay:76395",
+          "source": "pixabay",
+          "score": 0.1704,
+          "title": "laboratory, test, tube, chemistry, hospital, research, medical, health, analysis"
+        },
+        {
+          "id": "pixabay:30470",
+          "source": "pixabay",
+          "score": 0.1531,
+          "title": "bee, honey bee, insect, pollen, close up, live wallpaper"
+        },
+        {
+          "id": "pixabay:13100",
+          "source": "pixabay",
+          "score": 0.1367,
+          "title": "universe, jar, colourful, experiment, close-up, particles, oil, ink, water, abst"
+        }
+      ]
+    },
+    {
+      "scene": 10,
+      "start": 280.62,
+      "end": 286.6,
+      "duration": 5.98,
+      "narration": "Planting trees along field borders protects crops from wind and keeps the soil moist.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "nature",
+      "visual_plan": "Row of young green trees planted along the edge of a farm field.",
+      "queries": [
+        "trees field border",
+        "windbreak trees agriculture",
+        "farm shelterbelt trees"
+      ],
+      "negative_terms": [
+        "forest fire",
+        "cut logs"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:16685",
+        "kind": "video",
+        "title": "field, cornfield, agriculture, cereals, nature, summer, harvest, barley, spike, food, scenic, clouds",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-16685/",
+        "media_url": "https://cdn.pixabay.com/video/2018/06/09/16685-274413239_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by RoyBuri on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "windbreak trees agriculture"
+      },
+      "reason": "stock (low confidence): pixabay scored 0.234 (< tau 0.24, within 0.03); no AI option",
+      "relevance_score": 0.2345,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2345,
+        "negative_max": 0.2022,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.532,
+      "alternatives": [
+        {
+          "id": "pixabay:11051",
+          "source": "pixabay",
+          "score": 0.2761,
+          "title": "wind power, wind energy, wind power plants, windmill, bird's eye view, drone, bl"
+        },
+        {
+          "id": "pixabay:16685",
+          "source": "pixabay",
+          "score": 0.2345,
+          "title": "field, cornfield, agriculture, cereals, nature, summer, harvest, barley, spike, "
+        },
+        {
+          "id": "pixabay:182137",
+          "source": "pixabay",
+          "score": 0.222,
+          "title": "olive trees, olives, trees, plantation, farming, agricultural, production, drone"
+        },
+        {
+          "id": "pixabay:234915",
+          "source": "pixabay",
+          "score": 0.2156,
+          "title": "land, field, trees, countryside, nature"
+        },
+        {
+          "id": "pixabay:216584",
+          "source": "pixabay",
+          "score": 0.203,
+          "title": "field, trees, forest, sunset, nature, drone, landscape"
+        }
+      ]
+    },
+    {
+      "scene": 11,
+      "start": 286.6,
+      "end": 289.72,
+      "duration": 3.12,
+      "narration": "Climate change is reshaping the way we grow food.",
+      "visual_hint": null,
+      "scene_type": "metaphor",
+      "category": "nature",
+      "visual_plan": "A wide-angle shot of a green agricultural field under a dynamic sky.",
+      "queries": [
+        "green farm field",
+        "agriculture landscape drone",
+        "farming crops aerial"
+      ],
+      "negative_terms": [
+        "barren land",
+        "factory"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:182918",
+        "kind": "video",
+        "title": "fields, green fields, grass, agriculture, drone, nature, landscape",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-182918/",
+        "media_url": "https://cdn.pixabay.com/video/2023/09/29/182918-869774076_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by gbarchetta on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "agriculture landscape drone"
+      },
+      "reason": "stock: pixabay clip scored 0.303 >= tau 0.24; best unused of 29 safe candidates",
+      "relevance_score": 0.3026,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.3026,
+        "negative_max": 0.2564,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.467,
+      "alternatives": [
+        {
+          "id": "pixabay:121951",
+          "source": "pixabay",
+          "score": 0.3124,
+          "title": "drone, corn, field, nature, landscape, agriculture, farming, sky"
+        },
+        {
+          "id": "pixabay:182918",
+          "source": "pixabay",
+          "score": 0.3026,
+          "title": "fields, green fields, grass, agriculture, drone, nature, landscape"
+        },
+        {
+          "id": "pixabay:313652",
+          "source": "pixabay",
+          "score": 0.2914,
+          "title": "corn field, maize field, young corn, sprouting corn, planted field, crop rows, a"
+        },
+        {
+          "id": "pixabay:27197",
+          "source": "pixabay",
+          "score": 0.253,
+          "title": "clouds, drone, aerial, landscape, photo, sunrise, sunset, nature, summer, field,"
+        },
+        {
+          "id": "pixabay:166485",
+          "source": "pixabay",
+          "score": 0.2492,
+          "title": "tractor, crops, planting, soil, equipment, farming, agriculture, drone, aerial"
+        }
+      ]
+    },
+    {
+      "scene": 12,
+      "start": 289.72,
+      "end": 294.28,
+      "duration": 4.56,
+      "narration": "Farmers in many regions now face longer dry seasons and sudden heavy rains.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "nature",
+      "visual_plan": "A split conceptual view or sequence of dry cracked earth and heavy rain over a field.",
+      "queries": [
+        "heavy rain on crops",
+        "cracked dry soil",
+        "storm clouds farm"
+      ],
+      "negative_terms": [
+        "flooded city",
+        "severe disaster"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "wikimedia:186474007",
+        "kind": "video",
+        "title": "File:Irrigation and Water (20210603-NRCS-LSC-0004).webm",
+        "source": "wikimedia",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Irrigation_and_Water_(20210603-NRCS-LSC-0004).webm",
+        "media_url": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Irrigation_and_Water_%2820210603-NRCS-LSC-0004%29.webm?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "licence": "Public domain",
+        "licence_url": "",
+        "attribution": "USDAgov via Wikimedia Commons (Public domain)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "storm clouds farm"
+      },
+      "reason": "stock: wikimedia clip scored 0.274 >= tau 0.24; best unused of 17 safe candidates",
+      "relevance_score": 0.2741,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2767,
+        "negative_max": 0.2592,
+        "penalty": 0.0026
+      },
+      "reframe_subject_x": 0.517,
+      "alternatives": [
+        {
+          "id": "wikimedia:186473790",
+          "source": "wikimedia",
+          "score": 0.2876,
+          "title": "File:Irrigation and Water (20210604-NRCS-LSC-0543).webm"
+        },
+        {
+          "id": "wikimedia:186474007",
+          "source": "wikimedia",
+          "score": 0.2741,
+          "title": "File:Irrigation and Water (20210603-NRCS-LSC-0004).webm"
+        },
+        {
+          "id": "pixabay:26369",
+          "source": "pixabay",
+          "score": 0.2532,
+          "title": "rain, heavy rain, country rain, downpour, cloudburst, raindrop, rainy season, ra"
+        },
+        {
+          "id": "pixabay:303917",
+          "source": "pixabay",
+          "score": 0.242,
+          "title": "wheat, field, barn, sky, clouds, dramatic, farm, rural, landscape, nature, golde"
+        },
+        {
+          "id": "wikimedia:186473863",
+          "source": "wikimedia",
+          "score": 0.2295,
+          "title": "File:Irrigation and Water (20210603-NRCS-LSC-0448).webm"
+        }
+      ]
+    },
+    {
+      "scene": 13,
+      "start": 294.28,
+      "end": 298.52,
+      "duration": 4.24,
+      "narration": "Some are switching to crops that need less water, like millets and pulses.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "business",
+      "visual_plan": "Close-up of harvested grains like millets in a farmer's hands.",
+      "queries": [
+        "millets in hands",
+        "grains harvest agriculture",
+        "pulses seeds crop"
+      ],
+      "negative_terms": [
+        "packaged food",
+        "supermarket shelf"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:86120",
+        "kind": "video",
+        "title": "harvest, grain harvest, agriculture, field, combine harvester, summer, agricultural machine, grain field, harvester, threshing, harvest time, cornfield",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-86120/",
+        "media_url": "https://cdn.pixabay.com/video/2021/08/23/86120-592491627_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by Thomas-Ritter on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "grains harvest agriculture"
+      },
+      "reason": "stock (low confidence): pixabay scored 0.217 (< tau 0.24, within 0.03); no AI option",
+      "relevance_score": 0.2169,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2169,
+        "negative_max": 0.1964,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.503,
+      "alternatives": [
+        {
+          "id": "pixabay:73847",
+          "source": "pixabay",
+          "score": 0.2805,
+          "title": "sand, hand, beach, dessert, sea, live wallpaper"
+        },
+        {
+          "id": "pixabay:380106",
+          "source": "pixabay",
+          "score": 0.2626,
+          "title": "rice, grain, before harvest, yamada's rice fields, agriculture, countryside, win"
+        },
+        {
+          "id": "pixabay:86120",
+          "source": "pixabay",
+          "score": 0.2169,
+          "title": "harvest, grain harvest, agriculture, field, combine harvester, summer, agricultu"
+        },
+        {
+          "id": "pixabay:86119",
+          "source": "pixabay",
+          "score": 0.2111,
+          "title": "harvest, grain harvest, agriculture, field, combine harvester, summer, agricultu"
+        },
+        {
+          "id": "pixabay:86122",
+          "source": "pixabay",
+          "score": 0.1698,
+          "title": "harvest, grain harvest, agriculture, field, combine harvester, summer, agricultu"
+        }
+      ]
+    },
+    {
+      "scene": 14,
+      "start": 298.52,
+      "end": 302.52,
+      "duration": 4.0,
+      "narration": "Others use drip irrigation to deliver water straight to the roots.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "technology",
+      "visual_plan": "Drip irrigation tubes watering green plants in a neat row.",
+      "queries": [
+        "drip irrigation system",
+        "watering plants farm",
+        "modern crop irrigation"
+      ],
+      "negative_terms": [
+        "broken pipe",
+        "flood"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:48233",
+        "kind": "video",
+        "title": "flower, water, watering can, to water, irrigation, slow motion, plant, blossom, bloom, outdoors",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-48233/",
+        "media_url": "https://cdn.pixabay.com/video/2020/08/26/48233-453668099_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by NickyPe on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "drip irrigation system"
+      },
+      "reason": "stock (low confidence): pixabay scored 0.237 (< tau 0.24, within 0.03); no AI option",
+      "relevance_score": 0.237,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.237,
+        "negative_max": 0.1966,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.586,
+      "alternatives": [
+        {
+          "id": "pixabay:44765",
+          "source": "pixabay",
+          "score": 0.2825,
+          "title": "watering, sprinkler, garden, green, agriculture, bio garden, irrigated, bio, irr"
+        },
+        {
+          "id": "pixabay:48233",
+          "source": "pixabay",
+          "score": 0.237,
+          "title": "flower, water, watering can, to water, irrigation, slow motion, plant, blossom, "
+        },
+        {
+          "id": "pixabay:44758",
+          "source": "pixabay",
+          "score": 0.1862,
+          "title": "garden, green, sprinkler, agriculture, bio garden, irrigated, bio, irrigation, p"
+        },
+        {
+          "id": "pixabay:218389",
+          "source": "pixabay",
+          "score": 0.1818,
+          "title": "hemp, plant, crop, leaves, green, nature"
+        },
+        {
+          "id": "pixabay:82188",
+          "source": "pixabay",
+          "score": 0.1743,
+          "title": "flower, to water, watering can, irrigation, wet, water, gardening, slow motion"
+        }
+      ]
+    },
+    {
+      "scene": 15,
+      "start": 302.52,
+      "end": 307.88,
+      "duration": 5.36,
+      "narration": "Solar pumps are replacing diesel engines in many villages, cutting both cost and pollution.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "technology",
+      "visual_plan": "Solar panels installed near a farm field providing energy.",
+      "queries": [
+        "solar panels farm",
+        "solar pump agriculture",
+        "renewable energy rural"
+      ],
+      "negative_terms": [
+        "diesel generator",
+        "smoke pollution"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:230510",
+        "kind": "video",
+        "title": "solar panels, energy, green, photovoltaic, sustainable, tordesillas, valladolid, castilla, farming, wind",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-230510/",
+        "media_url": "https://cdn.pixabay.com/video/2024/09/09/230510_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by SdCPro on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "solar panels farm"
+      },
+      "reason": "stock: pixabay clip scored 0.281 >= tau 0.24; best unused of 16 safe candidates",
+      "relevance_score": 0.281,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.281,
+        "negative_max": 0.1909,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.471,
+      "alternatives": [
+        {
+          "id": "pixabay:230511",
+          "source": "pixabay",
+          "score": 0.2833,
+          "title": "solar panels, energy, green, photovoltaic, sustainable, tordesillas, valladolid,"
+        },
+        {
+          "id": "pixabay:230510",
+          "source": "pixabay",
+          "score": 0.281,
+          "title": "solar panels, energy, green, photovoltaic, sustainable, tordesillas, valladolid,"
+        },
+        {
+          "id": "pixabay:230515",
+          "source": "pixabay",
+          "score": 0.2724,
+          "title": "solar panels, energy, green, photovoltaic, sustainable, tordesillas, valladolid,"
+        },
+        {
+          "id": "pixabay:230514",
+          "source": "pixabay",
+          "score": 0.272,
+          "title": "solar panels, energy, green, photovoltaic, sustainable, tordesillas, valladolid,"
+        },
+        {
+          "id": "pixabay:156444",
+          "source": "pixabay",
+          "score": 0.2585,
+          "title": "solar energy, sunlight, sun, energy, energy generation, energy production, renew"
+        }
+      ]
+    },
+    {
+      "scene": 16,
+      "start": 307.88,
+      "end": 313.54,
+      "duration": 5.66,
+      "narration": "In cities, rooftop gardens and vertical farms grow vegetables close to the people who eat them.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "business",
+      "visual_plan": "A modern rooftop urban farm with green leafy vegetables growing in rows.",
+      "queries": [
+        "rooftop farm city",
+        "vertical farming indoor",
+        "urban agriculture greens"
+      ],
+      "negative_terms": [
+        "abandoned roof",
+        "garbage"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:16",
+        "kind": "card",
+        "title": "Card: In cities, rooftop gardens and vertical farms grow vegetable",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [
+        {
+          "id": "pixabay:342536",
+          "source": "pixabay",
+          "score": 0.2539,
+          "title": "urban gardening, sustainable lifestyle, city farming, rooftop garden, environmen"
+        },
+        {
+          "id": "pixabay:144300",
+          "source": "pixabay",
+          "score": 0.1346,
+          "title": "village, house, farm, rural, drone, indonesia, green, trees, 4k, agriculture, ae"
+        },
+        {
+          "id": "pixabay:282084",
+          "source": "pixabay",
+          "score": 0.1317,
+          "title": "village, aerial view, residential district, house, suburb, city, europe, dutch c"
+        },
+        {
+          "id": "pixabay:66810",
+          "source": "pixabay",
+          "score": 0.1067,
+          "title": "grass, dew, field, fog, morning, nature, sunshine, green, grassland, farm, sunli"
+        },
+        {
+          "id": "pixabay:307864",
+          "source": "pixabay",
+          "score": 0.0939,
+          "title": "wind, electricity, windpower, rice, vietnam, nature, farming, green, sunset"
+        }
+      ]
+    },
+    {
+      "scene": 17,
+      "start": 313.54,
+      "end": 317.38,
+      "duration": 3.84,
+      "narration": "Scientists are breeding rice that can survive under water for two weeks.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "technology",
+      "visual_plan": "Rice seedlings growing in a flooded experimental paddy field.",
+      "queries": [
+        "rice paddy field",
+        "rice crop water",
+        "agriculture research plant"
+      ],
+      "negative_terms": [
+        "dry dirt"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:42092",
+        "kind": "video",
+        "title": "birds, paddy, rice, nature, peace, vietnam, field, countryside",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-42092/",
+        "media_url": "https://cdn.pixabay.com/video/2020/06/15/42092-431423052_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by MingMedia on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "rice paddy field"
+      },
+      "reason": "stock: pixabay clip scored 0.293 >= tau 0.24; best unused of 18 safe candidates",
+      "relevance_score": 0.2935,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2935,
+        "negative_max": 0.1993,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.494,
+      "alternatives": [
+        {
+          "id": "pixabay:380106",
+          "source": "pixabay",
+          "score": 0.3151,
+          "title": "rice, grain, before harvest, yamada's rice fields, agriculture, countryside, win"
+        },
+        {
+          "id": "pixabay:42092",
+          "source": "pixabay",
+          "score": 0.2935,
+          "title": "birds, paddy, rice, nature, peace, vietnam, field, countryside"
+        },
+        {
+          "id": "pixabay:11022",
+          "source": "pixabay",
+          "score": 0.2831,
+          "title": "rice field, agriculture, thailand, rice, asia, rural, food, land, country, count"
+        },
+        {
+          "id": "pixabay:283431",
+          "source": "pixabay",
+          "score": 0.2701,
+          "title": "night view, yamada's rice fields, rice farming, rice terraces, starry sky, milky"
+        },
+        {
+          "id": "pixabay:231246",
+          "source": "pixabay",
+          "score": 0.262,
+          "title": "field, paddy field, plantation, agriculture, rural, rice, plant, paddy, farmer, "
+        }
+      ]
+    },
+    {
+      "scene": 18,
+      "start": 317.38,
+      "end": 321.56,
+      "duration": 4.18,
+      "narration": "Weather apps on simple phones warn farmers before storms arrive.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "technology",
+      "visual_plan": "A smartphone displaying a weather forecast app outdoors on a farm.",
+      "queries": [
+        "weather app smartphone",
+        "mobile phone farm",
+        "digital agriculture app"
+      ],
+      "negative_terms": [
+        "broken screen",
+        "gaming"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:142641",
+        "kind": "video",
+        "title": "man, phone, smartphone, mobile",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-142641/",
+        "media_url": "https://cdn.pixabay.com/video/2022/12/12/142641-780599369_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by u_etjkkdz15b on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "mobile phone farm"
+      },
+      "reason": "stock (low confidence): pixabay scored 0.218 (< tau 0.24, within 0.03); no AI option",
+      "relevance_score": 0.2181,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2181,
+        "negative_max": 0.1791,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.574,
+      "alternatives": [
+        {
+          "id": "pixabay:142641",
+          "source": "pixabay",
+          "score": 0.2181,
+          "title": "man, phone, smartphone, mobile"
+        },
+        {
+          "id": "pixabay:16685",
+          "source": "pixabay",
+          "score": 0.1828,
+          "title": "field, cornfield, agriculture, cereals, nature, summer, harvest, barley, spike, "
+        },
+        {
+          "id": "pixabay:38084",
+          "source": "pixabay",
+          "score": 0.1816,
+          "title": "woman, phone, smartphone, technology, mobile, telephone, cellphone, person, fema"
+        },
+        {
+          "id": "pixabay:736",
+          "source": "pixabay",
+          "score": 0.1762,
+          "title": "iphone, smartphone, scrolling, mobile, device, technology, cellphone, smart phon"
+        },
+        {
+          "id": "pixabay:8255",
+          "source": "pixabay",
+          "score": 0.1574,
+          "title": "iphone, photo, photography, pictures, smartphone, app, touchscreen, device, elec"
+        }
+      ]
+    },
+    {
+      "scene": 19,
+      "start": 321.56,
+      "end": 326.4,
+      "duration": 4.84,
+      "narration": "Cooperatives help small farmers share tractors, storage and fair prices.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "business",
+      "visual_plan": "A modern agricultural storage warehouse with organized crates and equipment.",
+      "queries": [
+        "agriculture storage warehouse",
+        "farm cooperative storage",
+        "farming equipment shed"
+      ],
+      "negative_terms": [
+        "empty warehouse",
+        "dark ruins"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:19",
+        "kind": "card",
+        "title": "Card: Cooperatives help small farmers share tractors, storage and ",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [
+        {
+          "id": "pixabay:43628",
+          "source": "pixabay",
+          "score": 0.1967,
+          "title": "forklift, loader, warehouse, vehicle, machine, pallet, equipment, freight, const"
+        },
+        {
+          "id": "pixabay:43658",
+          "source": "pixabay",
+          "score": 0.1844,
+          "title": "amazon, box, parcels, warehouse, post, shelf, rack, shipping, transport, cargo, "
+        },
+        {
+          "id": "pixabay:124122",
+          "source": "pixabay",
+          "score": 0.1585,
+          "title": "hay, bales, agriculture, summer, storage area"
+        },
+        {
+          "id": "pixabay:232561",
+          "source": "pixabay",
+          "score": 0.1487,
+          "title": "tractor, field, wheat, harvest, combine, agriculture, grain, farming, summer, ma"
+        },
+        {
+          "id": "pixabay:16685",
+          "source": "pixabay",
+          "score": 0.1421,
+          "title": "field, cornfield, agriculture, cereals, nature, summer, harvest, barley, spike, "
+        }
+      ]
+    },
+    {
+      "scene": 20,
+      "start": 326.4,
+      "end": 330.84,
+      "duration": 4.44,
+      "narration": "Soil health cards tell each farmer exactly which nutrients the field needs.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "technology",
+      "visual_plan": "A close-up of fertile soil being tested in a modern agricultural setup.",
+      "queries": [
+        "soil health test",
+        "fertle soil close up",
+        "agriculture soil sample"
+      ],
+      "negative_terms": [
+        "pollution",
+        "dry dust"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:20",
+        "kind": "card",
+        "title": "Card: Soil health cards tell each farmer exactly which nutrients t",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [
+        {
+          "id": "pixabay:166485",
+          "source": "pixabay",
+          "score": 0.2125,
+          "title": "tractor, crops, planting, soil, equipment, farming, agriculture, drone, aerial"
+        },
+        {
+          "id": "pixabay:99548",
+          "source": "pixabay",
+          "score": 0.1917,
+          "title": "grass, green, meadow, plain, agriculture, football, beautiful wallpaper, field, "
+        },
+        {
+          "id": "pixabay:76395",
+          "source": "pixabay",
+          "score": 0.1704,
+          "title": "laboratory, test, tube, chemistry, hospital, research, medical, health, analysis"
+        },
+        {
+          "id": "pixabay:30470",
+          "source": "pixabay",
+          "score": 0.1531,
+          "title": "bee, honey bee, insect, pollen, close up, live wallpaper"
+        },
+        {
+          "id": "pixabay:13100",
+          "source": "pixabay",
+          "score": 0.1367,
+          "title": "universe, jar, colourful, experiment, close-up, particles, oil, ink, water, abst"
+        }
+      ]
+    },
+    {
+      "scene": 21,
+      "start": 330.84,
+      "end": 336.86,
+      "duration": 6.02,
+      "narration": "Planting trees along field borders protects crops from wind and keeps the soil moist. Climate change is reshaping the way we grow food.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "nature",
+      "visual_plan": "Row of young green trees planted along the edge of a farm field.",
+      "queries": [
+        "trees field border",
+        "windbreak trees agriculture",
+        "farm shelterbelt trees"
+      ],
+      "negative_terms": [
+        "forest fire",
+        "cut logs"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:11051",
+        "kind": "video",
+        "title": "wind power, wind energy, wind power plants, windmill, bird's eye view, drone, blender, 3d, field, meadow, trees, the shade, dirt road, ecology, ecologically",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-11051/",
+        "media_url": "https://cdn.pixabay.com/video/2017/07/31/11051-227807749_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by Aenigmatis-3D on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "trees field border"
+      },
+      "reason": "stock: pixabay clip scored 0.281 >= tau 0.24; best unused of 20 safe candidates",
+      "relevance_score": 0.2809,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2809,
+        "negative_max": 0.1934,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.467,
+      "alternatives": [
+        {
+          "id": "pixabay:11051",
+          "source": "pixabay",
+          "score": 0.2809,
+          "title": "wind power, wind energy, wind power plants, windmill, bird's eye view, drone, bl"
+        },
+        {
+          "id": "pixabay:16685",
+          "source": "pixabay",
+          "score": 0.2378,
+          "title": "field, cornfield, agriculture, cereals, nature, summer, harvest, barley, spike, "
+        },
+        {
+          "id": "pixabay:234915",
+          "source": "pixabay",
+          "score": 0.224,
+          "title": "land, field, trees, countryside, nature"
+        },
+        {
+          "id": "pixabay:182137",
+          "source": "pixabay",
+          "score": 0.2233,
+          "title": "olive trees, olives, trees, plantation, farming, agricultural, production, drone"
+        },
+        {
+          "id": "pixabay:216584",
+          "source": "pixabay",
+          "score": 0.2063,
+          "title": "field, trees, forest, sunset, nature, drone, landscape"
+        }
+      ]
+    },
+    {
+      "scene": 22,
+      "start": 336.86,
+      "end": 339.46,
+      "duration": 2.6,
+      "narration": "Farmers in many regions now face longer dry seasons and sudden heavy rains.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "nature",
+      "visual_plan": "A split conceptual view or sequence of dry cracked earth and heavy rain over a field.",
+      "queries": [
+        "heavy rain on crops",
+        "cracked dry soil",
+        "storm clouds farm"
+      ],
+      "negative_terms": [
+        "flooded city",
+        "severe disaster"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:26369",
+        "kind": "video",
+        "title": "rain, heavy rain, country rain, downpour, cloudburst, raindrop, rainy season, rain shower",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-26369/",
+        "media_url": "https://cdn.pixabay.com/video/2019/08/29/26369-357512454_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by Hans on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "heavy rain on crops"
+      },
+      "reason": "stock: pixabay clip scored 0.253 >= tau 0.24; best unused of 17 safe candidates",
+      "relevance_score": 0.2532,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2532,
+        "negative_max": 0.1964,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.522,
+      "alternatives": [
+        {
+          "id": "wikimedia:186473790",
+          "source": "wikimedia",
+          "score": 0.2876,
+          "title": "File:Irrigation and Water (20210604-NRCS-LSC-0543).webm"
+        },
+        {
+          "id": "wikimedia:186474007",
+          "source": "wikimedia",
+          "score": 0.2741,
+          "title": "File:Irrigation and Water (20210603-NRCS-LSC-0004).webm"
+        },
+        {
+          "id": "pixabay:26369",
+          "source": "pixabay",
+          "score": 0.2532,
+          "title": "rain, heavy rain, country rain, downpour, cloudburst, raindrop, rainy season, ra"
+        },
+        {
+          "id": "pixabay:303917",
+          "source": "pixabay",
+          "score": 0.242,
+          "title": "wheat, field, barn, sky, clouds, dramatic, farm, rural, landscape, nature, golde"
+        },
+        {
+          "id": "wikimedia:186473863",
+          "source": "wikimedia",
+          "score": 0.2295,
+          "title": "File:Irrigation and Water (20210603-NRCS-LSC-0448).webm"
+        }
+      ]
+    },
+    {
+      "scene": 23,
+      "start": 339.46,
+      "end": 342.06,
+      "duration": 2.6,
+      "narration": "Some are switching to crops that need less water, like millets and pulses.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "business",
+      "visual_plan": "Close-up of harvested grains like millets in a farmer's hands.",
+      "queries": [
+        "millets in hands",
+        "grains harvest agriculture",
+        "pulses seeds crop"
+      ],
+      "negative_terms": [
+        "packaged food",
+        "supermarket shelf"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:86119",
+        "kind": "video",
+        "title": "harvest, grain harvest, agriculture, field, combine harvester, summer, agricultural machine, grain field, harvester, threshing, harvest time, cornfield",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-86119/",
+        "media_url": "https://cdn.pixabay.com/video/2021/08/23/86119-592491623_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by Thomas-Ritter on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "grains harvest agriculture"
+      },
+      "reason": "stock (low confidence): pixabay scored 0.211 (< tau 0.24, within 0.03); no AI option",
+      "relevance_score": 0.2111,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2128,
+        "negative_max": 0.1944,
+        "penalty": 0.0017
+      },
+      "reframe_subject_x": 0.421,
+      "alternatives": [
+        {
+          "id": "pixabay:73847",
+          "source": "pixabay",
+          "score": 0.2805,
+          "title": "sand, hand, beach, dessert, sea, live wallpaper"
+        },
+        {
+          "id": "pixabay:380106",
+          "source": "pixabay",
+          "score": 0.2626,
+          "title": "rice, grain, before harvest, yamada's rice fields, agriculture, countryside, win"
+        },
+        {
+          "id": "pixabay:86120",
+          "source": "pixabay",
+          "score": 0.2169,
+          "title": "harvest, grain harvest, agriculture, field, combine harvester, summer, agricultu"
+        },
+        {
+          "id": "pixabay:86119",
+          "source": "pixabay",
+          "score": 0.2111,
+          "title": "harvest, grain harvest, agriculture, field, combine harvester, summer, agricultu"
+        },
+        {
+          "id": "pixabay:86122",
+          "source": "pixabay",
+          "score": 0.1698,
+          "title": "harvest, grain harvest, agriculture, field, combine harvester, summer, agricultu"
+        }
+      ]
+    },
+    {
+      "scene": 24,
+      "start": 342.06,
+      "end": 344.26,
+      "duration": 2.2,
+      "narration": "Others use drip irrigation to deliver water straight to the roots.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "technology",
+      "visual_plan": "Drip irrigation tubes watering green plants in a neat row.",
+      "queries": [
+        "drip irrigation system",
+        "watering plants farm",
+        "modern crop irrigation"
+      ],
+      "negative_terms": [
+        "broken pipe",
+        "flood"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:24",
+        "kind": "card",
+        "title": "Card: Others use drip irrigation to deliver water straight to the ",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [
+        {
+          "id": "pixabay:44765",
+          "source": "pixabay",
+          "score": 0.2825,
+          "title": "watering, sprinkler, garden, green, agriculture, bio garden, irrigated, bio, irr"
+        },
+        {
+          "id": "pixabay:48233",
+          "source": "pixabay",
+          "score": 0.237,
+          "title": "flower, water, watering can, to water, irrigation, slow motion, plant, blossom, "
+        },
+        {
+          "id": "pixabay:44758",
+          "source": "pixabay",
+          "score": 0.1862,
+          "title": "garden, green, sprinkler, agriculture, bio garden, irrigated, bio, irrigation, p"
+        },
+        {
+          "id": "pixabay:218389",
+          "source": "pixabay",
+          "score": 0.1818,
+          "title": "hemp, plant, crop, leaves, green, nature"
+        },
+        {
+          "id": "pixabay:82188",
+          "source": "pixabay",
+          "score": 0.1743,
+          "title": "flower, to water, watering can, irrigation, wet, water, gardening, slow motion"
+        }
+      ]
+    },
+    {
+      "scene": 25,
+      "start": 344.26,
+      "end": 347.06,
+      "duration": 2.8,
+      "narration": "Solar pumps are replacing diesel engines in many villages, cutting both cost and pollution.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "technology",
+      "visual_plan": "Solar panels installed near a farm field providing energy.",
+      "queries": [
+        "solar panels farm",
+        "solar pump agriculture",
+        "renewable energy rural"
+      ],
+      "negative_terms": [
+        "diesel generator",
+        "smoke pollution"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:230515",
+        "kind": "video",
+        "title": "solar panels, energy, green, photovoltaic, sustainable, tordesillas, valladolid, castilla, farming, wind",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-230515/",
+        "media_url": "https://cdn.pixabay.com/video/2024/09/09/230515_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by SdCPro on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "solar panels farm"
+      },
+      "reason": "stock: pixabay clip scored 0.272 >= tau 0.24; best unused of 16 safe candidates",
+      "relevance_score": 0.2724,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2724,
+        "negative_max": 0.1869,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.508,
+      "alternatives": [
+        {
+          "id": "pixabay:230511",
+          "source": "pixabay",
+          "score": 0.2833,
+          "title": "solar panels, energy, green, photovoltaic, sustainable, tordesillas, valladolid,"
+        },
+        {
+          "id": "pixabay:230510",
+          "source": "pixabay",
+          "score": 0.281,
+          "title": "solar panels, energy, green, photovoltaic, sustainable, tordesillas, valladolid,"
+        },
+        {
+          "id": "pixabay:230515",
+          "source": "pixabay",
+          "score": 0.2724,
+          "title": "solar panels, energy, green, photovoltaic, sustainable, tordesillas, valladolid,"
+        },
+        {
+          "id": "pixabay:230514",
+          "source": "pixabay",
+          "score": 0.272,
+          "title": "solar panels, energy, green, photovoltaic, sustainable, tordesillas, valladolid,"
+        },
+        {
+          "id": "pixabay:156444",
+          "source": "pixabay",
+          "score": 0.2585,
+          "title": "solar energy, sunlight, sun, energy, energy generation, energy production, renew"
+        }
+      ]
+    },
+    {
+      "scene": 26,
+      "start": 347.06,
+      "end": 350.26,
+      "duration": 3.2,
+      "narration": "In cities, rooftop gardens and vertical farms grow vegetables close to the people who eat them.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "business",
+      "visual_plan": "A modern rooftop urban farm with green leafy vegetables growing in rows.",
+      "queries": [
+        "rooftop farm city",
+        "vertical farming indoor",
+        "urban agriculture greens"
+      ],
+      "negative_terms": [
+        "abandoned roof",
+        "garbage"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:26",
+        "kind": "card",
+        "title": "Card: In cities, rooftop gardens and vertical farms grow vegetable",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [
+        {
+          "id": "pixabay:342536",
+          "source": "pixabay",
+          "score": 0.2539,
+          "title": "urban gardening, sustainable lifestyle, city farming, rooftop garden, environmen"
+        },
+        {
+          "id": "pixabay:144300",
+          "source": "pixabay",
+          "score": 0.1346,
+          "title": "village, house, farm, rural, drone, indonesia, green, trees, 4k, agriculture, ae"
+        },
+        {
+          "id": "pixabay:282084",
+          "source": "pixabay",
+          "score": 0.1317,
+          "title": "village, aerial view, residential district, house, suburb, city, europe, dutch c"
+        },
+        {
+          "id": "pixabay:66810",
+          "source": "pixabay",
+          "score": 0.1067,
+          "title": "grass, dew, field, fog, morning, nature, sunshine, green, grassland, farm, sunli"
+        },
+        {
+          "id": "pixabay:307864",
+          "source": "pixabay",
+          "score": 0.0939,
+          "title": "wind, electricity, windpower, rice, vietnam, nature, farming, green, sunset"
+        }
+      ]
+    },
+    {
+      "scene": 27,
+      "start": 350.26,
+      "end": 356.66,
+      "duration": 6.4,
+      "narration": "Scientists are breeding rice that can survive under water for two weeks. Weather apps on simple phones warn farmers before storms arrive. Cooperatives help small farmers share tractors, storage and fair prices.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "technology",
+      "visual_plan": "Rice seedlings growing in a flooded experimental paddy field.",
+      "queries": [
+        "rice paddy field",
+        "rice crop water",
+        "agriculture research plant"
+      ],
+      "negative_terms": [
+        "dry dirt"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:11022",
+        "kind": "video",
+        "title": "rice field, agriculture, thailand, rice, asia, rural, food, land, country, countryside, tropical, grain, grow, crop, cultivate, farm, nature, green, thai",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-11022/",
+        "media_url": "https://cdn.pixabay.com/video/2017/07/29/11022-227573553_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by waterlettuce on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "rice crop water"
+      },
+      "reason": "stock: pixabay clip scored 0.281 >= tau 0.24; best unused of 18 safe candidates",
+      "relevance_score": 0.2814,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2814,
+        "negative_max": 0.185,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.477,
+      "alternatives": [
+        {
+          "id": "pixabay:380106",
+          "source": "pixabay",
+          "score": 0.3132,
+          "title": "rice, grain, before harvest, yamada's rice fields, agriculture, countryside, win"
+        },
+        {
+          "id": "pixabay:42092",
+          "source": "pixabay",
+          "score": 0.2908,
+          "title": "birds, paddy, rice, nature, peace, vietnam, field, countryside"
+        },
+        {
+          "id": "pixabay:11022",
+          "source": "pixabay",
+          "score": 0.2814,
+          "title": "rice field, agriculture, thailand, rice, asia, rural, food, land, country, count"
+        },
+        {
+          "id": "pixabay:283431",
+          "source": "pixabay",
+          "score": 0.2633,
+          "title": "night view, yamada's rice fields, rice farming, rice terraces, starry sky, milky"
+        },
+        {
+          "id": "pixabay:231246",
+          "source": "pixabay",
+          "score": 0.2606,
+          "title": "field, paddy field, plantation, agriculture, rural, rice, plant, paddy, farmer, "
+        }
+      ]
+    },
+    {
+      "scene": 28,
+      "start": 356.66,
+      "end": 359.06,
+      "duration": 2.4,
+      "narration": "Soil health cards tell each farmer exactly which nutrients the field needs.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "technology",
+      "visual_plan": "A close-up of fertile soil being tested in a modern agricultural setup.",
+      "queries": [
+        "soil health test",
+        "fertle soil close up",
+        "agriculture soil sample"
+      ],
+      "negative_terms": [
+        "pollution",
+        "dry dust"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:28",
+        "kind": "card",
+        "title": "Card: Soil health cards tell each farmer exactly which nutrients t",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [
+        {
+          "id": "pixabay:166485",
+          "source": "pixabay",
+          "score": 0.2125,
+          "title": "tractor, crops, planting, soil, equipment, farming, agriculture, drone, aerial"
+        },
+        {
+          "id": "pixabay:99548",
+          "source": "pixabay",
+          "score": 0.1917,
+          "title": "grass, green, meadow, plain, agriculture, football, beautiful wallpaper, field, "
+        },
+        {
+          "id": "pixabay:76395",
+          "source": "pixabay",
+          "score": 0.1704,
+          "title": "laboratory, test, tube, chemistry, hospital, research, medical, health, analysis"
+        },
+        {
+          "id": "pixabay:30470",
+          "source": "pixabay",
+          "score": 0.1531,
+          "title": "bee, honey bee, insect, pollen, close up, live wallpaper"
+        },
+        {
+          "id": "pixabay:13100",
+          "source": "pixabay",
+          "score": 0.1367,
+          "title": "universe, jar, colourful, experiment, close-up, particles, oil, ink, water, abst"
+        }
+      ]
+    },
+    {
+      "scene": 29,
+      "start": 359.06,
+      "end": 363.66,
+      "duration": 4.6,
+      "narration": "Planting trees along field borders protects crops from wind and keeps the soil moist. Climate change is reshaping the way we grow food.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "nature",
+      "visual_plan": "Row of young green trees planted along the edge of a farm field.",
+      "queries": [
+        "trees field border",
+        "windbreak trees agriculture",
+        "farm shelterbelt trees"
+      ],
+      "negative_terms": [
+        "forest fire",
+        "cut logs"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:234915",
+        "kind": "video",
+        "title": "land, field, trees, countryside, nature",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-234915/",
+        "media_url": "https://cdn.pixabay.com/video/2024/10/06/234915_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by Amirirani on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "trees field border"
+      },
+      "reason": "stock (low confidence): pixabay scored 0.224 (< tau 0.24, within 0.03); no AI option",
+      "relevance_score": 0.224,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2322,
+        "negative_max": 0.2205,
+        "penalty": 0.0083
+      },
+      "reframe_subject_x": 0.546,
+      "alternatives": [
+        {
+          "id": "pixabay:11051",
+          "source": "pixabay",
+          "score": 0.2809,
+          "title": "wind power, wind energy, wind power plants, windmill, bird's eye view, drone, bl"
+        },
+        {
+          "id": "pixabay:16685",
+          "source": "pixabay",
+          "score": 0.2378,
+          "title": "field, cornfield, agriculture, cereals, nature, summer, harvest, barley, spike, "
+        },
+        {
+          "id": "pixabay:234915",
+          "source": "pixabay",
+          "score": 0.224,
+          "title": "land, field, trees, countryside, nature"
+        },
+        {
+          "id": "pixabay:182137",
+          "source": "pixabay",
+          "score": 0.2233,
+          "title": "olive trees, olives, trees, plantation, farming, agricultural, production, drone"
+        },
+        {
+          "id": "pixabay:216584",
+          "source": "pixabay",
+          "score": 0.2063,
+          "title": "field, trees, forest, sunset, nature, drone, landscape"
+        }
+      ]
+    },
+    {
+      "scene": 30,
+      "start": 363.66,
+      "end": 366.26,
+      "duration": 2.6,
+      "narration": "Farmers in many regions now face longer dry seasons and sudden heavy rains.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "nature",
+      "visual_plan": "A split conceptual view or sequence of dry cracked earth and heavy rain over a field.",
+      "queries": [
+        "heavy rain on crops",
+        "cracked dry soil",
+        "storm clouds farm"
+      ],
+      "negative_terms": [
+        "flooded city",
+        "severe disaster"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:303917",
+        "kind": "video",
+        "title": "wheat, field, barn, sky, clouds, dramatic, farm, rural, landscape, nature, golden, wildflowers, countryside, idyllic, storm, agriculture, farmhouse, outdoor, peaceful, tranquility, cloudscape, harvest, ai generated",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-303917/",
+        "media_url": "https://cdn.pixabay.com/video/2025/09/14/303917_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by izhar-ahamed on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "storm clouds farm"
+      },
+      "reason": "stock: pixabay clip scored 0.242 >= tau 0.24; best unused of 17 safe candidates",
+      "relevance_score": 0.242,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.242,
+        "negative_max": 0.203,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.421,
+      "alternatives": [
+        {
+          "id": "wikimedia:186473790",
+          "source": "wikimedia",
+          "score": 0.2876,
+          "title": "File:Irrigation and Water (20210604-NRCS-LSC-0543).webm"
+        },
+        {
+          "id": "wikimedia:186474007",
+          "source": "wikimedia",
+          "score": 0.2741,
+          "title": "File:Irrigation and Water (20210603-NRCS-LSC-0004).webm"
+        },
+        {
+          "id": "pixabay:26369",
+          "source": "pixabay",
+          "score": 0.2532,
+          "title": "rain, heavy rain, country rain, downpour, cloudburst, raindrop, rainy season, ra"
+        },
+        {
+          "id": "pixabay:303917",
+          "source": "pixabay",
+          "score": 0.242,
+          "title": "wheat, field, barn, sky, clouds, dramatic, farm, rural, landscape, nature, golde"
+        },
+        {
+          "id": "wikimedia:186473863",
+          "source": "wikimedia",
+          "score": 0.2295,
+          "title": "File:Irrigation and Water (20210603-NRCS-LSC-0448).webm"
+        }
+      ]
+    },
+    {
+      "scene": 31,
+      "start": 366.26,
+      "end": 368.86,
+      "duration": 2.6,
+      "narration": "Some are switching to crops that need less water, like millets and pulses.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "business",
+      "visual_plan": "Close-up of harvested grains like millets in a farmer's hands.",
+      "queries": [
+        "millets in hands",
+        "grains harvest agriculture",
+        "pulses seeds crop"
+      ],
+      "negative_terms": [
+        "packaged food",
+        "supermarket shelf"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:31",
+        "kind": "card",
+        "title": "Card: Some are switching to crops that need less water, like mille",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [
+        {
+          "id": "pixabay:73847",
+          "source": "pixabay",
+          "score": 0.2805,
+          "title": "sand, hand, beach, dessert, sea, live wallpaper"
+        },
+        {
+          "id": "pixabay:380106",
+          "source": "pixabay",
+          "score": 0.2626,
+          "title": "rice, grain, before harvest, yamada's rice fields, agriculture, countryside, win"
+        },
+        {
+          "id": "pixabay:86120",
+          "source": "pixabay",
+          "score": 0.2169,
+          "title": "harvest, grain harvest, agriculture, field, combine harvester, summer, agricultu"
+        },
+        {
+          "id": "pixabay:86119",
+          "source": "pixabay",
+          "score": 0.2111,
+          "title": "harvest, grain harvest, agriculture, field, combine harvester, summer, agricultu"
+        },
+        {
+          "id": "pixabay:86122",
+          "source": "pixabay",
+          "score": 0.1698,
+          "title": "harvest, grain harvest, agriculture, field, combine harvester, summer, agricultu"
+        }
+      ]
+    },
+    {
+      "scene": 32,
+      "start": 368.86,
+      "end": 371.06,
+      "duration": 2.2,
+      "narration": "Others use drip irrigation to deliver water straight to the roots.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "technology",
+      "visual_plan": "Drip irrigation tubes watering green plants in a neat row.",
+      "queries": [
+        "drip irrigation system",
+        "watering plants farm",
+        "modern crop irrigation"
+      ],
+      "negative_terms": [
+        "broken pipe",
+        "flood"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:32",
+        "kind": "card",
+        "title": "Card: Others use drip irrigation to deliver water straight to the ",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [
+        {
+          "id": "pixabay:44765",
+          "source": "pixabay",
+          "score": 0.2825,
+          "title": "watering, sprinkler, garden, green, agriculture, bio garden, irrigated, bio, irr"
+        },
+        {
+          "id": "pixabay:48233",
+          "source": "pixabay",
+          "score": 0.237,
+          "title": "flower, water, watering can, to water, irrigation, slow motion, plant, blossom, "
+        },
+        {
+          "id": "pixabay:44758",
+          "source": "pixabay",
+          "score": 0.1862,
+          "title": "garden, green, sprinkler, agriculture, bio garden, irrigated, bio, irrigation, p"
+        },
+        {
+          "id": "pixabay:218389",
+          "source": "pixabay",
+          "score": 0.1818,
+          "title": "hemp, plant, crop, leaves, green, nature"
+        },
+        {
+          "id": "pixabay:82188",
+          "source": "pixabay",
+          "score": 0.1743,
+          "title": "flower, to water, watering can, irrigation, wet, water, gardening, slow motion"
+        }
+      ]
+    },
+    {
+      "scene": 33,
+      "start": 371.06,
+      "end": 373.86,
+      "duration": 2.8,
+      "narration": "Solar pumps are replacing diesel engines in many villages, cutting both cost and pollution.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "technology",
+      "visual_plan": "Solar panels installed near a farm field providing energy.",
+      "queries": [
+        "solar panels farm",
+        "solar pump agriculture",
+        "renewable energy rural"
+      ],
+      "negative_terms": [
+        "diesel generator",
+        "smoke pollution"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:230514",
+        "kind": "video",
+        "title": "solar panels, energy, green, photovoltaic, sustainable, tordesillas, valladolid, castilla, farming, wind",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-230514/",
+        "media_url": "https://cdn.pixabay.com/video/2024/09/09/230514_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by SdCPro on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "solar panels farm"
+      },
+      "reason": "stock: pixabay clip scored 0.272 >= tau 0.24; best unused of 16 safe candidates",
+      "relevance_score": 0.272,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.272,
+        "negative_max": 0.201,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.576,
+      "alternatives": [
+        {
+          "id": "pixabay:230511",
+          "source": "pixabay",
+          "score": 0.2833,
+          "title": "solar panels, energy, green, photovoltaic, sustainable, tordesillas, valladolid,"
+        },
+        {
+          "id": "pixabay:230510",
+          "source": "pixabay",
+          "score": 0.281,
+          "title": "solar panels, energy, green, photovoltaic, sustainable, tordesillas, valladolid,"
+        },
+        {
+          "id": "pixabay:230515",
+          "source": "pixabay",
+          "score": 0.2724,
+          "title": "solar panels, energy, green, photovoltaic, sustainable, tordesillas, valladolid,"
+        },
+        {
+          "id": "pixabay:230514",
+          "source": "pixabay",
+          "score": 0.272,
+          "title": "solar panels, energy, green, photovoltaic, sustainable, tordesillas, valladolid,"
+        },
+        {
+          "id": "pixabay:156444",
+          "source": "pixabay",
+          "score": 0.2585,
+          "title": "solar energy, sunlight, sun, energy, energy generation, energy production, renew"
+        }
+      ]
+    },
+    {
+      "scene": 34,
+      "start": 373.86,
+      "end": 377.06,
+      "duration": 3.2,
+      "narration": "In cities, rooftop gardens and vertical farms grow vegetables close to the people who eat them.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "business",
+      "visual_plan": "A modern rooftop urban farm with green leafy vegetables growing in rows.",
+      "queries": [
+        "rooftop farm city",
+        "vertical farming indoor",
+        "urban agriculture greens"
+      ],
+      "negative_terms": [
+        "abandoned roof",
+        "garbage"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:34",
+        "kind": "card",
+        "title": "Card: In cities, rooftop gardens and vertical farms grow vegetable",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [
+        {
+          "id": "pixabay:342536",
+          "source": "pixabay",
+          "score": 0.2539,
+          "title": "urban gardening, sustainable lifestyle, city farming, rooftop garden, environmen"
+        },
+        {
+          "id": "pixabay:144300",
+          "source": "pixabay",
+          "score": 0.1346,
+          "title": "village, house, farm, rural, drone, indonesia, green, trees, 4k, agriculture, ae"
+        },
+        {
+          "id": "pixabay:282084",
+          "source": "pixabay",
+          "score": 0.1317,
+          "title": "village, aerial view, residential district, house, suburb, city, europe, dutch c"
+        },
+        {
+          "id": "pixabay:66810",
+          "source": "pixabay",
+          "score": 0.1067,
+          "title": "grass, dew, field, fog, morning, nature, sunshine, green, grassland, farm, sunli"
+        },
+        {
+          "id": "pixabay:307864",
+          "source": "pixabay",
+          "score": 0.0939,
+          "title": "wind, electricity, windpower, rice, vietnam, nature, farming, green, sunset"
+        }
+      ]
+    },
+    {
+      "scene": 35,
+      "start": 377.06,
+      "end": 383.46,
+      "duration": 6.4,
+      "narration": "Scientists are breeding rice that can survive under water for two weeks. Weather apps on simple phones warn farmers before storms arrive. Cooperatives help small farmers share tractors, storage and fair prices.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "technology",
+      "visual_plan": "Rice seedlings growing in a flooded experimental paddy field.",
+      "queries": [
+        "rice paddy field",
+        "rice crop water",
+        "agriculture research plant"
+      ],
+      "negative_terms": [
+        "dry dirt"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:283431",
+        "kind": "video",
+        "title": "night view, yamada's rice fields, rice farming, rice terraces, starry sky, milky way, reflection on the water surface, japan",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-283431/",
+        "media_url": "https://cdn.pixabay.com/video/2025/06/03/283431_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by Kanenori on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "rice crop water"
+      },
+      "reason": "stock: pixabay clip scored 0.263 >= tau 0.24; best unused of 18 safe candidates",
+      "relevance_score": 0.2633,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2633,
+        "negative_max": 0.1782,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.506,
+      "alternatives": [
+        {
+          "id": "pixabay:380106",
+          "source": "pixabay",
+          "score": 0.3132,
+          "title": "rice, grain, before harvest, yamada's rice fields, agriculture, countryside, win"
+        },
+        {
+          "id": "pixabay:42092",
+          "source": "pixabay",
+          "score": 0.2908,
+          "title": "birds, paddy, rice, nature, peace, vietnam, field, countryside"
+        },
+        {
+          "id": "pixabay:11022",
+          "source": "pixabay",
+          "score": 0.2814,
+          "title": "rice field, agriculture, thailand, rice, asia, rural, food, land, country, count"
+        },
+        {
+          "id": "pixabay:283431",
+          "source": "pixabay",
+          "score": 0.2633,
+          "title": "night view, yamada's rice fields, rice farming, rice terraces, starry sky, milky"
+        },
+        {
+          "id": "pixabay:231246",
+          "source": "pixabay",
+          "score": 0.2606,
+          "title": "field, paddy field, plantation, agriculture, rural, rice, plant, paddy, farmer, "
+        }
+      ]
+    },
+    {
+      "scene": 36,
+      "start": 383.46,
+      "end": 385.86,
+      "duration": 2.4,
+      "narration": "Soil health cards tell each farmer exactly which nutrients the field needs.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "technology",
+      "visual_plan": "A close-up of fertile soil being tested in a modern agricultural setup.",
+      "queries": [
+        "soil health test",
+        "fertle soil close up",
+        "agriculture soil sample"
+      ],
+      "negative_terms": [
+        "pollution",
+        "dry dust"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:36",
+        "kind": "card",
+        "title": "Card: Soil health cards tell each farmer exactly which nutrients t",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [
+        {
+          "id": "pixabay:166485",
+          "source": "pixabay",
+          "score": 0.2125,
+          "title": "tractor, crops, planting, soil, equipment, farming, agriculture, drone, aerial"
+        },
+        {
+          "id": "pixabay:99548",
+          "source": "pixabay",
+          "score": 0.1917,
+          "title": "grass, green, meadow, plain, agriculture, football, beautiful wallpaper, field, "
+        },
+        {
+          "id": "pixabay:76395",
+          "source": "pixabay",
+          "score": 0.1704,
+          "title": "laboratory, test, tube, chemistry, hospital, research, medical, health, analysis"
+        },
+        {
+          "id": "pixabay:30470",
+          "source": "pixabay",
+          "score": 0.1531,
+          "title": "bee, honey bee, insect, pollen, close up, live wallpaper"
+        },
+        {
+          "id": "pixabay:13100",
+          "source": "pixabay",
+          "score": 0.1367,
+          "title": "universe, jar, colourful, experiment, close-up, particles, oil, ink, water, abst"
+        }
+      ]
+    },
+    {
+      "scene": 37,
+      "start": 385.86,
+      "end": 336.168,
+      "duration": -49.692,
+      "narration": "Planting trees along field borders protects crops from wind and keeps the soil moist.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "nature",
+      "visual_plan": "Row of young green trees planted along the edge of a farm field.",
+      "queries": [
+        "trees field border",
+        "windbreak trees agriculture",
+        "farm shelterbelt trees"
+      ],
+      "negative_terms": [
+        "forest fire",
+        "cut logs"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:182137",
+        "kind": "video",
+        "title": "olive trees, olives, trees, plantation, farming, agricultural, production, drone, ecology, harvesting, farm, aerial view, landscaped",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-182137/",
+        "media_url": "https://cdn.pixabay.com/video/2023/09/24/182137-867762290_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by Oleh_77 on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "farm shelterbelt trees"
+      },
+      "reason": "stock (low confidence): pixabay scored 0.222 (< tau 0.24, within 0.03); no AI option",
+      "relevance_score": 0.222,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.222,
+        "negative_max": 0.1987,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.484,
+      "alternatives": [
+        {
+          "id": "pixabay:11051",
+          "source": "pixabay",
+          "score": 0.2761,
+          "title": "wind power, wind energy, wind power plants, windmill, bird's eye view, drone, bl"
+        },
+        {
+          "id": "pixabay:16685",
+          "source": "pixabay",
+          "score": 0.2345,
+          "title": "field, cornfield, agriculture, cereals, nature, summer, harvest, barley, spike, "
+        },
+        {
+          "id": "pixabay:182137",
+          "source": "pixabay",
+          "score": 0.222,
+          "title": "olive trees, olives, trees, plantation, farming, agricultural, production, drone"
+        },
+        {
+          "id": "pixabay:234915",
+          "source": "pixabay",
+          "score": 0.2156,
+          "title": "land, field, trees, countryside, nature"
+        },
+        {
+          "id": "pixabay:216584",
+          "source": "pixabay",
+          "score": 0.203,
+          "title": "field, trees, forest, sunset, nature, drone, landscape"
+        }
+      ]
+    }
+  ],
+  "music": {
+    "path": null,
+    "title": "The Place That I Call Home",
+    "source": "openverse/jamendo",
+    "licence": "CC BY 3.0",
+    "licence_url": "https://creativecommons.org/licenses/by/3.0/",
+    "attribution": "\"The Place That I Call Home\" by Muted Symphony (CC BY 3.0)",
+    "page_url": "https://www.jamendo.com/track/2038459",
+    "ai_generated": false
+  }
+}

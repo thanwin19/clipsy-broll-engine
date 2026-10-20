@@ -1,0 +1,18 @@
+{
+  "job_id": "job_063add4471d04a67b74a",
+  "kind": "broll",
+  "status": "failed",
+  "progress": 5,
+  "stage": "failed",
+  "created_at": "2026-10-20T05:01:53.838500",
+  "updated_at": "2026-10-20T05:01:57.339311",
+  "result": null,
+  "error": {
+    "code": "TTS_FAILED",
+    "message": "Gemini TTS failed",
+    "retryable": true,
+    "details": {
+      "reason": "Client error '429 Too Many Requests' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-tts-preview:generateContent'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429"
+    }
+  }
+}

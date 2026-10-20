@@ -1,0 +1,19 @@
+{
+  "job_id": "job_03e296a5487640aa8b8f",
+  "kind": "broll",
+  "status": "failed",
+  "progress": 5,
+  "stage": "failed",
+  "created_at": "2026-10-20T05:02:02.730429",
+  "updated_at": "2026-10-20T05:02:03.263146",
+  "result": null,
+  "error": {
+    "code": "INPUT_DOWNLOAD_FAILED",
+    "message": "The audio_url could not be downloaded.",
+    "retryable": true,
+    "details": {
+      "url": "https://example.com/does-not-exist/voice.mp3",
+      "reason": "Client error '404 Not Found' for url 'https://example.com/does-not-exist/voice.mp3'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+    }
+  }
+}

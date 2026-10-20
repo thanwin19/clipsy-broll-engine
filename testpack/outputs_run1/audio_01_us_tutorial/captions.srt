@@ -1,0 +1,31 @@
+1
+00:00:00,000 --> 00:00:02,200
+To change a bicycle tire,
+
+2
+00:00:02,200 --> 00:00:05,160
+first release the brake and remove the wheel.
+
+3
+00:00:05,160 --> 00:00:07,120
+Use two levers to lift the tire
+
+4
+00:00:07,120 --> 00:00:08,680
+off the rim.
+
+5
+00:00:08,680 --> 00:00:10,160
+Pull out the old tube,
+
+6
+00:00:10,160 --> 00:00:12,380
+check the tire for sharp objects,
+
+7
+00:00:12,380 --> 00:00:14,140
+then fit the new tube and pump
+
+8
+00:00:14,140 --> 00:00:15,131
+it up slowly.

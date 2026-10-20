@@ -1,0 +1,18 @@
+{
+  "job_id": "job_9c2731632eed4ed6b030",
+  "kind": "broll",
+  "status": "failed",
+  "progress": 45,
+  "stage": "failed",
+  "created_at": "2026-10-20T05:56:06.601448",
+  "updated_at": "2026-10-20T05:56:37.796048",
+  "result": null,
+  "error": {
+    "code": "INTERNAL_ERROR",
+    "message": "OpenCV(4.12.0) D:\\a\\opencv-python\\opencv-python\\opencv\\modules\\objdetect\\src\\cascadedetect.hpp:46: error: (-215:Assertion failed) 0 <= scaleIdx && scaleIdx < (int)scaleData->size() in function 'cv::FeatureEvaluator::getScaleData'\n",
+    "retryable": true,
+    "details": {
+      "type": "error"
+    }
+  }
+}

@@ -1,0 +1,263 @@
+{
+  "job_id": "job_6ff71feea4da4393b181",
+  "version": 1,
+  "narration_seconds": 21.131,
+  "language": "en",
+  "transcript": "Here is how to make a perfect cup of filter coffee at home. First, boil fresh water and let it cool for thirty seconds. Add two spoons of ground coffee to the filter. Pour the water slowly in circles. Wait four minutes, then add warm milk and a little sugar. Enjoy it while it is hot.",
+  "aspect_ratios": [
+    "16:9",
+    "9:16"
+  ],
+  "mood": "upbeat",
+  "selection_rule": "Per scene: (1) statistics -> animated stat card. (2) Stock candidates from category-suited sources are scored with CLIP (image vs scene visual plan + narration, minus penalty for negative/avoid terms); unsafe candidates (avoid list, faces when avoided, AI for people/brands/sensitive) are removed. (3) Global assignment takes the highest (scene, clip) pairs first, each clip used once, if score >= tau=0.24. (4) If a scene's best stock score < tau+0.03 and AI is allowed, an AI image is generated and wins only if its CLIP score >= stock + 0.02. (5) Otherwise the best unused clip within 0.03 of tau, else a text card.",
+  "scenes": [
+    {
+      "scene": 0,
+      "start": 0.0,
+      "end": 4.52,
+      "duration": 4.52,
+      "narration": "Here is how to make a perfect cup of filter coffee at home.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "food",
+      "visual_plan": "A steaming cup of freshly brewed filter coffee on a cozy kitchen table.",
+      "queries": [
+        "fresh filter coffee cup",
+        "hot coffee brewing home",
+        "pour over coffee cup"
+      ],
+      "negative_terms": [
+        "instant coffee jar",
+        "tea cup",
+        "empty cup"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:0",
+        "kind": "card",
+        "title": "Card: Here is how to make a perfect cup of filter coffee at home.",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": []
+    },
+    {
+      "scene": 1,
+      "start": 4.52,
+      "end": 9.26,
+      "duration": 4.74,
+      "narration": "First, boil fresh water and let it cool for thirty seconds.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "food",
+      "visual_plan": "Fresh water boiling in a modern kettle on a stove.",
+      "queries": [
+        "boiling water kettle",
+        "hot water pouring kettle",
+        "fresh water kettle"
+      ],
+      "negative_terms": [
+        "cold water tap",
+        "empty kettle"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "coverr:Aq79sX5tGO",
+        "kind": "video",
+        "title": "A boiling kettle",
+        "source": "coverr",
+        "source_url": "https://coverr.co/videos/a-boiling-kettle-aq79sx5tgo",
+        "media_url": "https://cdn.coverr.co/videos/coverr-a-boiling-kettle-8401/1080p.mp4",
+        "licence": "Coverr License (free for commercial use, no attribution required)",
+        "licence_url": "https://coverr.co/license",
+        "attribution": "Video from Coverr",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "boiling water kettle"
+      },
+      "reason": "stock: coverr clip scored 0.318 >= tau 0.24; best unused of 11 safe candidates",
+      "relevance_score": 0.3177,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.3237,
+        "negative_max": 0.3097,
+        "penalty": 0.006
+      },
+      "reframe_subject_x": 0.42,
+      "alternatives": [
+        {
+          "id": "coverr:Aq79sX5tGO",
+          "source": "coverr",
+          "score": 0.3177,
+          "title": "A boiling kettle"
+        },
+        {
+          "id": "pixabay:267",
+          "source": "pixabay",
+          "score": 0.2996,
+          "title": "pot, cooking, steam, steaming, hot, food, kettle, preparation, kitchen, sepia, c"
+        },
+        {
+          "id": "pixabay:1036",
+          "source": "pixabay",
+          "score": 0.2783,
+          "title": "pot, fire, cooking, flames, heat, kettle, food, campfire, hot, cook, outdoor, bo"
+        },
+        {
+          "id": "pixabay:146",
+          "source": "pixabay",
+          "score": 0.2288,
+          "title": "kettle, poyke, cooking, fireplace, rustic, traditional, metal, fire, outdoors, v"
+        },
+        {
+          "id": "pixabay:1085",
+          "source": "pixabay",
+          "score": 0.1904,
+          "title": "bubbles, air, underwater, water, liquid, transparent, clean, beautiful wallpaper"
+        }
+      ]
+    },
+    {
+      "scene": 2,
+      "start": 9.26,
+      "end": 15.16,
+      "duration": 5.9,
+      "narration": "Add two spoons of ground coffee to the filter. Pour the water slowly in circles.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "food",
+      "visual_plan": "Adding dark ground coffee powder to a metal coffee filter and pouring water.",
+      "queries": [
+        "ground coffee powder filter",
+        "pouring water coffee filter",
+        "making drip coffee"
+      ],
+      "negative_terms": [
+        "tea leaves",
+        "instant coffee granules"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:2",
+        "kind": "card",
+        "title": "Card: Add two spoons of ground coffee to the filter. Pour the wate",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [
+        {
+          "id": "pixabay:17013",
+          "source": "pixabay",
+          "score": 0.0776,
+          "title": "rain, water, wet, drops, drip, raindrop, raindrops, droplets, puddle, reflection"
+        },
+        {
+          "id": "pixabay:13100",
+          "source": "pixabay",
+          "score": -0.0242,
+          "title": "universe, jar, colourful, experiment, close-up, particles, oil, ink, water, abst"
+        },
+        {
+          "id": "pixabay:53788",
+          "source": "pixabay",
+          "score": -0.0827,
+          "title": "rain, effect, storm, water, raindrop, nature, weather, screen blend, pouring, fl"
+        }
+      ]
+    },
+    {
+      "scene": 3,
+      "start": 15.16,
+      "end": 21.131,
+      "duration": 5.971,
+      "narration": "Wait four minutes, then add warm milk and a little sugar. Enjoy it while it is hot.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "food",
+      "visual_plan": "Pouring warm milk into a cup of strong brewed coffee and stirring.",
+      "queries": [
+        "pouring warm milk coffee",
+        "adding milk to coffee cup",
+        "hot coffee ready to drink"
+      ],
+      "negative_terms": [
+        "black coffee only",
+        "cold milk carton"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:4315",
+        "kind": "video",
+        "title": "milk, bottle, pouring, organic milk, almond milk, drink, white, glass, dairy, calcium, product, fresh, liquid, natural, indoors, ingredient, breakfast",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-4315/",
+        "media_url": "https://cdn.pixabay.com/video/2016/08/08/4315-178218581_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by bottlein on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "pouring warm milk coffee"
+      },
+      "reason": "stock: pixabay clip scored 0.317 >= tau 0.24; best unused of 2 safe candidates",
+      "relevance_score": 0.3169,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.3169,
+        "negative_max": 0.2516,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.416,
+      "alternatives": [
+        {
+          "id": "pixabay:4315",
+          "source": "pixabay",
+          "score": 0.3169,
+          "title": "milk, bottle, pouring, organic milk, almond milk, drink, white, glass, dairy, ca"
+        },
+        {
+          "id": "pixabay:13100",
+          "source": "pixabay",
+          "score": -0.0034,
+          "title": "universe, jar, colourful, experiment, close-up, particles, oil, ink, water, abst"
+        }
+      ]
+    }
+  ],
+  "music": {
+    "path": null,
+    "title": "Procedural ambient pad",
+    "source": "procedural",
+    "licence": "Generated by this service (no third-party rights)",
+    "licence_url": "",
+    "attribution": "Generated by IncuBrix B-roll engine",
+    "page_url": "",
+    "ai_generated": false
+  }
+}

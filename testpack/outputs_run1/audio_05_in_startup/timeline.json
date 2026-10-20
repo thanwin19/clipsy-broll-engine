@@ -1,0 +1,180 @@
+{
+  "job_id": "job_4f8c7e8b1e6f4c1190bd",
+  "version": 1,
+  "narration_seconds": 11.811,
+  "language": "en",
+  "transcript": "Starting a business is hard. You will build a product, talk to customers and fix problems every single day. But when the first customer pays you, every late night feels worth it.",
+  "aspect_ratios": [
+    "16:9"
+  ],
+  "mood": "inspiring",
+  "selection_rule": "Per scene: (1) statistics -> animated stat card. (2) Stock candidates from category-suited sources are scored with CLIP (image vs scene visual plan + narration, minus penalty for negative/avoid terms); unsafe candidates (avoid list, faces when avoided, AI for people/brands/sensitive) are removed. (3) Global assignment takes the highest (scene, clip) pairs first, each clip used once, if score >= tau=0.24. (4) If a scene's best stock score < tau+0.03 and AI is allowed, an AI image is generated and wins only if its CLIP score >= stock + 0.02. (5) Otherwise the best unused clip within 0.03 of tau, else a text card.",
+  "scenes": [
+    {
+      "scene": 0,
+      "start": 0.0,
+      "end": 7.62,
+      "duration": 7.62,
+      "narration": "Starting a business is hard. You will build a product, talk to customers and fix problems every single day.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "business",
+      "visual_plan": "A dedicated entrepreneur working late at a desk with a laptop and blueprints, showing the hard work of building a startup.",
+      "queries": [
+        "entrepreneur working late",
+        "startup office desk",
+        "person building product"
+      ],
+      "negative_terms": [
+        "party",
+        "relaxation",
+        "sleep"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:215751",
+        "kind": "video",
+        "title": "man, office work, business, payroll, payroll management, working late night, computer, digital, tired",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-215751/",
+        "media_url": "https://cdn.pixabay.com/video/2024/06/07/215751_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by G3Remote on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "entrepreneur working late"
+      },
+      "reason": "stock: pixabay clip scored 0.301 >= tau 0.24; best unused of 18 safe candidates",
+      "relevance_score": 0.3011,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.3011,
+        "negative_max": 0.152,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.503,
+      "alternatives": [
+        {
+          "id": "pixabay:215751",
+          "source": "pixabay",
+          "score": 0.3011,
+          "title": "man, office work, business, payroll, payroll management, working late night, com"
+        },
+        {
+          "id": "pixabay:69952",
+          "source": "pixabay",
+          "score": 0.2392,
+          "title": "office, meeting, working, discussion, startup, business, computer, work, team, p"
+        },
+        {
+          "id": "pixabay:137186",
+          "source": "pixabay",
+          "score": 0.2358,
+          "title": "office, team work, desk, job, responsibility"
+        },
+        {
+          "id": "pixabay:80314",
+          "source": "pixabay",
+          "score": 0.2264,
+          "title": "office, desk, team work, insurance, writing, facts, thinking"
+        },
+        {
+          "id": "pixabay:150883",
+          "source": "pixabay",
+          "score": 0.2236,
+          "title": "computers, office, desk, windows, rain, water, anime, ai generated"
+        }
+      ]
+    },
+    {
+      "scene": 1,
+      "start": 7.62,
+      "end": 11.811,
+      "duration": 4.191,
+      "narration": "But when the first customer pays you, every late night feels worth it.",
+      "visual_hint": null,
+      "scene_type": "metaphor",
+      "category": "business",
+      "visual_plan": "A close-up of a digital payment notification on a smartphone screen, representing the joy of the first customer paying.",
+      "queries": [
+        "digital payment notification",
+        "mobile banking success",
+        "happy business owner"
+      ],
+      "negative_terms": [
+        "debt",
+        "bills",
+        "rejection"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:202987",
+        "kind": "video",
+        "title": "phone, smartphone, mobile, portable, screen, digital, communication, texting, business, work",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-202987/",
+        "media_url": "https://cdn.pixabay.com/video/2024/03/04/202987-919379330_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by Natures_Embrace on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "mobile banking success"
+      },
+      "reason": "stock (low confidence): pixabay scored 0.239 (< tau 0.24, within 0.03); no AI option",
+      "relevance_score": 0.2393,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2393,
+        "negative_max": 0.2018,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.408,
+      "alternatives": [
+        {
+          "id": "pixabay:202987",
+          "source": "pixabay",
+          "score": 0.2393,
+          "title": "phone, smartphone, mobile, portable, screen, digital, communication, texting, bu"
+        },
+        {
+          "id": "pixabay:38084",
+          "source": "pixabay",
+          "score": 0.2071,
+          "title": "woman, phone, smartphone, technology, mobile, telephone, cellphone, person, fema"
+        },
+        {
+          "id": "pixabay:130652",
+          "source": "pixabay",
+          "score": 0.1939,
+          "title": "woman, smartphone, education, navigation, lifestyle, mobile, money safe, store, "
+        },
+        {
+          "id": "pixabay:5438",
+          "source": "pixabay",
+          "score": 0.1887,
+          "title": "finance, numbers, calculate, maths, profits, business, financial, investment, mo"
+        },
+        {
+          "id": "pixabay:74779",
+          "source": "pixabay",
+          "score": 0.1605,
+          "title": "nft video, nft logo, nft hologram, nft business, non-fungible token, non fungibl"
+        }
+      ]
+    }
+  ],
+  "music": {
+    "path": null,
+    "title": "Inspiring Progress",
+    "source": "openverse/jamendo",
+    "licence": "CC BY 3.0",
+    "licence_url": "https://creativecommons.org/licenses/by/3.0/",
+    "attribution": "\"Inspiring Progress\" by Soundrider/Dope (CC BY 3.0)",
+    "page_url": "https://www.jamendo.com/track/1670591",
+    "ai_generated": false
+  }
+}

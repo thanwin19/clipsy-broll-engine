@@ -1,0 +1,253 @@
+{
+  "job_id": "job_23dd6c5edcff4e589766",
+  "version": 1,
+  "narration_seconds": 14.931,
+  "language": "en",
+  "transcript": "The old harbour town sits at the end of a winding coastal road, fishing boats bob in the water, and narrow lanes lead up to a lighthouse on the cliff. In the evening, the whole bay turns orange as the sun goes down.",
+  "aspect_ratios": [
+    "16:9"
+  ],
+  "mood": "calm",
+  "selection_rule": "Per scene: (1) statistics -> animated stat card. (2) Stock candidates from category-suited sources are scored with CLIP (image vs scene visual plan + narration, minus penalty for negative/avoid terms); unsafe candidates (avoid list, faces when avoided, AI for people/brands/sensitive) are removed. (3) Global assignment takes the highest (scene, clip) pairs first, each clip used once, if score >= tau=0.24. (4) If a scene's best stock score < tau+0.03 and AI is allowed, an AI image is generated and wins only if its CLIP score >= stock + 0.02. (5) Otherwise the best unused clip within 0.03 of tau, else a text card.",
+  "scenes": [
+    {
+      "scene": 0,
+      "start": 0.0,
+      "end": 4.68,
+      "duration": 4.68,
+      "narration": "The old harbour town sits at the end of a winding coastal road,",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "place",
+      "visual_plan": "A scenic aerial shot of a winding coastal road leading into a historic harbour town.",
+      "queries": [
+        "winding coastal road",
+        "harbour town aerial",
+        "coastal highway drone"
+      ],
+      "negative_terms": [
+        "city",
+        "highway",
+        "traffic jam"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:0",
+        "kind": "card",
+        "title": "Card: The old harbour town sits at the end of a winding coastal ro",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [
+        {
+          "id": "pixabay:32657",
+          "source": "pixabay",
+          "score": 0.2099,
+          "title": "drone, beach, travel, ocean, water, sea, coast, sand, blue, aerial, summer, natu"
+        },
+        {
+          "id": "pixabay:160767",
+          "source": "pixabay",
+          "score": 0.1717,
+          "title": "ocean, beach, waves, breaking waves, drone, urban, european architecture, europe"
+        },
+        {
+          "id": "pixabay:22619",
+          "source": "pixabay",
+          "score": 0.1657,
+          "title": "cliff, precipice, sea, coastal, nature, bluff, headland"
+        },
+        {
+          "id": "pixabay:216058",
+          "source": "pixabay",
+          "score": 0.1577,
+          "title": "drone, drones, drone images, nature, forest, river, landscape, drone footage, ae"
+        },
+        {
+          "id": "pixabay:367684",
+          "source": "pixabay",
+          "score": 0.1402,
+          "title": "ha giang, vietnam, drone, flycam, 4k, cinematic, mountain valley, mountain pass,"
+        }
+      ]
+    },
+    {
+      "scene": 1,
+      "start": 4.68,
+      "end": 10.32,
+      "duration": 5.64,
+      "narration": "fishing boats bob in the water, and narrow lanes lead up to a lighthouse on the cliff.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "nature",
+      "visual_plan": "Small fishing boats gently bobbing in calm harbor water with a narrow lane leading up to a distant cliffside lighthouse.",
+      "queries": [
+        "fishing boats bobbing water",
+        "harbour boats calm",
+        "cliffside lighthouse ocean"
+      ],
+      "negative_terms": [
+        "cruise ship",
+        "stormy sea",
+        "speedboat"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:2352",
+        "kind": "video",
+        "title": "marina, harbor, port, boats, ocean, coast, bay, sea, nautical, calm, sunset, quiet, tranquil, vacation, landscape, ships",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-2352/",
+        "media_url": "https://cdn.pixabay.com/video/2016/03/01/2352-157270014_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by Life-Of-Vids on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "harbour boats calm"
+      },
+      "reason": "stock: pixabay clip scored 0.290 >= tau 0.24; best unused of 24 safe candidates",
+      "relevance_score": 0.2903,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2903,
+        "negative_max": 0.1993,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.573,
+      "alternatives": [
+        {
+          "id": "pixabay:2352",
+          "source": "pixabay",
+          "score": 0.2903,
+          "title": "marina, harbor, port, boats, ocean, coast, bay, sea, nautical, calm, sunset, qui"
+        },
+        {
+          "id": "pixabay:23009",
+          "source": "pixabay",
+          "score": 0.2493,
+          "title": "fishing, boat, water, ocean, sea, waves, sunset, clouds"
+        },
+        {
+          "id": "pixabay:135",
+          "source": "pixabay",
+          "score": 0.2411,
+          "title": "sailing boats, harbor, evening, calm, windless, boats, port, sea, ocean, lake, s"
+        },
+        {
+          "id": "pixabay:987",
+          "source": "pixabay",
+          "score": 0.2404,
+          "title": "boat, bay, harbor, anchored, sea, water, landscape, ocean, coast, nautical, ship"
+        },
+        {
+          "id": "pixabay:222044",
+          "source": "pixabay",
+          "score": 0.2232,
+          "title": "ocean, sea, harbor, port, ship, water, boats, marina, relaxing, sailboat, horizo"
+        }
+      ]
+    },
+    {
+      "scene": 2,
+      "start": 10.32,
+      "end": 14.931,
+      "duration": 4.611,
+      "narration": "In the evening, the whole bay turns orange as the sun goes down.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "nature",
+      "visual_plan": "A breathtaking sunset over a coastal bay, casting a vibrant orange and golden glow across the water and sky.",
+      "queries": [
+        "sunset over bay",
+        "orange sunset ocean",
+        "dusk coastal landscape"
+      ],
+      "negative_terms": [
+        "noon",
+        "bright daylight",
+        "rain"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:19860",
+        "kind": "video",
+        "title": "orange sunset, ocean, waves, sea, beach, meditation, romantic, sky, nature, relax, enjoy, zen, mindfulness, harmony",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-19860/",
+        "media_url": "https://cdn.pixabay.com/video/2018/12/10/19860-306108562_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by ChristianBodhi on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "orange sunset ocean"
+      },
+      "reason": "stock: pixabay clip scored 0.330 >= tau 0.24; best unused of 18 safe candidates",
+      "relevance_score": 0.33,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.33,
+        "negative_max": 0.2015,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.474,
+      "alternatives": [
+        {
+          "id": "pixabay:19860",
+          "source": "pixabay",
+          "score": 0.33,
+          "title": "orange sunset, ocean, waves, sea, beach, meditation, romantic, sky, nature, rela"
+        },
+        {
+          "id": "pixabay:206272",
+          "source": "pixabay",
+          "score": 0.3205,
+          "title": "beach, sunset, sky, sea, dusk, ocean, sun, twilight, horizon, water, silhouette,"
+        },
+        {
+          "id": "pixabay:103019",
+          "source": "pixabay",
+          "score": 0.3195,
+          "title": "ocean, sea, water, landscape, sunset, nature, red, orange"
+        },
+        {
+          "id": "pixabay:130766",
+          "source": "pixabay",
+          "score": 0.3117,
+          "title": "ocean, sunset, orange, water, reflection, sea, landscape, fantasy, nature"
+        },
+        {
+          "id": "pixabay:216083",
+          "source": "pixabay",
+          "score": 0.2817,
+          "title": "beach, coast, wave, coastal, coastline, island, landscape, light, ocean, reflect"
+        }
+      ]
+    }
+  ],
+  "music": {
+    "path": null,
+    "title": "Procedural ambient pad",
+    "source": "procedural",
+    "licence": "Generated by this service (no third-party rights)",
+    "licence_url": "",
+    "attribution": "Generated by IncuBrix B-roll engine",
+    "page_url": "",
+    "ai_generated": false
+  }
+}
