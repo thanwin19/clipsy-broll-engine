@@ -309,8 +309,8 @@ def mix_audio(narration_wav: Path, music, total: float, out: Path) -> Path:
                      f"[v2][duck]amix=inputs=2:duration=first:normalize=0[a]",
                      "-map", "[a]", "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-t", f"{total:.3f}", out)
     else:
-        media.ffmpeg("-i", narration_wav, "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-ac", "2",
-                     "-t", f"{total:.3f}", out)
+        media.ffmpeg("-i", narration_wav, "-af", f"afade=t=out:st={max(0, total - 0.25):.3f}:d=0.25",
+                     "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-ac", "2", "-t", f"{total:.3f}", out)
     return out
 
 

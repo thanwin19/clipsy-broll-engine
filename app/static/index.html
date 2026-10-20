@@ -495,7 +495,7 @@ function friendly(w){const m=w.match(/^([A-Z_]+):\s*(.*)$/);if(!m)return w;const
   return({PROVIDER_DOWN:`One footage library (${(r.match(/'([^']+)'/)||[])[1]||'a source'}) was slow or unavailable — other libraries were used.`,PROVIDER_COOLDOWN:`A footage library is temporarily skipped after recent errors.`,
    LOW_RELEVANCE:`${n}: the closest available clip is only a loose match — try “Find better B-roll” in the Editor.`,QA_AUTOFIX:`A clip with frozen or black frames was detected and replaced automatically.`,
    TTS_FALLBACK:`The cloud voice was unavailable, so a local voice was used.`,TRANSLATION_FAILED:`Translation failed, so the original language was narrated.`,PLANNER_FALLBACK:`AI planning was unavailable; keyword matching was used.`,
-   JUDGE_UNAVAILABLE:`The independent quality check could not score every scene.`,MUSIC_SOURCE_DOWN:`Music library unavailable — a generated ambient track was used.`,NARRATION_WRITTEN:`Your prompt had no voiceover, so narration was written for the shots.`})[k]||r}
+   JUDGE_UNAVAILABLE:`The independent quality check could not score every scene.`,MUSIC_SOURCE_DOWN:`Music library unavailable — a generated ambient track was used.`,NARRATION_WRITTEN:`Your prompt had no voiceover, so narration was written for the shots.`,TTS_TAIL_CLEANED:`A click at the end of the generated voice was removed.`})[k]||r}
 function resultView(center,c,jid){$('.studio').classList.add('done');const rq=c.p.request||{};const ta=$('#script');
   if(ta&&!ta.value)ta.value=rq.script||(rq.scenes||[]).map(x=>(x.visual_hint?`[${x.visual_hint}] `:'')+x.text).join('\n');
 const L=c.links,vids=Object.keys(L).filter(k=>k.startsWith('video_'));let cur=vids[0];

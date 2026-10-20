@@ -76,6 +76,25 @@ def fetch_audio(url: str, work: Path) -> Path:
     return dest
 
 
+def cut_tail_blip(src: Path, dest: Path, warnings: list[str]) -> Path:
+    """TTS engines sometimes end with a short full-volume click/burst after the speech. If the audio ends with
+    silence followed by less than 0.4 s of sound, cut it at the start of that silence and fade out gently."""
+    import subprocess
+    total = media.duration(src)
+    proc = subprocess.run([media.FFMPEG, "-hide_banner", "-nostdin", "-i", str(src), "-af",
+                           "silencedetect=noise=-45dB:d=0.12", "-f", "null", "-"],
+                          capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=120)
+    starts = [float(x) for x in re.findall(r"silence_start: ([\d\.]+)", proc.stderr)]
+    ends = [float(x) for x in re.findall(r"silence_end: ([\d\.]+)", proc.stderr)]
+    cut = total
+    if starts and ends and len(ends) >= len(starts) and 0 < total - ends[-1] < 0.4 and starts[-1] > 0.5:
+        cut = starts[-1] + 0.25           # keep a natural pause after the last word, drop the blip
+        warnings.append("TTS_TAIL_CLEANED: removed a short noise burst at the end of the generated voice")
+    fade = max(0.0, cut - 0.15)
+    media.ffmpeg("-i", src, "-t", f"{cut:.3f}", "-af", f"afade=t=out:st={fade:.3f}:d=0.15", dest)
+    return dest
+
+
 def build_narration(req: dict, work: Path, warnings: list[str],
                     progress: Progress = lambda *a: None) -> tuple[Narration, list[list[Word]] | None, list]:
     s = get_settings()
@@ -157,6 +176,7 @@ def build_narration(req: dict, work: Path, warnings: list[str],
         warnings += getattr(tts, "warnings", [])
         providers["tts"] = {"name": tts.name, "version": tts.version, "voice": req.get("voice"),
                             "voice_style": style, "requested_style": req.get("voice_style") or "natural"}
+        raw = cut_tail_blip(raw, work / "tts_clean.wav", warnings)
         # TTS output can start/end with long silences: trim them (keeping ~0.3 s padding) so narration covers the video
         trimmed = work / "tts_trimmed.wav"
         media.ffmpeg("-i", raw, "-af", "silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.3,"
