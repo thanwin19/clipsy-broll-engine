@@ -31,7 +31,8 @@ class ClipScorer:
             if ClipScorer._model is None:
                 import open_clip
                 import torch
-                torch.set_num_threads(max(1, torch.get_num_threads()))
+                import os
+                torch.set_num_threads(max(1, os.cpu_count() or 1))
                 model, _, preprocess = open_clip.create_model_and_transforms(
                     self.arch, pretrained=self.pretrained, cache_dir=str(get_settings().data_dir / "models"))
                 model.eval()
@@ -40,7 +41,7 @@ class ClipScorer:
 
     def embed_texts(self, texts: list[str]) -> np.ndarray:
         model, _, tok, torch = self._load()
-        with ClipScorer._lock, torch.no_grad():
+        with ClipScorer._lock, torch.inference_mode():
             t = model.encode_text(tok(texts))
             t = t / t.norm(dim=-1, keepdim=True)
         return t.numpy()
@@ -48,7 +49,7 @@ class ClipScorer:
     def embed_images(self, paths: list[Path]) -> np.ndarray:
         model, preprocess, _, torch = self._load()
         imgs = [preprocess(Image.open(p).convert("RGB")) for p in paths]
-        with ClipScorer._lock, torch.no_grad():
+        with ClipScorer._lock, torch.inference_mode():
             v = model.encode_image(torch.stack(imgs))
             v = v / v.norm(dim=-1, keepdim=True)
         return v.numpy()
@@ -114,7 +115,7 @@ def score_candidates(scene, cands: list[Candidate], avoid_terms: list[str], avoi
     from app.pipeline.sources import fetch_thumb
     from concurrent.futures import ThreadPoolExecutor
 
-    with ThreadPoolExecutor(max_workers=8) as ex:
+    with ThreadPoolExecutor(max_workers=16) as ex:
         thumbs = list(ex.map(lambda c: c.thumb_path or fetch_thumb(c, thumb_dir), cands))
     for c, t in zip(cands, thumbs):
         c.thumb_path = t

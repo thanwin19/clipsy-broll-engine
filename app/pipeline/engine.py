@@ -194,7 +194,7 @@ def select_clips(plan, nar: Narration, req: dict, work: Path, warnings: list[str
         return sc.index, score_candidates(sc, cands, avoid, avoid_faces, scorer, work / "thumbs")
 
     done = 0
-    with timer("search_and_score"), ThreadPoolExecutor(max_workers=3) as ex:
+    with timer("search_and_score"), ThreadPoolExecutor(max_workers=6) as ex:
         for idx, ranked in ex.map(work_scene, scenes):
             pools[idx] = ranked
             done += 1

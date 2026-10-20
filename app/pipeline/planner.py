@@ -177,7 +177,7 @@ class GeminiPlanner:
                 try:
                     r = httpx.post(f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
                                    headers={"x-goog-api-key": self.key}, json={**body, "generationConfig": gen},
-                                   timeout=get_settings().llm_timeout_seconds)
+                                   timeout=get_settings().llm_timeout_seconds + 0.6 * len(scenes))  # long scripts need longer answers
                     if r.status_code in (404, 400):
                         last = RuntimeError(f"{model}: HTTP {r.status_code}")
                         break

@@ -422,7 +422,7 @@ def fetch_thumb(cand: Candidate, dest_dir: Path) -> Path | None:
     if path.exists():
         return path
     try:
-        with _client(15) as c:
+        with _client(8) as c:
             r = c.get(cand.thumb_url.replace(" ", "%20"))
             r.raise_for_status()
             path.write_bytes(r.content)
