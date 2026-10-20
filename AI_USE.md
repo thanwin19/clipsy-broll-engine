@@ -12,4 +12,4 @@ How I worked with it:
   keys, Pixabay 4K downloads too slow, a scene cut in the middle of a sentence) were fixed and re-run.
 - I reviewed the code and can explain and change every part of it.
 
-AI models used *inside* the product (Gemini, Whisper, CLIP, FLUX) are listed in `SOURCES.md`.
+AI models used *inside* the product (Gemini planner, TTS and judge; faster-whisper; OpenCLIP; Kokoro-82M; eSpeak NG; Depth-Anything-V2-Small; FLUX, not enabled on the demo) are listed in `SOURCES.md`.

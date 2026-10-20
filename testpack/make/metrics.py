@@ -86,6 +86,8 @@ def main(dirs):
     out["vlm_judge"] = {"scenes_judged": len(judged),
                         "mean": round(sum(judged) / len(judged), 2) if judged else None,
                         "share_4_or_5": round(sum(j >= 4 for j in judged) / len(judged), 3) if judged else None}
+    jt = [(r["end"] - r["start"], r["judge"]) for r in scene_rows if isinstance(r["judge"], (int, float))]
+    out["judge_coverage_3_plus"] = round(sum(d for d, j in jt if j >= 3) / sum(d for d, _ in jt), 3) if jt else None
     out["human"] = human_metrics(scene_rows)
     if template:
         write_template(scene_rows)
