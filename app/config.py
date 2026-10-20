@@ -38,6 +38,7 @@ class Settings(BaseSettings):
     # adapters (each has a "mock" implementation so tests need no keys)
     asr_provider: str = "whisper"          # whisper | mock
     whisper_model: str = "base"
+    whisper_align_model: str = "tiny"     # used to time TTS of a known script (words come from the script)
     tts_provider: str = "gemini,kokoro"    # tried in order: gemini | kokoro | mock
     gemini_tts_model: str = "gemini-3.8-flash-tts,gemini-3.8-flash-lite-tts,gemini-2.5-flash-preview-tts,gemini-3.1-flash-tts-preview"  # tried in order (free tier: ~10 requests/day each)
     llm_provider: str = "gemini"           # gemini | mock
@@ -74,7 +75,10 @@ class Settings(BaseSettings):
     ffmpeg_bin: str = "ffmpeg"
     ffprobe_bin: str = "ffprobe"
     fps: int = 30
+    video_encoder: str = "libx264"   # libx264 (CPU) | h264_amf | h264_nvenc | h264_qsv (GPU video engines)
     video_preset: str = "veryfast"
+    render_parallel: int = 4         # ffmpeg segment renders at once
+    ffmpeg_threads: int = 2          # threads per ffmpeg process
     video_crf: int = 23
     music_volume_db: float = -20.0
     seed: int = 1234

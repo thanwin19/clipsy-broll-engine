@@ -125,6 +125,8 @@ def build_narration(req: dict, work: Path, warnings: list[str]) -> tuple[Narrati
             raw = trimmed
         mix = media.to_wav(raw, work / "narration.wav", 48000)
         total = media.duration(mix)
+        asr = get_asr(for_alignment=True)
+        providers["asr"] = {"name": asr.name, "version": asr.version, "purpose": "timing of known script words"}
         if asr.name == "mock-asr":
             words, lang = even_words(script, 0.2, total - 0.2), "en"
         else:
@@ -301,22 +303,37 @@ def clip_record(sc: Scene, c: Candidate, reason: str, alternatives: list[Candida
 
 
 def render_all(scenes, chosen, nar, music, ratios, burn, work: Path, progress: Progress, only: set[int] | None = None):
+    """Renders every (ratio, scene) segment in parallel (RENDER_PARALLEL ffmpeg processes), then joins each ratio."""
+    from concurrent.futures import ThreadPoolExecutor
     s = get_settings()
     bounds = frame_bounds(scenes, s.fps)
-    outputs = {}
-    for ri, ratio in enumerate(ratios):
+    tasks, paths = [], {}
+    for ratio in ratios:
         seg_dir = work / "segments" / ratio_key(ratio)
-        segs = []
         for sc, (a, b) in zip(scenes, bounds):
             name = f"seg_{sc.index:03d}"
             p = seg_dir / f"{name}.mp4"
+            paths[(ratio, sc.index)] = p
             if only is None or sc.index in only or not p.exists():
-                p = render_segment(sc, chosen[sc.index], ratio, max(1, b - a), seg_dir, burn, name)
-            segs.append(p)
+                tasks.append((sc, ratio, max(1, b - a), seg_dir, name))
+    done = [0]
+    lock = threading.Lock()
+
+    def one(t):
+        sc, ratio, frames, seg_dir, name = t
+        out = render_segment(sc, chosen[sc.index], ratio, frames, seg_dir, burn, name)
+        with lock:
+            done[0] += 1
             if only is None:
-                progress(68 + int(22 * (ri + (sc.index + 1) / len(scenes)) / len(ratios)), f"rendering {ratio}")
+                progress(68 + int(22 * done[0] / max(1, len(tasks))), f"rendering {done[0]}/{len(tasks)} segments")
+        return out
+
+    with ThreadPoolExecutor(max_workers=max(1, s.render_parallel)) as ex:
+        list(ex.map(one, tasks))
+    outputs = {}
+    for ratio in ratios:
         out = work / f"video_{ratio_key(ratio)}.mp4"
-        concat_and_mux(segs, nar.audio_path, music, nar.duration, out)
+        concat_and_mux([paths[(ratio, sc.index)] for sc in scenes], nar.audio_path, music, nar.duration, out)
         outputs[ratio] = out
     return outputs
 

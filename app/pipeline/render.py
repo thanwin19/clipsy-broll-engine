@@ -75,7 +75,32 @@ def _caption_style(W: int, H: int) -> str:
             f"BorderStyle=1,Outline=1.6,Shadow=0,Alignment=2,MarginV={int(28 if W >= H else 60)}")
 
 
+def encoder_args(encoder: str) -> list[str]:
+    """H.264 encoder settings. h264_amf / h264_nvenc / h264_qsv use the GPU's video engine (much faster);
+    libx264 is the portable CPU default. All produce H.264 High, yuv420p, so segments join without re-encoding."""
+    s = get_settings()
+    common = ["-pix_fmt", "yuv420p", "-profile:v", "high"]
+    if encoder == "h264_amf":
+        return ["-c:v", "h264_amf", "-quality", "balanced", "-rc", "cqp", "-qp_i", "21", "-qp_p", "23", *common]
+    if encoder == "h264_nvenc":
+        return ["-c:v", "h264_nvenc", "-preset", "p4", "-cq", "23", *common]
+    if encoder == "h264_qsv":
+        return ["-c:v", "h264_qsv", "-global_quality", "23", *common]
+    return ["-threads", str(s.ffmpeg_threads), "-c:v", "libx264", "-preset", s.video_preset, "-crf", str(s.video_crf), *common]
+
+
 def render_segment(scene, cand, ratio: str, frames: int, seg_dir: Path, burn: bool, name: str) -> Path:
+    """Renders with the configured encoder; if a GPU encoder fails, retries once with libx264."""
+    s = get_settings()
+    try:
+        return _render_segment(scene, cand, ratio, frames, seg_dir, burn, name, s.video_encoder)
+    except Exception:
+        if s.video_encoder == "libx264":
+            raise
+        return _render_segment(scene, cand, ratio, frames, seg_dir, burn, name, "libx264")
+
+
+def _render_segment(scene, cand, ratio: str, frames: int, seg_dir: Path, burn: bool, name: str, encoder: str) -> Path:
     s = get_settings()
     W, H = RATIOS[ratio]
     seg_dir.mkdir(parents=True, exist_ok=True)
@@ -88,8 +113,7 @@ def render_segment(scene, cand, ratio: str, frames: int, seg_dir: Path, burn: bo
     if cues:  # an empty .srt makes ffmpeg's subtitles filter fail, so only burn when there is text
         srt = write_srt(cues, seg_dir / f"{name}.srt", offset=scene.start)
         sub = f",subtitles={srt.name}:force_style='{_caption_style(W, H)}'"
-    enc = ["-c:v", "libx264", "-preset", s.video_preset, "-crf", str(s.video_crf), "-pix_fmt", "yuv420p",
-           "-profile:v", "high", "-r", str(s.fps), "-g", str(s.fps * 2), "-an", "-frames:v", str(frames)]
+    enc = encoder_args(encoder) + ["-r", str(s.fps), "-g", str(s.fps * 2), "-an", "-frames:v", str(frames)]
 
     if cand.kind == "video":
         vs = media.video_stream(cand.local_path) or {}
@@ -101,7 +125,7 @@ def render_segment(scene, cand, ratio: str, frames: int, seg_dir: Path, burn: bo
         loop = ["-stream_loop", "-1"] if src_dur and src_dur < dur + offset else []
         vf = (f"scale={cw}:{ch}:flags=bicubic,crop={W}:{H}:{x}:{(ch - H) // 2},fps={s.fps},{norm},"
               f"setsar=1,format=yuv420p{sub}")
-        media.ffmpeg(*loop, "-ss", f"{offset:.2f}", "-i", cand.local_path.resolve(), "-vf", vf, *enc, out.name, cwd=seg_dir)
+        media.ffmpeg("-filter_threads", str(s.ffmpeg_threads), *loop, "-ss", f"{offset:.2f}", "-i", cand.local_path.resolve(), "-vf", vf, *enc, out.name, cwd=seg_dir)
     else:  # still image (AI image, card): gentle Ken Burns push-in so the shot is never frozen
         img = cand.local_path
         if cand.kind == "card":

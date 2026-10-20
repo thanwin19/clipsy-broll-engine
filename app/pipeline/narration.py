@@ -33,20 +33,21 @@ class Narration:
 # ---------------------------------------------------------------- ASR
 class WhisperASR:
     name = "faster-whisper"
-    _model = None
+    _models: dict = {}
     _lock = threading.Lock()
 
-    def __init__(self):
-        self.model_name = get_settings().whisper_model
+    def __init__(self, model_name: str | None = None):
+        self.model_name = model_name or get_settings().whisper_model
         self.version = f"faster-whisper/{self.model_name}"
 
     def _load(self):
         with WhisperASR._lock:
-            if WhisperASR._model is None:
+            if self.model_name not in WhisperASR._models:
                 from faster_whisper import WhisperModel
-                WhisperASR._model = WhisperModel(self.model_name, device="cpu", compute_type="int8",
-                                                 download_root=str(get_settings().data_dir / "models"))
-        return WhisperASR._model
+                WhisperASR._models[self.model_name] = WhisperModel(
+                    self.model_name, device="cpu", compute_type="int8",
+                    download_root=str(get_settings().data_dir / "models"))
+        return WhisperASR._models[self.model_name]
 
     def transcribe(self, wav: Path, language: str | None = None) -> tuple[list[Word], str]:
         model = self._load()
@@ -120,8 +121,12 @@ def align_script(script: str, asr_words: list[Word]) -> list[Word]:
     return out
 
 
-def get_asr():
-    return MockASR() if get_settings().asr_provider == "mock" else WhisperASR()
+def get_asr(for_alignment: bool = False):
+    """for_alignment: the words are known (TTS of a script), only timings are needed -> smaller, faster model."""
+    s = get_settings()
+    if s.asr_provider == "mock":
+        return MockASR()
+    return WhisperASR(s.whisper_align_model if for_alignment else None)
 
 
 # ---------------------------------------------------------------- TTS

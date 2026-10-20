@@ -290,6 +290,7 @@ def _startup():
                 asr, scorer = get_asr(), get_scorer()
                 if hasattr(asr, "_load"):
                     asr._load()
+                    get_asr(for_alignment=True)._load()
                 if hasattr(scorer, "_load"):
                     scorer._load()
                 log.info("models preloaded")
