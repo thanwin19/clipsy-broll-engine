@@ -121,10 +121,32 @@ def crop_then_scale(sw: int, sh: int, W: int, H: int, subject_x: float) -> str:
     return f"crop={cw}:{ch}:{x}:{y},scale={W}:{H}:flags=bilinear"
 
 
-def _caption_style(W: int, H: int) -> str:
-    size = {1920: 15, 1080: 13}.get(W, 13) if W >= H else 9
-    return (f"FontName=DejaVu Sans,FontSize={size},Bold=1,PrimaryColour=&H00FFFFFF,OutlineColour=&H00101010,"
-            f"BorderStyle=1,Outline=1.6,Shadow=0,Alignment=2,MarginV={int(28 if W >= H else 60)}")
+CAPTION_FONTS = {"sans": "DejaVu Sans", "serif": "DejaVu Serif", "mono": "DejaVu Sans Mono", "condensed": "Arial Narrow"}
+CAPTION_SIZES = {"small": 0.8, "medium": 1.0, "large": 1.3, "xl": 1.6}
+
+
+def _ass_colour(hex_rgb: str, alpha: int = 0) -> str:
+    """#RRGGBB -> ASS &HAABBGGRR."""
+    h = (hex_rgb or "#FFFFFF").lstrip("#")
+    h = h if len(h) == 6 else "FFFFFF"
+    return f"&H{alpha:02X}{h[4:6]}{h[2:4]}{h[0:2]}".upper()
+
+
+def _caption_style(W: int, H: int, cap: dict | None = None) -> str:
+    """Burned-in caption look. cap: {color, size, font, position, box} from the request (all optional)."""
+    cap = cap or {}
+    base = {1920: 15, 1080: 13}.get(W, 13) if W >= H else 9
+    size = round(base * CAPTION_SIZES.get(cap.get("size") or "medium", 1.0), 1)
+    font = CAPTION_FONTS.get(cap.get("font") or "sans", "DejaVu Sans")
+    pos = cap.get("position") or "bottom"
+    align = {"bottom": 2, "middle": 10, "top": 6}.get(pos, 2)            # SSA numbering
+    margin = int(28 if W >= H else 60) if pos != "top" else int(40 if W >= H else 110)
+    colour = _ass_colour(cap.get("color") or "#FFFFFF")
+    if cap.get("box"):   # solid rounded-ish box behind the text (opaque box style)
+        return (f"FontName={font},FontSize={size},Bold=1,PrimaryColour={colour},BackColour=&H66000000,"
+                f"OutlineColour=&H66000000,BorderStyle=3,Outline=5,Shadow=0,Alignment={align},MarginV={margin}")
+    return (f"FontName={font},FontSize={size},Bold=1,PrimaryColour={colour},OutlineColour=&H00101010,"
+            f"BorderStyle=1,Outline=1.6,Shadow=0,Alignment={align},MarginV={margin}")
 
 
 def encoder_args(encoder: str) -> list[str]:
@@ -164,7 +186,7 @@ def _render_segment(scene, cand, ratio: str, frames: int, seg_dir: Path, burn: b
     cues = scene_cues(scene) if burn and scene.words else []
     if cues:  # an empty .srt makes ffmpeg's subtitles filter fail, so only burn when there is text
         srt = write_srt(cues, seg_dir / f"{name}.srt", offset=scene.start)
-        sub = f",subtitles={srt.name}:force_style='{_caption_style(W, H)}'"
+        sub = f",subtitles={srt.name}:force_style='{_caption_style(W, H, getattr(scene, 'caption_style', None))}'"
     title = title_png(scene, seg_dir, name, W, H)
     enc = encoder_args(encoder) + ["-r", str(s.fps), "-g", str(s.fps * 2), "-an", "-frames:v", str(frames)]
 
@@ -281,7 +303,7 @@ def render_video_multi(scene, cand, jobs: list[tuple[str, Path]], frames: int, b
         sub = ""
         if cues:
             srt = write_srt(cues, seg_dir / f"{name}.srt", offset=scene.start)
-            sub = f",subtitles={seg_dir.name}/{srt.name}:force_style='{_caption_style(W, H)}'"
+            sub = f",subtitles={seg_dir.name}/{srt.name}:force_style='{_caption_style(W, H, getattr(scene, 'caption_style', None))}'"
         title = title_png(scene, seg_dir, name, W, H)
         graph.append(with_title(f"[i{k}]{crop_then_scale(sw, sh, W, H, cand.subject_x)},setsar=1,format=yuv420p{sub}",
                                 title, rel=f"{seg_dir.name}/", label=f"o{k}"))

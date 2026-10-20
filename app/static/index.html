@@ -562,6 +562,13 @@ async function Studio(v,id){
     <label class="lb">Pacing · speaking speed <span class="mono" id="spv">1.00×</span></label><input type="range" id="speed" min="0.75" max="1.25" step="0.05" value="1" style="width:100%;accent-color:var(--vio)">
     <label class="lb">Avoid</label><input type="text" id="avoid" placeholder="people's faces, alcohol">
     <div class="row" style="margin-top:12px;gap:16px;font-size:13px"><label class="row"><input type="checkbox" id="burn" checked> Burn-in captions</label></div>
+    <label class="lb">Captions</label>
+    <div class="pills" id="ccolor">${[['#FFFFFF','White'],['#F5D547','Yellow'],['#F4EBDD','Ivory'],['#B84C3A','Vermilion'],['#7FD1E8','Sky']].map(([c,n],i)=>`<button class="pill ${i?'':'on'}" data-c="${c}" title="${n}" aria-label="${n}"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:${c};border:1px solid #0006;vertical-align:-1px"></span> ${n}</button>`).join('')}</div>
+    <div class="row" style="margin-top:8px;gap:8px">
+     <select id="csize" aria-label="Caption size"><option value="small">Small</option><option value="medium" selected>Medium</option><option value="large">Large</option><option value="xl">Extra large</option></select>
+     <select id="cfont" aria-label="Caption font"><option value="sans">Sans</option><option value="serif">Serif</option><option value="mono">Mono</option><option value="condensed">Condensed</option></select>
+     <select id="cpos" aria-label="Caption position"><option value="bottom">Bottom</option><option value="middle">Middle</option><option value="top">Top</option></select></div>
+    <label class="row" style="margin-top:8px;font-size:13px"><input type="checkbox" id="cbox"> Dark box behind captions</label>
     <label class="lb">Target duration</label><div class="row"><input type="text" id="tdur" inputmode="numeric" placeholder="Auto — from the script, or e.g. 40" style="flex:1"><span class="muted">seconds</span></div>
     <div class="hint">The voice pace adapts and the last shot is held if needed.</div>
     <label class="lb">Background music</label><div class="pills" id="mmood">${[['auto','✨ Auto'],['lofi','🎧 Lo-fi'],['calm','🌙 Calm'],['upbeat','⚡ Upbeat'],['cinematic','🎬 Cinematic'],['corporate','💼 Corporate'],['none','🔇 None']].map(([k,l])=>`<button class="pill ${k==='auto'?'on':''}" data-m="${k}">${l}</button>`).join('')}</div>
@@ -579,7 +586,7 @@ async function Studio(v,id){
   $$('.seg button').forEach(b=>b.onclick=()=>tabs(b.dataset.t));tabs(S.studioTab);
   const sync=()=>{$$('#ratios .pill').forEach(b=>b.classList.toggle('on',st.ratios.has(b.dataset.r)));$$('#vstyle .pill').forEach(b=>b.classList.toggle('on',b.dataset.s===st.style));$$('#tone .pill').forEach(b=>b.classList.toggle('on',b.dataset.v===st.tone))};
   $$('#ratios .pill').forEach(b=>b.onclick=()=>{st.ratios.has(b.dataset.r)?st.ratios.delete(b.dataset.r):st.ratios.add(b.dataset.r);if(!st.ratios.size)st.ratios.add(b.dataset.r);sync()});
-  $$('#vstyle .pill').forEach(b=>b.onclick=()=>{st.style=b.dataset.s;sync()});st.music='auto';$$('#mmood .pill').forEach(b=>b.onclick=()=>{st.music=b.dataset.m;$$('#mmood .pill').forEach(x=>x.classList.toggle('on',x===b))});$$('#tone .pill').forEach(b=>b.onclick=()=>{st.tone=b.dataset.v;sync()});sync();
+  $$('#vstyle .pill').forEach(b=>b.onclick=()=>{st.style=b.dataset.s;sync()});st.music='auto';st.ccolor='#FFFFFF';$$('#ccolor .pill').forEach(b=>b.onclick=()=>{st.ccolor=b.dataset.c;$$('#ccolor .pill').forEach(x=>x.classList.toggle('on',x===b))});$$('#mmood .pill').forEach(b=>b.onclick=()=>{st.music=b.dataset.m;$$('#mmood .pill').forEach(x=>x.classList.toggle('on',x===b))});$$('#tone .pill').forEach(b=>b.onclick=()=>{st.tone=b.dataset.v;sync()});sync();
   $('#speed').oninput=e=>$('#spv').textContent=(+e.target.value).toFixed(2)+'×';
   const est=()=>{const w=$('#script').value.replace(/\[[^\]]*\]/g,'').split(/\s+/).filter(Boolean).length;$('#est').textContent=w?`${w} words · about ${mmss(w/2.5)} of narration — the voice sets the final length`:'The narration sets the video length.'};
   $('#script').oninput=est;if(S.draft){$('#script').value=S.draft;S.draft=null}
@@ -598,7 +605,7 @@ async function Studio(v,id){
   if(id){track(id);return}
   $('#gen').onclick=async()=>{
     $('#err').innerHTML='';const req={aspect_ratios:[...st.ratios],style:`${st.style.toLowerCase()}, real-world footage`,voice_style:st.tone,
-      avoid:$('#avoid').value.split(',').map(s=>s.trim()).filter(Boolean),captions:{burn_in:$('#burn').checked,srt:true},music:st.music!=='none',music_mood:st.music==='none'?'auto':st.music};
+      avoid:$('#avoid').value.split(',').map(s=>s.trim()).filter(Boolean),captions:{burn_in:$('#burn').checked,srt:true,color:st.ccolor||'#FFFFFF',size:$('#csize').value,font:$('#cfont').value,position:$('#cpos').value,box:$('#cbox').checked},music:st.music!=='none',music_mood:st.music==='none'?'auto':st.music};
     let body,headers={'Idempotency-Key':crypto.randomUUID(),'X-Correlation-Id':'clipsy-'+Date.now()};
     if(S.studioTab==='script'){req.script=$('#script').value;req.voice=$('#voice').value;req.voice_speed=+$('#speed').value;const td=parseInt($('#tdur').value);if(td>=5)req.target_seconds=td;if($('#nlang').value)req.narration_language=$('#nlang').value}
     else{req.clean_audio=$('#clean').checked;if(!S.audioFile&&$('#aurl').value)req.audio_url=$('#aurl').value;if(!S.audioFile&&!req.audio_url){showErr({code:'NO_INPUT',message:'Choose a voiceover file or give a URL'});return}}

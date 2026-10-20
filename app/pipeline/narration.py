@@ -252,6 +252,9 @@ ACCENTS = {"en-IN": "Indian English", "en-US": "American English", "en-GB": "Bri
            "hi-IN": "Hindi", "ta-IN": "Tamil"}
 
 
+_QUOTA_OUT: dict[str, float] = {}   # Gemini TTS model -> time its free daily quota was found used up
+
+
 class GeminiTTS:
     name = "gemini-tts"
 
@@ -298,12 +301,15 @@ class GeminiTTS:
                     "generationConfig": {"responseModalities": ["AUDIO"], "speechConfig": {
                         "voiceConfig": {"prebuiltVoiceConfig": {"voiceName": voice_name}}}}}
             errors = []
-            for attempt, model in enumerate(models + models[:2]):
+            import time as _t
+            usable = [m for m in models if _t.time() - _QUOTA_OUT.get(m, 0) > 3600] or models[:1]
+            for attempt, model in enumerate(usable + usable[:1]):
                 try:
                     r = httpx.post(f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
                                    headers={"x-goog-api-key": self.key}, json=body, timeout=self.timeout)
                     if r.status_code in (404, 429):       # model retired / daily free quota used -> next model
                         errors.append(f"{model}: HTTP {r.status_code}")
+                        _QUOTA_OUT[model] = _t.time()     # skip it for an hour: later jobs go straight to a working voice
                         continue
                     r.raise_for_status()
                     data = r.json()["candidates"][0]["content"]["parts"][0]["inlineData"]["data"]
@@ -340,7 +346,7 @@ class MockTTS:
 class KokoroTTS:
     """Local, unlimited fallback: Kokoro-82M (Apache-2.0 weights) via kokoro-onnx, CPU only."""
     name = "kokoro-82m"
-    version = "kokoro-v1.0-onnx"
+    version = "kokoro-v1.0-onnx-int8"
     _model = None
     _lock = threading.Lock()
     # locale+gender -> (voice, language). Kokoro has no Indian-English voice; British voices are used for en-IN.
@@ -354,15 +360,16 @@ class KokoroTTS:
             if KokoroTTS._model is None:
                 from kokoro_onnx import Kokoro
                 d = get_settings().data_dir / "models" / "kokoro"
-                if not (d / "kokoro-v1.0.onnx").exists():
+                model_file = "kokoro-v1.0.int8.onnx"   # quantised: 1/4 the size, a little faster on CPU
+                if not (d / model_file).exists() or not (d / "voices-v1.0.bin").exists():
                     d.mkdir(parents=True, exist_ok=True)
                     base = "https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/"
-                    for f in ("kokoro-v1.0.onnx", "voices-v1.0.bin"):
+                    for f in (model_file, "voices-v1.0.bin"):
                         with httpx.stream("GET", base + f, follow_redirects=True, timeout=600) as r, open(d / f, "wb") as out:
                             r.raise_for_status()
                             for chunk in r.iter_bytes(1 << 20):
                                 out.write(chunk)
-                KokoroTTS._model = Kokoro(str(d / "kokoro-v1.0.onnx"), str(d / "voices-v1.0.bin"))
+                KokoroTTS._model = Kokoro(str(d / model_file), str(d / "voices-v1.0.bin"))
         return KokoroTTS._model
 
     def synthesize(self, text: str, voice: str, out_wav: Path) -> Path:
@@ -396,7 +403,7 @@ class KokoroTTS:
                     audio, sr = model.create(chunk, voice=kv, speed=1.0, lang=lang)
                     parts += [audio, np.zeros(int(sr * 0.18), dtype=audio.dtype)]
         sf.write(str(out_wav), np.concatenate(parts), sr)
-        self.version = f"kokoro-v1.0-onnx/{kv}"
+        self.version = f"kokoro-v1.0-onnx-int8/{kv}"
         return out_wav
 
 

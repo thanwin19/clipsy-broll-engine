@@ -563,6 +563,8 @@ def run_job(job_id: str, req: dict, progress: Progress) -> dict:
     progress(20, "planning scenes")
     with timer("planning"):
         scenes = scenes_from_words(nar.words, nar.duration, s.min_scene_seconds, s.max_scene_seconds, groups, hints)
+        for sc in scenes:   # caption look chosen by the user (colour, size, font, position, box)
+            sc.caption_style = {k: caps.get(k) for k in ("color", "size", "font", "position", "box") if caps.get(k) is not None}
         plan = plan_scenes(scenes, nar.transcript, req.get("style") or "", req.get("avoid") or [])
         warnings += plan.warnings
     progress(30, "finding footage")

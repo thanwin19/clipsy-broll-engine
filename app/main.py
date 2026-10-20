@@ -38,6 +38,11 @@ AUDIO_EXT = {".mp3": "mp3", ".wav": "wav", ".m4a": "m4a"}
 class Captions(BaseModel):
     burn_in: bool = True
     srt: bool = True
+    color: str = Field("#FFFFFF", pattern=r"^#[0-9A-Fa-f]{6}$", description="Caption text colour, #RRGGBB")
+    size: Literal["small", "medium", "large", "xl"] = "medium"
+    font: Literal["sans", "serif", "mono", "condensed"] = "sans"
+    position: Literal["bottom", "middle", "top"] = "bottom"
+    box: bool = Field(False, description="Dark box behind the text instead of an outline")
 
 
 class SceneIn(BaseModel):
