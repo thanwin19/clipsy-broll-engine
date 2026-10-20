@@ -28,6 +28,7 @@ class Scene:
     start: float
     end: float
     hint: str | None = None
+    overlay: str | None = None      # on-screen text from the prompt (shown, not spoken)
     type: str = "literal"
     category: str = "everyday"
     visual: str = ""
@@ -108,8 +109,10 @@ def scenes_from_words(words: list[Word], total: float, min_s: float, max_s: floa
     scenes = []
     for i, g in enumerate(groups):
         start = 0.0 if i == 0 else round(g[0].start, 3)
+        h = hints[i] if hints else None
+        hint, overlay = h if isinstance(h, tuple) else (h, None)
         scenes.append(Scene(index=i, text=" ".join(w.text for w in g).strip(), start=start, end=0.0,
-                            hint=(hints[i] if hints else None), words=g))
+                            hint=hint, overlay=overlay, words=g))
     for i, sc in enumerate(scenes):  # contiguous: each scene ends where the next starts; last ends at audio end
         sc.end = scenes[i + 1].start if i + 1 < len(scenes) else round(total, 3)
     return scenes

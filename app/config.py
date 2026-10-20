@@ -44,6 +44,8 @@ class Settings(BaseSettings):
     llm_provider: str = "gemini"           # gemini | mock
     gemini_model: str = "gemini-3.5-flash,gemini-3.5-flash-lite,gemini-flash-lite-latest"  # tried in order
     rerank_provider: str = "clip"          # clip | mock
+    interpret_provider: str = "gemini"     # gemini | rules  (reads prompt documents: voiceover vs shots vs notes)
+    interpret_model: str = "gemini-3.5-flash-lite,gemini-flash-lite-latest,gemini-3.5-flash"
     judge_provider: str = "gemini"         # gemini | none  (independent VLM relevance judge)
     judge_model: str = "gemini-3.5-flash-lite,gemini-flash-lite-latest,gemini-3.5-flash"
     clip_model: str = "ViT-B-32"

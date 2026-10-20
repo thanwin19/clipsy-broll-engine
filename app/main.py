@@ -18,6 +18,7 @@ from app.errors import ERROR_CODES, ApiError, install_handlers
 from app.logs import correlation_id_var, get_logger, setup_logging
 from app.pipeline import media
 from app.pipeline.narration import voice_catalog
+from app.pipeline.interpret import looks_structured
 from app.pipeline.planner import script_to_scenes
 from app.storage import get_storage
 
@@ -199,7 +200,7 @@ async def create_broll_job(request: Request, idempotency_key: str | None = Heade
             raise ApiError("UNSUPPORTED_FILE_TYPE", details={"url": req["audio_url"], "allowed": list(AUDIO_EXT)})
     if upload_path:
         req["audio_path"] = str(upload_path)
-    if req.get("script") and not req.get("scenes"):
+    if req.get("script") and not req.get("scenes") and not looks_structured(req["script"]):
         shots = script_to_scenes(req["script"])
         if shots is not None:
             if not shots:

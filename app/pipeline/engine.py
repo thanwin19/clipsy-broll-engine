@@ -12,6 +12,7 @@ from app.config import get_settings
 from app.errors import ApiError
 from app.logs import get_logger
 from app.pipeline import media
+from app.pipeline.interpret import interpret
 from app.pipeline.judge import judge_scenes
 from app.pipeline.music import find_music
 from app.pipeline.narration import Narration, Word, align_script, even_words, get_asr, get_tts
@@ -103,6 +104,15 @@ def build_narration(req: dict, work: Path, warnings: list[str]) -> tuple[Narrati
         source = "audio"
     else:
         if req.get("script") and not req.get("scenes"):
+            read, info, rw = interpret(req["script"])  # prompt documents: speak only the voiceover
+            warnings += rw
+            if read is not None:
+                providers["prompt_reader"] = info
+                if not read:
+                    raise ApiError("EMPTY_SCRIPT", "No voiceover / spoken lines were found in the prompt",
+                                   {"reader": info.get("reader")})
+                req = {**req, "scenes": read, "script": None}
+        if req.get("script") and not req.get("scenes"):
             shots = script_to_scenes(req["script"])   # inline [shot descriptions] are never spoken
             if shots is not None:
                 if not shots:
@@ -110,7 +120,7 @@ def build_narration(req: dict, work: Path, warnings: list[str]) -> tuple[Narrati
                 req = {**req, "scenes": shots, "script": None}
         if req.get("scenes"):
             texts = [(sc.get("text") or "").strip() for sc in req["scenes"]]
-            hints = [sc.get("visual_hint") for sc in req["scenes"] if (sc.get("text") or "").strip()]
+            hints = [(sc.get("visual_hint"), sc.get("overlay")) for sc in req["scenes"] if (sc.get("text") or "").strip()]
             texts = [t for t in texts if t]
             script = " ".join(texts)
         else:
@@ -155,13 +165,13 @@ def build_narration(req: dict, work: Path, warnings: list[str]) -> tuple[Narrati
                     groups.append(words[prev:cut])
                     prev = cut
             if len(groups) != len(hints):
-                hints = (hints + [None] * len(groups))[: len(groups)]
+                hints = (hints + [(None, None)] * len(groups))[: len(groups)]
             # a long shot is split on phrase boundaries into several clips that share its description
             split_g, split_h = [], []
-            for g, h in zip(groups, hints):
-                for piece in _split_long(g, s.max_scene_seconds, s.min_scene_seconds):
+            for g, (h, overlay) in zip(groups, hints):
+                for k, piece in enumerate(_split_long(g, s.max_scene_seconds, s.min_scene_seconds)):
                     split_g.append(piece)
-                    split_h.append(h)
+                    split_h.append((h, overlay if k == 0 else None))   # on-screen text only on the first clip
             groups, hints = split_g, split_h
         source = "scenes" if texts else "script"
     transcript = " ".join(w.text for w in words)
@@ -199,7 +209,8 @@ def select_clips(plan, nar: Narration, req: dict, work: Path, warnings: list[str
         queries = list(sc.queries)
         if sc.sensitive:
             queries = [q + " calm" if "calm" not in q else q for q in queries]
-        cands = search_all(queries, sc.category, breaker)
+        # long scripts: 2 queries per scene (many similar scenes; cached results fill in)
+        cands = search_all(queries, sc.category, breaker, 2 if len(scenes) > 12 else 3)
         return sc.index, score_candidates(sc, cands, avoid, avoid_faces, scorer, work / "thumbs")
 
     done = 0
@@ -481,15 +492,20 @@ def run_job(job_id: str, req: dict, progress: Progress) -> dict:
             warnings += mw
     with timer("render"):
         outputs = render_all(plan.scenes, chosen, nar, music, ratios, burn, work, progress)
-    progress(92, "quality checks")
-    with timer("qa"):
-        qa = qa_and_fix(outputs, plan.scenes, chosen, pools, nar, music, burn, work, warnings, reasons)
-
-    progress(94, "independent relevance check")
-    with timer("judge"):
-        first = ratio_key(ratios[0])
-        judged, judge_model, jw = judge_scenes(
-            plan.scenes, {sc.index: work / "segments" / first / f"seg_{sc.index:03d}.mp4" for sc in plan.scenes}, work)
+    progress(92, "quality checks + independent relevance check")
+    from concurrent.futures import ThreadPoolExecutor
+    first = ratio_key(ratios[0])
+    segs = {sc.index: work / "segments" / first / f"seg_{sc.index:03d}.mp4" for sc in plan.scenes}
+    with ThreadPoolExecutor(max_workers=1) as ex:   # the judge (network) runs while QA (CPU) checks the files
+        t_judge = time.perf_counter()
+        judge_future = ex.submit(judge_scenes, plan.scenes, segs, work)
+        with timer("qa"):
+            n_warn = len(warnings)
+            qa = qa_and_fix(outputs, plan.scenes, chosen, pools, nar, music, burn, work, warnings, reasons)
+        judged, judge_model, jw = judge_future.result()
+        if any(w.startswith("QA_AUTOFIX") for w in warnings[n_warn:]):   # replaced scenes: judge the final frames
+            judged, judge_model, jw = judge_scenes(plan.scenes, segs, work)
+        timer.t["judge"] = round(time.perf_counter() - t_judge, 3)
         if jw:
             warnings.append(jw)
     srt = write_srt([c for sc in plan.scenes for c in scene_cues(sc)], work / "captions.srt")

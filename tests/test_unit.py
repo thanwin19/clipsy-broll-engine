@@ -86,3 +86,19 @@ def test_parallax_renders_moving_frames(tmp_path):
     parallax.render_parallax(tmp_path / "p.jpg", 640, 360, 30, 0.5, "", encoder_args("libx264") + ["-frames:v", "30"],
                              "out.mp4", tmp_path, 30)
     assert media.duration(tmp_path / "out.mp4") > 0.9
+
+
+def test_prompt_reader_speaks_only_voiceover():
+    """A pasted brief: only Voiceover lines are spoken; Visual Prompt -> shot; Text Overlay -> on-screen text."""
+    from app.pipeline.interpret import interpret_rules, looks_structured
+    doc = ("## Productivity Hacks (60 Seconds)\nThis script is perfect for a Reel.\n---\n"
+           "### Scene 1: The Foundation (0:00 - 0:15)\n* **Visual Prompt:** A hand writes a list in a journal.\n"
+           "* **Text Overlay (On-Screen):** 1. Stop multitasking.\n"
+           "* **Voiceover (Fast, energetic):** \"Stop trying to do everything at once.\"\n---\n"
+           "### Scene 2: Focus (0:15 - 0:30)\n* **Visual Prompt:** A timer counts down.\n"
+           "* **Voiceover:** \"Set a timer for 25 minutes.\"\n")
+    assert looks_structured(doc)
+    scenes = interpret_rules(doc)["scenes"]
+    assert [s["spoken"] for s in scenes] == ["Stop trying to do everything at once.", "Set a timer for 25 minutes."]
+    assert "journal" in scenes[0]["visual"] and scenes[0]["overlay"] == "1. Stop multitasking."
+    assert all("Reel" not in s["spoken"] and "Productivity Hacks" not in s["spoken"] for s in scenes)

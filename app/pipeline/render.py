@@ -69,6 +69,20 @@ def _cover(sw: int, sh: int, W: int, H: int) -> tuple[int, int]:
     return math.ceil(sw * f / 2) * 2, math.ceil(sh * f / 2) * 2
 
 
+def overlay_filter(scene, seg_dir: Path, name: str, W: int, H: int, rel: str = "") -> str:
+    """On-screen text from the prompt as a boxed title at the top of the frame for the whole scene."""
+    if not getattr(scene, "overlay", None):
+        return ""
+    import textwrap
+    text = "\n".join(textwrap.wrap(scene.overlay, 34 if W >= H else 22)[:3])
+    path = seg_dir / f"{name}_title.srt"
+    path.write_text(f"1\n00:00:00,000 --> 00:59:59,000\n{text}\n", encoding="utf-8")
+    size = 17 if W >= H else 12
+    style = (f"FontName=DejaVu Sans,FontSize={size},Bold=1,PrimaryColour=&H00FFFFFF,BackColour=&H66000000,"
+             f"BorderStyle=3,Outline=6,Shadow=0,Alignment=8,MarginV={20 if W >= H else 70}")
+    return f",subtitles={rel}{path.name}:force_style='{style}'"
+
+
 def _caption_style(W: int, H: int) -> str:
     size = {1920: 15, 1080: 13}.get(W, 13) if W >= H else 9
     return (f"FontName=DejaVu Sans,FontSize={size},Bold=1,PrimaryColour=&H00FFFFFF,OutlineColour=&H00101010,"
@@ -113,6 +127,7 @@ def _render_segment(scene, cand, ratio: str, frames: int, seg_dir: Path, burn: b
     if cues:  # an empty .srt makes ffmpeg's subtitles filter fail, so only burn when there is text
         srt = write_srt(cues, seg_dir / f"{name}.srt", offset=scene.start)
         sub = f",subtitles={srt.name}:force_style='{_caption_style(W, H)}'"
+    sub += overlay_filter(scene, seg_dir, name, W, H)
     enc = encoder_args(encoder) + ["-r", str(s.fps), "-g", str(s.fps * 2), "-an", "-frames:v", str(frames)]
 
     if cand.kind == "video":
@@ -189,6 +204,7 @@ def render_video_multi(scene, cand, jobs: list[tuple[str, Path]], frames: int, b
         if cues:
             srt = write_srt(cues, seg_dir / f"{name}.srt", offset=scene.start)
             sub = f",subtitles={seg_dir.name}/{srt.name}:force_style='{_caption_style(W, H)}'"
+        sub += overlay_filter(scene, seg_dir, name, W, H, rel=f"{seg_dir.name}/")
         graph.append(f"[i{k}]scale={cw}:{ch}:flags=bilinear,crop={W}:{H}:{x}:{(ch - H) // 2},setsar=1,format=yuv420p{sub}[o{k}]")
         out = seg_dir / f"{name}.mp4"
         outs[ratio] = out
