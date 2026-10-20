@@ -202,3 +202,17 @@ def test_speed_and_clean_options_accepted(client):
         "script": "A quiet morning by the lake. Birds call across the water.", "voice_speed": 1.2,
         "aspect_ratios": ["1:1"]}).json()["job_id"])
     assert j["status"] == "succeeded", j["error"]
+
+
+def test_narration_language_validation(client):
+    r = client.post("/api/v1/broll/jobs", json={"script": "Hello there world.", "narration_language": "xx"})
+    assert r.status_code == 422 and r.json()["error"]["code"] == "VALIDATION_ERROR"
+
+
+def test_translation_failure_falls_back_to_original(client):
+    """No Gemini key in tests: translation fails cleanly and the job narrates the original text with a warning."""
+    j = wait(client, client.post("/api/v1/broll/jobs", json={
+        "script": "Farmers walk into green fields at sunrise. Water makes the difference.",
+        "narration_language": "ta", "aspect_ratios": ["1:1"]}).json()["job_id"])
+    assert j["status"] == "succeeded", j["error"]
+    assert any(w.startswith("TRANSLATION_FAILED") for w in j["result"]["warnings"])

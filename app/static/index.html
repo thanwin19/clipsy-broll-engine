@@ -96,6 +96,12 @@ A few years ago I had no savings at all. My savings grew 40% in one year.</texta
         <option value="te-IN-female">Telugu · female</option><option value="kn-IN-female">Kannada · female</option>
         <option value="ml-IN-female">Malayalam · female</option><option value="bn-IN-female">Bengali · female</option>
         <option value="mr-IN-female">Marathi · female</option></optgroup></select>
+      <label>Narration language</label>
+      <select id="nlang"><option value="">Same as the script</option><option value="ta">Tamil (translate script)</option>
+        <option value="hi">Hindi (translate script)</option><option value="te">Telugu (translate script)</option>
+        <option value="kn">Kannada (translate script)</option><option value="ml">Malayalam (translate script)</option>
+        <option value="bn">Bengali (translate script)</option><option value="mr">Marathi (translate script)</option>
+        <option value="en">English (translate script)</option></select>
       <label>Voice style</label>
       <div class="row" id="styles"></div>
       <label>Speaking speed <span id="spv" class="mono">1.00×</span></label>
@@ -149,7 +155,7 @@ $('#go').onclick=async()=>{
   const req={aspect_ratios:[...document.querySelectorAll('input[name=ar]:checked')].map(x=>x.value),style:$('#style').value,
     avoid:$('#avoid').value.split(',').map(s=>s.trim()).filter(Boolean),captions:{burn_in:$('#burn').checked,srt:true},music:$('#music').checked};
   let body, headers={...H(),'Idempotency-Key':crypto.randomUUID(),'X-Correlation-Id':'ui-'+Date.now()};
-  if(tab==='script'){req.script=$('#script').value;req.voice=$('#voice').value;req.voice_speed=+$('#speed').value;req.voice_style=voiceStyle}
+  if(tab==='script'){req.script=$('#script').value;req.voice=$('#voice').value;req.voice_speed=+$('#speed').value;req.voice_style=voiceStyle;if($('#nlang').value)req.narration_language=$('#nlang').value}
   if(tab==='audio')req.clean_audio=$('#clean').checked;
   if(tab==='audio'&&!file&&$('#audio_url').value)req.audio_url=$('#audio_url').value;
   if(tab==='audio'&&file){body=new FormData();body.append('file',file);body.append('request',JSON.stringify(req))}

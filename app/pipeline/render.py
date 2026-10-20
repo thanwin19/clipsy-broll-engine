@@ -195,13 +195,43 @@ def _render_segment(scene, cand, ratio: str, frames: int, seg_dir: Path, burn: b
     return out
 
 
+INDIC_RANGES = [(0x0900, 0x0DFF), (0x0600, 0x06FF)]   # Devanagari..Malayalam, Arabic: need complex shaping
+
+
+def needs_shaping(text: str) -> bool:
+    return any(lo <= ord(ch) <= hi for ch in (text or "") for lo, hi in INDIC_RANGES)
+
+
+def shaped_card_text(text: str, seg_dir: Path, name: str, W: int, H: int, below_number: bool) -> str:
+    """Card text in Indic scripts drawn by libass: centred, large, white (or under the statistic)."""
+    import textwrap
+    landscape = W >= H
+    lines = textwrap.wrap(text, 30 if landscape else 18)[:4]
+    path = seg_dir / f"{name}_cardtext.srt"
+    path.write_text("1\n00:00:00,000 --> 00:59:59,000\n" + "\n".join(lines) + "\n", encoding="utf-8")
+    size = (18 if landscape else 13) if not below_number else (12 if landscape else 9)
+    align, margin = (10, 0) if not below_number else (2, 95 if landscape else 160)   # SSA: 10 middle, 2 bottom
+    style = (f"FontName=Nirmala UI,FontSize={size},Bold=1,PrimaryColour=&H00FFFFFF,BorderStyle=1,Outline=0,"
+             f"Shadow=0,Alignment={align},MarginV={margin},MarginL=40,MarginR=40")
+    return f",subtitles={path.name}:force_style='{style}'"
+
+
 def _ken_burns(cand, W, H, frames, seg_dir, name, norm, sub, enc, out, title=None):
     """Gentle push-in for cards (and fallback for photos) so the shot is never frozen."""
     s = get_settings()
     img = cand.local_path
+    card_text = ""
     if cand.kind == "card":
-        img = render_card(seg_dir / f"{name}_card.png", W, H, cand.score_detail.get("headline", ""),
-                          cand.score_detail.get("body", ""), cand.score_detail.get("card_kind", "stat"))
+        head, body = cand.score_detail.get("headline", ""), cand.score_detail.get("body", "")
+        kind = cand.score_detail.get("card_kind", "stat")
+        # Pillow cannot shape Tamil/Hindi/... (vowel signs land in the wrong place): draw the card without that
+        # text and let libass (HarfBuzz shaping, same engine as the captions) draw it on top
+        shaped_head, shaped_body = needs_shaping(head), needs_shaping(body)
+        img = render_card(seg_dir / f"{name}_card.png", W, H, "" if shaped_head else head,
+                          "" if shaped_body else body, kind)
+        if shaped_head or shaped_body:
+            card_text = shaped_card_text(head if shaped_head else body, seg_dir, name, W, H,
+                                         below_number=(kind == "stat" and not shaped_head))
     from PIL import Image
     with Image.open(img) as im:
         sw, sh = im.size
@@ -213,7 +243,7 @@ def _ken_burns(cand, W, H, frames, seg_dir, name, norm, sub, enc, out, title=Non
         pw, ph = (W * 104 // 100) // 2 * 2, (H * 104 // 100) // 2 * 2
         dur = max(frames / s.fps, 0.1)
         vf = (f"scale={pw}:{ph},crop={W}:{H}:x='({pw}-{W})*t/{dur:.3f}':y={(ph - H) // 2},"
-              f"fps={s.fps},{norm},setsar=1,format=yuv420p{sub}")
+              f"fps={s.fps},{norm},setsar=1,format=yuv420p{card_text}{sub}")
     else:
         zoom = 0.06
         vf = (f"scale={cw}:{ch},crop={W}:{H}:{x}:{(ch - H) // 2},"

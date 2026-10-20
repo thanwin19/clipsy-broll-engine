@@ -14,6 +14,7 @@ from app.logs import get_logger
 from app.pipeline import media
 from app.pipeline.interpret import interpret
 from app.pipeline.judge import judge_scenes
+from app.pipeline.translate import translate_lines
 from app.pipeline.voicestyle import resolve as resolve_style
 from app.pipeline.music import find_music
 from app.pipeline.narration import Narration, Word, align_script, detect_language, even_words, get_asr, get_tts
@@ -128,6 +129,24 @@ def build_narration(req: dict, work: Path, warnings: list[str]) -> tuple[Narrati
             script, texts = (req.get("script") or "").strip(), None
         if not script:
             raise ApiError("EMPTY_SCRIPT")
+        target = (req.get("narration_language") or "").lower()
+        if target and target != detect_language(script):
+            # speak the script in another language: translate scene by scene (or sentence by sentence) and keep
+            # the original line as the scene's visual hint, so footage still follows the original meaning
+            if not texts:
+                texts = [t for t in re.split(r"(?<=[.!?।])\s+", script) if t.strip()]
+                hints = [(None, None)] * len(texts)
+            try:
+                translated, model = translate_lines(texts, target)
+                hints = [(h or orig, ov) for (h, ov), orig in zip(hints, texts)]
+                providers["translation"] = {"to": target, "model": model, "lines": len(texts)}
+                texts, script = translated, " ".join(translated)
+                voice = req.get("voice") or "en-IN-female"
+                if ":" not in voice:   # generic voice -> same gender in the target language
+                    gender = "male" if ("male" in voice and "female" not in voice) else "female"
+                    req = {**req, "voice": f"{target}-IN-{gender}" if target != "en" else f"en-IN-{gender}"}
+            except ApiError as e:
+                warnings.append(f"TRANSLATION_FAILED: narrating in the original language ({e.message})")
         tts = get_tts()
         style, tts_voice, style_speed, style_af = resolve_style(req.get("voice_style"), req.get("voice") or "en-IN-female", script)
         raw = tts.synthesize(script, tts_voice, work / "tts.wav")

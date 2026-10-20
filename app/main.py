@@ -52,6 +52,8 @@ class BrollRequest(BaseModel):
     scenes: list[SceneIn] | None = Field(None, description="IncuBrix scene list: text plus optional visual hint")
     voice: str = Field("en-IN-female", description="Text input only: en-IN-female, en-US-male, hi-IN-female ... or a "
                                                     "specific voice from GET /api/v1/voices, e.g. gemini:Charon, kokoro:af_bella")
+    narration_language: str | None = Field(None, description="Speak the script in this language (ISO code: ta, hi, te, "
+                                         "kn, ml, bn, mr, en ...). The script is translated; footage follows the original meaning")
     voice_speed: float = Field(1.0, ge=0.75, le=1.25, description="Speaking speed for generated narration (0.75-1.25)")
     voice_style: Literal["natural", "soft", "cute", "warm", "deep", "calm", "energetic", "storyteller", "news", "auto"] = Field(
         "natural", description="Voice character: picks a fitting voice + speed + audio shaping. 'auto' chooses from the script")
@@ -210,6 +212,10 @@ async def create_broll_job(request: Request, idempotency_key: str | None = Heade
                 raise ApiError("EMPTY_SCRIPT", "Only shot descriptions in [brackets] were given; add words to speak")
             req["scenes"], req["script"] = shots, None
     _validate(req, upload_path is not None)
+    from app.pipeline.translate import LANGUAGES
+    if req.get("narration_language") and req["narration_language"].lower() not in LANGUAGES:
+        raise ApiError("VALIDATION_ERROR", f"Unsupported narration_language '{req['narration_language']}'",
+                       {"supported": sorted(LANGUAGES)})
     v = req.get("voice") or ""
     if ":" in v and v not in {x["id"] for x in voice_catalog()}:
         raise ApiError("VALIDATION_ERROR", f"Unknown voice '{v}'", {"see": "/api/v1/voices"})
