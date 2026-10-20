@@ -77,7 +77,9 @@ class Settings(BaseSettings):
     fps: int = 30
     video_encoder: str = "libx264"   # libx264 (CPU) | h264_amf | h264_nvenc | h264_qsv (GPU video engines)
     video_preset: str = "veryfast"
-    render_parallel: int = 4         # ffmpeg segment renders at once
+    render_parallel: int = 6         # scenes rendered at once
+    multi_ratio_render: bool = True  # decode each clip once and split into all aspect ratios
+    hw_decode: bool = True           # let ffmpeg use the GPU video decoder when available
     ffmpeg_threads: int = 2          # threads per ffmpeg process
     video_crf: int = 23
     music_volume_db: float = -20.0

@@ -16,7 +16,7 @@ from app.pipeline.music import find_music
 from app.pipeline.narration import Narration, Word, align_script, even_words, get_asr, get_tts
 from app.pipeline.planner import Scene, _split_long, plan_scenes, scenes_from_words, script_to_scenes, segment
 from app.pipeline.qa import check_video
-from app.pipeline.render import RATIOS, concat_and_mux, frame_bounds, render_segment, scene_cues, write_srt
+from app.pipeline.render import RATIOS, concat_and_mux, frame_bounds, mix_audio, render_segment, render_video_multi, scene_cues, write_srt
 from app.pipeline.rerank import get_scorer, score_candidates
 from app.pipeline.sources import Candidate, CircuitBreaker, CloudflareFlux, download, download_part, search_all
 from app.storage import get_storage
@@ -318,29 +318,52 @@ def render_all(scenes, chosen, nar, music, ratios, burn, work: Path, progress: P
                 tasks.append((sc, ratio, max(1, b - a), seg_dir, name))
     done = [0]
     lock = threading.Lock()
+    # group by scene: a video clip is decoded once and split into all its ratios (render_video_multi)
+    groups: dict[int, list] = {}
+    for t in tasks:
+        groups.setdefault(t[0].index, []).append(t)
 
-    def one(t):
-        sc, ratio, frames, seg_dir, name = t
-        out = render_segment(sc, chosen[sc.index], ratio, frames, seg_dir, burn, name)
+    def tick(k):
         with lock:
-            done[0] += 1
+            done[0] += k
             if only is None:
                 progress(68 + int(22 * done[0] / max(1, len(tasks))), f"rendering {done[0]}/{len(tasks)} segments")
-        return out
+
+    def one_scene(group):
+        sc = group[0][0]
+        cand = chosen[sc.index]
+        if cand.kind == "video" and s.multi_ratio_render:
+            try:
+                render_video_multi(sc, cand, [(t[1], t[3]) for t in group], group[0][2], burn, group[0][4])
+                tick(len(group))
+                return
+            except Exception as e:
+                log.warning("multi-ratio render failed for scene %s, rendering ratios separately: %s", sc.index, e)
+        for sc_, ratio, frames, seg_dir, name in group:
+            render_segment(sc_, cand, ratio, frames, seg_dir, burn, name)
+            tick(1)
 
     with ThreadPoolExecutor(max_workers=max(1, s.render_parallel)) as ex:
-        list(ex.map(one, tasks))
-    outputs = {}
-    for ratio in ratios:
-        out = work / f"video_{ratio_key(ratio)}.mp4"
-        concat_and_mux([paths[(ratio, sc.index)] for sc in scenes], nar.audio_path, music, nar.duration, out)
-        outputs[ratio] = out
+        list(ex.map(one_scene, groups.values()))
+    audio = mix_audio(nar.audio_path, music, nar.duration, work / "mix.m4a")   # once, shared by all ratios
+    outputs = {r: work / f"video_{ratio_key(r)}.mp4" for r in ratios}
+    with ThreadPoolExecutor(max_workers=max(1, len(ratios))) as ex:
+        list(ex.map(lambda r: concat_and_mux([paths[(r, sc.index)] for sc in scenes], audio, nar.duration, outputs[r]),
+                    ratios))
     return outputs
+
+
+def qa_all(outputs: dict, seconds: float) -> dict:
+    """QA every output file in parallel."""
+    from concurrent.futures import ThreadPoolExecutor
+    with ThreadPoolExecutor(max_workers=max(1, len(outputs))) as ex:
+        futs = {r: ex.submit(check_video, p, seconds) for r, p in outputs.items()}
+    return {r: f.result() for r, f in futs.items()}
 
 
 def qa_and_fix(outputs, scenes, chosen, pools, nar, music, burn, work, warnings, reasons):
     """If a check finds black/frozen frames inside a scene, swap that scene for its next-best clip once."""
-    reports = {r: check_video(p, nar.duration) for r, p in outputs.items()}
+    reports = qa_all(outputs, nar.duration)
     bad: set[int] = set()
     for rep in reports.values():
         times = [b[0] for b in rep["black_segments"]] + rep["freeze_starts"]
@@ -366,7 +389,7 @@ def qa_and_fix(outputs, scenes, chosen, pools, nar, music, burn, work, warnings,
                 reasons[idx] = "auto-replaced by QA with card (black/frozen frames, no alternative)"
         warnings.append(f"QA_AUTOFIX: scenes {sorted(bad)} had black/frozen frames and were replaced")
         outputs.update(render_all(scenes, chosen, nar, music, list(outputs), burn, work, lambda *_: None, only=bad))
-        reports = {r: check_video(p, nar.duration) for r, p in outputs.items()}
+        reports = qa_all(outputs, nar.duration)
         for r, rep in reports.items():
             if not rep["passed"]:
                 warnings.append(f"QA_FAILED: {r} still fails checks after auto-fix: "

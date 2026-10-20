@@ -123,7 +123,7 @@ def _render_segment(scene, cand, ratio: str, frames: int, seg_dir: Path, burn: b
         src_dur = media.duration(cand.local_path)  # real file length (clips may be partial downloads)
         offset = min(1.0, max(0.0, (src_dur - dur) / 3)) if src_dur > dur else 0.0
         loop = ["-stream_loop", "-1"] if src_dur and src_dur < dur + offset else []
-        vf = (f"scale={cw}:{ch}:flags=bicubic,crop={W}:{H}:{x}:{(ch - H) // 2},fps={s.fps},{norm},"
+        vf = (f"scale={cw}:{ch}:flags=bilinear,crop={W}:{H}:{x}:{(ch - H) // 2},fps={s.fps},{norm},"
               f"setsar=1,format=yuv420p{sub}")
         media.ffmpeg("-filter_threads", str(s.ffmpeg_threads), *loop, "-ss", f"{offset:.2f}", "-i", cand.local_path.resolve(), "-vf", vf, *enc, out.name, cwd=seg_dir)
     else:  # still image (AI image, card): gentle Ken Burns push-in so the shot is never frozen
@@ -138,30 +138,74 @@ def _render_segment(scene, cand, ratio: str, frames: int, seg_dir: Path, burn: b
         x = int(min(max(cand.subject_x * cw - W / 2, 0), cw - W))
         zoom = 0.06 if cand.kind != "card" else 0.03
         vf = (f"scale={cw}:{ch},crop={W}:{H}:{x}:{(ch - H) // 2},"
-              f"scale={W * 2}:{H * 2},zoompan=z='1+{zoom}*on/{max(frames, 1)}':x='iw/2-(iw/zoom/2)':"
+              f"scale={W * 3 // 2}:{H * 3 // 2},zoompan=z='1+{zoom}*on/{max(frames, 1)}':x='iw/2-(iw/zoom/2)':"
               f"y='ih/2-(ih/zoom/2)':d=1:s={W}x{H}:fps={s.fps},{norm},setsar=1,format=yuv420p{sub}")
         media.ffmpeg("-loop", "1", "-framerate", str(s.fps), "-i", Path(img).resolve(), "-vf", vf, *enc, out.name, cwd=seg_dir)
     return out
 
 
-def concat_and_mux(segments: list[Path], narration_wav: Path, music, total: float, out: Path) -> Path:
+def render_video_multi(scene, cand, jobs: list[tuple[str, Path]], frames: int, burn: bool, name: str) -> dict:
+    """One ffmpeg process per clip: decode (GPU-assisted when available) + colour-normalise ONCE, then split into
+    every requested aspect ratio, each with its own subject-aware crop and captions, encoded in parallel.
+    jobs = [(ratio, seg_dir)]. Falls back to per-ratio renders on any error."""
     s = get_settings()
-    work = out.parent
-    lst = work / f"{out.stem}_list.txt"
-    lst.write_text("".join(f"file '{p.resolve().as_posix()}'\n" for p in segments), encoding="utf-8")
-    silent = work / f"{out.stem}_video.mp4"
-    media.ffmpeg("-f", "concat", "-safe", "0", "-i", lst, "-c", "copy", silent)
+    root = jobs[0][1].parent
+    for _, d in jobs:
+        d.mkdir(parents=True, exist_ok=True)
+    dur = frames / s.fps
+    vs = media.video_stream(cand.local_path) or {}
+    sw, sh = int(vs.get("width") or 1280), int(vs.get("height") or 720)
+    src_dur = media.duration(cand.local_path)
+    offset = min(1.0, max(0.0, (src_dur - dur) / 3)) if src_dur > dur else 0.0
+    loop = ["-stream_loop", "-1"] if src_dur and src_dur < dur + offset else []
+    b = max(-0.12, min(0.12, (TARGET_LUMA - (cand.brightness or TARGET_LUMA)) * 0.5))
+    cues = scene_cues(scene) if burn and scene.words else []
+    n = len(jobs)
+    graph = [f"[0:v]fps={s.fps},eq=brightness={b:.3f}:saturation=1.05,split={n}" + "".join(f"[i{k}]" for k in range(n))]
+    outs, maps = {}, []
+    for k, (ratio, seg_dir) in enumerate(jobs):
+        W, H = RATIOS[ratio]
+        cw, ch = _cover(sw, sh, W, H)
+        x = int(min(max(cand.subject_x * cw - W / 2, 0), cw - W))
+        sub = ""
+        if cues:
+            srt = write_srt(cues, seg_dir / f"{name}.srt", offset=scene.start)
+            sub = f",subtitles={seg_dir.name}/{srt.name}:force_style='{_caption_style(W, H)}'"
+        graph.append(f"[i{k}]scale={cw}:{ch}:flags=bilinear,crop={W}:{H}:{x}:{(ch - H) // 2},setsar=1,format=yuv420p{sub}[o{k}]")
+        out = seg_dir / f"{name}.mp4"
+        outs[ratio] = out
+        maps += ["-map", f"[o{k}]", *encoder_args(s.video_encoder), "-r", str(s.fps), "-g", str(s.fps * 2), "-an",
+                 "-frames:v", str(frames), f"{seg_dir.name}/{out.name}"]
+    hw = ["-hwaccel", "auto"] if s.hw_decode else []
+    media.ffmpeg(*hw, *loop, "-ss", f"{offset:.2f}", "-i", cand.local_path.resolve(),
+                 "-filter_complex", ";".join(graph), *maps, cwd=root)
+    return outs
+
+
+def mix_audio(narration_wav: Path, music, total: float, out: Path) -> Path:
+    """Narration + ducked music, encoded to AAC ONCE; every aspect ratio then copies this track (no re-encode)."""
+    s = get_settings()
+    if out.exists() and out.stat().st_size > 0:
+        return out
     if music:
-        media.ffmpeg("-i", silent, "-i", narration_wav, "-stream_loop", "-1", "-i", music.path, "-filter_complex",
-                     f"[1:a]aresample=48000,aformat=channel_layouts=stereo,asplit=2[v1][v2];"
-                     f"[2:a]aresample=48000,aformat=channel_layouts=stereo,volume={s.music_volume_db}dB,"
+        media.ffmpeg("-i", narration_wav, "-stream_loop", "-1", "-i", music.path, "-filter_complex",
+                     f"[0:a]aresample=48000,aformat=channel_layouts=stereo,asplit=2[v1][v2];"
+                     f"[1:a]aresample=48000,aformat=channel_layouts=stereo,volume={s.music_volume_db}dB,"
                      f"afade=t=out:st={max(0, total - 2.5):.2f}:d=2.5[m];"
                      f"[m][v1]sidechaincompress=threshold=0.02:ratio=10:attack=15:release=350[duck];"
                      f"[v2][duck]amix=inputs=2:duration=first:normalize=0[a]",
-                     "-map", "0:v", "-map", "[a]", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-ar", "48000",
-                     "-t", f"{total:.3f}", "-movflags", "+faststart", out)
+                     "-map", "[a]", "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-t", f"{total:.3f}", out)
     else:
-        media.ffmpeg("-i", silent, "-i", narration_wav, "-map", "0:v", "-map", "1:a", "-c:v", "copy", "-c:a", "aac",
-                     "-b:a", "192k", "-ar", "48000", "-ac", "2", "-t", f"{total:.3f}", "-movflags", "+faststart", out)
-    silent.unlink(missing_ok=True)
+        media.ffmpeg("-i", narration_wav, "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-ac", "2",
+                     "-t", f"{total:.3f}", out)
+    return out
+
+
+def concat_and_mux(segments: list[Path], audio: Path, total: float, out: Path) -> Path:
+    """Joins the segments and the pre-mixed audio with stream copy only (fast, no re-encoding)."""
+    work = out.parent
+    lst = work / f"{out.stem}_list.txt"
+    lst.write_text("".join(f"file '{p.resolve().as_posix()}'\n" for p in segments), encoding="utf-8")
+    media.ffmpeg("-f", "concat", "-safe", "0", "-i", lst, "-i", audio, "-map", "0:v", "-map", "1:a",
+                 "-c", "copy", "-t", f"{total:.3f}", "-movflags", "+faststart", out)
     return out
