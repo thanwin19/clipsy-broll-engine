@@ -1,0 +1,264 @@
+openapi: 3.1.0
+info:
+  title: IncuBrix Script/Voiceover to B-roll Video Engine
+  description: Turns a voiceover, script or IncuBrix scene list into finished, licence-clean
+    B-roll videos.
+  version: 1.0.0
+paths:
+  /api/v1/broll/jobs:
+    post:
+      tags:
+      - broll
+      summary: Create Broll Job
+      description: Create a B-roll job (202 + job_id). Send JSON, or multipart with
+        `file` + `request` JSON.
+      operationId: create_broll_job_api_v1_broll_jobs_post
+      parameters:
+      - name: Idempotency-Key
+        in: header
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Idempotency-Key
+      - name: authorization
+        in: header
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Authorization
+      responses:
+        '202':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobAccepted'
+        '409':
+          description: IDEMPOTENCY_CONFLICT
+        '413':
+          description: Request Entity Too Large
+        '415':
+          description: Unsupported Media Type
+        '422':
+          description: Unprocessable Entity
+        '429':
+          description: Too Many Requests
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BrollRequest'
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: Voiceover (mp3, wav, m4a)
+                request:
+                  type: string
+                  description: JSON BrollRequest (without audio_url)
+  /api/v1/jobs/{job_id}:
+    get:
+      tags:
+      - jobs
+      summary: Get Job
+      description: Job status (queued, running, succeeded, failed), progress 0-100
+        and result links.
+      operationId: get_job_api_v1_jobs__job_id__get
+      parameters:
+      - name: job_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Job Id
+      - name: authorization
+        in: header
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Authorization
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/broll/jobs/{job_id}/scenes/{scene_index}/swap:
+    post:
+      tags:
+      - broll
+      summary: Swap Scene
+      description: Replace one scene's clip; only that scene's segments are re-rendered.
+        Returns a new job.
+      operationId: swap_scene_api_v1_broll_jobs__job_id__scenes__scene_index__swap_post
+      parameters:
+      - name: job_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Job Id
+      - name: scene_index
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Scene Index
+      - name: Idempotency-Key
+        in: header
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Idempotency-Key
+      - name: authorization
+        in: header
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Authorization
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SwapRequest'
+      responses:
+        '202':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobAccepted'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/errors:
+    get:
+      tags:
+      - meta
+      summary: Error Codes
+      description: All error codes this service returns.
+      operationId: error_codes_api_v1_errors_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /health:
+    get:
+      tags:
+      - meta
+      summary: Health
+      operationId: health_health_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /ready:
+    get:
+      tags:
+      - meta
+      summary: Ready
+      operationId: ready_ready_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+components:
+  schemas:
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    JobAccepted:
+      properties:
+        job_id:
+          type: string
+          title: Job Id
+        status:
+          type: string
+          title: Status
+        status_url:
+          type: string
+          title: Status Url
+      type: object
+      required:
+      - job_id
+      - status
+      - status_url
+      title: JobAccepted
+    SwapRequest:
+      properties:
+        candidate_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Candidate Id
+          description: One of the scene's alternatives in timeline.json
+        query:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Query
+          description: Or a new search query for this scene
+      type: object
+      title: SwapRequest
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+        input:
+          title: Input
+        ctx:
+          type: object
+          title: Context
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError

@@ -40,7 +40,7 @@ class Settings(BaseSettings):
     tts_provider: str = "gemini"           # gemini | mock
     gemini_tts_model: str = "gemini-2.5-flash-preview-tts,gemini-3.1-flash-tts-preview"  # tried in order
     llm_provider: str = "gemini"           # gemini | mock
-    gemini_model: str = "gemini-3.5-flash,gemini-flash-latest,gemini-2.5-flash-lite"  # tried in order
+    gemini_model: str = "gemini-3.5-flash,gemini-3.5-flash-lite,gemini-flash-lite-latest"  # tried in order
     rerank_provider: str = "clip"          # clip | mock
     clip_model: str = "ViT-B-32"
     clip_pretrained: str = "laion2b_s34b_b79k"
@@ -49,6 +49,7 @@ class Settings(BaseSettings):
     cloudflare_model: str = "@cf/black-forest-labs/flux-1-schnell"
     music_provider: str = "openverse"      # openverse | none | mock
     provider_timeout_seconds: float = 20.0
+    llm_timeout_seconds: float = 45.0
     disabled_providers: str = ""           # comma list, used to simulate an outage
 
     # keys

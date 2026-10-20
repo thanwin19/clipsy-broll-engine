@@ -2,6 +2,7 @@
 import json
 import re
 import shutil
+import threading
 import time
 from dataclasses import asdict
 from pathlib import Path
@@ -225,21 +226,22 @@ def select_clips(plan, nar: Narration, req: dict, work: Path, warnings: list[str
                 reasons[sc.index] += ("; safety: " + ("named person/brand -> neutral footage, no AI faces/logos"
                                                        if sc.entities else "sensitive topic -> calm respectful footage"))
 
-    # download chosen clips; corrupt/failed download -> next best unused candidate -> card
-    with timer("download"):
-        for i, sc in enumerate(scenes):
-            c = chosen[sc.index]
-            tried = 0
-            while c.kind == "video" and c.local_path is None:
-                try:
-                    c.local_path = download(c, work / "clips")
-                except Exception as e:
-                    tried += 1
-                    breaker.record(c.provider, e) if not isinstance(e, ApiError) else None
+    # download chosen clips in parallel; corrupt/failed download -> next best unused candidate -> card
+    lock = threading.Lock()
+
+    def fetch(sc: Scene):
+        c, tried = chosen[sc.index], 0
+        while c.kind == "video" and c.local_path is None:
+            try:
+                c.local_path = download(c, work / "clips")
+            except Exception as e:
+                tried += 1
+                with lock:
+                    breaker.record(c.provider, e)
                     warnings.append(f"CLIP_DOWNLOAD_FAILED: scene {sc.index} {c.id} ({type(e).__name__}); replaced")
                     used.discard(c.id)
                     nxt = [x for x in pools.get(sc.index, []) if x.id not in used and x.id != c.id
-                           and x.score >= tau - 0.03 and x.local_path is None and tried < 3]
+                           and x.score >= tau - 0.03 and x.local_path is None] if tried < 3 else []
                     if nxt:
                         c = nxt[0]
                         used.add(c.id)
@@ -248,6 +250,9 @@ def select_clips(plan, nar: Narration, req: dict, work: Path, warnings: list[str
                         c = card_for(sc)
                         reasons[sc.index] = "card: all candidate downloads failed"
                     chosen[sc.index] = c
+
+    with timer("download"), ThreadPoolExecutor(max_workers=4) as ex:
+        for i, _ in enumerate(ex.map(fetch, scenes)):
             progress(60 + int(8 * (i + 1) / len(scenes)), "downloading clips")
     if not any(c.kind in ("video", "ai_image") for c in chosen.values()) and any(pools.values()) is False:
         warnings.append("ALL_FOOTAGE_SOURCES_EMPTY: every scene uses a rendered card")

@@ -69,7 +69,7 @@ def _split_long(words: list[Word], max_s: float, min_s: float) -> list[list[Word
     for i in range(1, len(words) - 1):
         left = words[i - 1].end - words[0].start
         right = words[-1].end - words[i].start
-        if left < min_s or right < min_s:
+        if left < min_s or right < min_s or i < 3 or len(words) - i < 3:
             continue
         soft = _SOFT.search(words[i - 1].text) is not None
         conj = words[i].text.lower().strip(",.") in _CONJ
@@ -170,11 +170,16 @@ class GeminiPlanner:
                 "generationConfig": {"responseMimeType": "application/json", "temperature": 0.3}}
         last = None
         for model in [m.strip() for m in self.model.split(",") if m.strip()]:
+            gen = dict(body["generationConfig"])
+            if model.startswith("gemini-3"):
+                gen["thinkingConfig"] = {"thinkingLevel": "low"}
             for _ in range(2):
                 try:
                     r = httpx.post(f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
-                                   headers={"x-goog-api-key": self.key}, json=body, timeout=120)
-                    if r.status_code == 404:
+                                   headers={"x-goog-api-key": self.key}, json={**body, "generationConfig": gen},
+                                   timeout=get_settings().llm_timeout_seconds)
+                    if r.status_code in (404, 400):
+                        last = RuntimeError(f"{model}: HTTP {r.status_code}")
                         break
                     r.raise_for_status()
                     parts = r.json()["candidates"][0]["content"]["parts"]

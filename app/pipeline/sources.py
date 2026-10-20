@@ -77,7 +77,8 @@ class Pixabay:
         out = []
         for h in hits:
             v = h.get("videos", {})
-            pick = v.get("large") if v.get("large", {}).get("url") and v["large"].get("width", 0) <= 1920 else v.get("medium")
+            # 720p "medium" renditions: small downloads, upscaled to 1080p by the renderer
+            pick = v.get("medium") if v.get("medium", {}).get("url") else v.get("small")
             if not pick or not pick.get("url"):
                 continue
             out.append(Candidate(id=f"pixabay:{h['id']}", provider=self.name, kind="video", title=h.get("tags", ""),
@@ -330,7 +331,7 @@ def search_all(queries: list[str], category: str, breaker: CircuitBreaker, limit
 
 
 # ------------------------------------------------------------- downloads
-def download(cand: Candidate, dest_dir: Path, max_mb: int = 200) -> Path:
+def download(cand: Candidate, dest_dir: Path, max_mb: int = 80) -> Path:
     """Download and verify the clip decodes (catches corrupted downloads)."""
     s = get_settings()
     dest_dir.mkdir(parents=True, exist_ok=True)
