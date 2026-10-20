@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: IncuBrix Script/Voiceover to B-roll Video Engine
+  title: Clipsy API — script & voiceover to B-roll video
   description: Turns a voiceover, script or IncuBrix scene list into finished, licence-clean
     B-roll videos.
   version: 1.0.0
@@ -64,6 +64,42 @@ paths:
                 request:
                   type: string
                   description: JSON BrollRequest (without audio_url)
+  /api/v1/projects:
+    get:
+      tags:
+      - jobs
+      summary: List Projects
+      description: Projects (B-roll jobs), newest first, each with its latest finished
+        version (after clip swaps).
+      operationId: list_projects_api_v1_projects_get
+      parameters:
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 60
+          title: Limit
+      - name: authorization
+        in: header
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Authorization
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
   /api/v1/jobs/{job_id}:
     get:
       tags:

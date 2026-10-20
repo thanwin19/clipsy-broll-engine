@@ -364,7 +364,8 @@ def clip_record(sc: Scene, c: Candidate, reason: str, alternatives: list[Candida
         "judge": judge,   # independent VLM rating 1-5 (Gemini vision), see app/pipeline/judge.py
         "relevance_detail": {k: v for k, v in c.score_detail.items() if k not in ("headline", "body", "card_kind")},
         "reframe_subject_x": round(c.subject_x, 3),
-        "alternatives": [{"id": a.id, "source": a.provider, "score": a.score, "title": a.title[:80]} for a in alternatives[:5]],
+        "alternatives": [{"id": a.id, "source": a.provider, "score": a.score, "title": a.title[:80], "thumb": a.thumb_url or None,
+                          "kind": a.kind, "licence": a.licence} for a in alternatives[:8]],
     }
 
 
@@ -547,12 +548,16 @@ def run_job(job_id: str, req: dict, progress: Progress) -> dict:
         qa = qa_and_fix(outputs, plan.scenes, chosen, pools, nar, music, burn, work, warnings, reasons)
     judged, judge_model = {}, "pending"   # the independent judge runs after delivery (see finish_judge)
     srt = write_srt([c for sc in plan.scenes for c in scene_cues(sc)], work / "captions.srt")
-    timeline = {"job_id": job_id, "version": 1, "narration_seconds": round(nar.duration, 3), "language": nar.language,
+    preview_files, thumb_urls, wave_url = make_previews(job_id, 1, work, work / "previews", plan.scenes, ratios[0],
+                                                        nar.audio_path)
+    timeline = {"job_id": job_id, "version": 1, "waveform": wave_url, "narration_seconds": round(nar.duration, 3), "language": nar.language,
                 "transcript": nar.transcript, "aspect_ratios": ratios, "mood": plan.mood,
                 "selection_rule": selection_rule_text(),
                 "scenes": [clip_record(sc, chosen[sc.index], reasons[sc.index], pools.get(sc.index, []), judged.get(sc.index))
                            for sc in plan.scenes],
                 "music": asdict(music) | {"path": None} if music else None}
+    for rec in timeline["scenes"]:
+        rec["thumbnail"] = thumb_urls.get(rec["scene"])
     timer.t["total"] = round(time.perf_counter() - t0, 3)
     scores = [v["score"] for v in judged.values()]
     manifest = build_manifest(job_id, req, nar, plan, music, timer, warnings, qa, chosen, 1, {"independent_judge": {
@@ -568,6 +573,7 @@ def run_job(job_id: str, req: dict, progress: Progress) -> dict:
     files.update({"timeline": work / "timeline.json", "manifest": work / "manifest.json"})
     if caps.get("srt", True):
         files["captions_srt"] = srt
+    files.update(preview_files)
     links = publish(job_id, 1, files)
     if get_settings().judge_provider != "none":
         threading.Thread(target=finish_judge, args=(job_id, work, plan.scenes, segs), daemon=True).start()
@@ -598,6 +604,42 @@ def finish_judge(job_id: str, work: Path, scenes, segs: dict) -> None:
         publish(job_id, 1, {"timeline": work / "timeline.json", "manifest": work / "manifest.json"})
     except Exception as e:
         log.warning("background judge failed for %s: %s", job_id, e)
+
+
+def make_previews(job_id: str, version: int, work: Path, out_dir: Path, scenes, ratio: str, narration: Path):
+    """Editor assets: a 320-px frame from the middle of every scene and a waveform image of the narration.
+    Returns (files to publish, {scene_index: url}, waveform url)."""
+    from concurrent.futures import ThreadPoolExecutor
+    st = get_storage()
+    out_dir.mkdir(parents=True, exist_ok=True)
+    seg_dir = work / "segments" / ratio_key(ratio)
+
+    def thumb(sc):
+        dest = out_dir / f"thumb_{sc.index:03d}.jpg"
+        try:
+            media.ffmpeg("-ss", f"{max(0.0, sc.duration / 2):.2f}", "-i", seg_dir / f"seg_{sc.index:03d}.mp4",
+                         "-frames:v", "1", "-vf", "scale=320:-2", "-q:v", "5", dest)
+            return sc.index, dest
+        except Exception:
+            return sc.index, None
+
+    with ThreadPoolExecutor(max_workers=6) as ex:
+        thumbs = dict(ex.map(thumb, scenes))
+    files, urls = {}, {}
+    for i, p in thumbs.items():
+        if p:
+            files[f"thumb_{i:03d}"] = p
+            urls[i] = st.url(f"jobs/{job_id}/v{version}/{p.name}")
+    wave = out_dir / "waveform.png"
+    wave_url = None
+    try:
+        media.ffmpeg("-i", narration, "-filter_complex", "aformat=channel_layouts=mono,showwavespic=s=2400x120:colors=0x22D3EE",
+                     "-frames:v", "1", wave)
+        files["waveform"] = wave
+        wave_url = st.url(f"jobs/{job_id}/v{version}/{wave.name}")
+    except Exception:
+        pass
+    return files, urls, wave_url
 
 
 def selection_rule_text() -> str:
@@ -668,10 +710,17 @@ def swap_scene(parent_id: str, job_id: str, scene_index: int, body: dict, progre
     version = int(body.get("_version", 2))
     timeline = json.loads((work / "timeline.json").read_text(encoding="utf-8"))
     timeline["version"] = version
-    timeline["scenes"] = [clip_record(sc, chosen[sc.index], reasons[sc.index], pools.get(sc.index, []))
+    old_judge = {rec["scene"]: rec.get("judge") for rec in timeline.get("scenes", [])}
+    timeline["scenes"] = [clip_record(sc, chosen[sc.index], reasons[sc.index], pools.get(sc.index, []),
+                                      None if sc.index == scene_index else old_judge.get(sc.index))
                           for sc in plan.scenes]
     out_dir = work / f"v{version}"
     out_dir.mkdir(exist_ok=True)
+    preview_files, thumb_urls, wave_url = make_previews(parent_id, version, work, out_dir, plan.scenes, st["ratios"][0],
+                                                        st["nar"].audio_path)
+    timeline["waveform"] = wave_url
+    for rec in timeline["scenes"]:
+        rec["thumbnail"] = thumb_urls.get(rec["scene"])
     (out_dir / "timeline.json").write_text(json.dumps(timeline, indent=2, default=str), encoding="utf-8")
     timer.t["total"] = round(time.perf_counter() - t0, 3)
     manifest = build_manifest(job_id, st["req"], st["nar"], plan, st["music"], timer, warnings, qa, chosen, version,
@@ -684,6 +733,10 @@ def swap_scene(parent_id: str, job_id: str, scene_index: int, body: dict, progre
     save_state(work, plan, chosen, pools, reasons, st["nar"], st["music"], st["req"], st["ratios"], st["burn"])
     files = {f"video_{ratio_key(r)}": out_dir / p.name for r, p in outputs.items()}
     files.update({"timeline": out_dir / "timeline.json", "manifest": out_dir / "manifest.json"})
+    files.update(preview_files)
+    srt = work / "captions.srt"
+    if srt.exists():
+        files["captions_srt"] = srt
     links = publish(parent_id, version, files)
     return {"version": version, "parent_job_id": parent_id, "scene": scene_index, "links": links,
             "warnings": warnings, "timings_seconds": timer.t, "qa_passed": all(r["passed"] for r in qa.values())}

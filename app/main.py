@@ -27,7 +27,7 @@ settings = get_settings()
 setup_logging(settings.log_level)
 log = get_logger("api")
 
-app = FastAPI(title="IncuBrix Script/Voiceover to B-roll Video Engine", version=settings.app_version,
+app = FastAPI(title="Clipsy API — script & voiceover to B-roll video", version=settings.app_version,
               description="Turns a voiceover, script or IncuBrix scene list into finished, licence-clean B-roll videos.")
 install_handlers(app)
 STATIC = Path(__file__).parent / "static"
@@ -221,6 +221,36 @@ async def create_broll_job(request: Request, idempotency_key: str | None = Heade
         raise ApiError("VALIDATION_ERROR", f"Unknown voice '{v}'", {"see": "/api/v1/voices"})
     req["aspect_ratios"] = list(dict.fromkeys(req["aspect_ratios"]))
     return _accept(req, idempotency_key, body_hash)
+
+
+@app.get("/api/v1/projects", dependencies=[Depends(auth)], tags=["jobs"])
+def list_projects(limit: int = 60):
+    """Projects (B-roll jobs), newest first, each with its latest finished version (after clip swaps)."""
+    from sqlalchemy import select
+    with db.session() as s:
+        rows = list(s.scalars(select(db.Job).where(db.Job.kind == "broll").order_by(db.Job.created_at.desc()).limit(limit)))
+        swaps = list(s.scalars(select(db.Job).where(db.Job.kind == "swap", db.Job.status == "succeeded")
+                               .order_by(db.Job.created_at)))
+    latest = {}
+    for sw in swaps:
+        latest[sw.parent_job_id] = sw
+    out = []
+    for j in rows:
+        req = json.loads(j.request_json or "{}")
+        text = req.get("script") or " ".join(sc.get("text", "") for sc in (req.get("scenes") or [])) or ""
+        text = re.sub(r"[#*_\[\]>]+", " ", text)
+        title = (" ".join(text.split()[:8]) or ("Voiceover project" if req.get("audio_path") or req.get("audio_url") else "Untitled"))
+        v = jobs.job_view(j)
+        if j.id in latest:
+            lv = jobs.job_view(latest[j.id])
+            v["latest"] = {"job_id": lv["job_id"], "version": (lv.get("result") or {}).get("version"),
+                           "links": (lv.get("result") or {}).get("links")}
+        v.update({"title": title, "aspect_ratios": req.get("aspect_ratios"), "voice": req.get("voice"),
+                  "voice_style": req.get("voice_style"), "narration_language": req.get("narration_language"),
+                  "input": "voiceover" if (req.get("audio_path") or req.get("audio_url")) else "script",
+                  "request": {k: v for k, v in req.items() if k not in ("audio_path", "callback_url")}})
+        out.append(v)
+    return {"projects": out}
 
 
 @app.get("/api/v1/jobs/{job_id}", dependencies=[Depends(auth)], tags=["jobs"])

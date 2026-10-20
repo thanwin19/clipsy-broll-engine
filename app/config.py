@@ -9,7 +9,7 @@ class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
 
     # service
-    app_name: str = "incubrix-broll-engine"
+    app_name: str = "clipsy"
     app_version: str = "1.0.0"
     data_dir: Path = Path("./data")
     database_url: str = ""  # default: sqlite file inside data_dir
