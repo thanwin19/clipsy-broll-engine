@@ -9,7 +9,7 @@ from app.pipeline import media
 def check_video(path: Path, expected_seconds: float, fps: int = 30) -> dict:
     # detection on a 480-px-wide copy: black/frozen frames are just as visible, decoding+filtering is much cheaper
     proc = subprocess.run([media.FFMPEG, "-hide_banner", "-nostdin", "-hwaccel", "auto", "-i", str(path), "-vf",
-                           "scale=480:-2:flags=fast_bilinear,blackdetect=d=0.5:pix_th=0.08,freezedetect=n=-55dB:d=2.5",
+                           "fps=5,scale=480:-2:flags=fast_bilinear,blackdetect=d=0.5:pix_th=0.08,freezedetect=n=-55dB:d=2.5",
                            "-an", "-f", "null", "-"],
                           capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=900)
     log = proc.stderr

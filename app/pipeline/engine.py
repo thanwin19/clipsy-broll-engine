@@ -14,6 +14,7 @@ from app.logs import get_logger
 from app.pipeline import media
 from app.pipeline.interpret import interpret
 from app.pipeline.judge import judge_scenes
+from app.pipeline.voicestyle import resolve as resolve_style
 from app.pipeline.music import find_music
 from app.pipeline.narration import Narration, Word, align_script, even_words, get_asr, get_tts
 from app.pipeline.planner import Scene, _split_long, plan_scenes, scenes_from_words, script_to_scenes, segment
@@ -128,9 +129,11 @@ def build_narration(req: dict, work: Path, warnings: list[str]) -> tuple[Narrati
         if not script:
             raise ApiError("EMPTY_SCRIPT")
         tts = get_tts()
-        raw = tts.synthesize(script, req.get("voice") or "en-IN-female", work / "tts.wav")
+        style, tts_voice, style_speed, style_af = resolve_style(req.get("voice_style"), req.get("voice") or "en-IN-female", script)
+        raw = tts.synthesize(script, tts_voice, work / "tts.wav")
         warnings += getattr(tts, "warnings", [])
-        providers["tts"] = {"name": tts.name, "version": tts.version, "voice": req.get("voice")}
+        providers["tts"] = {"name": tts.name, "version": tts.version, "voice": req.get("voice"),
+                            "voice_style": style, "requested_style": req.get("voice_style") or "natural"}
         # TTS output can start/end with long silences: trim them (keeping ~0.3 s padding) so narration covers the video
         trimmed = work / "tts_trimmed.wav"
         media.ffmpeg("-i", raw, "-af", "silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.3,"
@@ -138,9 +141,13 @@ def build_narration(req: dict, work: Path, warnings: list[str]) -> tuple[Narrati
                      trimmed)
         if media.duration(trimmed) > 0.5:
             raw = trimmed
-        speed = min(1.25, max(0.75, float(req.get("voice_speed") or 1.0)))
-        af = media.LEVEL_FILTER if abs(speed - 1.0) < 0.01 else f"atempo={speed:.3f},{media.LEVEL_FILTER}"
-        mix = media.to_wav(raw, work / "narration.wav", 48000, af)
+        speed = min(1.3, max(0.75, float(req.get("voice_speed") or 1.0) * style_speed))
+        chain = [x for x in (style_af, f"atempo={speed:.3f}" if abs(speed - 1.0) >= 0.01 else "", media.LEVEL_FILTER) if x]
+        try:
+            mix = media.to_wav(raw, work / "narration.wav", 48000, ",".join(chain))
+        except ApiError:   # e.g. an ffmpeg build without rubberband: keep speed + levelling, drop the shaping
+            warnings.append(f"VOICE_STYLE_SHAPING_SKIPPED: audio shaping for style '{style}' unavailable")
+            mix = media.to_wav(raw, work / "narration.wav", 48000, ",".join(chain[1:]) or None)
         if abs(speed - 1.0) >= 0.01:   # keep ASR timing consistent with the narration actually used
             raw = media.to_wav(raw, work / "tts_speed.wav", 24000, f"atempo={speed:.3f}")
         total = media.duration(mix)

@@ -141,7 +141,8 @@ GEMINI_VOICES = {
     "Schedar": "male", "Achird": "male", "Zubenelgenubi": "male", "Sadachbia": "male", "Sadaltager": "male"}
 # Kokoro voices: prefix letter = language (a US English, b UK English, h Hindi), 2nd letter = gender
 KOKORO_VOICES = ["af_heart", "af_bella", "af_nicole", "af_sarah", "af_sky", "af_nova", "af_river", "af_jessica",
-                 "am_michael", "am_adam", "am_eric", "am_liam", "am_onyx", "am_echo",
+                 "af_alloy", "af_kore", "af_aoede",
+                 "am_michael", "am_adam", "am_eric", "am_liam", "am_onyx", "am_echo", "am_puck", "am_fenrir",
                  "bf_emma", "bf_isabella", "bf_alice", "bf_lily", "bm_george", "bm_lewis", "bm_daniel", "bm_fable",
                  "hf_alpha", "hf_beta", "hm_omega", "hm_psi"]
 KOKORO_LANG = {"a": "en-us", "b": "en-gb", "h": "hi"}
@@ -154,6 +155,16 @@ def voice_catalog() -> list[dict]:
              "languages": KOKORO_LANG[v[0]], "accent": {"a": "American", "b": "British", "h": "Hindi"}[v[0]]}
             for v in KOKORO_VOICES]
     return out
+
+
+def pick_voice(voice: str, engine: str) -> str:
+    """A style hands over "gemini:X|kokoro:Y"; each engine takes its own part."""
+    if "|" in voice:
+        for part in voice.split("|"):
+            if part.startswith(engine + ":"):
+                return part
+        return voice.split("|")[0]
+    return voice
 
 
 def _gender_of(voice: str) -> str:
@@ -190,7 +201,7 @@ class GeminiTTS:
     def synthesize(self, text: str, voice: str, out_wav: Path) -> Path:
         if not self.key:
             raise ApiError("TTS_FAILED", "GEMINI_API_KEY is not set")
-        voice = voice or "en-IN-female"
+        voice = pick_voice(voice or "en-IN-female", "gemini")
         if voice.startswith("kokoro:"):
             raise ApiError("TTS_FAILED", "a Kokoro voice was requested")
         voice_name = voice.split(":", 1)[1] if voice.startswith("gemini:") else VOICES[_gender_of(voice)]
@@ -283,7 +294,7 @@ class KokoroTTS:
     def synthesize(self, text: str, voice: str, out_wav: Path) -> Path:
         import numpy as np
         import soundfile as sf
-        voice = voice or "en-IN-female"
+        voice = pick_voice(voice or "en-IN-female", "kokoro")
         if voice.startswith("kokoro:"):
             kv = voice.split(":", 1)[1]
             if kv not in KOKORO_VOICES:

@@ -18,6 +18,7 @@ from app.errors import ERROR_CODES, ApiError, install_handlers
 from app.logs import correlation_id_var, get_logger, setup_logging
 from app.pipeline import media
 from app.pipeline.narration import voice_catalog
+from app.pipeline.voicestyle import catalog as style_catalog
 from app.pipeline.interpret import looks_structured
 from app.pipeline.planner import script_to_scenes
 from app.storage import get_storage
@@ -52,6 +53,8 @@ class BrollRequest(BaseModel):
     voice: str = Field("en-IN-female", description="Text input only: en-IN-female, en-US-male, hi-IN-female ... or a "
                                                     "specific voice from GET /api/v1/voices, e.g. gemini:Charon, kokoro:af_bella")
     voice_speed: float = Field(1.0, ge=0.75, le=1.25, description="Speaking speed for generated narration (0.75-1.25)")
+    voice_style: Literal["natural", "soft", "cute", "warm", "deep", "calm", "energetic", "storyteller", "news", "auto"] = Field(
+        "natural", description="Voice character: picks a fitting voice + speed + audio shaping. 'auto' chooses from the script")
     clean_audio: bool = Field(True, description="Uploaded voiceovers: noise reduction + loudness normalisation")
     aspect_ratios: list[Literal["16:9", "9:16", "1:1"]] = Field(default_factory=lambda: ["16:9"], min_length=1)
     style: str = "bright, modern, real-world footage"
@@ -247,7 +250,7 @@ def voices():
     """Voices for text input. Gemini voices use the free cloud quota; Kokoro voices run locally without limits."""
     return {"default": "en-IN-female", "generic": ["en-IN-female", "en-IN-male", "en-US-female", "en-US-male",
                                                     "en-GB-female", "en-GB-male", "hi-IN-female", "hi-IN-male", "ta-IN-female"],
-            "voices": voice_catalog()}
+            "styles": style_catalog(), "voices": voice_catalog()}
 
 
 @app.get("/api/v1/errors", tags=["meta"])

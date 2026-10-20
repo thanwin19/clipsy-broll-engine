@@ -50,8 +50,12 @@ def judge_scenes(scenes, segment_paths: dict[int, Path], work: Path) -> tuple[di
             parts.append({"text": f"Scene {sc.index}. Narration: \"{sc.text}\""})
             parts.append({"inline_data": {"mime_type": "image/jpeg", "data": base64.b64encode(img.read_bytes()).decode()}})
         body = {"contents": [{"parts": parts}], "generationConfig": {"responseMimeType": "application/json", "temperature": 0}}
-        for model in [m.strip() for m in s.judge_model.split(",") if m.strip()]:
+        models = [m.strip() for m in s.judge_model.split(",") if m.strip()]
+        for attempt, model in enumerate(models + models[:1]):   # last try: first model again after a pause
             try:
+                if attempt == len(models):
+                    import time
+                    time.sleep(4)   # per-minute free-tier limits recover quickly
                 r = httpx.post(f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
                                headers={"x-goog-api-key": s.gemini_api_key}, json=body, timeout=60)
                 if r.status_code in (404, 429, 503):

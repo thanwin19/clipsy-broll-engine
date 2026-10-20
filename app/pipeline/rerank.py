@@ -115,6 +115,16 @@ def score_candidates(scene, cands: list[Candidate], avoid_terms: list[str], avoi
     from app.pipeline.sources import fetch_thumb
     from concurrent.futures import ThreadPoolExecutor
 
+    # cheap text pre-filter: CLIP (CPU) only looks at the most promising candidates, keeping every source represented
+    limit = get_settings().max_scored_candidates
+    if len(cands) > limit:
+        q = _tokens(" ".join(scene.queries) + " " + scene.visual + " " + scene.text)
+        ranked = sorted(cands, key=lambda c: -len(q & _tokens(c.tags + " " + c.title + " " + c.query)))
+        firsts = {}
+        for c in ranked:
+            firsts.setdefault(c.provider, c)
+        keep = list(firsts.values()) + [c for c in ranked if c not in firsts.values()]
+        cands = keep[:limit]
     with ThreadPoolExecutor(max_workers=16) as ex:
         thumbs = list(ex.map(lambda c: c.thumb_path or fetch_thumb(c, thumb_dir), cands))
     for c, t in zip(cands, thumbs):

@@ -43,6 +43,34 @@ def procedural_bed(dest: Path, seconds: float, mood: str) -> Track:
 
 
 def find_music(mood: str, seconds: float, work: Path) -> tuple[Track | None, list[str]]:
+    """Cached per mood: the first licence-checked track found for a mood is reused by later jobs."""
+    import json
+    from dataclasses import asdict
+    s = get_settings()
+    if s.music_provider in ("none", "mock"):
+        return _find_music(mood, seconds, work)
+    cache = s.data_dir / "music_cache"
+    cache.mkdir(parents=True, exist_ok=True)
+    meta = cache / f"{mood}.json"
+    if meta.exists():
+        try:
+            d = json.loads(meta.read_text(encoding="utf-8"))
+            if Path(d["path"]).exists():
+                d["path"] = Path(d["path"])
+                return Track(**d), []
+        except Exception:
+            pass
+    track, warnings = _find_music(mood, seconds, work)
+    if track and track.source != "procedural":
+        kept = cache / f"{mood}{Path(track.path).suffix}"
+        import shutil
+        shutil.copyfile(track.path, kept)
+        meta.write_text(json.dumps({**asdict(track), "path": str(kept)}), encoding="utf-8")
+        track.path = kept
+    return track, warnings
+
+
+def _find_music(mood: str, seconds: float, work: Path) -> tuple[Track | None, list[str]]:
     s = get_settings()
     warnings: list[str] = []
     if s.music_provider == "none":

@@ -95,7 +95,7 @@ def encoder_args(encoder: str) -> list[str]:
     s = get_settings()
     common = ["-pix_fmt", "yuv420p", "-profile:v", "high"]
     if encoder == "h264_amf":
-        return ["-c:v", "h264_amf", "-quality", "balanced", "-rc", "cqp", "-qp_i", "21", "-qp_p", "23", *common]
+        return ["-c:v", "h264_amf", "-quality", "speed", "-rc", "cqp", "-qp_i", "21", "-qp_p", "23", *common]
     if encoder == "h264_nvenc":
         return ["-c:v", "h264_nvenc", "-preset", "p4", "-cq", "23", *common]
     if encoder == "h264_qsv":
@@ -169,10 +169,18 @@ def _ken_burns(cand, W, H, frames, seg_dir, name, norm, sub, enc, out):
         sw, sh = im.size
     cw, ch = _cover(sw, sh, W, H)
     x = int(min(max(cand.subject_x * cw - W / 2, 0), cw - W))
-    zoom = 0.06 if cand.kind != "card" else 0.03
-    vf = (f"scale={cw}:{ch},crop={W}:{H}:{x}:{(ch - H) // 2},"
-          f"scale={W * 3 // 2}:{H * 3 // 2},zoompan=z='1+{zoom}*on/{max(frames, 1)}':x='iw/2-(iw/zoom/2)':"
-          f"y='ih/2-(ih/zoom/2)':d=1:s={W}x{H}:fps={s.fps},{norm},setsar=1,format=yuv420p{sub}")
+    if cand.kind == "card":
+        # cards: slow sideways drift on a 4%-larger card. crop's x is evaluated per frame, so this costs almost
+        # nothing (no per-frame resampling like zoompan) and the shot is never frozen
+        pw, ph = (W * 104 // 100) // 2 * 2, (H * 104 // 100) // 2 * 2
+        dur = max(frames / s.fps, 0.1)
+        vf = (f"scale={pw}:{ph},crop={W}:{H}:x='({pw}-{W})*t/{dur:.3f}':y={(ph - H) // 2},"
+              f"fps={s.fps},{norm},setsar=1,format=yuv420p{sub}")
+    else:
+        zoom = 0.06
+        vf = (f"scale={cw}:{ch},crop={W}:{H}:{x}:{(ch - H) // 2},"
+              f"scale={W * 3 // 2}:{H * 3 // 2},zoompan=z='1+{zoom}*on/{max(frames, 1)}':x='iw/2-(iw/zoom/2)':"
+              f"y='ih/2-(ih/zoom/2)':d=1:s={W}x{H}:fps={s.fps},{norm},setsar=1,format=yuv420p{sub}")
     media.ffmpeg("-loop", "1", "-framerate", str(s.fps), "-i", Path(img).resolve(), "-vf", vf, *enc, out.name, cwd=seg_dir)
     return out
 

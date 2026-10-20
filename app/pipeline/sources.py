@@ -350,26 +350,44 @@ CATEGORY_SOURCES = {
     "nature": ["pixabay", "coverr", "pexels", "wikimedia", "openverse_images", "mock"],
     "history": ["internet_archive", "wikimedia", "pixabay", "openverse_images", "mock"],
 }
-DEFAULT_SOURCES = ["pixabay", "coverr", "pexels", "openverse_images", "mock"]
+DEFAULT_SOURCES = ["pixabay", "coverr", "pexels", "mock"]
+
+
+_DOWN_UNTIL: dict[str, float] = {}      # process-wide memory: provider -> time it may be tried again
+_DOWN_LOCK = threading.Lock()
+PROVIDER_COOLDOWN_SECONDS = 600
 
 
 class CircuitBreaker:
-    """Per job: a provider that fails twice is skipped for the rest of the job (with a warning)."""
+    """A provider that fails twice is skipped for the rest of the job AND, for 10 minutes, by later jobs too
+    (so a rate-limited or slow source doesn't make every new job wait for its timeouts)."""
 
     def __init__(self, warnings: list[str]):
         self.fail: dict[str, int] = {}
         self.warnings = warnings
         self.lock = threading.Lock()
+        import time as _t
+        now = _t.time()
+        with _DOWN_LOCK:
+            for name, until in _DOWN_UNTIL.items():
+                if until > now:
+                    self.fail[name] = 2
+                    self.warnings.append(f"PROVIDER_COOLDOWN: '{name}' failed in a recent job; skipped for "
+                                         f"{int(until - now)} more seconds")
 
     def is_open(self, name: str) -> bool:
         return self.fail.get(name, 0) >= 2
 
     def record(self, name: str, err: Exception):
+        import time as _t
         with self.lock:
             self.fail[name] = self.fail.get(name, 0) + 1
             if self.fail[name] == 2:
                 self.warnings.append(f"PROVIDER_DOWN: '{name}' failed repeatedly ({type(err).__name__}); "
                                      "continuing with other sources")
+                if "disabled" not in str(err):   # switched off on purpose (DISABLED_PROVIDERS): not remembered
+                    with _DOWN_LOCK:
+                        _DOWN_UNTIL[name] = _t.time() + PROVIDER_COOLDOWN_SECONDS
             log.warning("provider %s failed: %s", name, err)
 
 

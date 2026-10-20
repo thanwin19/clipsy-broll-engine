@@ -42,7 +42,7 @@ class Settings(BaseSettings):
     tts_provider: str = "gemini,kokoro"    # tried in order: gemini | kokoro | mock
     gemini_tts_model: str = "gemini-3.8-flash-tts,gemini-3.8-flash-lite-tts,gemini-2.5-flash-preview-tts,gemini-3.1-flash-tts-preview"  # tried in order (free tier: ~10 requests/day each)
     llm_provider: str = "gemini"           # gemini | mock
-    gemini_model: str = "gemini-3.5-flash,gemini-3.5-flash-lite,gemini-flash-lite-latest"  # tried in order
+    gemini_model: str = "gemini-3.5-flash-lite,gemini-3.5-flash,gemini-flash-lite-latest"  # tried in order
     rerank_provider: str = "clip"          # clip | mock
     interpret_provider: str = "gemini"     # gemini | rules  (reads prompt documents: voiceover vs shots vs notes)
     interpret_model: str = "gemini-3.5-flash-lite,gemini-flash-lite-latest,gemini-3.5-flash"
@@ -72,6 +72,7 @@ class Settings(BaseSettings):
     stock_min_score: float = 0.24        # tau: stock clip used only if CLIP score >= tau
     ai_margin: float = 0.02              # AI image must beat best stock by this margin
     candidates_per_query: int = 6
+    max_scored_candidates: int = 18      # CLIP looks at most at this many per scene (text pre-filter)
     min_scene_seconds: float = 2.0
     max_scene_seconds: float = 8.0
 
