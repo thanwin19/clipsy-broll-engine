@@ -2,7 +2,7 @@
 
 | Tool | Used for |
 |---|---|
-| Claude Code (Anthropic, model Claude Opus 5.5) | Planning the architecture with me from the brief; writing most of the code (API, job runner, pipeline modules, ffmpeg filter graphs, UI), tests, Dockerfile/compose and first drafts of README / SOURCES / REPORT; debugging (Gemini model retirement, slow downloads, scene-split bug) from logs. |
+| antigravity,chatgtp,gemini,claude | Planning the architecture with me from the brief; writing most of the code (API, job runner, pipeline modules, ffmpeg filter graphs, UI), tests, Dockerfile/compose and first drafts of README / SOURCES / REPORT; debugging (Gemini model retirement, slow downloads, scene-split bug) from logs. |
 
 How I worked with it:
 - I chose the overall approach (meaning-first planning, CLIP re-ranking, global assignment, per-scene
