@@ -16,7 +16,7 @@ from app.pipeline.interpret import interpret
 from app.pipeline.judge import judge_scenes
 from app.pipeline.voicestyle import resolve as resolve_style
 from app.pipeline.music import find_music
-from app.pipeline.narration import Narration, Word, align_script, even_words, get_asr, get_tts
+from app.pipeline.narration import Narration, Word, align_script, detect_language, even_words, get_asr, get_tts
 from app.pipeline.planner import Scene, _split_long, plan_scenes, scenes_from_words, script_to_scenes, segment
 from app.pipeline.qa import check_video
 from app.pipeline.render import RATIOS, concat_and_mux, frame_bounds, mix_audio, render_segment, render_video_multi, scene_cues, write_srt
@@ -151,8 +151,12 @@ def build_narration(req: dict, work: Path, warnings: list[str]) -> tuple[Narrati
         if abs(speed - 1.0) >= 0.01:   # keep ASR timing consistent with the narration actually used
             raw = media.to_wav(raw, work / "tts_speed.wav", 24000, f"atempo={speed:.3f}")
         total = media.duration(mix)
-        asr = get_asr(for_alignment=True)
-        providers["asr"] = {"name": asr.name, "version": asr.version, "purpose": "timing of known script words"}
+        text_lang = detect_language(script)
+        asr = get_asr(for_alignment=(text_lang == "en"))   # non-English scripts: the larger model times them better
+        if text_lang != "en" and not req.get("language"):
+            req = {**req, "language": text_lang}
+        providers["asr"] = {"name": asr.name, "version": asr.version, "purpose": "timing of known script words",
+                            "script_language": text_lang}
         if asr.name == "mock-asr":
             words, lang = even_words(script, 0.2, total - 0.2), "en"
         else:
@@ -223,8 +227,7 @@ def select_clips(plan, nar: Narration, req: dict, work: Path, warnings: list[str
         queries = list(sc.queries)
         if sc.sensitive:
             queries = [q + " calm" if "calm" not in q else q for q in queries]
-        # long scripts: 2 queries per scene (many similar scenes; cached results fill in)
-        cands = search_all(queries, sc.category, breaker, 2 if len(scenes) > 12 else 3)
+        cands = search_all(queries, sc.category, breaker, s.queries_per_scene)
         return sc.index, score_candidates(sc, cands, avoid, avoid_faces, scorer, work / "thumbs")
 
     done = 0

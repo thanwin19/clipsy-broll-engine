@@ -249,7 +249,8 @@ def swap_scene(job_id: str, scene_index: int, body: SwapRequest,
 def voices():
     """Voices for text input. Gemini voices use the free cloud quota; Kokoro voices run locally without limits."""
     return {"default": "en-IN-female", "generic": ["en-IN-female", "en-IN-male", "en-US-female", "en-US-male",
-                                                    "en-GB-female", "en-GB-male", "hi-IN-female", "hi-IN-male", "ta-IN-female"],
+                                                    "en-GB-female", "en-GB-male", "hi-IN-female", "hi-IN-male", "ta-IN-female", "ta-IN-male",
+                                                    "te-IN-female", "kn-IN-female", "ml-IN-female", "bn-IN-female", "mr-IN-female"],
             "styles": style_catalog(), "voices": voice_catalog()}
 
 

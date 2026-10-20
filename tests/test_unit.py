@@ -102,3 +102,17 @@ def test_prompt_reader_speaks_only_voiceover():
     assert [s["spoken"] for s in scenes] == ["Stop trying to do everything at once.", "Set a timer for 25 minutes."]
     assert "journal" in scenes[0]["visual"] and scenes[0]["overlay"] == "1. Stop multitasking."
     assert all("Reel" not in s["spoken"] and "Productivity Hacks" not in s["spoken"] for s in scenes)
+
+
+def test_language_detection_routes_tamil():
+    from app.pipeline.narration import detect_language
+    assert detect_language("மழைக்காலத்தில் மலைகள் பச்சையாக மாறுகின்றன.") == "ta"
+    assert detect_language("సుబ్బారావు ఇంటికి వెళ్ళాడు") == "te"
+    assert detect_language("सुबह जल्दी उठना एक अच्छी आदत है।") == "hi"
+    assert detect_language("Plain English text.") == "en"
+
+
+def test_espeak_tamil_offline(tmp_path):
+    from app.pipeline import espeak, media
+    out = espeak.synthesize("வணக்கம். இது ஒரு சோதனை.", "ta-IN", tmp_path / "ta.wav")
+    assert media.duration(out) > 0.5

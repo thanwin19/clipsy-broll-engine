@@ -157,6 +157,29 @@ def voice_catalog() -> list[dict]:
     return out
 
 
+# Unicode blocks of Indic scripts -> language code (to route text to an engine that can actually read it)
+SCRIPTS = [(0x0B80, 0x0BFF, "ta"), (0x0C00, 0x0C7F, "te"), (0x0C80, 0x0CFF, "kn"), (0x0D00, 0x0D7F, "ml"),
+           (0x0980, 0x09FF, "bn"), (0x0A80, 0x0AFF, "gu"), (0x0A00, 0x0A7F, "pa"), (0x0B00, 0x0B7F, "or"),
+           (0x0900, 0x097F, "hi")]
+
+
+def detect_language(text: str) -> str:
+    """Dominant script of the text: 'ta', 'te', ..., 'hi', else 'en'."""
+    counts: dict[str, int] = {}
+    for ch in text:
+        o = ord(ch)
+        for lo, hi, code in SCRIPTS:
+            if lo <= o <= hi:
+                counts[code] = counts.get(code, 0) + 1
+                break
+    letters = sum(ch.isalpha() for ch in text) or 1
+    if counts:
+        code, n = max(counts.items(), key=lambda kv: kv[1])
+        if n / letters > 0.3:
+            return code
+    return "en"
+
+
 def pick_voice(voice: str, engine: str) -> str:
     """A style hands over "gemini:X|kokoro:Y"; each engine takes its own part."""
     if "|" in voice:
@@ -295,6 +318,11 @@ class KokoroTTS:
         import numpy as np
         import soundfile as sf
         voice = pick_voice(voice or "en-IN-female", "kokoro")
+        lang_of_text = detect_language(text)
+        if lang_of_text not in ("en", "hi"):
+            raise ApiError("TTS_FAILED", f"Kokoro cannot read '{lang_of_text}' text")
+        if lang_of_text == "hi" and not voice.startswith("kokoro:h"):
+            voice = "hi-IN-male" if _gender_of(voice) == "male" else "hi-IN-female"
         if voice.startswith("kokoro:"):
             kv = voice.split(":", 1)[1]
             if kv not in KOKORO_VOICES:
@@ -318,6 +346,28 @@ class KokoroTTS:
                     parts += [audio, np.zeros(int(sr * 0.18), dtype=audio.dtype)]
         sf.write(str(out_wav), np.concatenate(parts), sr)
         self.version = f"kokoro-v1.0-onnx/{kv}"
+        return out_wav
+
+
+class EspeakTTS:
+    """Offline, unlimited last resort for Indic languages (Tamil, Telugu, Kannada, Malayalam, Bengali, ...).
+    Robotic compared with Gemini; the job carries a TTS_FALLBACK warning when it is used."""
+    name = "espeak-ng"
+    version = "espeak-ng (espeakng-loader)"
+
+    def synthesize(self, text: str, voice: str, out_wav: Path) -> Path:
+        from app.pipeline import espeak
+        lang = detect_language(text)
+        if lang == "en":
+            loc = (pick_voice(voice or "", "x").split("-")[0] or "en") if ":" not in voice else "en"
+            lang = loc if espeak.supports(loc) else "en"
+        if not espeak.supports(lang):
+            raise ApiError("TTS_FAILED", f"no offline voice for '{lang}'")
+        try:
+            espeak.synthesize(text, lang, out_wav)
+        except Exception as e:
+            raise ApiError("TTS_FAILED", f"eSpeak NG failed: {e}")
+        self.version = f"espeak-ng/{espeak.VOICES[lang]}"
         return out_wav
 
 
@@ -349,6 +399,6 @@ def get_tts():
     s = get_settings()
     if s.tts_provider == "mock":
         return MockTTS()
-    table = {"gemini": GeminiTTS, "kokoro": KokoroTTS}
+    table = {"gemini": GeminiTTS, "kokoro": KokoroTTS, "espeak": EspeakTTS}
     chain = [table[n.strip()]() for n in s.tts_provider.split(",") if n.strip() in table]
     return ChainTTS(chain or [GeminiTTS()])
