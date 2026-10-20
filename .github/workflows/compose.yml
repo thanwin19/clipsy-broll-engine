@@ -1,0 +1,50 @@
+# Proves Integration Standard point 1 on a clean machine: `docker compose up` starts the API with Postgres and
+# S3-compatible storage, and one command runs every test (unit, integration, end-to-end) with no API keys.
+name: docker compose
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  compose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Settings from .env.example (no keys)
+        run: cp .env.example .env
+
+      - name: Build
+        run: docker compose build
+
+      - name: All tests in containers (mock providers, S3 storage)
+        run: docker compose --profile test run --rm tests
+
+      - name: docker compose up
+        run: docker compose up -d
+
+      - name: Service is ready (database, ffmpeg, S3 storage)
+        run: |
+          for i in $(seq 1 60); do curl -fs localhost:8000/ready && exit 0; sleep 5; done
+          docker compose ps; exit 1
+
+      - name: API smoke test (202 + job, idempotent replay, JSON errors, openapi)
+        run: |
+          set -e
+          curl -fs localhost:8000/health
+          code=$(curl -s -o err.json -w '%{http_code}' -H 'Content-Type: application/json' \
+                 -H 'Idempotency-Key: ci-empty' -d '{"script": "  "}' localhost:8000/api/v1/broll/jobs)
+          cat err.json; test "$code" = 422; grep -q EMPTY_SCRIPT err.json
+          body='{"script": "Every morning the city wakes before the sun. Coffee carts open on quiet corners.", "aspect_ratios": ["16:9"]}'
+          a=$(curl -fs -H 'Content-Type: application/json' -H 'Idempotency-Key: ci-1' -d "$body" localhost:8000/api/v1/broll/jobs)
+          b=$(curl -fs -H 'Content-Type: application/json' -H 'Idempotency-Key: ci-1' -d "$body" localhost:8000/api/v1/broll/jobs)
+          echo "$a"; echo "$b"
+          test "$(echo "$a" | jq -r .job_id)" = "$(echo "$b" | jq -r .job_id)"
+          curl -fs localhost:8000/api/v1/jobs/$(echo "$a" | jq -r .job_id) | jq '{status, progress, stage}'
+          curl -fs localhost:8000/openapi.json | jq -r .openapi
+
+      - name: Logs
+        if: always()
+        run: docker compose logs --no-color --tail=200
