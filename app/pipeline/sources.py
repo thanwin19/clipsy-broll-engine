@@ -6,6 +6,7 @@ Each candidate carries its licence, attribution and link so timeline.json is lic
 """
 import base64
 import hashlib
+import math
 import re
 import threading
 from dataclasses import dataclass, field
@@ -303,6 +304,11 @@ def active_providers(category: str) -> list:
     return out
 
 
+_search_cache: dict[tuple[str, str], tuple[float, list]] = {}
+_cache_lock = threading.Lock()
+SEARCH_CACHE_SECONDS = 3600
+
+
 def search_all(queries: list[str], category: str, breaker: CircuitBreaker, limit_queries: int = 3) -> list[Candidate]:
     results: list[Candidate] = []
     providers = active_providers(category)
@@ -313,7 +319,17 @@ def search_all(queries: list[str], category: str, breaker: CircuitBreaker, limit
             return []
         if get_settings().is_disabled(p.name):  # live switch-off mid job
             raise ProviderDown(f"{p.name} disabled")
-        return p.search(q)
+        import copy
+        import time as _t
+        key = (p.name, q.lower().strip())
+        with _cache_lock:
+            hit = _search_cache.get(key)
+        if hit and _t.time() - hit[0] < SEARCH_CACHE_SECONDS:   # same query again: no API call
+            return copy.deepcopy(hit[1])
+        res = p.search(q)
+        with _cache_lock:
+            _search_cache[key] = (_t.time(), copy.deepcopy(res))
+        return res
 
     with ThreadPoolExecutor(max_workers=6) as ex:
         futs = {ex.submit(one, p, q): (p, q) for q in queries[:limit_queries] for p in providers}
@@ -365,6 +381,37 @@ def download(cand: Candidate, dest_dir: Path, max_mb: int = 80) -> Path:
         raise ProviderDown("downloaded file has no video stream")
     tmp.replace(path)
     return path
+
+
+def download_part(cand: Candidate, dest_dir: Path, seconds: float) -> Path:
+    """Fetch only the first `seconds` of a clip: ffmpeg reads the URL with HTTP range requests and stops early,
+    so a 4-second scene no longer downloads a whole 30-second 1080p file. Falls back to a full download."""
+    s = get_settings()
+    if cand.provider == "mock":
+        return download(cand, dest_dir)
+    dest_dir.mkdir(parents=True, exist_ok=True)
+    safe = re.sub(r"[^A-Za-z0-9_-]", "_", cand.id)
+    need = math.ceil(seconds + 1.5)   # renderer may skip up to 1 s of intro
+    path = dest_dir / f"{safe}_{need}s.mp4"
+    if path.exists() and path.stat().st_size > 0:
+        return path
+    full = dest_dir / f"{safe}.mp4"
+    if full.exists() and full.stat().st_size > 0:
+        return full
+    try:
+        url = Nasa(s).resolve(cand) if cand.provider == "nasa" else cand.download_url
+        tmp = path.with_suffix(".part.mp4")
+        media.ffmpeg("-user_agent", UA["User-Agent"], "-rw_timeout", str(int(s.provider_timeout_seconds * 1e6)),
+                     "-t", str(need), "-i", url, "-map", "0:v:0", "-c", "copy", "-an", "-movflags", "+faststart", tmp,
+                     timeout=120)
+        vs = media.video_stream(tmp)
+        if not vs or media.duration(tmp) < min(seconds, (cand.duration or seconds)) * 0.8:
+            raise ProviderDown("partial download too short")
+        tmp.replace(path)
+        return path
+    except Exception as e:
+        log.info("partial download failed for %s (%s); full download", cand.id, type(e).__name__)
+        return download(cand, dest_dir)
 
 
 def fetch_thumb(cand: Candidate, dest_dir: Path) -> Path | None:

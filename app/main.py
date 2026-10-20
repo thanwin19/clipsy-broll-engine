@@ -304,5 +304,21 @@ def _startup():
         except Exception as e:
             log.warning("preload of %s failed: %s", mod, e)
     db.init_db()
+    if settings.preload_models:
+        import threading
+
+        def warm():
+            try:
+                from app.pipeline.narration import get_asr
+                from app.pipeline.rerank import get_scorer
+                asr, scorer = get_asr(), get_scorer()
+                if hasattr(asr, "_load"):
+                    asr._load()
+                if hasattr(scorer, "_load"):
+                    scorer._load()
+                log.info("models preloaded")
+            except Exception as e:
+                log.warning("model preload failed: %s", e)
+        threading.Thread(target=warm, daemon=True).start()
     jobs.recover()
     log.info("service started")

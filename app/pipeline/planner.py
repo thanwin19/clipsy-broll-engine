@@ -173,7 +173,7 @@ class GeminiPlanner:
             gen = dict(body["generationConfig"])
             if model.startswith("gemini-3"):
                 gen["thinkingConfig"] = {"thinkingLevel": "low"}
-            for _ in range(2):
+            for _ in range(1):  # one try per model, then the next (lite) model: overloaded models fail fast
                 try:
                     r = httpx.post(f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
                                    headers={"x-goog-api-key": self.key}, json={**body, "generationConfig": gen},

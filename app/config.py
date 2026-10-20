@@ -18,6 +18,7 @@ class Settings(BaseSettings):
     rate_limit_per_minute: int = 30
     worker_threads: int = 2
     log_level: str = "INFO"
+    preload_models: bool = True  # load Whisper + CLIP at startup (faster first job)
 
     # storage: "local" or "s3" (MinIO / any S3-compatible store)
     storage_backend: str = "local"
@@ -49,7 +50,7 @@ class Settings(BaseSettings):
     cloudflare_model: str = "@cf/black-forest-labs/flux-1-schnell"
     music_provider: str = "openverse"      # openverse | none | mock
     provider_timeout_seconds: float = 20.0
-    llm_timeout_seconds: float = 45.0
+    llm_timeout_seconds: float = 20.0
     disabled_providers: str = ""           # comma list, used to simulate an outage
 
     # keys

@@ -18,7 +18,7 @@ from app.pipeline.planner import Scene, _split_long, plan_scenes, scenes_from_wo
 from app.pipeline.qa import check_video
 from app.pipeline.render import RATIOS, concat_and_mux, frame_bounds, render_segment, scene_cues, write_srt
 from app.pipeline.rerank import get_scorer, score_candidates
-from app.pipeline.sources import Candidate, CircuitBreaker, CloudflareFlux, download, search_all
+from app.pipeline.sources import Candidate, CircuitBreaker, CloudflareFlux, download, download_part, search_all
 from app.storage import get_storage
 
 log = get_logger("engine")
@@ -249,7 +249,7 @@ def select_clips(plan, nar: Narration, req: dict, work: Path, warnings: list[str
         c, tried = chosen[sc.index], 0
         while c.kind == "video" and c.local_path is None:
             try:
-                c.local_path = download(c, work / "clips")
+                c.local_path = download_part(c, work / "clips", sc.duration)
             except Exception as e:
                 tried += 1
                 with lock:
