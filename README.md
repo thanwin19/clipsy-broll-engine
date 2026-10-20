@@ -20,6 +20,10 @@ POST /api/v1/broll/jobs  ->  video_16x9.mp4, video_9x16.mp4, video_1x1.mp4, capt
 | **Subject-aware reframing** | 9:16 / 1:1 crops are centred on the visual subject (spectral-residual saliency), not the frame centre. |
 | **Self-QA gate** | Every output is checked for black frames, frozen frames, A/V drift, codec, fps and pixel format; failing scenes are auto-replaced once. |
 | **Swap a clip** | Each scene is its own normalised segment; swapping one scene re-renders only that segment and re-joins the rest without re-encoding. |
+| **Independent judge** | A different model (Gemini vision) looks at a frame of every finished scene and rates it 1–5 against the narration; stored per scene (`judge`) and summarised in the manifest. |
+| **2.5D parallax** | Still images (AI images, Openverse photos) get a depth-based camera move from Depth-Anything-V2-Small, so they read as real footage. |
+| **Voices** | Pick any of ~56 voices (`GET /api/v1/voices`: Gemini cloud voices or unlimited local Kokoro voices), set `voice_speed` 0.75–1.25, and uploaded voiceovers are cleaned (noise reduction + −16 LUFS loudness). |
+| **Fast rendering** | Each clip is decoded once for all aspect ratios, segments render in parallel, the GPU encoder is used when present (`VIDEO_ENCODER=h264_amf`/`h264_nvenc`/`h264_qsv`), and audio is mixed once and stream-copied. |
 | **Resilience** | Per-job circuit breaker: a source that fails is skipped and the job finishes with other sources, then cards. |
 
 ## Architecture
@@ -34,7 +38,7 @@ POST /api/v1/broll/jobs  ->  video_16x9.mp4, video_9x16.mp4, video_1x1.mp4, capt
                             │
                    worker thread pool ─► pipeline (app/pipeline/engine.py)
    1 ingest ─ 2 narration (faster-whisper ASR | Gemini TTS) ─ 3 Beat Planner (Gemini | heuristic)
-   4 search (Pixabay · Coverr · Pexels · NASA · Wikimedia, circuit breaker) ─ 5 CLIP rerank + Safety Guard
+   4 search (Pixabay · Coverr · Pexels · NASA · Wikimedia · Internet Archive · Openverse images, circuit breaker) ─ 5 CLIP rerank + Safety Guard
    6 route + global assignment (stock | AI image | stat/text card) ─ 7 render segments (ffmpeg: normalise,
    colour, reframe, captions) ─ 8 music (Openverse CC0/CC-BY | procedural) + ducking ─ 9 Self-QA
                             │
