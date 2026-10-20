@@ -126,7 +126,7 @@ def build_narration(req: dict, work: Path, warnings: list[str],
         source = "audio"
     else:
         if req.get("script") and not req.get("target_seconds"):
-            m = re.search(r"(\d{2,3})\s*[- ]?\s*(?:sec|second)s?", req["script"][:600], re.I)
+            m = re.search(r"(\d{2,3})\s*[- ]?\s*(?:sec|second)s?\b", req["script"][:600], re.I)
             if m and 5 <= int(m.group(1)) <= 600:
                 req = {**req, "target_seconds": int(m.group(1))}
         if req.get("script") and not req.get("scenes"):

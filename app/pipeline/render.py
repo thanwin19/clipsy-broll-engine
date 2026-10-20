@@ -303,9 +303,9 @@ def mix_audio(narration_wav: Path, music, total: float, out: Path) -> Path:
     if music:
         media.ffmpeg("-i", narration_wav, "-stream_loop", "-1", "-i", music.path, "-filter_complex",
                      f"[0:a]aresample=48000,aformat=channel_layouts=stereo,asplit=2[v1][v2];"
-                     f"[1:a]aresample=48000,aformat=channel_layouts=stereo,volume={s.music_volume_db}dB,"
+                     f"[1:a]aresample=48000,aformat=channel_layouts=stereo,loudnorm=I=-16:TP=-2:LRA=11,volume={s.music_volume_db}dB,"
                      f"afade=t=out:st={max(0, total - 2.5):.2f}:d=2.5[m];"
-                     f"[m][v1]sidechaincompress=threshold=0.02:ratio=10:attack=15:release=350[duck];"
+                     f"[m][v1]sidechaincompress=threshold=0.05:ratio=3:attack=20:release=500[duck];"
                      f"[v2][duck]amix=inputs=2:duration=first:normalize=0[a]",
                      "-map", "[a]", "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-t", f"{total:.3f}", out)
     else:

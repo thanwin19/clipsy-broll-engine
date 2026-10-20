@@ -89,7 +89,7 @@ class Settings(BaseSettings):
     parallax: bool = True            # 2.5D depth parallax for still images (Depth-Anything-V2-Small)
     ffmpeg_threads: int = 2          # threads per ffmpeg process
     video_crf: int = 23
-    music_volume_db: float = -20.0
+    music_volume_db: float = -12.0   # music bed level after normalising to -16 LUFS
     seed: int = 1234
 
     @property
