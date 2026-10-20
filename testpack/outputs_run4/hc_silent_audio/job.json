@@ -1,0 +1,18 @@
+{
+  "job_id": "job_ae514ea7552c430291cc",
+  "kind": "broll",
+  "status": "failed",
+  "progress": 5,
+  "stage": "failed",
+  "created_at": "2026-10-20T16:09:19.344941",
+  "updated_at": "2026-10-20T16:09:22.055446",
+  "result": null,
+  "error": {
+    "code": "NO_SPEECH_DETECTED",
+    "message": "The audio is silent",
+    "retryable": false,
+    "details": {
+      "mean_volume_db": -91.0
+    }
+  }
+}

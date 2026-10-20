@@ -1,0 +1,174 @@
+{
+  "job_id": "job_15df8ee5ed5d4fceaf5d",
+  "version": 1,
+  "service": {
+    "name": "clipsy",
+    "version": "1.0.0"
+  },
+  "providers": {
+    "asr": {
+      "name": "speech-region alignment",
+      "version": "silencedetect",
+      "purpose": "timing of known script words",
+      "script_language": "hi"
+    },
+    "tts": {
+      "name": "gemini-tts",
+      "version": "gemini-3.8-flash-tts,gemini-3.8-flash-lite-tts,gemini-2.5-flash-preview-tts,gemini-3.1-flash-tts-preview",
+      "voice": "hi-IN-female",
+      "voice_style": "natural",
+      "requested_style": "natural"
+    },
+    "input_type": "script",
+    "planner": "gemini/gemini-flash-lite-latest",
+    "relevance_model": {
+      "name": "open_clip",
+      "version": "open_clip/ViT-B-32/laion2b_s34b_b79k"
+    },
+    "footage_sources_enabled": [
+      "pixabay",
+      "coverr",
+      "pexels",
+      "nasa",
+      "wikimedia",
+      "internet_archive",
+      "openverse_images"
+    ],
+    "footage_sources_used": [
+      "pixabay"
+    ],
+    "ai_image": null,
+    "music": "openverse/jamendo",
+    "renderer": "ffmpeg",
+    "face_detector": "opencv-haarcascade",
+    "saliency": "spectral-residual (numpy)"
+  },
+  "settings": {
+    "aspect_ratios": [
+      "16:9",
+      "9:16"
+    ],
+    "style": "bright, modern, real-world footage",
+    "avoid": [],
+    "captions": {
+      "burn_in": true,
+      "srt": true,
+      "color": "#FFFFFF",
+      "size": "medium",
+      "font": "sans",
+      "position": "bottom",
+      "box": false
+    },
+    "voice": "hi-IN-female",
+    "fps": 30,
+    "stock_min_score_tau": 0.24,
+    "ai_margin": 0.02,
+    "min_scene_seconds": 2.0,
+    "max_scene_seconds": 8.0,
+    "video_preset": "veryfast",
+    "crf": 23
+  },
+  "seed": 1234,
+  "narration": {
+    "seconds": 9.92,
+    "language": "hi",
+    "words": 26
+  },
+  "mood": "upbeat",
+  "topic": "morning routine and healthy habits",
+  "avoid_terms_expanded": [],
+  "timings_seconds": {
+    "narration": 1.769,
+    "planning": 58.87,
+    "search_and_score": 19.836,
+    "ai_generation": 0.0,
+    "download": 2.241,
+    "music_parallel": 22.082,
+    "render": 10.347,
+    "qa": 1.792,
+    "total": 95.942
+  },
+  "cost_estimate_usd": {
+    "total": 0.0,
+    "note": "All providers used on free tiers / open-source models; compute is the host machine."
+  },
+  "warnings": [
+    "PROVIDER_COOLDOWN: 'openverse_images' failed in a recent job; skipped for 49 more seconds"
+  ],
+  "rights": {
+    "all_commercial_use": true,
+    "clips": [
+      {
+        "scene": 0,
+        "source": "pixabay",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "attribution": "Video by SYG_Anime on Pixabay",
+        "ai_generated": false
+      },
+      {
+        "scene": 1,
+        "source": "pixabay",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "attribution": "Video by Matthias_Groeneveld on Pixabay",
+        "ai_generated": false
+      },
+      {
+        "scene": 2,
+        "source": "pixabay",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "attribution": "Video by Life-Of-Vids on Pixabay",
+        "ai_generated": false
+      }
+    ],
+    "music": {
+      "title": "Key, Kida &amp; Eddie (feat. ICD) - Sundalo (acoustic)",
+      "source": "openverse/jamendo",
+      "licence": "CC BY 3.0",
+      "attribution": "\"Key, Kida &amp; Eddie (feat. ICD) - Sundalo (acoustic)\" by Key, Kida &amp; Eddie (CC BY 3.0)",
+      "url": "https://www.jamendo.com/track/1522600"
+    },
+    "narration": "synthetic TTS voice (no real person)"
+  },
+  "qa": {
+    "16:9": {
+      "file": "video_16x9.mp4",
+      "video_codec": "h264",
+      "audio_codec": "aac",
+      "width": 1920,
+      "height": 1080,
+      "pix_fmt": "yuv420p",
+      "fps": 30.0,
+      "video_seconds": 9.933,
+      "audio_seconds": 9.92,
+      "av_drift_seconds": 0.013,
+      "narration_seconds": 9.92,
+      "black_segments": [],
+      "freeze_starts": [],
+      "passed": true
+    },
+    "9:16": {
+      "file": "video_9x16.mp4",
+      "video_codec": "h264",
+      "audio_codec": "aac",
+      "width": 1080,
+      "height": 1920,
+      "pix_fmt": "yuv420p",
+      "fps": 30.0,
+      "video_seconds": 9.933,
+      "audio_seconds": 9.92,
+      "av_drift_seconds": 0.013,
+      "narration_seconds": 9.92,
+      "black_segments": [],
+      "freeze_starts": [],
+      "passed": true
+    }
+  },
+  "independent_judge": {
+    "model": "gemini-3.5-flash-lite",
+    "scenes_scored": 3,
+    "of": 3,
+    "mean_score_1_to_5": 4.67,
+    "share_scored_4_or_5": 1.0,
+    "seconds_after_delivery": 33.62
+  }
+}

@@ -1,0 +1,282 @@
+{
+  "job_id": "job_1ab9fc3baa404bcebc90",
+  "version": 1,
+  "waveform": "/files/jobs/job_1ab9fc3baa404bcebc90/v1/waveform.png",
+  "narration_seconds": 5.873,
+  "language": "en",
+  "transcript": "Elon Musk announced that Tesla will open a new factory next year. Apple and Samsung also reported record phone sales.",
+  "aspect_ratios": [
+    "16:9",
+    "9:16"
+  ],
+  "mood": "corporate",
+  "selection_rule": "Per scene: (1) statistics -> animated stat card. (2) Stock candidates from category-suited sources are scored with CLIP (image vs scene visual plan + narration, minus penalty for negative/avoid terms); unsafe candidates (avoid list, faces when avoided, AI for people/brands/sensitive) are removed. (3) Global assignment takes the highest (scene, clip) pairs first, each clip used once, if score >= tau=0.24. (4) If a scene's best stock score < tau+0.03 and AI is allowed, an AI image is generated and wins only if its CLIP score >= stock + 0.02. (5) Otherwise the best unused clip within 0.03 of tau, else a text card.",
+  "scenes": [
+    {
+      "scene": 0,
+      "start": 0.0,
+      "end": 2.873,
+      "duration": 2.873,
+      "narration": "Elon Musk announced that Tesla will open a new factory next year.",
+      "visual_hint": null,
+      "scene_type": "named_entity",
+      "category": "technology",
+      "visual_plan": "A modern electric vehicle manufacturing plant with robotic assembly lines.",
+      "queries": [
+        "electric car factory",
+        "modern manufacturing plant",
+        "robotics assembly line"
+      ],
+      "negative_terms": [
+        "person face",
+        "elon musk portrait",
+        "company logo"
+      ],
+      "entities": [
+        "Elon Musk",
+        "Tesla"
+      ],
+      "clip": {
+        "id": "pixabay:12543",
+        "kind": "video",
+        "title": "sparkles, industry, worker, industrial, metal, steel, equipment, production, technology, factory, manufacture, welding, sparks, machine, iron, manufacturing, light, machinery, work, tool, fire, engineering, bright, shiny, energy, plant, modern, heavy, mechanical, plasma, working, burn, arc, electric, automobile",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-12543/",
+        "media_url": "https://cdn.pixabay.com/video/2017/10/21/12543-239934681_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by wastedgeneration on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "electric car factory"
+      },
+      "reason": "stock (low confidence): pixabay scored 0.211 (< tau 0.24, within 0.03); no AI option; safety: named person/brand -> neutral footage, no AI faces/logos",
+      "relevance_score": 0.2112,
+      "judge": {
+        "score": 4,
+        "why": "Factory work with sparks fits opening a new factory."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2112,
+        "negative_max": 0.1519,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.43,
+      "alternatives": [
+        {
+          "id": "pixabay:12543",
+          "source": "pixabay",
+          "score": 0.2112,
+          "title": "sparkles, industry, worker, industrial, metal, steel, equipment, production, tec",
+          "thumb": "https://cdn.pixabay.com/video/2017/10/21/12543-239934681_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:2165",
+          "source": "pixabay",
+          "score": 0.1771,
+          "title": "car, road, transportation, vehicle, driving, car on road, transport, drive, high",
+          "thumb": "https://cdn.pixabay.com/video/2016/02/14/2165-155327596_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:159021",
+          "source": "pixabay",
+          "score": 0.1767,
+          "title": "robot, robotics, manufacturing, tech, technology, robotic arm, artificial intell",
+          "thumb": "https://cdn.pixabay.com/video/2023/04/15/159021-818026286_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:114431",
+          "source": "pixabay",
+          "score": 0.1748,
+          "title": "technology, robotic, creation, science, science fiction, robots, human appearanc",
+          "thumb": "https://cdn.pixabay.com/video/2022/04/19/114431-701051146_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:166965",
+          "source": "pixabay",
+          "score": 0.1734,
+          "title": "robot, spider, robotic, fiction, design",
+          "thumb": "https://cdn.pixabay.com/video/2023/06/12/166965-835670925_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:2714",
+          "source": "pixabay",
+          "score": 0.1487,
+          "title": "technology, production, abstract, machine, loop, looped, modern, industry, busin",
+          "thumb": "https://cdn.pixabay.com/video/2016/04/05/2714-161671440_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:238542",
+          "source": "pixabay",
+          "score": 0.1457,
+          "title": "factory, plant, steam, drone, serbia, building, modern",
+          "thumb": "https://cdn.pixabay.com/video/2024/10/27/238542_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:12041",
+          "source": "pixabay",
+          "score": 0.1435,
+          "title": "gloves, glove, levers, equipment, mechanism, climb, lever arm, control, sleeve, ",
+          "thumb": "https://cdn.pixabay.com/video/2017/09/17/12041-234530519_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_1ab9fc3baa404bcebc90/v1/thumb_000.jpg"
+    },
+    {
+      "scene": 1,
+      "start": 2.873,
+      "end": 5.873,
+      "duration": 3.0,
+      "narration": "Apple and Samsung also reported record phone sales.",
+      "visual_hint": null,
+      "scene_type": "named_entity",
+      "category": "business",
+      "visual_plan": "Smartphones displayed neatly on a minimalist retail table.",
+      "queries": [
+        "modern smartphones display",
+        "retail store phones",
+        "mobile phone sales"
+      ],
+      "negative_terms": [
+        "apple fruit",
+        "samsung logo",
+        "people faces"
+      ],
+      "entities": [
+        "Apple",
+        "Samsung"
+      ],
+      "clip": {
+        "id": "pixabay:103",
+        "kind": "video",
+        "title": "apple iphone 6, smartphone, scroll, touchscreen, touch, navigation, communication, read, phone, device, electronics, modern, communicate, display, reading, browsing",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-103/",
+        "media_url": "https://cdn.pixabay.com/video/2015/08/08/103-135735608_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by Coverr-Free-Footage on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "modern smartphones display"
+      },
+      "reason": "stock: pixabay clip scored 0.243 >= tau 0.24; best unused of 12 safe candidates; safety: named person/brand -> neutral footage, no AI faces/logos",
+      "relevance_score": 0.2435,
+      "judge": {
+        "score": 4,
+        "why": "Using a smartphone relates well to phone sales."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2435,
+        "negative_max": 0.1752,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.484,
+      "alternatives": [
+        {
+          "id": "pixabay:103",
+          "source": "pixabay",
+          "score": 0.2435,
+          "title": "apple iphone 6, smartphone, scroll, touchscreen, touch, navigation, communicatio",
+          "thumb": "https://cdn.pixabay.com/video/2015/08/08/103-135735608_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:224799",
+          "source": "pixabay",
+          "score": 0.2397,
+          "title": "e-commerce, shopping, sale, discount, smartphone, online shopping, store, retail",
+          "thumb": "https://cdn.pixabay.com/video/2024/08/04/224799_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:735",
+          "source": "pixabay",
+          "score": 0.2387,
+          "title": "iphone, scrolling, technology, touchscreen, cellphone, digital, smartphone, comm",
+          "thumb": "https://cdn.pixabay.com/video/2015/09/09/735-138808018_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:202987",
+          "source": "pixabay",
+          "score": 0.2157,
+          "title": "phone, smartphone, mobile, portable, screen, digital, communication, texting, bu",
+          "thumb": "https://cdn.pixabay.com/video/2024/03/04/202987-919379330_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:108458",
+          "source": "pixabay",
+          "score": 0.2098,
+          "title": "online, shopping, cart, mobile, digital, internet, shop, store, click, finger, p",
+          "thumb": "https://cdn.pixabay.com/video/2022/02/21/108458-680697604_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:154833",
+          "source": "pixabay",
+          "score": 0.2002,
+          "title": "woman, phone, business, casual, cheerful, beautiful wallpaper, customer, female,",
+          "thumb": "https://cdn.pixabay.com/video/2023/03/15/154833-808562576_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:154835",
+          "source": "pixabay",
+          "score": 0.1772,
+          "title": "woman, phone, business, casual, cheerful, beautiful wallpaper, customer, female,",
+          "thumb": "https://cdn.pixabay.com/video/2023/03/15/154835-808562582_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:154830",
+          "source": "pixabay",
+          "score": 0.1554,
+          "title": "woman, phone, business, casual, cheerful, beautiful wallpaper, customer, female,",
+          "thumb": "https://cdn.pixabay.com/video/2023/03/15/154830-808562567_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_1ab9fc3baa404bcebc90/v1/thumb_001.jpg"
+    }
+  ],
+  "music": {
+    "path": null,
+    "title": "Procedural ambient pad",
+    "source": "procedural",
+    "licence": "Generated by this service (no third-party rights)",
+    "licence_url": "",
+    "attribution": "Generated by Clipsy",
+    "page_url": "",
+    "ai_generated": false
+  }
+}

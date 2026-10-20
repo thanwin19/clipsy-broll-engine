@@ -1,0 +1,313 @@
+{
+  "job_id": "job_2e6655f1e430424eb9b8",
+  "version": 1,
+  "waveform": "/files/jobs/job_2e6655f1e430424eb9b8/v1/waveform.png",
+  "narration_seconds": 10.641,
+  "language": "en",
+  "transcript": "Trust is earned slowly and lost in seconds. Sales grew 40% in 2025. Only one in three startups survives five years.",
+  "aspect_ratios": [
+    "16:9",
+    "9:16"
+  ],
+  "mood": "corporate",
+  "selection_rule": "Per scene: (1) statistics -> animated stat card. (2) Stock candidates from category-suited sources are scored with CLIP (image vs scene visual plan + narration, minus penalty for negative/avoid terms); unsafe candidates (avoid list, faces when avoided, AI for people/brands/sensitive) are removed. (3) Global assignment takes the highest (scene, clip) pairs first, each clip used once, if score >= tau=0.24. (4) If a scene's best stock score < tau+0.03 and AI is allowed, an AI image is generated and wins only if its CLIP score >= stock + 0.02. (5) Otherwise the best unused clip within 0.03 of tau, else a text card.",
+  "scenes": [
+    {
+      "scene": 0,
+      "start": 0.0,
+      "end": 4.52,
+      "duration": 4.52,
+      "narration": "Trust is earned slowly and lost in seconds.",
+      "visual_hint": null,
+      "scene_type": "metaphor",
+      "category": "business",
+      "visual_plan": "A person shaking hands in a modern, sunlit office, symbolizing trust and partnership.",
+      "queries": [
+        "business handshake corporate",
+        "professional agreement office",
+        "signing contract modern"
+      ],
+      "negative_terms": [
+        "money",
+        "cash",
+        "argument"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:261362",
+        "kind": "video",
+        "title": "ai generated, handshake, business people, hello, contract, agreement",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-261362/",
+        "media_url": "https://cdn.pixabay.com/video/2025/02/27/261362_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by Frank_Rietsch on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "business handshake corporate"
+      },
+      "reason": "stock: pixabay clip scored 0.278 >= tau 0.24; best unused of 12 safe candidates",
+      "relevance_score": 0.278,
+      "judge": null,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.278,
+        "negative_max": 0.2445,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.42,
+      "alternatives": [
+        {
+          "id": "pixabay:261362",
+          "source": "pixabay",
+          "score": 0.278,
+          "title": "ai generated, handshake, business people, hello, contract, agreement",
+          "thumb": "https://cdn.pixabay.com/video/2025/02/27/261362_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:63846",
+          "source": "pixabay",
+          "score": 0.263,
+          "title": "handshake, agreement, hello, contract, deal, opportunity, cooperation, hands, ne",
+          "thumb": "https://cdn.pixabay.com/video/2021/02/02/63846-508273059_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:146071",
+          "source": "pixabay",
+          "score": 0.2482,
+          "title": "online meeting, virtual meeting, meeting, agreement, business, handshake, partne",
+          "thumb": "https://cdn.pixabay.com/video/2023/01/10/146071-788409958_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:1035",
+          "source": "pixabay",
+          "score": 0.2235,
+          "title": "meeting, conference, talk, blur, bokeh, business, people, corporate, group, pres",
+          "thumb": "https://cdn.pixabay.com/video/2015/10/16/1035-142621331_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:27092",
+          "source": "pixabay",
+          "score": 0.1974,
+          "title": "girl, office, w, computer, work, business, laptop, woman, young, professional, f",
+          "thumb": "https://cdn.pixabay.com/video/2019/09/20/27092-361827484_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:27095",
+          "source": "pixabay",
+          "score": 0.1888,
+          "title": "girl, office, w, computer, work, business, laptop, woman, young, professional, f",
+          "thumb": "https://cdn.pixabay.com/video/2019/09/20/27095-361827464_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:48991",
+          "source": "pixabay",
+          "score": 0.1629,
+          "title": "diversity, teamwork, unity, hands, friends, together, business, work, team, frie",
+          "thumb": "https://cdn.pixabay.com/video/2020/09/03/48991-457717357_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:27091",
+          "source": "pixabay",
+          "score": 0.1605,
+          "title": "girl, office, w, computer, work, business, laptop, woman, young, professional, f",
+          "thumb": "https://cdn.pixabay.com/video/2019/09/20/27091-361827476_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_2e6655f1e430424eb9b8/v1/thumb_000.jpg"
+    },
+    {
+      "scene": 1,
+      "start": 4.52,
+      "end": 7.68,
+      "duration": 3.16,
+      "narration": "Sales grew 40% in 2025.",
+      "visual_hint": null,
+      "scene_type": "statistic",
+      "category": "business",
+      "visual_plan": "An animated bar chart showing rapid upward growth in a clean business environment.",
+      "queries": [
+        "business growth chart",
+        "financial analytics screen",
+        "upward trending graph"
+      ],
+      "negative_terms": [
+        "falling",
+        "loss",
+        "red graph"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:1",
+        "kind": "card",
+        "title": "Card: 40%",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "statistic '40%' -> animated stat card (rule: numbers are shown, not searched)",
+      "relevance_score": null,
+      "judge": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [],
+      "thumbnail": "/files/jobs/job_2e6655f1e430424eb9b8/v1/thumb_001.jpg"
+    },
+    {
+      "scene": 2,
+      "start": 7.68,
+      "end": 10.641,
+      "duration": 2.961,
+      "narration": "Only one in three startups survives five years.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "business",
+      "visual_plan": "Diverse team of young entrepreneurs collaborating in a modern co-working space.",
+      "queries": [
+        "startup team working",
+        "coworking space collaboration",
+        "young entrepreneurs brainstorming"
+      ],
+      "negative_terms": [
+        "empty office",
+        "lonely person"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:69952",
+        "kind": "video",
+        "title": "office, meeting, working, discussion, startup, business, computer, work, team, plan, brainstorming, teamwork, table, corporate, casual, people, company, writing, desk, conference, group, colleagues, teacher, project, coffee",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-69952/",
+        "media_url": "https://cdn.pixabay.com/video/2021/04/04/69952-533273133_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by zameenaasman172 on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "startup team working"
+      },
+      "reason": "stock: pixabay clip scored 0.278 >= tau 0.24; best unused of 12 safe candidates",
+      "relevance_score": 0.2781,
+      "judge": null,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2781,
+        "negative_max": 0.2195,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.51,
+      "alternatives": [
+        {
+          "id": "pixabay:69952",
+          "source": "pixabay",
+          "score": 0.2781,
+          "title": "office, meeting, working, discussion, startup, business, computer, work, team, p",
+          "thumb": "https://cdn.pixabay.com/video/2021/04/04/69952-533273133_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:3132",
+          "source": "pixabay",
+          "score": 0.2616,
+          "title": "work space, meeting, startup, notebook, laptops, teamwork, office, corporate, co",
+          "thumb": "https://cdn.pixabay.com/video/2016/05/12/3132-166335897_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:2340",
+          "source": "pixabay",
+          "score": 0.2365,
+          "title": "meeting, planning, marketing, business, team, people, office, teamwork, group, d",
+          "thumb": "https://cdn.pixabay.com/video/2016/02/29/2340-157269921_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:268230",
+          "source": "pixabay",
+          "score": 0.2164,
+          "title": "business, office, computer, man, laptop, company, corporate, meeting, work, mark",
+          "thumb": "https://cdn.pixabay.com/video/2025/03/28/268230_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:8252",
+          "source": "pixabay",
+          "score": 0.2036,
+          "title": "discussion, desk, people, office, team, meeting, business, businessman, brainsto",
+          "thumb": "https://cdn.pixabay.com/video/2017/03/08/8252-207598592_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:62491",
+          "source": "pixabay",
+          "score": 0.1768,
+          "title": "boss, business, businesswoman, candid, occupation, office, partner, partnership,",
+          "thumb": "https://cdn.pixabay.com/video/2021/01/20/62491-504239010_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:3576",
+          "source": "pixabay",
+          "score": 0.1762,
+          "title": "macbook, notebook, laptop, typing, office, write, keyboard, mobile, modern, star",
+          "thumb": "https://cdn.pixabay.com/video/2016/06/27/3576-172488163_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:61037",
+          "source": "pixabay",
+          "score": 0.1536,
+          "title": "laptop, working, computer, job, freelancer, typing, business, publish, online, w",
+          "thumb": "https://cdn.pixabay.com/video/2021/01/03/61037-497754241_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_2e6655f1e430424eb9b8/v1/thumb_002.jpg"
+    }
+  ],
+  "music": {
+    "path": null,
+    "title": "Procedural ambient pad",
+    "source": "procedural",
+    "licence": "Generated by this service (no third-party rights)",
+    "licence_url": "",
+    "attribution": "Generated by Clipsy",
+    "page_url": "",
+    "ai_generated": false
+  }
+}

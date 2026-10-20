@@ -1,0 +1,153 @@
+{
+  "job_id": "job_c48b0fcf13354b3085de",
+  "version": 1,
+  "waveform": "/files/jobs/job_c48b0fcf13354b3085de/v1/waveform.png",
+  "narration_seconds": 9.92,
+  "language": "hi",
+  "transcript": "\u0938\u0941\u092c\u0939 \u091c\u0932\u094d\u0926\u0940 \u0909\u0920\u0928\u093e \u090f\u0915 \u0905\u091a\u094d\u091b\u0940 \u0906\u0926\u0924 \u0939\u0948\u0964 \u0925\u094b\u0921\u093c\u0940 \u0926\u0947\u0930 \u091f\u0939\u0932\u0947\u0902, \u0924\u093e\u091c\u093c\u0940 \u0939\u0935\u093e \u0932\u0947\u0902 \u0914\u0930 \u0926\u093f\u0928 \u0915\u0940 \u092f\u094b\u091c\u0928\u093e \u092c\u0928\u093e\u090f\u0902\u0964 \u0907\u0938\u0938\u0947 \u092a\u0942\u0930\u093e \u0926\u093f\u0928 \u090a\u0930\u094d\u091c\u093e \u0938\u0947 \u092d\u0930\u093e \u0930\u0939\u0924\u093e \u0939\u0948\u0964",
+  "aspect_ratios": [
+    "16:9",
+    "9:16"
+  ],
+  "mood": "calm",
+  "selection_rule": "Per scene: (1) statistics -> animated stat card. (2) Stock candidates from category-suited sources are scored with CLIP (image vs scene visual plan + narration, minus penalty for negative/avoid terms); unsafe candidates (avoid list, faces when avoided, AI for people/brands/sensitive) are removed. (3) Global assignment takes the highest (scene, clip) pairs first, each clip used once, if score >= tau=0.24. (4) If a scene's best stock score < tau+0.03 and AI is allowed, an AI image is generated and wins only if its CLIP score >= stock + 0.02. (5) Otherwise the best unused clip within 0.03 of tau, else a text card.",
+  "scenes": [
+    {
+      "scene": 0,
+      "start": 0.0,
+      "end": 2.581,
+      "duration": 2.581,
+      "narration": "\u0938\u0941\u092c\u0939 \u091c\u0932\u094d\u0926\u0940 \u0909\u0920\u0928\u093e \u090f\u0915 \u0905\u091a\u094d\u091b\u0940 \u0906\u0926\u0924 \u0939\u0948\u0964",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "everyday",
+      "visual_plan": "\u0938\u0941\u092c\u0939 \u091c\u0932\u094d\u0926\u0940 \u0909\u0920\u0928\u093e \u0905\u091a\u094d\u091b\u0940",
+      "queries": [
+        "\u0938\u0941\u092c\u0939 \u091c\u0932\u094d\u0926\u0940",
+        "\u0909\u0920\u0928\u093e \u0905\u091a\u094d\u091b\u0940"
+      ],
+      "negative_terms": [],
+      "entities": [],
+      "clip": {
+        "id": "card:0",
+        "kind": "card",
+        "title": "Card: \u0938\u0941\u092c\u0939 \u091c\u0932\u094d\u0926\u0940 \u0909\u0920\u0928\u093e \u090f\u0915 \u0905\u091a\u094d\u091b\u0940 \u0906\u0926\u0924 \u0939\u0948\u0964",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "judge": {
+        "score": 4,
+        "why": "Text card shows the exact narration words."
+      },
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [],
+      "thumbnail": "/files/jobs/job_c48b0fcf13354b3085de/v1/thumb_000.jpg"
+    },
+    {
+      "scene": 1,
+      "start": 2.581,
+      "end": 6.647,
+      "duration": 4.066,
+      "narration": "\u0925\u094b\u0921\u093c\u0940 \u0926\u0947\u0930 \u091f\u0939\u0932\u0947\u0902, \u0924\u093e\u091c\u093c\u0940 \u0939\u0935\u093e \u0932\u0947\u0902 \u0914\u0930 \u0926\u093f\u0928 \u0915\u0940 \u092f\u094b\u091c\u0928\u093e \u092c\u0928\u093e\u090f\u0902\u0964",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "everyday",
+      "visual_plan": "\u0925\u094b\u0921\u093c\u0940 \u091f\u0939\u0932\u0947\u0902 \u0924\u093e\u091c\u093c\u0940 \u092f\u094b\u091c\u0928\u093e \u092c\u0928\u093e\u090f\u0902\u0964",
+      "queries": [
+        "\u0925\u094b\u0921\u093c\u0940 \u091f\u0939\u0932\u0947\u0902",
+        "\u0924\u093e\u091c\u093c\u0940 \u092f\u094b\u091c\u0928\u093e",
+        "\u092c\u0928\u093e\u090f\u0902\u0964"
+      ],
+      "negative_terms": [],
+      "entities": [],
+      "clip": {
+        "id": "card:1",
+        "kind": "card",
+        "title": "Card: \u0925\u094b\u0921\u093c\u0940 \u0926\u0947\u0930 \u091f\u0939\u0932\u0947\u0902, \u0924\u093e\u091c\u093c\u0940 \u0939\u0935\u093e \u0932\u0947\u0902 \u0914\u0930 \u0926\u093f\u0928 \u0915\u0940 \u092f\u094b\u091c\u0928\u093e \u092c\u0928\u093e\u090f\u0902\u0964",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "auto-replaced by QA with card (black/frozen frames, no alternative)",
+      "relevance_score": null,
+      "judge": {
+        "score": 4,
+        "why": "Text card displays the narration line clearly."
+      },
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [],
+      "thumbnail": "/files/jobs/job_c48b0fcf13354b3085de/v1/thumb_001.jpg"
+    },
+    {
+      "scene": 2,
+      "start": 6.647,
+      "end": 9.92,
+      "duration": 3.273,
+      "narration": "\u0907\u0938\u0938\u0947 \u092a\u0942\u0930\u093e \u0926\u093f\u0928 \u090a\u0930\u094d\u091c\u093e \u0938\u0947 \u092d\u0930\u093e \u0930\u0939\u0924\u093e \u0939\u0948\u0964",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "everyday",
+      "visual_plan": "\u0907\u0938\u0938\u0947 \u092a\u0942\u0930\u093e \u090a\u0930\u094d\u091c\u093e \u0930\u0939\u0924\u093e",
+      "queries": [
+        "\u0907\u0938\u0938\u0947 \u092a\u0942\u0930\u093e",
+        "\u090a\u0930\u094d\u091c\u093e \u0930\u0939\u0924\u093e"
+      ],
+      "negative_terms": [],
+      "entities": [],
+      "clip": {
+        "id": "card:2",
+        "kind": "card",
+        "title": "Card: \u0907\u0938\u0938\u0947 \u092a\u0942\u0930\u093e \u0926\u093f\u0928 \u090a\u0930\u094d\u091c\u093e \u0938\u0947 \u092d\u0930\u093e \u0930\u0939\u0924\u093e \u0939\u0948\u0964",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "auto-replaced by QA with card (black/frozen frames, no alternative)",
+      "relevance_score": null,
+      "judge": {
+        "score": 4,
+        "why": "Text card displays the narration line accurately."
+      },
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [],
+      "thumbnail": "/files/jobs/job_c48b0fcf13354b3085de/v1/thumb_002.jpg"
+    }
+  ],
+  "music": {
+    "path": null,
+    "title": "Procedural ambient pad",
+    "source": "procedural",
+    "licence": "Generated by this service (no third-party rights)",
+    "licence_url": "",
+    "attribution": "Generated by Clipsy",
+    "page_url": "",
+    "ai_generated": false
+  }
+}

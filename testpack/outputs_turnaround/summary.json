@@ -1,0 +1,24 @@
+[
+  {
+    "case": "60s_saving_money",
+    "status": "succeeded",
+    "error_code": "",
+    "seconds": 192.64,
+    "scenes": 13,
+    "narration_seconds": 80.881,
+    "qa_passed": true,
+    "warnings": 3,
+    "job_id": "job_670275c1378b4ee6b925"
+  },
+  {
+    "case": "60s_saving_money_warm",
+    "status": "succeeded",
+    "error_code": "",
+    "seconds": 152.48,
+    "scenes": 13,
+    "narration_seconds": 80.881,
+    "qa_passed": true,
+    "warnings": 4,
+    "job_id": "job_08470316bb844ced9b11"
+  }
+]

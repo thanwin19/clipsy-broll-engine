@@ -1,0 +1,153 @@
+{
+  "job_id": "job_5f4972e362634d8fbd52",
+  "version": 1,
+  "waveform": "/files/jobs/job_5f4972e362634d8fbd52/v1/waveform.png",
+  "narration_seconds": 6.681,
+  "language": "en",
+  "transcript": "Friday evening in the city. Friends meet at a rooftop restaurant and share dinner as the sun goes down.",
+  "aspect_ratios": [
+    "16:9",
+    "9:16"
+  ],
+  "mood": "upbeat",
+  "selection_rule": "Per scene: (1) statistics -> animated stat card. (2) Stock candidates from category-suited sources are scored with CLIP (image vs scene visual plan + narration, minus penalty for negative/avoid terms); unsafe candidates (avoid list, faces when avoided, AI for people/brands/sensitive) are removed. (3) Global assignment takes the highest (scene, clip) pairs first, each clip used once, if score >= tau=0.24. (4) If a scene's best stock score < tau+0.03 and AI is allowed, an AI image is generated and wins only if its CLIP score >= stock + 0.02. (5) Otherwise the best unused clip within 0.03 of tau, else a text card.",
+  "scenes": [
+    {
+      "scene": 0,
+      "start": 0.0,
+      "end": 6.681,
+      "duration": 6.681,
+      "narration": "Friday evening in the city. Friends meet at a rooftop restaurant and share dinner as the sun goes down.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "everyday",
+      "visual_plan": "A cinematic wide shot of a modern rooftop restaurant during sunset in a bustling city, showing silhouettes of people dining without showing distinct faces.",
+      "queries": [
+        "rooftop restaurant sunset",
+        "city skyline evening",
+        "friends dining outdoor",
+        "golden hour city view"
+      ],
+      "negative_terms": [
+        "close up face",
+        "portrait",
+        "alcohol bottle",
+        "wine glass"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:4726",
+        "kind": "video",
+        "title": "city, urban, dusk, twilight, sunset, evening, romantic, setting sun, sundown, town, cityscape, skyline, downtown",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-4726/",
+        "media_url": "https://cdn.pixabay.com/video/2016/08/22/4726-179738639_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by Coverr-Free-Footage on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "city skyline evening"
+      },
+      "reason": "stock: pixabay clip scored 0.276 >= tau 0.24; best unused of 12 safe candidates",
+      "relevance_score": 0.276,
+      "judge": {
+        "score": 4,
+        "why": "Shows a city sunset with text card matching narration."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.276,
+        "negative_max": 0.162,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.54,
+      "alternatives": [
+        {
+          "id": "pixabay:4726",
+          "source": "pixabay",
+          "score": 0.276,
+          "title": "city, urban, dusk, twilight, sunset, evening, romantic, setting sun, sundown, to",
+          "thumb": "https://cdn.pixabay.com/video/2016/08/22/4726-179738639_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:154276",
+          "source": "pixabay",
+          "score": 0.2627,
+          "title": "sunset, lake, restaurant, pier, clouds, afternoon, water",
+          "thumb": "https://cdn.pixabay.com/video/2023/03/11/154276-807362207_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:2339",
+          "source": "pixabay",
+          "score": 0.2609,
+          "title": "lunch, meal, people, tea cup, tea, couple, table, restaurant, diner, service, fo",
+          "thumb": "https://cdn.pixabay.com/video/2016/02/29/2339-157269920_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:1192",
+          "source": "pixabay",
+          "score": 0.2492,
+          "title": "restaurant, buffet, cuisine, dinner, lunch, food, dining, meal, delicious, resta",
+          "thumb": "https://cdn.pixabay.com/video/2015/10/27/1192-143842659_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:3164",
+          "source": "pixabay",
+          "score": 0.2374,
+          "title": "birds, hunting, catching, birdcatcher, india, shiva, silhouette, houses, rooftop",
+          "thumb": "https://cdn.pixabay.com/video/2016/05/12/3164-166338924_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:3134",
+          "source": "pixabay",
+          "score": 0.2306,
+          "title": "city, night, lights, urban, cityscape, skyline, architecture, skyscraper, downto",
+          "thumb": "https://cdn.pixabay.com/video/2016/05/12/3134-166335905_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:30154",
+          "source": "pixabay",
+          "score": 0.1885,
+          "title": "night, city, architecture, cityscape, skyline, evening, skyscraper, modern, buil",
+          "thumb": "https://cdn.pixabay.com/video/2019/12/13/30154-380473720_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:126990",
+          "source": "pixabay",
+          "score": 0.1863,
+          "title": "city, buildings, sunset, evening, skyline, industry",
+          "thumb": "https://cdn.pixabay.com/video/2022/08/07/126990-737419647_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_5f4972e362634d8fbd52/v1/thumb_000.jpg"
+    }
+  ],
+  "music": {
+    "path": null,
+    "title": "Key, Kida &amp; Eddie (feat. ICD) - Sundalo (acoustic)",
+    "source": "openverse/jamendo",
+    "licence": "CC BY 3.0",
+    "licence_url": "https://creativecommons.org/licenses/by/3.0/",
+    "attribution": "\"Key, Kida &amp; Eddie (feat. ICD) - Sundalo (acoustic)\" by Key, Kida &amp; Eddie (CC BY 3.0)",
+    "page_url": "https://www.jamendo.com/track/1522600",
+    "ai_generated": false
+  }
+}

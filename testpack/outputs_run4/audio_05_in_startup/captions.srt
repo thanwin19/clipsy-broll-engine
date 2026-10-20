@@ -1,0 +1,23 @@
+1
+00:00:00,020 --> 00:00:02,540
+Starting a business is hard.
+
+2
+00:00:02,540 --> 00:00:04,000
+You will build a product,
+
+3
+00:00:04,000 --> 00:00:06,020
+talk to customers and fix problems
+
+4
+00:00:06,020 --> 00:00:07,620
+every single day.
+
+5
+00:00:07,620 --> 00:00:09,960
+But when the first customer pays you,
+
+6
+00:00:09,960 --> 00:00:11,811
+every late night feels worth it.

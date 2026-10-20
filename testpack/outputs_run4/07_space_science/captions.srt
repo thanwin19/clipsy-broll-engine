@@ -1,0 +1,27 @@
+1
+00:00:00,000 --> 00:00:03,240
+Mars is a cold desert world.
+
+2
+00:00:03,240 --> 00:00:05,600
+Rovers have spent years driving across
+
+3
+00:00:05,600 --> 00:00:07,200
+its red surface,
+
+4
+00:00:07,200 --> 00:00:08,740
+drilling into rocks and sending
+
+5
+00:00:08,740 --> 00:00:10,580
+pictures back to Earth.
+
+6
+00:00:10,580 --> 00:00:12,440
+Scientists hope these samples will
+
+7
+00:00:12,440 --> 00:00:14,771
+tell us whether life ever existed there.

@@ -1,0 +1,18 @@
+{
+  "job_id": "job_4b07f0166aa9412e85d7",
+  "kind": "broll",
+  "status": "failed",
+  "progress": 16,
+  "stage": "failed",
+  "created_at": "2026-10-20T16:08:11.478200",
+  "updated_at": "2026-10-20T16:08:18.227916",
+  "result": null,
+  "error": {
+    "code": "INTERNAL_ERROR",
+    "message": "mkl_malloc: failed to allocate memory",
+    "retryable": true,
+    "details": {
+      "type": "RuntimeError"
+    }
+  }
+}

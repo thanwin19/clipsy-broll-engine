@@ -1,0 +1,275 @@
+{
+  "job_id": "job_a7c11def6fe74ee39b49",
+  "version": 1,
+  "waveform": "/files/jobs/job_a7c11def6fe74ee39b49/v1/waveform.png",
+  "narration_seconds": 10.418,
+  "language": "hi",
+  "transcript": "\u0633\u0628\u062d \u062c\u0644\u062f\u06cc \u0627\u0679\u06be\u0646\u0627 \u0627\u06cc\u06a9 \u0627\u0686\u06be\u06cc \u0622\u062f\u062a \u06c1\u06d2 \u062a\u06be\u0648\u0691\u06cc \u062f\u06cc\u0631 \u062a\u06c1\u0644\u06d2 \u062a\u0627\u0632\u06cc \u06c1\u0648\u0627\u0644\u06d2 \u0627\u0648\u0631 \u062f\u0646 \u06a9\u06cc \u06cc\u0648\u0686\u0646\u06c1 \u0628\u0646\u0627\u0626\u06d2 \u0627\u0633\u06d2 \u067e\u0648\u0631\u0627 \u062f\u0646 \u0627\u0631\u062c\u0627 \u0633\u06d2 \u0628\u06be\u0631\u0627 \u0631\u06c1\u062a\u0627 \u06c1\u06d2",
+  "aspect_ratios": [
+    "16:9"
+  ],
+  "mood": "upbeat",
+  "selection_rule": "Per scene: (1) statistics -> animated stat card. (2) Stock candidates from category-suited sources are scored with CLIP (image vs scene visual plan + narration, minus penalty for negative/avoid terms); unsafe candidates (avoid list, faces when avoided, AI for people/brands/sensitive) are removed. (3) Global assignment takes the highest (scene, clip) pairs first, each clip used once, if score >= tau=0.24. (4) If a scene's best stock score < tau+0.03 and AI is allowed, an AI image is generated and wins only if its CLIP score >= stock + 0.02. (5) Otherwise the best unused clip within 0.03 of tau, else a text card.",
+  "scenes": [
+    {
+      "scene": 0,
+      "start": 0.0,
+      "end": 5.0,
+      "duration": 5.0,
+      "narration": "\u0633\u0628\u062d \u062c\u0644\u062f\u06cc \u0627\u0679\u06be\u0646\u0627 \u0627\u06cc\u06a9 \u0627\u0686\u06be\u06cc \u0622\u062f\u062a \u06c1\u06d2 \u062a\u06be\u0648\u0691\u06cc \u062f\u06cc\u0631 \u062a\u06c1\u0644\u06d2 \u062a\u0627\u0632\u06cc",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "everyday",
+      "visual_plan": "A person waking up early with sunlight streaming through the window in a modern bedroom.",
+      "queries": [
+        "morning sunlight bedroom",
+        "waking up early",
+        "person stretching morning"
+      ],
+      "negative_terms": [
+        "night",
+        "dark",
+        "sunset"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:66810",
+        "kind": "video",
+        "title": "grass, dew, field, fog, morning, nature, sunshine, green, grassland, farm, sunlight, sunrise, sun",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-66810/",
+        "media_url": "https://cdn.pixabay.com/video/2021/03/03/66810-520427372_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by JustY\u00f8u on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "morning sunlight bedroom"
+      },
+      "reason": "auto-replaced by QA (black/frozen frames); pixabay scored 0.129",
+      "relevance_score": 0.1287,
+      "judge": {
+        "score": 4,
+        "why": "Morning scene with dew on grass matches early rising theme."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.1694,
+        "negative_max": 0.19,
+        "penalty": 0.0407
+      },
+      "reframe_subject_x": 0.471,
+      "alternatives": [
+        {
+          "id": "pixabay:66810",
+          "source": "pixabay",
+          "score": 0.1287,
+          "title": "grass, dew, field, fog, morning, nature, sunshine, green, grassland, farm, sunli",
+          "thumb": "https://cdn.pixabay.com/video/2021/03/03/66810-520427372_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:2337",
+          "source": "pixabay",
+          "score": 0.1032,
+          "title": "metropole, morning, city, mist, sunrise, early, urban, america, usa, buildings, ",
+          "thumb": "https://cdn.pixabay.com/video/2016/02/29/2337-157269912_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:49981",
+          "source": "pixabay",
+          "score": 0.0578,
+          "title": "forest, woods, mystical, morning, fairytale, sunlight, sunbeam, fog, trees, path",
+          "thumb": "https://cdn.pixabay.com/video/2020/09/15/49981-459802291_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:30702",
+          "source": "pixabay",
+          "score": 0.0544,
+          "title": "ocean, sand, sea, season, sky, summer, sun, sunlight, sunrise, sunrise sky, suns",
+          "thumb": "https://cdn.pixabay.com/video/2019/12/30/30702-383980320_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:313145",
+          "source": "pixabay",
+          "score": 0.0317,
+          "title": "fog, wisps of mist, fall, landscape, nature, morning sun, sunlight, forest, autu",
+          "thumb": "https://cdn.pixabay.com/video/2025/10/31/313145_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:18390",
+          "source": "pixabay",
+          "score": 0.0218,
+          "title": "aerial, aerial shot, clouds, dawn, daylight, dusk, fog, nature, sky, morning, la",
+          "thumb": "https://cdn.pixabay.com/video/2018/09/24/18390-291585321_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:31",
+          "source": "pixabay",
+          "score": 0.0186,
+          "title": "church, town, sunrise, sun, morning, europe, bay, ocean, shore, early, waking up",
+          "thumb": "https://cdn.pixabay.com/video/2015/08/08/31-135713910_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:382582",
+          "source": "pixabay",
+          "score": 0.015,
+          "title": "netherlands, sun rays, misty forest, sunlight, fog, woodland, nature, sunbeams, ",
+          "thumb": "https://cdn.pixabay.com/video/2026/10/14/382582_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_a7c11def6fe74ee39b49/v1/thumb_000.jpg"
+    },
+    {
+      "scene": 1,
+      "start": 5.0,
+      "end": 10.418,
+      "duration": 5.418,
+      "narration": "\u06c1\u0648\u0627\u0644\u06d2 \u0627\u0648\u0631 \u062f\u0646 \u06a9\u06cc \u06cc\u0648\u0686\u0646\u06c1 \u0628\u0646\u0627\u0626\u06d2 \u0627\u0633\u06d2 \u067e\u0648\u0631\u0627 \u062f\u0646 \u0627\u0631\u062c\u0627 \u0633\u06d2 \u0628\u06be\u0631\u0627 \u0631\u06c1\u062a\u0627 \u06c1\u06d2",
+      "visual_hint": null,
+      "scene_type": "metaphor",
+      "category": "everyday",
+      "visual_plan": "A vibrant green plant receiving morning dew and sunlight, symbolizing energy and planning.",
+      "queries": [
+        "fresh morning breeze nature",
+        "energetic morning routine",
+        "planning day ahead notebook"
+      ],
+      "negative_terms": [
+        "tired",
+        "sleepy",
+        "night"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:240060",
+        "kind": "video",
+        "title": "grass, field, green grass, sunset, meadow, wind, breeze, green, fresh, close up, 4k, lawn, nature, landscape",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-240060/",
+        "media_url": "https://cdn.pixabay.com/video/2024/11/05/240060_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by JoshuaWoroniecki on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "fresh morning breeze nature"
+      },
+      "reason": "stock (low confidence): pixabay scored 0.228 (< tau 0.24, within 0.03); no AI option",
+      "relevance_score": 0.2281,
+      "judge": {
+        "score": 4,
+        "why": "Sunlit grass field illustrates morning energy and fresh start."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2281,
+        "negative_max": 0.1906,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.535,
+      "alternatives": [
+        {
+          "id": "pixabay:240060",
+          "source": "pixabay",
+          "score": 0.2281,
+          "title": "grass, field, green grass, sunset, meadow, wind, breeze, green, fresh, close up,",
+          "thumb": "https://cdn.pixabay.com/video/2024/11/05/240060_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:323875",
+          "source": "pixabay",
+          "score": 0.2114,
+          "title": "grass, field, breeze, nature, sunrise, morning, fog, countryside, landscape, mea",
+          "thumb": "https://cdn.pixabay.com/video/2025/12/22/323875_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:27111",
+          "source": "pixabay",
+          "score": 0.1193,
+          "title": "morning mist, fog, nature, morning hour, south-tirol, italy, hill, mountains, ti",
+          "thumb": "https://cdn.pixabay.com/video/2019/09/21/27111-361827499_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:229045",
+          "source": "pixabay",
+          "score": 0.1048,
+          "title": "sea, beach, sunrise, reflections, waves, light breeze, sand, maritime, sunny, fr",
+          "thumb": "https://cdn.pixabay.com/video/2024/08/31/229045_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:227567",
+          "source": "pixabay",
+          "score": 0.1048,
+          "title": "beach, sea, waves, sunrise, reflections, light, sand, light breeze, summer, holi",
+          "thumb": "https://cdn.pixabay.com/video/2024/08/20/227567_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:164360",
+          "source": "pixabay",
+          "score": 0.1026,
+          "title": "fogging, landscape, forest, grasslands, nature, morning mist, fog",
+          "thumb": "https://cdn.pixabay.com/video/2023/05/24/164360-830461265_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:240017",
+          "source": "pixabay",
+          "score": 0.0823,
+          "title": "sea, waves, beach, sunrise, reflections, light breeze, sand, maritime, freshness",
+          "thumb": "https://cdn.pixabay.com/video/2024/11/05/240017_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:2340",
+          "source": "pixabay",
+          "score": 0.0342,
+          "title": "meeting, planning, marketing, business, team, people, office, teamwork, group, d",
+          "thumb": "https://cdn.pixabay.com/video/2016/02/29/2340-157269921_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_a7c11def6fe74ee39b49/v1/thumb_001.jpg"
+    }
+  ],
+  "music": {
+    "path": null,
+    "title": "Key, Kida &amp; Eddie (feat. ICD) - Sundalo (acoustic)",
+    "source": "openverse/jamendo",
+    "licence": "CC BY 3.0",
+    "licence_url": "https://creativecommons.org/licenses/by/3.0/",
+    "attribution": "\"Key, Kida &amp; Eddie (feat. ICD) - Sundalo (acoustic)\" by Key, Kida &amp; Eddie (CC BY 3.0)",
+    "page_url": "https://www.jamendo.com/track/1522600",
+    "ai_generated": false
+  }
+}

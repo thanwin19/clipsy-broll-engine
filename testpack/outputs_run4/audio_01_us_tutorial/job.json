@@ -1,0 +1,42 @@
+{
+  "job_id": "job_a9ced1e1851d453aa976",
+  "kind": "broll",
+  "status": "succeeded",
+  "progress": 100,
+  "stage": "done",
+  "created_at": "2026-10-20T15:53:12.912427",
+  "updated_at": "2026-10-20T15:54:27.718376",
+  "result": {
+    "version": 1,
+    "links": {
+      "video_16x9": "http://127.0.0.1:8000/files/jobs/job_a9ced1e1851d453aa976/v1/video_16x9.mp4",
+      "timeline": "http://127.0.0.1:8000/files/jobs/job_a9ced1e1851d453aa976/v1/timeline.json",
+      "manifest": "http://127.0.0.1:8000/files/jobs/job_a9ced1e1851d453aa976/v1/manifest.json",
+      "captions_srt": "http://127.0.0.1:8000/files/jobs/job_a9ced1e1851d453aa976/v1/captions.srt",
+      "thumb_000": "http://127.0.0.1:8000/files/jobs/job_a9ced1e1851d453aa976/v1/thumb_000.jpg",
+      "thumb_001": "http://127.0.0.1:8000/files/jobs/job_a9ced1e1851d453aa976/v1/thumb_001.jpg",
+      "thumb_002": "http://127.0.0.1:8000/files/jobs/job_a9ced1e1851d453aa976/v1/thumb_002.jpg",
+      "waveform": "http://127.0.0.1:8000/files/jobs/job_a9ced1e1851d453aa976/v1/waveform.png"
+    },
+    "warnings": [
+      "PROVIDER_COOLDOWN: 'pixabay' failed in a recent job; skipped for 405 more seconds",
+      "PROVIDER_DOWN: 'coverr' failed repeatedly (HTTPStatusError); continuing with other sources",
+      "ALL_FOOTAGE_SOURCES_EMPTY: every scene uses a rendered card"
+    ],
+    "scenes": 3,
+    "narration_seconds": 15.131,
+    "timings_seconds": {
+      "narration": 32.433,
+      "planning": 23.276,
+      "search_and_score": 3.572,
+      "ai_generation": 0.0,
+      "download": 0.061,
+      "music_parallel": 3.635,
+      "render": 6.906,
+      "qa": 2.479,
+      "total": 69.552
+    },
+    "qa_passed": true
+  },
+  "error": null
+}

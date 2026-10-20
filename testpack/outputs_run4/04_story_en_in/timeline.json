@@ -1,0 +1,651 @@
+{
+  "job_id": "job_7c1998c4a74947939e8f",
+  "version": 1,
+  "waveform": "/files/jobs/job_7c1998c4a74947939e8f/v1/waveform.png",
+  "narration_seconds": 21.251,
+  "language": "en",
+  "transcript": "Every morning, an old fisherman pushed his small boat into the sea before sunrise. The waves were cold and the nets were heavy. One stormy day he came back with nothing. But the next morning, he went out again. That is how he taught his grandson that patience is a kind of courage.",
+  "aspect_ratios": [
+    "16:9",
+    "9:16"
+  ],
+  "mood": "inspiring",
+  "selection_rule": "Per scene: (1) statistics -> animated stat card. (2) Stock candidates from category-suited sources are scored with CLIP (image vs scene visual plan + narration, minus penalty for negative/avoid terms); unsafe candidates (avoid list, faces when avoided, AI for people/brands/sensitive) are removed. (3) Global assignment takes the highest (scene, clip) pairs first, each clip used once, if score >= tau=0.24. (4) If a scene's best stock score < tau+0.03 and AI is allowed, an AI image is generated and wins only if its CLIP score >= stock + 0.02. (5) Otherwise the best unused clip within 0.03 of tau, else a text card.",
+  "scenes": [
+    {
+      "scene": 0,
+      "start": 0.0,
+      "end": 6.46,
+      "duration": 6.46,
+      "narration": "Every morning, an old fisherman pushed his small boat into the sea before sunrise.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "everyday",
+      "visual_plan": "A small wooden fishing boat on the ocean at sunrise.",
+      "queries": [
+        "small boat sunrise",
+        "fisherman pushing boat",
+        "ocean before sunrise"
+      ],
+      "negative_terms": [
+        "modern yacht",
+        "speedboat",
+        "city beach"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:132932",
+        "kind": "video",
+        "title": "sunset, sea, boat, sun, evening, nature, night",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-132932/",
+        "media_url": "https://cdn.pixabay.com/video/2022/09/29/132932-755272963_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by u_zwlh4zbli2 on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "small boat sunrise"
+      },
+      "reason": "stock: pixabay clip scored 0.292 >= tau 0.24; best unused of 12 safe candidates",
+      "relevance_score": 0.2921,
+      "judge": {
+        "score": 5,
+        "why": "Beautiful sunrise over the sea with a small boat."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2921,
+        "negative_max": 0.1965,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.56,
+      "alternatives": [
+        {
+          "id": "pixabay:132932",
+          "source": "pixabay",
+          "score": 0.2921,
+          "title": "sunset, sea, boat, sun, evening, nature, night",
+          "thumb": "https://cdn.pixabay.com/video/2022/09/29/132932-755272963_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:313006",
+          "source": "pixabay",
+          "score": 0.2605,
+          "title": "the sun, twilight, lake, landscape, the fisherman, boat, bird",
+          "thumb": "https://cdn.pixabay.com/video/2025/10/30/313006_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:181376",
+          "source": "pixabay",
+          "score": 0.2404,
+          "title": "boat, man, fishing boat, wooden boat, water, lake, mountains, landscape, zille, ",
+          "thumb": "https://cdn.pixabay.com/video/2023/09/20/181376-866506956_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:206272",
+          "source": "pixabay",
+          "score": 0.2369,
+          "title": "beach, sunset, sky, sea, dusk, ocean, sun, twilight, horizon, water, silhouette,",
+          "thumb": "https://cdn.pixabay.com/video/2024/03/30/206272_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:223459",
+          "source": "pixabay",
+          "score": 0.2329,
+          "title": "sunset, boat, sea, ocean, dusk, twilight, sky, water, clouds, beach, horizon, su",
+          "thumb": "https://cdn.pixabay.com/video/2024/07/27/223459_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:218714",
+          "source": "pixabay",
+          "score": 0.2113,
+          "title": "beach, ocean, sea, summer, holiday, wave, nature, beautiful, beautiful wallpaper",
+          "thumb": "https://cdn.pixabay.com/video/2024/06/29/218714_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:2119",
+          "source": "pixabay",
+          "score": 0.2077,
+          "title": "islands, ocean, sunrise, landscape, woods, sunlight, morning, sunrise landscape,",
+          "thumb": "https://cdn.pixabay.com/video/2016/02/11/2119-155244112_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:44534",
+          "source": "pixabay",
+          "score": 0.2041,
+          "title": "fishing, fish, fisherman, water, animal, angler, blue, salmon, lake, boat, natur",
+          "thumb": "https://cdn.pixabay.com/video/2020/07/12/44534-439384681_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_7c1998c4a74947939e8f/v1/thumb_000.jpg"
+    },
+    {
+      "scene": 1,
+      "start": 6.46,
+      "end": 10.08,
+      "duration": 3.62,
+      "narration": "The waves were cold and the nets were heavy.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "everyday",
+      "visual_plan": "Choppy cold ocean waves and wet fishing nets being hauled.",
+      "queries": [
+        "cold ocean waves",
+        "heavy fishing nets",
+        "rough sea water"
+      ],
+      "negative_terms": [
+        "calm tropical beach",
+        "swimming pool",
+        "clear water"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:154325",
+        "kind": "video",
+        "title": "waves, sea, beach, storm, snow, ice, winter storm, water, sea beach, cold water, winter",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-154325/",
+        "media_url": "https://cdn.pixabay.com/video/2023/03/12/154325-807362297_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by Nils_Vega on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "cold ocean waves"
+      },
+      "reason": "stock: pixabay clip scored 0.313 >= tau 0.24; best unused of 12 safe candidates",
+      "relevance_score": 0.3127,
+      "judge": {
+        "score": 4,
+        "why": "Cold, rough winter waves fit the narrative well."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.3127,
+        "negative_max": 0.2352,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.486,
+      "alternatives": [
+        {
+          "id": "pixabay:154325",
+          "source": "pixabay",
+          "score": 0.3127,
+          "title": "waves, sea, beach, storm, snow, ice, winter storm, water, sea beach, cold water,",
+          "thumb": "https://cdn.pixabay.com/video/2023/03/12/154325-807362297_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:20435",
+          "source": "pixabay",
+          "score": 0.2971,
+          "title": "dock, wave, storm, cloudy, winter, autumn, cold, beach, sea, that, waves, sky, t",
+          "thumb": "https://cdn.pixabay.com/video/2019/01/04/20435-309694407_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:224807",
+          "source": "pixabay",
+          "score": 0.2608,
+          "title": "ocean, sea, waves, water, spray, splashing, breaking, foam, power, rough, splash",
+          "thumb": "https://cdn.pixabay.com/video/2024/08/04/224807_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:182970",
+          "source": "pixabay",
+          "score": 0.2503,
+          "title": "sea, waves, water, crash, beach, shore, splash, spray, coastline, wind, coast, r",
+          "thumb": "https://cdn.pixabay.com/video/2023/09/30/182970-869947284_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:182082",
+          "source": "pixabay",
+          "score": 0.2443,
+          "title": "fishing boat, sea, offshore, blue, panoramic, aerial, drone, nature",
+          "thumb": "https://cdn.pixabay.com/video/2023/09/24/182082-867762198_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:144267",
+          "source": "pixabay",
+          "score": 0.2269,
+          "title": "beach, sea, sunset, fall, cold, people, hike, waves, water, nature, landscape, n",
+          "thumb": "https://cdn.pixabay.com/video/2022/12/26/144267-784384538_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:218792",
+          "source": "pixabay",
+          "score": 0.2266,
+          "title": "sea, fish farm, nets, fishing, nature, water, philippines",
+          "thumb": "https://cdn.pixabay.com/video/2024/06/30/218792_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:155588",
+          "source": "pixabay",
+          "score": 0.22,
+          "title": "fisherman, sea, fishing rod, male, old, hobby, waves, yellow coat, clothes, cold",
+          "thumb": "https://cdn.pixabay.com/video/2023/03/21/155588-810650380_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_7c1998c4a74947939e8f/v1/thumb_001.jpg"
+    },
+    {
+      "scene": 2,
+      "start": 10.08,
+      "end": 13.4,
+      "duration": 3.32,
+      "narration": "One stormy day he came back with nothing.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "everyday",
+      "visual_plan": "Dark stormy sea with heavy rain and dramatic clouds.",
+      "queries": [
+        "stormy sea waves",
+        "dark rain clouds",
+        "stormy ocean weather"
+      ],
+      "negative_terms": [
+        "sunny day",
+        "clear blue sky",
+        "calm water"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:9451",
+        "kind": "video",
+        "title": "thunderstorm, storm, time lapse, clouds, lightning, weather, heaven, threatening, rain, nature, force of nature, thunderclouds, summer thunderstorm, mood, night, darkness, cloud roller, thunderstorm mood, atmospheric, dramatic sky, weather mood, cloud shape, dark clouds, lighting mood, cloudy, cloudscape, mystical, dramatic, drama",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-9451/",
+        "media_url": "https://cdn.pixabay.com/video/2017/05/30/9451-219710504_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by Felix-Mittermeier on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "dark rain clouds"
+      },
+      "reason": "stock: pixabay clip scored 0.290 >= tau 0.24; best unused of 12 safe candidates",
+      "relevance_score": 0.2904,
+      "judge": {
+        "score": 3,
+        "why": "Dark stormy clouds fit the mood, but lack specific fisherman context."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2904,
+        "negative_max": 0.2399,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.73,
+      "alternatives": [
+        {
+          "id": "pixabay:9451",
+          "source": "pixabay",
+          "score": 0.2904,
+          "title": "thunderstorm, storm, time lapse, clouds, lightning, weather, heaven, threatening",
+          "thumb": "https://cdn.pixabay.com/video/2017/05/30/9451-219710504_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:16160",
+          "source": "pixabay",
+          "score": 0.2891,
+          "title": "storm, ocean, sky, rain, the waves, wind, dark clouds, rolling sea, anger, a str",
+          "thumb": "https://cdn.pixabay.com/video/2018/05/11/16160-269534741_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:378787",
+          "source": "pixabay",
+          "score": 0.2799,
+          "title": "ai generated, lighthouse, storm, waves, ocean, sea, loop, stormy, water, rough, ",
+          "thumb": "https://cdn.pixabay.com/video/2026/09/25/378787_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:233772",
+          "source": "pixabay",
+          "score": 0.2703,
+          "title": "ocean, cloud, storm, sea, dark, sky, stormy, sun, water, cloudy, coastline, spla",
+          "thumb": "https://cdn.pixabay.com/video/2024/09/29/233772_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:267960",
+          "source": "pixabay",
+          "score": 0.2663,
+          "title": "dark, clouds, storm, nature, sky, thunderstorm, dramatic, gloomy, rain, weather,",
+          "thumb": "https://cdn.pixabay.com/video/2025/03/27/267960_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:305",
+          "source": "pixabay",
+          "score": 0.254,
+          "title": "rain, thunderstorm, lightning, beautiful wallpaper, clouds, storm, electricity, ",
+          "thumb": "https://cdn.pixabay.com/video/2015/08/11/305-135918495_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:197525",
+          "source": "pixabay",
+          "score": 0.2277,
+          "title": "sea, coast, japan sea, wave, snowfall, wind, winter, stormy weather, rock, japan",
+          "thumb": "https://cdn.pixabay.com/video/2024/01/21/197525-905005651_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:304",
+          "source": "pixabay",
+          "score": 0.2256,
+          "title": "thunderstorm, lightning, clouds, storm, bad weather, rain, background, blue, nig",
+          "thumb": "https://cdn.pixabay.com/video/2015/08/11/304-135918292_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_7c1998c4a74947939e8f/v1/thumb_002.jpg"
+    },
+    {
+      "scene": 3,
+      "start": 13.4,
+      "end": 16.46,
+      "duration": 3.06,
+      "narration": "But the next morning, he went out again.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "everyday",
+      "visual_plan": "A peaceful morning ocean scene with calm water after the storm.",
+      "queries": [
+        "calm morning ocean",
+        "peaceful sea sunrise",
+        "gentle waves morning"
+      ],
+      "negative_terms": [
+        "storm",
+        "rain",
+        "dark clouds"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:199001",
+        "kind": "video",
+        "title": "sunrise, sea, ocean, waves, beach, lanzarote, spain, canary islands, morning, early, sun, summer, beautiful, peaceful",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-199001/",
+        "media_url": "https://cdn.pixabay.com/video/2024/02/02/199001-909564581_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by Matthias_Groeneveld on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "peaceful sea sunrise"
+      },
+      "reason": "stock: pixabay clip scored 0.263 >= tau 0.24; best unused of 12 safe candidates",
+      "relevance_score": 0.2626,
+      "judge": {
+        "score": 4,
+        "why": "Morning sunrise over the sea matches the line nicely."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2626,
+        "negative_max": 0.1903,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.463,
+      "alternatives": [
+        {
+          "id": "pixabay:199001",
+          "source": "pixabay",
+          "score": 0.2626,
+          "title": "sunrise, sea, ocean, waves, beach, lanzarote, spain, canary islands, morning, ea",
+          "thumb": "https://cdn.pixabay.com/video/2024/02/02/199001-909564581_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:306155",
+          "source": "pixabay",
+          "score": 0.2619,
+          "title": "sun, seascape, water, sunset, sea, horizon, red, ocean, reflection, calm, tranqu",
+          "thumb": "https://cdn.pixabay.com/video/2025/09/24/306155_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:62249",
+          "source": "pixabay",
+          "score": 0.2412,
+          "title": "ocean, sunset, sea, beach, coast, colourful, fantasy, magical, meditation, spiri",
+          "thumb": "https://cdn.pixabay.com/video/2021/01/18/62249-503297067_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:322964",
+          "source": "pixabay",
+          "score": 0.2336,
+          "title": "sunrise, seagull, bird, silhouette, ocean, sea, rock, tetrapod, nature, wild, ca",
+          "thumb": "https://cdn.pixabay.com/video/2025/12/19/322964_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:348904",
+          "source": "pixabay",
+          "score": 0.2316,
+          "title": "wave, rock, horizon, ocean, sun, beach, sea, shore, coast, coastline, stone, sea",
+          "thumb": "https://cdn.pixabay.com/video/2026/04/25/348904_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:202794",
+          "source": "pixabay",
+          "score": 0.2308,
+          "title": "ocean, sea, waves, coast, beach, holiday, tropical, daytime, calm, peaceful, mor",
+          "thumb": "https://cdn.pixabay.com/video/2024/03/03/202794-918944331_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:198488",
+          "source": "pixabay",
+          "score": 0.229,
+          "title": "beach, coast, ocean, wave, coastal, coastline, horizon, island, paradise, peacef",
+          "thumb": "https://cdn.pixabay.com/video/2024/01/29/198488-907576442_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:256533",
+          "source": "pixabay",
+          "score": 0.2276,
+          "title": "sailboats, sea, ship, sail, ocean, peace, waves, boats, sun, holiday, education,",
+          "thumb": "https://cdn.pixabay.com/video/2025/02/05/256533_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_7c1998c4a74947939e8f/v1/thumb_003.jpg"
+    },
+    {
+      "scene": 4,
+      "start": 16.46,
+      "end": 21.251,
+      "duration": 4.791,
+      "narration": "That is how he taught his grandson that patience is a kind of courage.",
+      "visual_hint": null,
+      "scene_type": "metaphor",
+      "category": "people_free",
+      "visual_plan": "Two pairs of footprints walking together along a sandy shoreline.",
+      "queries": [
+        "footprints on sand",
+        "shoreline walking path",
+        "beach footprints trail"
+      ],
+      "negative_terms": [
+        "crowded beach",
+        "city street",
+        "indoor floor"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:4722",
+        "kind": "video",
+        "title": "beach, feet, sand, walking, vacation, holidays, summer, foot, travel, sea, water, tropical, barefoot, relaxation, relax, ocean, people, nature, leisure, coast, person, coastline, lifestyle, outdoor, legs, walk, seaside, footprint, seashore, landscape, surf",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-4722/",
+        "media_url": "https://cdn.pixabay.com/video/2016/08/22/4722-179738614_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by Coverr-Free-Footage on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "footprints on sand"
+      },
+      "reason": "stock: pixabay clip scored 0.240 >= tau 0.24; best unused of 12 safe candidates",
+      "relevance_score": 0.2403,
+      "judge": {
+        "score": 4,
+        "why": "Walking on the beach evokes the grandson and teachings."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2403,
+        "negative_max": 0.1814,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.458,
+      "alternatives": [
+        {
+          "id": "pixabay:4722",
+          "source": "pixabay",
+          "score": 0.2403,
+          "title": "beach, feet, sand, walking, vacation, holidays, summer, foot, travel, sea, water",
+          "thumb": "https://cdn.pixabay.com/video/2016/08/22/4722-179738614_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:201386",
+          "source": "pixabay",
+          "score": 0.2058,
+          "title": "footprint, sea, ocean, waves, beach, sunset, water, sky, travel, sunrise, seasca",
+          "thumb": "https://cdn.pixabay.com/video/2024/02/21/201386-915375342_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:73847",
+          "source": "pixabay",
+          "score": 0.1744,
+          "title": "sand, hand, beach, dessert, sea, live wallpaper",
+          "thumb": "https://cdn.pixabay.com/video/2021/05/11/73847-549547533_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:275593",
+          "source": "pixabay",
+          "score": 0.1732,
+          "title": "aerial view, salt lake, shoreline, nature, landscape, dry, salt, bushland, austr",
+          "thumb": "https://cdn.pixabay.com/video/2025/04/29/275593_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:3171",
+          "source": "pixabay",
+          "score": 0.1472,
+          "title": "walking, sneakers, nike, shoes, walk, path, outdoors, lifestyle, young, boy, leg",
+          "thumb": "https://cdn.pixabay.com/video/2016/05/12/3171-166338953_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:202743",
+          "source": "pixabay",
+          "score": 0.1384,
+          "title": "man, walking, path, netherlands, drenthe, alone, sunrise",
+          "thumb": "https://cdn.pixabay.com/video/2024/03/03/202743-918944206_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:202753",
+          "source": "pixabay",
+          "score": 0.1145,
+          "title": "man, path, walking, sunrise, netherlands, drenthe, alone",
+          "thumb": "https://cdn.pixabay.com/video/2024/03/03/202753-918944243_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:282995",
+          "source": "pixabay",
+          "score": 0.1128,
+          "title": "hiking, walking, trail, man, alone, single, middle-aged, adult, human, forest, l",
+          "thumb": "https://cdn.pixabay.com/video/2025/06/01/282995_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_7c1998c4a74947939e8f/v1/thumb_004.jpg"
+    }
+  ],
+  "music": {
+    "path": null,
+    "title": "Inspiring Progress",
+    "source": "openverse/jamendo",
+    "licence": "CC BY 3.0",
+    "licence_url": "https://creativecommons.org/licenses/by/3.0/",
+    "attribution": "\"Inspiring Progress\" by Soundrider/Dope (CC BY 3.0)",
+    "page_url": "https://www.jamendo.com/track/1670591",
+    "ai_generated": false
+  }
+}

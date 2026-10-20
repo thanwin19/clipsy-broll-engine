@@ -1,0 +1,375 @@
+1
+00:00:00,000 --> 00:00:04,660
+Climate change is reshaping the way we grow food.
+
+2
+00:00:04,660 --> 00:00:07,560
+Farmers in many regions now face
+
+3
+00:00:07,560 --> 00:00:12,300
+longer dry seasons and sudden heavy rains.
+
+4
+00:00:12,300 --> 00:00:14,480
+Some are switching to crops that need
+
+5
+00:00:14,480 --> 00:00:18,500
+less water, like millets and pulses,
+
+6
+00:00:18,500 --> 00:00:21,660
+others use drip irrigation to deliver
+
+7
+00:00:21,660 --> 00:00:24,320
+water straight to the roots.
+
+8
+00:00:24,320 --> 00:00:26,660
+Solar pumps are replacing diesel
+
+9
+00:00:26,660 --> 00:00:28,640
+engines in many villages,
+
+10
+00:00:28,640 --> 00:00:32,840
+cutting both cost and pollution.
+
+11
+00:00:32,840 --> 00:00:37,060
+In cities, rooftop gardens and vertical farms
+
+12
+00:00:37,060 --> 00:00:40,180
+grow vegetables close to the people
+
+13
+00:00:40,180 --> 00:00:41,780
+who eat them.
+
+14
+00:00:41,780 --> 00:00:44,840
+Scientists are breeding rice that can
+
+15
+00:00:44,840 --> 00:00:47,860
+survive under water for two weeks.
+
+16
+00:00:47,860 --> 00:00:51,100
+Whether apps on simple phones warn
+
+17
+00:00:51,100 --> 00:00:53,300
+farmers before storms arrive,
+
+18
+00:00:53,300 --> 00:00:56,440
+cooperatives help small farmers share
+
+19
+00:00:56,440 --> 00:01:00,600
+tractors, storage and fair prices.
+
+20
+00:01:00,600 --> 00:01:03,260
+Soil health cards tell each farmer
+
+21
+00:01:03,260 --> 00:01:07,180
+exactly which nutrients the field needs.
+
+22
+00:01:07,180 --> 00:01:09,700
+Planting trees along field borders
+
+23
+00:01:09,700 --> 00:01:14,700
+protects crops from wind and keeps the soil moist.
+
+24
+00:01:14,700 --> 00:01:19,380
+Climate change is reshaping the way we grow food.
+
+25
+00:01:19,380 --> 00:01:22,240
+Farmers in many regions now face
+
+26
+00:01:22,240 --> 00:01:23,280
+longer dry seasons.
+
+27
+00:01:23,280 --> 00:01:26,980
+And sudden heavy rains.
+
+28
+00:01:26,980 --> 00:01:29,160
+Some are switching to crops that need
+
+29
+00:01:29,160 --> 00:01:33,180
+less water, like millets and pulses,
+
+30
+00:01:33,180 --> 00:01:36,360
+others use drip irrigation to deliver
+
+31
+00:01:36,360 --> 00:01:38,800
+water straight to the roots.
+
+32
+00:01:38,800 --> 00:01:41,360
+Solar pumps are replacing diesel
+
+33
+00:01:41,360 --> 00:01:44,020
+engines in many villages,
+
+34
+00:01:44,020 --> 00:01:47,580
+cutting both cost and pollution.
+
+35
+00:01:47,580 --> 00:01:51,760
+In cities, rooftop gardens and vertical farms
+
+36
+00:01:51,760 --> 00:01:54,860
+grow vegetables close to the people
+
+37
+00:01:54,860 --> 00:01:56,480
+who eat them.
+
+38
+00:01:56,480 --> 00:01:59,520
+Scientists are breeding rice that can
+
+39
+00:01:59,520 --> 00:02:02,680
+survive under water for two weeks.
+
+40
+00:02:02,680 --> 00:02:05,800
+Whether apps on simple phones warn
+
+41
+00:02:05,800 --> 00:02:08,740
+farmers before storms arrive,
+
+42
+00:02:08,740 --> 00:02:11,120
+cooperatives help small farmers share
+
+43
+00:02:11,120 --> 00:02:15,300
+tractors, storage and fair prices.
+
+44
+00:02:15,300 --> 00:02:17,940
+Soil health cards tell each farmer
+
+45
+00:02:17,940 --> 00:02:21,260
+exactly which nutrients the field needs.
+
+46
+00:02:21,260 --> 00:02:24,360
+Planting trees along field borders
+
+47
+00:02:24,360 --> 00:02:29,400
+protects crops from wind and keeps the soil moist.
+
+48
+00:02:29,400 --> 00:02:34,060
+Climate change is reshaping the way we grow food.
+
+49
+00:02:34,060 --> 00:02:36,960
+Farmers in many regions now face
+
+50
+00:02:36,960 --> 00:02:41,780
+longer dry seasons and sudden heavy rains.
+
+51
+00:02:41,780 --> 00:02:43,860
+Some are switching to crops that need
+
+52
+00:02:43,860 --> 00:02:47,880
+less water, like millets and pulses,
+
+53
+00:02:47,880 --> 00:02:51,060
+others use drip irrigation to deliver
+
+54
+00:02:51,060 --> 00:02:53,500
+water straight to the roots.
+
+55
+00:02:53,500 --> 00:02:56,060
+Solar pumps are replacing diesel
+
+56
+00:02:56,060 --> 00:02:58,600
+engines in many villages,
+
+57
+00:02:58,600 --> 00:03:02,280
+cutting both cost and pollution.
+
+58
+00:03:02,280 --> 00:03:06,440
+In cities, rooftop gardens and vertical farms
+
+59
+00:03:06,440 --> 00:03:09,560
+grow vegetables close to the people
+
+60
+00:03:09,560 --> 00:03:11,140
+who eat them.
+
+61
+00:03:11,140 --> 00:03:14,220
+Scientists are breeding rice that can
+
+62
+00:03:14,220 --> 00:03:16,720
+survive under water for two weeks.
+
+63
+00:03:16,720 --> 00:03:20,480
+Whether apps on simple phones warn
+
+64
+00:03:20,480 --> 00:03:23,400
+farmers before storms arrive,
+
+65
+00:03:23,400 --> 00:03:25,820
+cooperatives help small farmers share
+
+66
+00:03:25,820 --> 00:03:30,000
+tractors, storage and fair prices.
+
+67
+00:03:30,000 --> 00:03:32,660
+Soil health cards tell each farmer
+
+68
+00:03:32,660 --> 00:03:36,520
+exactly which nutrients the field needs.
+
+69
+00:03:36,520 --> 00:03:39,060
+Planting trees along field borders
+
+70
+00:03:39,060 --> 00:03:43,380
+protects crops from wind and keeps the soil moist.
+
+71
+00:03:43,380 --> 00:03:48,740
+Climate change is reshaping the way we grow food.
+
+72
+00:03:48,740 --> 00:03:51,660
+Farmers in many regions now face
+
+73
+00:03:51,660 --> 00:03:56,440
+longer dry seasons and sudden heavy rains.
+
+74
+00:03:56,440 --> 00:03:58,560
+Some are switching to crops that need
+
+75
+00:03:58,560 --> 00:04:02,580
+less water, like millets and pulses,
+
+76
+00:04:02,580 --> 00:04:05,760
+others use drip irrigation to deliver
+
+77
+00:04:05,760 --> 00:04:07,460
+water straight to the roots.
+
+78
+00:04:07,460 --> 00:04:10,740
+Solar pumps are replacing diesel
+
+79
+00:04:10,740 --> 00:04:13,220
+engines in many villages,
+
+80
+00:04:13,220 --> 00:04:16,980
+cutting both cost and pollution.
+
+81
+00:04:16,980 --> 00:04:21,120
+In cities, rooftop gardens and vertical farms
+
+82
+00:04:21,120 --> 00:04:24,260
+grow vegetables close to the people
+
+83
+00:04:24,260 --> 00:04:25,860
+who eat them.
+
+84
+00:04:25,860 --> 00:04:28,920
+Scientists are breeding rice that can
+
+85
+00:04:28,920 --> 00:04:31,400
+survive under water for two weeks.
+
+86
+00:04:31,400 --> 00:04:35,160
+Whether apps on simple phones warn
+
+87
+00:04:35,160 --> 00:04:38,100
+farmers before storms arrive,
+
+88
+00:04:38,100 --> 00:04:40,520
+cooperatives help small farmers share
+
+89
+00:04:40,520 --> 00:04:44,680
+tractors, storage and fair prices.
+
+90
+00:04:44,680 --> 00:04:47,340
+Soil health cards tell each farmer
+
+91
+00:04:47,340 --> 00:04:51,280
+exactly which nutrients the field needs.
+
+92
+00:04:51,280 --> 00:04:53,760
+Planting trees along field borders
+
+93
+00:04:53,760 --> 00:04:57,180
+protects crops from wind and keeps the
+
+94
+00:04:57,180 --> 00:04:58,730
+soil moist. Planting trees along field borders

@@ -91,6 +91,15 @@ recorded files by `testpack/make/metrics.py`.
   - *Thumbnail downloads timed out waiting for a pooled connection* when two jobs ran at once, and a missing
     thumbnail scored 0. Now the wait is separate from the download timeout, with one retry and a log line.
 
+- **Memory on a 7 GB laptop:** this is the main weakness found on 20 Oct.
+  - *What happened.* With 2 jobs at once, ffmpeg and Python ran out of memory: the page file cannot grow
+    because C: is full, and the API holds about 3.2 GB of models.
+  - *Effect in run 4:* 4 cases failed (INTERNAL_ERROR / RENDER_FAILED). Memory errors also tripped the
+    footage circuit breaker, so two videos (Hindi tutorial, 5-minute script) fell back to static text cards,
+    which QA correctly flagged as frozen (`QA_FAILED` warning).
+  - *Fixes:* one job at a time (others queue), 2 scenes rendered in parallel, and a failed encode is retried
+    after a pause. The failed cases were re-run as `outputs_run4b`. Run 4 is kept unchanged as evidence.
+
   The interrupted runs are not in the test pack. The earlier runs 1–3 (older code) are kept with their
   failures.
 - **Free-tier limits drive reliability.** Gemini TTS allows about 10 requests per day per model; in run 1 the
@@ -127,8 +136,13 @@ Per-case values are in `testpack/METRICS.md`; the summary is in the Metrics tab 
 - **Cost:** **$0.00 per minute**. All hosted services are on free tiers, and open models run on the laptop.
 - **Hardware:** Windows 11 laptop, AMD Ryzen 3 7320U (4 cores / 8 threads), 7.2 GB RAM, integrated Radeon
   GPU used for H.264 encoding only.
-- **Concurrency:** the server runs 2 jobs at once (`WORKER_THREADS=2`) and queues the rest. More workers on
-  this laptop slow every job down because CPU and memory are the limit.
+- **Turnaround** (`outputs_turnaround`, one job at a time): the 60-second script came out as 81 s of
+  narration. Cold took 193 s and warm 152 s, about 2.4 and 1.9 minutes per minute of video.
+- **Relevance:** the independent VLM judge (Gemini) gave a mean of 3.96 / 5 on 107 judged scenes (runs 4, 4b and turnaround), with
+  82% rated 4 or 5 and 92% of narration time on clips it rated 3+. Mean CLIP score was 0.261. The repeat-clip
+  rate is 0.
+- **Concurrency:** the demo runs **1 job at a time** (`WORKER_THREADS=1`) and queues the rest. Two at once
+  works on a larger machine but ran out of memory on this 7 GB laptop (section 4).
 
 ## 6. What I would do next
 

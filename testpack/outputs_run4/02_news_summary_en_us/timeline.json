@@ -1,0 +1,520 @@
+{
+  "job_id": "job_8d9ced6e4da947b9a5e8",
+  "version": 1,
+  "waveform": "/files/jobs/job_8d9ced6e4da947b9a5e8/v1/waveform.png",
+  "narration_seconds": 21.011,
+  "language": "en",
+  "transcript": "In today's technology news, electric car sales rose sharply across Europe this quarter. Cities are adding thousands of new charging stations along major highways. Meanwhile, battery prices continued to fall, making smaller models more affordable for families. Analysts expect the trend to continue next year.",
+  "aspect_ratios": [
+    "16:9",
+    "9:16"
+  ],
+  "mood": "upbeat",
+  "selection_rule": "Per scene: (1) statistics -> animated stat card. (2) Stock candidates from category-suited sources are scored with CLIP (image vs scene visual plan + narration, minus penalty for negative/avoid terms); unsafe candidates (avoid list, faces when avoided, AI for people/brands/sensitive) are removed. (3) Global assignment takes the highest (scene, clip) pairs first, each clip used once, if score >= tau=0.24. (4) If a scene's best stock score < tau+0.03 and AI is allowed, an AI image is generated and wins only if its CLIP score >= stock + 0.02. (5) Otherwise the best unused clip within 0.03 of tau, else a text card.",
+  "scenes": [
+    {
+      "scene": 0,
+      "start": 0.0,
+      "end": 6.82,
+      "duration": 6.82,
+      "narration": "In today's technology news, electric car sales rose sharply across Europe this quarter.",
+      "visual_hint": null,
+      "scene_type": "named_entity",
+      "category": "technology",
+      "visual_plan": "Modern electric cars driving on a clean European highway with wind turbines in the background.",
+      "queries": [
+        "electric car driving",
+        "modern highway Europe",
+        "clean energy road"
+      ],
+      "negative_terms": [
+        "gas station",
+        "traffic jam",
+        "smoke"
+      ],
+      "entities": [
+        "Europe"
+      ],
+      "clip": {
+        "id": "pixabay:1101",
+        "kind": "video",
+        "title": "road, driving, motorway, freeway, street, trip, journey, travel, highway, speed, road trip, freedom, asphalt, motion, traffic, 133583015",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-1101/",
+        "media_url": "https://cdn.pixabay.com/video/2015/10/19/1101-143052492_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by Vimeo-Free-Videos on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "modern highway Europe"
+      },
+      "reason": "stock (low confidence): pixabay scored 0.217 (< tau 0.24, within 0.03); no AI option; safety: named person/brand -> neutral footage, no AI faces/logos",
+      "relevance_score": 0.2175,
+      "judge": {
+        "score": 3,
+        "why": "Shows a road, but doesn't explicitly highlight EV sales."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2175,
+        "negative_max": 0.1862,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.521,
+      "alternatives": [
+        {
+          "id": "pixabay:1101",
+          "source": "pixabay",
+          "score": 0.2175,
+          "title": "road, driving, motorway, freeway, street, trip, journey, travel, highway, speed,",
+          "thumb": "https://cdn.pixabay.com/video/2015/10/19/1101-143052492_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:1406",
+          "source": "pixabay",
+          "score": 0.2041,
+          "title": "mercedes glk, car, test, offroad, suv, 4wd, auto, design, new, automotive, trans",
+          "thumb": "https://cdn.pixabay.com/video/2015/11/27/1406-147169807_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:184734",
+          "source": "pixabay",
+          "score": 0.2034,
+          "title": "car, desert, driving, drone, sand, arial, tajikistan",
+          "thumb": "https://cdn.pixabay.com/video/2023/10/12/184734-873923034_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:2165",
+          "source": "pixabay",
+          "score": 0.1792,
+          "title": "car, road, transportation, vehicle, driving, car on road, transport, drive, high",
+          "thumb": "https://cdn.pixabay.com/video/2016/02/14/2165-155327596_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:192954",
+          "source": "pixabay",
+          "score": 0.1772,
+          "title": "cars, traffic, road, power, business, industry, wind, windmill, california, alta",
+          "thumb": "https://cdn.pixabay.com/video/2023/12/12/192954-893872088_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:47905",
+          "source": "pixabay",
+          "score": 0.168,
+          "title": "windmill, landscape, energy, sky, france, power, green power, wind energy, farme",
+          "thumb": "https://cdn.pixabay.com/video/2020/08/23/47905-452168431_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:40815",
+          "source": "pixabay",
+          "score": 0.1677,
+          "title": "cars, road, highway, fly, landscape, aerial photography, auto, europe",
+          "thumb": "https://cdn.pixabay.com/video/2020/06/01/40815-426920970_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:93702",
+          "source": "pixabay",
+          "score": 0.162,
+          "title": "windmills, fog, power, electricity, technology, green energy, energy, clean ener",
+          "thumb": "https://cdn.pixabay.com/video/2021/10/28/93702-641767392_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_8d9ced6e4da947b9a5e8/v1/thumb_000.jpg"
+    },
+    {
+      "scene": 1,
+      "start": 6.82,
+      "end": 11.62,
+      "duration": 4.8,
+      "narration": "Cities are adding thousands of new charging stations along major highways.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "technology",
+      "visual_plan": "Close up of an electric vehicle charging cable plugging into a modern charging station in a city.",
+      "queries": [
+        "EV charging station",
+        "electric car charger",
+        "plugging in charger"
+      ],
+      "negative_terms": [
+        "gas pump",
+        "fuel nozzle"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:344231",
+        "kind": "video",
+        "title": "electric vehicle charging, green energy technology, sustainable transportation, clean energy future, ev power station, future mobility, eco-friendly transport, automotive innovation, no people, renewable energy, electric car socket, charging port, power supply, environmental conservation, high tech lifestyle, battery power, urban infrastructure, modern automotive, close up, blue glow, silver, metallic texture, selective focus, dark background, horizontal composition, ai generated",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-344231/",
+        "media_url": "https://cdn.pixabay.com/video/2026/04/03/344231_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by MrWashingt0n on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "EV charging station"
+      },
+      "reason": "stock: pixabay clip scored 0.311 >= tau 0.24; best unused of 12 safe candidates",
+      "relevance_score": 0.3113,
+      "judge": {
+        "score": 5,
+        "why": "Clearly shows an electric vehicle charging station."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.3113,
+        "negative_max": 0.2602,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.548,
+      "alternatives": [
+        {
+          "id": "pixabay:344231",
+          "source": "pixabay",
+          "score": 0.3113,
+          "title": "electric vehicle charging, green energy technology, sustainable transportation, ",
+          "thumb": "https://cdn.pixabay.com/video/2026/04/03/344231_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:372065",
+          "source": "pixabay",
+          "score": 0.2505,
+          "title": "automobile, ev, electric, sola, battery, charge, energy, electricity, charging, ",
+          "thumb": "https://cdn.pixabay.com/video/2026/08/22/372065_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:8501",
+          "source": "pixabay",
+          "score": 0.1453,
+          "title": "charger, mobile, battery, technology, device, smart, screen, digital, display, c",
+          "thumb": "https://cdn.pixabay.com/video/2017/03/26/8501-210166782_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:2165",
+          "source": "pixabay",
+          "score": 0.1263,
+          "title": "car, road, transportation, vehicle, driving, car on road, transport, drive, high",
+          "thumb": "https://cdn.pixabay.com/video/2016/02/14/2165-155327596_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:133083",
+          "source": "pixabay",
+          "score": 0.1204,
+          "title": "car, green, 3d, cartoon, ecology, electric, environment, energy, auto, speed, au",
+          "thumb": "https://cdn.pixabay.com/video/2022/09/30/133083-755697281_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:9005",
+          "source": "pixabay",
+          "score": 0.086,
+          "title": "tube, metro, subway, underground, transport, transportation, urban, city, train,",
+          "thumb": "https://cdn.pixabay.com/video/2017/05/06/9005-216332135_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:210886",
+          "source": "pixabay",
+          "score": 0.0676,
+          "title": "space station, exoplanet, space, universe, international space station, moon",
+          "thumb": "https://cdn.pixabay.com/video/2024/05/06/210886_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:189457",
+          "source": "pixabay",
+          "score": 0.0664,
+          "title": "space station, universe, international space station, future, space",
+          "thumb": "https://cdn.pixabay.com/video/2023/11/17/189457-885804464_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_8d9ced6e4da947b9a5e8/v1/thumb_001.jpg"
+    },
+    {
+      "scene": 2,
+      "start": 11.62,
+      "end": 18.28,
+      "duration": 6.66,
+      "narration": "Meanwhile, battery prices continued to fall, making smaller models more affordable for families.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "business",
+      "visual_plan": "A happy family looking at a compact electric vehicle parked outside their suburban home.",
+      "queries": [
+        "family with electric car",
+        "happy family suburban home",
+        "affordable small car"
+      ],
+      "negative_terms": [
+        "luxury sports car",
+        "expensive dealership"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:2",
+        "kind": "card",
+        "title": "Card: Meanwhile, battery prices continued to fall, making smaller ",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "judge": {
+        "score": 4,
+        "why": "Text card showing the exact narration line."
+      },
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [
+        {
+          "id": "pixabay:133083",
+          "source": "pixabay",
+          "score": 0.2031,
+          "title": "car, green, 3d, cartoon, ecology, electric, environment, energy, auto, speed, au",
+          "thumb": "https://cdn.pixabay.com/video/2022/09/30/133083-755697281_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:253998",
+          "source": "pixabay",
+          "score": 0.1648,
+          "title": "tenderness, cute, fondness, father, family, baby, parent, child, love, dad, man,",
+          "thumb": "https://cdn.pixabay.com/video/2025/01/22/253998_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:1027",
+          "source": "pixabay",
+          "score": 0.1623,
+          "title": "home, house, returning, real estate, family, coming home, evening, nightfall, bu",
+          "thumb": "https://cdn.pixabay.com/video/2015/10/16/1027-142621279_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:253997",
+          "source": "pixabay",
+          "score": 0.1604,
+          "title": "kiss, love, together, father, family, baby, parent, child, dad, man, people, hap",
+          "thumb": "https://cdn.pixabay.com/video/2025/01/22/253997_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:186533",
+          "source": "pixabay",
+          "score": 0.0842,
+          "title": "christmas, decoration, celebration, celebrating, beautiful wallpaper, cozy, dece",
+          "thumb": "https://cdn.pixabay.com/video/2023/10/26/186533-878145233_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:186537",
+          "source": "pixabay",
+          "score": 0.0759,
+          "title": "gift, happy, joy, beautiful wallpaper, celebration, celebrating, christmas, dece",
+          "thumb": "https://cdn.pixabay.com/video/2023/10/26/186537-878842341_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:216696",
+          "source": "pixabay",
+          "score": 0.0568,
+          "title": "baboons, apes, cub, family, tree trunk, sitting, wildlife",
+          "thumb": "https://cdn.pixabay.com/video/2024/06/14/216696_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:184734",
+          "source": "pixabay",
+          "score": 0.001,
+          "title": "car, desert, driving, drone, sand, arial, tajikistan",
+          "thumb": "https://cdn.pixabay.com/video/2023/10/12/184734-873923034_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_8d9ced6e4da947b9a5e8/v1/thumb_002.jpg"
+    },
+    {
+      "scene": 3,
+      "start": 18.28,
+      "end": 21.011,
+      "duration": 2.731,
+      "narration": "Analysts expect the trend to continue next year.",
+      "visual_hint": null,
+      "scene_type": "metaphor",
+      "category": "business",
+      "visual_plan": "A financial chart showing upward trend and growth with a city skyline blurred in the background.",
+      "queries": [
+        "business growth chart",
+        "upward trend graph",
+        "market analysis screen"
+      ],
+      "negative_terms": [
+        "falling graph",
+        "stock market crash"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:166285",
+        "kind": "video",
+        "title": "graph, data, survey, demographic, finance, trend, elections, percentage, finacial, uptrend, growth, graph bars, bars, percent, price, market, stock, trading, value, inflation, nasdaq, smp500",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-166285/",
+        "media_url": "https://cdn.pixabay.com/video/2023/06/08/166285-834580729_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by Dimitri_K on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "upward trend graph"
+      },
+      "reason": "stock: pixabay clip scored 0.249 >= tau 0.24; best unused of 12 safe candidates",
+      "relevance_score": 0.2489,
+      "judge": {
+        "score": 4,
+        "why": "Growth chart effectively illustrates expected continuing trends."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2749,
+        "negative_max": 0.2809,
+        "penalty": 0.026
+      },
+      "reframe_subject_x": 0.696,
+      "alternatives": [
+        {
+          "id": "pixabay:166285",
+          "source": "pixabay",
+          "score": 0.2489,
+          "title": "graph, data, survey, demographic, finance, trend, elections, percentage, finacia",
+          "thumb": "https://cdn.pixabay.com/video/2023/06/08/166285-834580729_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:219832",
+          "source": "pixabay",
+          "score": 0.2328,
+          "title": "graph, finance, economy, statistics, city, business, trading, growth, chart, sto",
+          "thumb": "https://cdn.pixabay.com/video/2024/07/07/219832_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:282163",
+          "source": "pixabay",
+          "score": 0.2232,
+          "title": "business, strategy, data analysis, free use and download, corporate, analytics, ",
+          "thumb": "https://cdn.pixabay.com/video/2025/05/28/282163_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:368875",
+          "source": "pixabay",
+          "score": 0.2164,
+          "title": "ai generated, graph, chart, business, finance, data, statistics, trading, growth",
+          "thumb": "https://cdn.pixabay.com/video/2026/08/05/368875_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:108459",
+          "source": "pixabay",
+          "score": 0.2157,
+          "title": "growth, grow, success, chart, graph, financial, finance, profit, data, wealth, b",
+          "thumb": "https://cdn.pixabay.com/video/2022/02/21/108459-680697612_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:338956",
+          "source": "pixabay",
+          "score": 0.1903,
+          "title": "stock market crash, financial crisis concept, technical analysis trading, market",
+          "thumb": "https://cdn.pixabay.com/video/2026/03/08/338956_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:338955",
+          "source": "pixabay",
+          "score": 0.19,
+          "title": "stock market crash, financial crisis concept, technical analysis trading, market",
+          "thumb": "https://cdn.pixabay.com/video/2026/03/08/338955_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:20833",
+          "source": "pixabay",
+          "score": 0.1477,
+          "title": "chart, line graph, statistics, business, analysis, data, growth, visualisation, ",
+          "thumb": "https://cdn.pixabay.com/video/2019/01/19/20833-312432050_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_8d9ced6e4da947b9a5e8/v1/thumb_003.jpg"
+    }
+  ],
+  "music": {
+    "path": null,
+    "title": "Key, Kida &amp; Eddie (feat. ICD) - Sundalo (acoustic)",
+    "source": "openverse/jamendo",
+    "licence": "CC BY 3.0",
+    "licence_url": "https://creativecommons.org/licenses/by/3.0/",
+    "attribution": "\"Key, Kida &amp; Eddie (feat. ICD) - Sundalo (acoustic)\" by Key, Kida &amp; Eddie (CC BY 3.0)",
+    "page_url": "https://www.jamendo.com/track/1522600",
+    "ai_generated": false
+  }
+}

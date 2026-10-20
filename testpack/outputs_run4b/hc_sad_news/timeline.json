@@ -1,0 +1,276 @@
+{
+  "job_id": "job_b3291c965d8148fdb6b7",
+  "version": 1,
+  "waveform": "/files/jobs/job_b3291c965d8148fdb6b7/v1/waveform.png",
+  "narration_seconds": 18.201,
+  "language": "en",
+  "transcript": "Heavy floods have displaced thousands of families in the region. Rescue teams are working through the night. Our thoughts are with everyone who lost their homes and loved ones.",
+  "aspect_ratios": [
+    "16:9",
+    "9:16"
+  ],
+  "mood": "sombre",
+  "selection_rule": "Per scene: (1) statistics -> animated stat card. (2) Stock candidates from category-suited sources are scored with CLIP (image vs scene visual plan + narration, minus penalty for negative/avoid terms); unsafe candidates (avoid list, faces when avoided, AI for people/brands/sensitive) are removed. (3) Global assignment takes the highest (scene, clip) pairs first, each clip used once, if score >= tau=0.24. (4) If a scene's best stock score < tau+0.03 and AI is allowed, an AI image is generated and wins only if its CLIP score >= stock + 0.02. (5) Otherwise the best unused clip within 0.03 of tau, else a text card.",
+  "scenes": [
+    {
+      "scene": 0,
+      "start": 0.0,
+      "end": 14.18,
+      "duration": 14.18,
+      "narration": "Heavy floods have displaced thousands of families in the region. Rescue teams are working through the night.",
+      "visual_hint": null,
+      "scene_type": "sensitive",
+      "category": "nature",
+      "visual_plan": "Wide drone shot of flooded residential area with rescue boats navigating dark waters at night.",
+      "queries": [
+        "flood aerial night",
+        "rescue boat dark water",
+        "flooded street emergency"
+      ],
+      "negative_terms": [
+        "sunny",
+        "happy",
+        "pool party"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:336755",
+        "kind": "video",
+        "title": "seoul, hangang river, yeouido, national assembly, ifc seoul, parc1, night view, time-lapse, aerial view, drone footage, cityscape, urban, south korea, financial district, landmark, skyline",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-336755/",
+        "media_url": "https://cdn.pixabay.com/video/2026/02/26/336755_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by YounStudios on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "flood aerial night calm"
+      },
+      "reason": "stock (low confidence): pixabay scored 0.224 (< tau 0.24, within 0.03); no AI option; safety: sensitive topic -> calm respectful footage",
+      "relevance_score": 0.2235,
+      "judge": {
+        "score": 2,
+        "why": "Shows night city traffic, not floods or rescue teams."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2235,
+        "negative_max": 0.1938,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.458,
+      "alternatives": [
+        {
+          "id": "pixabay:336755",
+          "source": "pixabay",
+          "score": 0.2235,
+          "title": "seoul, hangang river, yeouido, national assembly, ifc seoul, parc1, night view, ",
+          "thumb": "https://cdn.pixabay.com/video/2026/02/26/336755_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:27197",
+          "source": "pixabay",
+          "score": 0.194,
+          "title": "clouds, drone, aerial, landscape, photo, sunrise, sunset, nature, summer, field,",
+          "thumb": "https://cdn.pixabay.com/video/2019/09/24/27197-362173819_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:216058",
+          "source": "pixabay",
+          "score": 0.1789,
+          "title": "drone, drones, drone images, nature, forest, river, landscape, drone footage, ae",
+          "thumb": "https://cdn.pixabay.com/video/2024/06/10/216058_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:337459",
+          "source": "pixabay",
+          "score": 0.1658,
+          "title": "seoul, hangang river, yeouido, national assembly, ifc seoul, parc1, night view, ",
+          "thumb": "https://cdn.pixabay.com/video/2026/03/02/337459_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:181376",
+          "source": "pixabay",
+          "score": 0.1062,
+          "title": "boat, man, fishing boat, wooden boat, water, lake, mountains, landscape, zille, ",
+          "thumb": "https://cdn.pixabay.com/video/2023/09/20/181376-866506956_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:237249",
+          "source": "pixabay",
+          "score": 0.099,
+          "title": "ship, vessel, sea, boat, ocean, water, port, transport, sunset, calm, silence, e",
+          "thumb": "https://cdn.pixabay.com/video/2024/10/20/237249_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:223461",
+          "source": "pixabay",
+          "score": 0.0839,
+          "title": "bird, seagull, boat, ocean, sea, wildlife, water, beach, waves, seascape, nature",
+          "thumb": "https://cdn.pixabay.com/video/2024/07/27/223461_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:306155",
+          "source": "pixabay",
+          "score": 0.0367,
+          "title": "sun, seascape, water, sunset, sea, horizon, red, ocean, reflection, calm, tranqu",
+          "thumb": "https://cdn.pixabay.com/video/2025/09/24/306155_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_b3291c965d8148fdb6b7/v1/thumb_000.jpg"
+    },
+    {
+      "scene": 1,
+      "start": 14.18,
+      "end": 18.201,
+      "duration": 4.021,
+      "narration": "Our thoughts are with everyone who lost their homes and loved ones.",
+      "visual_hint": null,
+      "scene_type": "sensitive",
+      "category": "people_free",
+      "visual_plan": "Raindrops on a window pane with a blurred, dimly lit street in the background, conveying a sense of reflection and empathy.",
+      "queries": [
+        "raindrops on window",
+        "gloomy rainy window",
+        "empty rainy street"
+      ],
+      "negative_terms": [
+        "bright",
+        "cheerful",
+        "people"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:217379",
+        "kind": "video",
+        "title": "rain, window, drops, weather, water, gloomy, nature",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-217379/",
+        "media_url": "https://cdn.pixabay.com/video/2024/06/19/217379_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by Alex_Jauk on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "gloomy rainy window calm"
+      },
+      "reason": "stock: pixabay clip scored 0.297 >= tau 0.24; best unused of 12 safe candidates; safety: sensitive topic -> calm respectful footage",
+      "relevance_score": 0.2973,
+      "judge": {
+        "score": 4,
+        "why": "Rain on window matches sombre mood and narration text."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2973,
+        "negative_max": 0.198,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.561,
+      "alternatives": [
+        {
+          "id": "pixabay:217379",
+          "source": "pixabay",
+          "score": 0.2973,
+          "title": "rain, window, drops, weather, water, gloomy, nature",
+          "thumb": "https://cdn.pixabay.com/video/2024/06/19/217379_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:189290",
+          "source": "pixabay",
+          "score": 0.2909,
+          "title": "raindrop, drops, rain, window, window glass, wet, glass",
+          "thumb": "https://cdn.pixabay.com/video/2023/11/16/189290-885321799_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:28236",
+          "source": "pixabay",
+          "score": 0.2854,
+          "title": "rain, raindrop, wet, water, beautiful wallpaper, window, drop, weather, droplets",
+          "thumb": "https://cdn.pixabay.com/video/2019/10/24/28236-368501609_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:94680",
+          "source": "pixabay",
+          "score": 0.2841,
+          "title": "rain, glass, window glass, water, raindrop, rainy weather, wet, drops, drips, ra",
+          "thumb": "https://cdn.pixabay.com/video/2021/11/05/94680-643084362_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:219031",
+          "source": "pixabay",
+          "score": 0.2806,
+          "title": "rain, rainy, water, glass, window, storm, 4k, hd",
+          "thumb": "https://cdn.pixabay.com/video/2024/07/01/219031_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:32630",
+          "source": "pixabay",
+          "score": 0.2696,
+          "title": "rain, window, rainy, sad, glass, drops, raining, crying, raindrop, nature, storm",
+          "thumb": "https://cdn.pixabay.com/video/2020/02/20/32630-393990051_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:11722",
+          "source": "pixabay",
+          "score": 0.2544,
+          "title": "rain, water, window, wet, drops, dripping, rainy, night, light, sad",
+          "thumb": "https://cdn.pixabay.com/video/2017/08/30/11722-231759069_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:5275",
+          "source": "pixabay",
+          "score": 0.2022,
+          "title": "rainy day, rain, night, summer, colorful, reflection, wet, water, weather, city,",
+          "thumb": "https://cdn.pixabay.com/video/2016/09/14/5275-182817509_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_b3291c965d8148fdb6b7/v1/thumb_001.jpg"
+    }
+  ],
+  "music": {
+    "path": null,
+    "title": "Procedural ambient pad",
+    "source": "procedural",
+    "licence": "Generated by this service (no third-party rights)",
+    "licence_url": "",
+    "attribution": "Generated by Clipsy",
+    "page_url": "",
+    "ai_generated": false
+  }
+}

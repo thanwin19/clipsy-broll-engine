@@ -1,0 +1,276 @@
+{
+  "job_id": "job_21a6c5846ad64f64ac8f",
+  "version": 1,
+  "waveform": "/files/jobs/job_21a6c5846ad64f64ac8f/v1/waveform.png",
+  "narration_seconds": 7.561,
+  "language": "en",
+  "transcript": "A lone surfer paddles out along the edge of the frame. A cyclist rides past the coastline at sunset.",
+  "aspect_ratios": [
+    "16:9",
+    "9:16"
+  ],
+  "mood": "calm",
+  "selection_rule": "Per scene: (1) statistics -> animated stat card. (2) Stock candidates from category-suited sources are scored with CLIP (image vs scene visual plan + narration, minus penalty for negative/avoid terms); unsafe candidates (avoid list, faces when avoided, AI for people/brands/sensitive) are removed. (3) Global assignment takes the highest (scene, clip) pairs first, each clip used once, if score >= tau=0.24. (4) If a scene's best stock score < tau+0.03 and AI is allowed, an AI image is generated and wins only if its CLIP score >= stock + 0.02. (5) Otherwise the best unused clip within 0.03 of tau, else a text card.",
+  "scenes": [
+    {
+      "scene": 0,
+      "start": 0.0,
+      "end": 4.18,
+      "duration": 4.18,
+      "narration": "A lone surfer paddles out along the edge of the frame.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "nature",
+      "visual_plan": "A lone surfer paddling out on a calm ocean wave near the edge of the frame.",
+      "queries": [
+        "surfer paddling ocean",
+        "surfing wave sunset",
+        "lone surfer sea"
+      ],
+      "negative_terms": [
+        "crowded beach",
+        "storm",
+        "pool"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:123523",
+        "kind": "video",
+        "title": "surf, surfer, sea, ocean, waves, coast, shore",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-123523/",
+        "media_url": "https://cdn.pixabay.com/video/2022/07/08/123523-728292591_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by Mode21 on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "surfer paddling ocean"
+      },
+      "reason": "stock: pixabay clip scored 0.333 >= tau 0.24; best unused of 12 safe candidates",
+      "relevance_score": 0.3333,
+      "judge": {
+        "score": 5,
+        "why": "Shows a lone surfer in the water exactly as narrated."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.3333,
+        "negative_max": 0.1589,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.499,
+      "alternatives": [
+        {
+          "id": "pixabay:123523",
+          "source": "pixabay",
+          "score": 0.3333,
+          "title": "surf, surfer, sea, ocean, waves, coast, shore",
+          "thumb": "https://cdn.pixabay.com/video/2022/07/08/123523-728292591_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:236273",
+          "source": "pixabay",
+          "score": 0.3185,
+          "title": "ocean, waves, surf, surfer, surfing, board, sport, paddling, sea",
+          "thumb": "https://cdn.pixabay.com/video/2024/10/14/236273_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:132846",
+          "source": "pixabay",
+          "score": 0.3167,
+          "title": "ocean, waves, sunset, people, surfing, sea, water, forest, clouds, storm, rain",
+          "thumb": "https://cdn.pixabay.com/video/2022/09/28/132846-754950602_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:13772",
+          "source": "pixabay",
+          "score": 0.2983,
+          "title": "surfer, portugal, algarve, coast, sea, surfing, waves, atlantic, surfboard, natu",
+          "thumb": "https://cdn.pixabay.com/video/2018/01/10/13772-251867974_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:222180",
+          "source": "pixabay",
+          "score": 0.2901,
+          "title": "ocean, sea, man, surfer, kite surfing, surfing, kite, surf, sport, waves, sports",
+          "thumb": "https://cdn.pixabay.com/video/2024/07/20/222180_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:339840",
+          "source": "pixabay",
+          "score": 0.2539,
+          "title": "surfer, nature, sea, beach, surfboard, ocean, surf, surfing, water, waves, sand",
+          "thumb": "https://cdn.pixabay.com/video/2026/03/12/339840_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:41750",
+          "source": "pixabay",
+          "score": 0.2531,
+          "title": "bali, beach, sea, ocean, indonesia, water, travel, nature, summer, vacation, peo",
+          "thumb": "https://cdn.pixabay.com/video/2020/06/11/41750-430090743_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:20451",
+          "source": "pixabay",
+          "score": 0.2326,
+          "title": "ocean, waves, rocks, beach, sea, surf, coast, seascape, motion, splashing, seash",
+          "thumb": "https://cdn.pixabay.com/video/2019/01/04/20451-309694501_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_21a6c5846ad64f64ac8f/v1/thumb_000.jpg"
+    },
+    {
+      "scene": 1,
+      "start": 4.18,
+      "end": 7.561,
+      "duration": 3.381,
+      "narration": "A cyclist rides past the coastline at sunset.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "nature",
+      "visual_plan": "A cyclist riding a bicycle along a scenic coastal road during a vibrant sunset.",
+      "queries": [
+        "cyclist coastal road",
+        "bicycle sunset ocean",
+        "riding bike coastline"
+      ],
+      "negative_terms": [
+        "indoor gym",
+        "city traffic",
+        "mountain snow"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:49937",
+        "kind": "video",
+        "title": "bicycle, beach, sunset, sea, dusk, nature",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-49937/",
+        "media_url": "https://cdn.pixabay.com/video/2020/09/15/49937-460241662_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by 17701266 on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "bicycle sunset ocean"
+      },
+      "reason": "stock: pixabay clip scored 0.341 >= tau 0.24; best unused of 12 safe candidates",
+      "relevance_score": 0.341,
+      "judge": {
+        "score": 2,
+        "why": "Shows a parked bicycle by the beach, not riding."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.341,
+        "negative_max": 0.134,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.635,
+      "alternatives": [
+        {
+          "id": "pixabay:49937",
+          "source": "pixabay",
+          "score": 0.341,
+          "title": "bicycle, beach, sunset, sea, dusk, nature",
+          "thumb": "https://cdn.pixabay.com/video/2020/09/15/49937-460241662_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:82636",
+          "source": "pixabay",
+          "score": 0.26,
+          "title": "bike, bicycle, cycling, fitness, sport, biking, leisure, healthy, ride, activity",
+          "thumb": "https://cdn.pixabay.com/video/2021/07/24/82636-580974567_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:39183",
+          "source": "pixabay",
+          "score": 0.2413,
+          "title": "cycling, man, bike, helmet, road, cyclist, safety, sports, fitness",
+          "thumb": "https://cdn.pixabay.com/video/2020/05/15/39183-421020269_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:309833",
+          "source": "pixabay",
+          "score": 0.2218,
+          "title": "junggu, incheon, korea, sea, event, passenger, theatre, travel, trip, bicycle ro",
+          "thumb": "https://cdn.pixabay.com/video/2025/10/14/309833_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:135658",
+          "source": "pixabay",
+          "score": 0.1901,
+          "title": "ocean, beach, sunset, sea, atmosphere, relaxing, relaxation, ocean waves, dream ",
+          "thumb": "https://cdn.pixabay.com/video/2022/10/19/135658-764361528_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:111396",
+          "source": "pixabay",
+          "score": 0.1805,
+          "title": "bicycle, riding, bike, tour, travel, cycling, ebike, sports, nature, landscape, ",
+          "thumb": "https://cdn.pixabay.com/video/2022/03/20/111396-690743300_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:76618",
+          "source": "pixabay",
+          "score": 0.1443,
+          "title": "bike, cyclist, road, riding, avenue, sport",
+          "thumb": "https://cdn.pixabay.com/video/2021/06/06/76618-559757968_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:7251",
+          "source": "pixabay",
+          "score": 0.1037,
+          "title": "racing bike, sports, bike, race, bicycle, biking, cycle, speed, cyclist, metaver",
+          "thumb": "https://cdn.pixabay.com/video/2017/01/12/7251-199191069_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_21a6c5846ad64f64ac8f/v1/thumb_001.jpg"
+    }
+  ],
+  "music": {
+    "path": null,
+    "title": "Procedural ambient pad",
+    "source": "procedural",
+    "licence": "Generated by this service (no third-party rights)",
+    "licence_url": "",
+    "attribution": "Generated by Clipsy",
+    "page_url": "",
+    "ai_generated": false
+  }
+}

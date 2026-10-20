@@ -9,6 +9,7 @@ Every claim in `REPORT.md` and in the submission form points to one of the files
 | Folder | Code | What it is |
 |---|---|---|
 | `outputs_run4/` | current (20 Oct) | **Main evidence.** All 31 inputs on the final code: 10 core inputs, 8 voiceovers (mp3, m4a, wav, Tamil, Hindi, 5-minute upload) and 13 hard cases, 2 jobs at a time |
+| `outputs_run4b/` | current | Re-run, one job at a time, of the run-4 cases hit by out-of-memory errors (Hindi, 5-minute script and voiceover, named person, sad news); see REPORT.md section 4 |
 | `outputs_turnaround/` | current | The same 60-second script run twice, one job at a time: first = cold, second = warm (search/TTS caches) |
 | `outputs_run1/` | 18–19 Oct | First full run. 7 hard cases and the 5-minute script failed with `TTS_FAILED` (Gemini TTS free quota) and `05_finance` with `INTERNAL_ERROR`; kept as evidence |
 | `outputs_run2/` | 19 Oct | Re-run of the run 1 failures after the TTS fallback chain; the 5-minute script; 2 OpenCV thread-safety failures kept |

@@ -1,0 +1,2413 @@
+{
+  "job_id": "job_97c226b3586e4798af37",
+  "version": 1,
+  "waveform": "/files/jobs/job_97c226b3586e4798af37/v1/waveform.png",
+  "narration_seconds": 335.672,
+  "language": "en",
+  "transcript": "Climate change is reshaping the way we grow food. Farmers in many regions now face longer dry seasons and sudden heavy rains. Some are switching to crops that need less water, like millets and pulses. Others use drip irrigation to deliver water straight to the roots. Solar pumps are replacing diesel engines in many villages, cutting both cost and pollution. In cities, rooftop gardens and vertical farms grow vegetables close to the people who eat them. Scientists are breeding rice that can survive under water for two weeks. Weather apps on simple phones warn farmers before storms arrive. Cooperatives help small farmers share tractors, storage and fair prices. Soil health cards tell each farmer exactly which nutrients the field needs. Planting trees along field borders protects crops from wind and keeps the soil moist. Climate change is reshaping the way we grow food. Farmers in many regions now face longer dry seasons and sudden heavy rains. Some are switching to crops that need less water, like millets and pulses. Others use drip irrigation to deliver water straight to the roots. Solar pumps are replacing diesel engines in many villages, cutting both cost and pollution. In cities, rooftop gardens and vertical farms grow vegetables close to the people who eat them. Scientists are breeding rice that can survive under water for two weeks. Weather apps on simple phones warn farmers before storms arrive. Cooperatives help small farmers share tractors, storage and fair prices. Soil health cards tell each farmer exactly which nutrients the field needs. Planting trees along field borders protects crops from wind and keeps the soil moist. Climate change is reshaping the way we grow food. Farmers in many regions now face longer dry seasons and sudden heavy rains. Some are switching to crops that need less water, like millets and pulses. Others use drip irrigation to deliver water straight to the roots. Solar pumps are replacing diesel engines in many villages, cutting both cost and pollution. In cities, rooftop gardens and vertical farms grow vegetables close to the people who eat them. Scientists are breeding rice that can survive under water for two weeks. Weather apps on simple phones warn farmers before storms arrive. Cooperatives help small farmers share tractors, storage and fair prices. Soil health cards tell each farmer exactly which nutrients the field needs. Planting trees along field borders protects crops from wind and keeps the soil moist. Climate change is reshaping the way we grow food. Farmers in many regions now face longer dry seasons and sudden heavy rains. Some are switching to crops that need less water, like millets and pulses. Others use drip irrigation to deliver water straight to the roots. Solar pumps are replacing diesel engines in many villages, cutting both cost and pollution. In cities, rooftop gardens and vertical farms grow vegetables close to the people who eat them. Scientists are breeding rice that can survive under water for two weeks. Weather apps on simple phones warn farmers before storms arrive. Cooperatives help small farmers share tractors, storage and fair prices. Soil health cards tell each farmer exactly which nutrients the field needs. Planting trees along field borders protects crops from wind and keeps the soil moist.",
+  "aspect_ratios": [
+    "16:9"
+  ],
+  "mood": "inspiring",
+  "selection_rule": "Per scene: (1) statistics -> animated stat card. (2) Stock candidates from category-suited sources are scored with CLIP (image vs scene visual plan + narration, minus penalty for negative/avoid terms); unsafe candidates (avoid list, faces when avoided, AI for people/brands/sensitive) are removed. (3) Global assignment takes the highest (scene, clip) pairs first, each clip used once, if score >= tau=0.24. (4) If a scene's best stock score < tau+0.03 and AI is allowed, an AI image is generated and wins only if its CLIP score >= stock + 0.02. (5) Otherwise the best unused clip within 0.03 of tau, else a text card.",
+  "scenes": [
+    {
+      "scene": 0,
+      "start": 0.0,
+      "end": 3.44,
+      "duration": 3.44,
+      "narration": "Climate change is reshaping the way we grow food.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "nature",
+      "visual_plan": "A wide aerial shot of green agricultural fields under a bright sky.",
+      "queries": [
+        "green farm fields",
+        "agriculture aerial view",
+        "growing crops farm"
+      ],
+      "negative_terms": [
+        "dry land",
+        "dead plants"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "wikimedia:186478521",
+        "kind": "video",
+        "title": "File:Establishing aerial video view from slightly above and in front of a motorized cotton picker going through a cotton field using GPS-based automatic steering to precisely navigate thousands of cotton rows durin (20200823-NRCS-LSC-0900).webm",
+        "source": "wikimedia",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Establishing_aerial_video_view_from_slightly_above_and_in_front_of_a_motorized_cotton_picker_going_through_a_cotton_field_using_GPS-based_automatic_steering_to_precisely_navigate_thousands_of_cotton_rows_durin_(20200823-NRCS-LSC-0900).webm",
+        "media_url": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Establishing_aerial_video_view_from_slightly_above_and_in_front_of_a_motorized_cotton_picker_going_through_a_cotton_field_using_GPS-based_automatic_steering_to_precisely_navigate_thousands_of_cotton_rows_durin_%2820200823-NRCS-LSC-0900%29.webm?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "licence": "Public domain",
+        "licence_url": "",
+        "attribution": "USDAgov via Wikimedia Commons (Public domain)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "agriculture aerial view"
+      },
+      "reason": "stock: wikimedia clip scored 0.253 >= tau 0.24; best unused of 12 safe candidates",
+      "relevance_score": 0.2533,
+      "judge": null,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2533,
+        "negative_max": 0.197,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.574,
+      "alternatives": [
+        {
+          "id": "wikimedia:186478521",
+          "source": "wikimedia",
+          "score": 0.2533,
+          "title": "File:Establishing aerial video view from slightly above and in front of a motori",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bd/Establishing_aerial_video_view_from_slightly_above_and_in_front_of_a_motorized_cotton_picker_going_through_a_cotton_field_using_GPS-based_automatic_steering_to_precisely_navigate_thousands_of_cotton_rows_durin_%2820200823-NRCS-LSC-0900%29.webm/960px--thumbnail.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:186480493",
+          "source": "wikimedia",
+          "score": 0.2503,
+          "title": "File:Harvest (20200822-NRCS-LSC-1434).webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/Harvest_%2820200822-NRCS-LSC-1434%29.webm/960px--Harvest_%2820200822-NRCS-LSC-1434%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:186478713",
+          "source": "wikimedia",
+          "score": 0.245,
+          "title": "File:20200822-NRCS-LSC-1435 1.webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/52/20200822-NRCS-LSC-1435_1.webm/960px--20200822-NRCS-LSC-1435_1.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:186480592",
+          "source": "wikimedia",
+          "score": 0.2159,
+          "title": "File:Harvest (20200822-NRCS-LSC-1295).webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/Harvest_%2820200822-NRCS-LSC-1295%29.webm/960px--Harvest_%2820200822-NRCS-LSC-1295%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:186478814",
+          "source": "wikimedia",
+          "score": 0.1644,
+          "title": "File:Harvest (20200822-NRCS-LSC-1240).webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/47/Harvest_%2820200822-NRCS-LSC-1240%29.webm/960px--Harvest_%2820200822-NRCS-LSC-1240%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:155541048",
+          "source": "wikimedia",
+          "score": 0.1444,
+          "title": "File:Aerial Inspection of Typhoon-Affected Areas in Nueva Vizcaya 11-22-2024.web",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fe/Aerial_Inspection_of_Typhoon-Affected_Areas_in_Nueva_Vizcaya_11-22-2024.webm/960px--Aerial_Inspection_of_Typhoon-Affected_Areas_in_Nueva_Vizcaya_11-22-2024.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:147573500",
+          "source": "wikimedia",
+          "score": 0.1073,
+          "title": "File:Fresno Family Farm shareholder and individual producer Keng Xiong USDA inte",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9e/Fresno_Family_Farm_shareholder_and_individual_producer_Keng_Xiong_USDA_interview.webm/960px--Fresno_Family_Farm_shareholder_and_individual_producer_Keng_Xiong_USDA_interview.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:186472835",
+          "source": "wikimedia",
+          "score": 0.0655,
+          "title": "File:Bowling Green Farm-hogs-chicken (20211203-FPAC-PJK-V-001).webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4f/Bowling_Green_Farm-hogs-chicken_%2820211203-FPAC-PJK-V-001%29.webm/960px--Bowling_Green_Farm-hogs-chicken_%2820211203-FPAC-PJK-V-001%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_97c226b3586e4798af37/v1/thumb_000.jpg"
+    },
+    {
+      "scene": 1,
+      "start": 3.44,
+      "end": 8.5,
+      "duration": 5.06,
+      "narration": "Farmers in many regions now face longer dry seasons and sudden heavy rains.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "nature",
+      "visual_plan": "Heavy rain falling on a green crop field, demonstrating changing weather.",
+      "queries": [
+        "heavy rain on crops",
+        "storm over farm",
+        "weather change rain"
+      ],
+      "negative_terms": [
+        "urban flood",
+        "indoor"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "wikimedia:186473863",
+        "kind": "video",
+        "title": "File:Irrigation and Water (20210603-NRCS-LSC-0448).webm",
+        "source": "wikimedia",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Irrigation_and_Water_(20210603-NRCS-LSC-0448).webm",
+        "media_url": "https://upload.wikimedia.org/wikipedia/commons/c/c3/Irrigation_and_Water_%2820210603-NRCS-LSC-0448%29.webm?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "licence": "Public domain",
+        "licence_url": "",
+        "attribution": "USDAgov via Wikimedia Commons (Public domain)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "heavy rain on crops"
+      },
+      "reason": "stock: wikimedia clip scored 0.266 >= tau 0.24; best unused of 8 safe candidates",
+      "relevance_score": 0.2655,
+      "judge": null,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2732,
+        "negative_max": 0.2608,
+        "penalty": 0.0076
+      },
+      "reframe_subject_x": 0.603,
+      "alternatives": [
+        {
+          "id": "wikimedia:186473863",
+          "source": "wikimedia",
+          "score": 0.2655,
+          "title": "File:Irrigation and Water (20210603-NRCS-LSC-0448).webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/Irrigation_and_Water_%2820210603-NRCS-LSC-0448%29.webm/960px--Irrigation_and_Water_%2820210603-NRCS-LSC-0448%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:186481145",
+          "source": "wikimedia",
+          "score": 0.2203,
+          "title": "File:20200822-NRCS-LSC-2986 TL.webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/88/20200822-NRCS-LSC-2986_TL.webm/960px--20200822-NRCS-LSC-2986_TL.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:186480345",
+          "source": "wikimedia",
+          "score": 0.1898,
+          "title": "File:Harvest (20200822-NRCS-LSC-1077).webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Harvest_%2820200822-NRCS-LSC-1077%29.webm/960px--Harvest_%2820200822-NRCS-LSC-1077%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:186473680",
+          "source": "wikimedia",
+          "score": 0.1829,
+          "title": "File:Irrigation and Water (20210603-NRCS-LSC-0449).webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/Irrigation_and_Water_%2820210603-NRCS-LSC-0449%29.webm/960px--Irrigation_and_Water_%2820210603-NRCS-LSC-0449%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:186478694",
+          "source": "wikimedia",
+          "score": 0.1563,
+          "title": "File:Harvest (20200822-NRCS-LSC-1359).webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Harvest_%2820200822-NRCS-LSC-1359%29.webm/960px--Harvest_%2820200822-NRCS-LSC-1359%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:186480855",
+          "source": "wikimedia",
+          "score": 0.1437,
+          "title": "File:Harvest (20200822-NRCS-LSC-1135).webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Harvest_%2820200822-NRCS-LSC-1135%29.webm/960px--Harvest_%2820200822-NRCS-LSC-1135%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:186480261",
+          "source": "wikimedia",
+          "score": 0.1042,
+          "title": "File:Harvest (20200822-NRCS-LSC-1115).webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/Harvest_%2820200822-NRCS-LSC-1115%29.webm/960px--Harvest_%2820200822-NRCS-LSC-1115%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:186478560",
+          "source": "wikimedia",
+          "score": 0.0412,
+          "title": "File:Harvest (20200822-NRCS-LSC-2035).webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/Harvest_%2820200822-NRCS-LSC-2035%29.webm/960px--Harvest_%2820200822-NRCS-LSC-2035%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_97c226b3586e4798af37/v1/thumb_001.jpg"
+    },
+    {
+      "scene": 2,
+      "start": 8.5,
+      "end": 12.64,
+      "duration": 4.14,
+      "narration": "Some are switching to crops that need less water, like millets and pulses.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "nature",
+      "visual_plan": "Close up of healthy millet crops growing in a dry region.",
+      "queries": [
+        "millet crops growing",
+        "grain agriculture field",
+        "drought resistant crops"
+      ],
+      "negative_terms": [
+        "rice paddy",
+        "wet mud"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:2",
+        "kind": "card",
+        "title": "Card: Some are switching to crops that need less water, like mille",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "judge": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [
+        {
+          "id": "wikimedia:17717005",
+          "source": "wikimedia",
+          "score": 0.2081,
+          "title": "File:20110716Getreideernte Hockenheim1.ogv",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ed/20110716Getreideernte_Hockenheim1.ogv/500px--20110716Getreideernte_Hockenheim1.ogv.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "CC0"
+        },
+        {
+          "id": "wikimedia:62431326",
+          "source": "wikimedia",
+          "score": 0.0696,
+          "title": "File:Shifting Cultivation.webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Shifting_Cultivation.webm/960px--Shifting_Cultivation.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "CC BY 3.0"
+        },
+        {
+          "id": "wikimedia:186381900",
+          "source": "wikimedia",
+          "score": 0.0231,
+          "title": "File:Secretary Vilsack visits Grain Elevator and Port Facility (20220311-OSEC-LS",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d1/Secretary_Vilsack_visits_Grain_Elevator_and_Port_Facility_%2820220311-OSEC-LSC-0961%29.webm/960px--Secretary_Vilsack_visits_Grain_Elevator_and_Port_Facility_%2820220311-OSEC-LSC-0961%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:186381940",
+          "source": "wikimedia",
+          "score": 0.0172,
+          "title": "File:Secretary Vilsack visits Grain Elevator and Port Facility (20220311-OSEC-LS",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/63/Secretary_Vilsack_visits_Grain_Elevator_and_Port_Facility_%2820220311-OSEC-LSC-0960mp4%29.webm/960px--Secretary_Vilsack_visits_Grain_Elevator_and_Port_Facility_%2820220311-OSEC-LSC-0960mp4%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:186381852",
+          "source": "wikimedia",
+          "score": -0.0393,
+          "title": "File:Secretary Vilsack visits Grain Elevator and Port Facility (20220311-OSEC-LS",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/Secretary_Vilsack_visits_Grain_Elevator_and_Port_Facility_%2820220311-OSEC-LSC-0959%29.webm/960px--Secretary_Vilsack_visits_Grain_Elevator_and_Port_Facility_%2820220311-OSEC-LSC-0959%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_97c226b3586e4798af37/v1/thumb_002.jpg"
+    },
+    {
+      "scene": 3,
+      "start": 12.64,
+      "end": 16.72,
+      "duration": 4.08,
+      "narration": "Others use drip irrigation to deliver water straight to the roots.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "technology",
+      "visual_plan": "Drip irrigation pipes watering plant roots directly in a neat row.",
+      "queries": [
+        "drip irrigation system",
+        "watering plant roots",
+        "farm water pipe"
+      ],
+      "negative_terms": [
+        "sprinkler",
+        "flood irrigation"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:3",
+        "kind": "card",
+        "title": "Card: Others use drip irrigation to deliver water straight to the ",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "judge": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [],
+      "thumbnail": "/files/jobs/job_97c226b3586e4798af37/v1/thumb_003.jpg"
+    },
+    {
+      "scene": 4,
+      "start": 16.72,
+      "end": 22.14,
+      "duration": 5.42,
+      "narration": "Solar pumps are replacing diesel engines in many villages, cutting both cost and pollution.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "technology",
+      "visual_plan": "Solar panels installed near a farm water pump in a rural setting.",
+      "queries": [
+        "solar water pump",
+        "solar panels farm",
+        "renewable energy agriculture"
+      ],
+      "negative_terms": [
+        "diesel generator",
+        "smoke pollution"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:4",
+        "kind": "card",
+        "title": "Card: Solar pumps are replacing diesel engines in many villages, c",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "judge": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [],
+      "thumbnail": "/files/jobs/job_97c226b3586e4798af37/v1/thumb_004.jpg"
+    },
+    {
+      "scene": 5,
+      "start": 22.14,
+      "end": 26.98,
+      "duration": 4.84,
+      "narration": "In cities, rooftop gardens and vertical farms grow vegetables close to the people who eat them.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "business",
+      "visual_plan": "A modern urban rooftop garden with green leafy vegetables growing.",
+      "queries": [
+        "rooftop garden city",
+        "urban farming vegetables",
+        "vertical farm indoor"
+      ],
+      "negative_terms": [
+        "wild forest",
+        "rural village"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:5",
+        "kind": "card",
+        "title": "Card: In cities, rooftop gardens and vertical farms grow vegetable",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "judge": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [],
+      "thumbnail": "/files/jobs/job_97c226b3586e4798af37/v1/thumb_005.jpg"
+    },
+    {
+      "scene": 6,
+      "start": 26.98,
+      "end": 31.68,
+      "duration": 4.7,
+      "narration": "Scientists are breeding rice that can survive under water for two weeks.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "technology",
+      "visual_plan": "Rice seedlings submerged in water inside a controlled agricultural greenhouse.",
+      "queries": [
+        "rice breeding lab",
+        "flooded rice plants",
+        "agricultural science research"
+      ],
+      "negative_terms": [
+        "dry soil",
+        "wheat field"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:6",
+        "kind": "card",
+        "title": "Card: Scientists are breeding rice that can survive under water fo",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "auto-replaced by QA with card (black/frozen frames, no alternative)",
+      "relevance_score": null,
+      "judge": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [],
+      "thumbnail": "/files/jobs/job_97c226b3586e4798af37/v1/thumb_006.jpg"
+    },
+    {
+      "scene": 7,
+      "start": 31.68,
+      "end": 270.66,
+      "duration": 238.98,
+      "narration": "Weather apps on simple phones warn farmers before storms arrive.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "technology",
+      "visual_plan": "A hand holding a smartphone displaying a weather forecast app.",
+      "queries": [
+        "weather app phone",
+        "mobile weather forecast",
+        "smartphone in hand"
+      ],
+      "negative_terms": [
+        "broken phone",
+        "computer screen"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:7",
+        "kind": "card",
+        "title": "Card: Weather apps on simple phones warn farmers before storms arr",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "auto-replaced by QA with card (black/frozen frames, no alternative)",
+      "relevance_score": null,
+      "judge": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [],
+      "thumbnail": "/files/jobs/job_97c226b3586e4798af37/v1/thumb_007.jpg"
+    },
+    {
+      "scene": 8,
+      "start": 270.66,
+      "end": 276.02,
+      "duration": 5.36,
+      "narration": "Cooperatives help small farmers share tractors, storage and fair prices.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "business",
+      "visual_plan": "Modern farm tractors parked together outside a storage facility.",
+      "queries": [
+        "farm tractors parked",
+        "agricultural machinery storage",
+        "farming cooperative"
+      ],
+      "negative_terms": [
+        "rusty old tractor",
+        "city traffic"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:8",
+        "kind": "card",
+        "title": "Card: Cooperatives help small farmers share tractors, storage and ",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "judge": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [],
+      "thumbnail": "/files/jobs/job_97c226b3586e4798af37/v1/thumb_008.jpg"
+    },
+    {
+      "scene": 9,
+      "start": 276.02,
+      "end": 280.84,
+      "duration": 4.82,
+      "narration": "Soil health cards tell each farmer exactly which nutrients the field needs.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "business",
+      "visual_plan": "Soil sample being tested in an agricultural laboratory setting.",
+      "queries": [
+        "soil test agriculture",
+        "soil health card",
+        "nutrients testing soil"
+      ],
+      "negative_terms": [
+        "dirty hands",
+        "construction sand"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:9",
+        "kind": "card",
+        "title": "Card: Soil health cards tell each farmer exactly which nutrients t",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "judge": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [],
+      "thumbnail": "/files/jobs/job_97c226b3586e4798af37/v1/thumb_009.jpg"
+    },
+    {
+      "scene": 10,
+      "start": 280.84,
+      "end": 286.42,
+      "duration": 5.58,
+      "narration": "Planting trees along field borders protects crops from wind and keeps the soil moist.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "nature",
+      "visual_plan": "Row of tall green trees planted along the edge of a crop field.",
+      "queries": [
+        "trees field border",
+        "windbreak trees farm",
+        "shelterbelt agriculture"
+      ],
+      "negative_terms": [
+        "dense jungle",
+        "city park"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:10",
+        "kind": "card",
+        "title": "Card: Planting trees along field borders protects crops from wind ",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "judge": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [
+        {
+          "id": "wikimedia:165924597",
+          "source": "wikimedia",
+          "score": 0.0664,
+          "title": "File:Grande Ronde Wild and Scenic River (35034510631).webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/Grande_Ronde_Wild_and_Scenic_River_%2835034510631%29.webm/960px--Grande_Ronde_Wild_and_Scenic_River_%2835034510631%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:65297604",
+          "source": "wikimedia",
+          "score": 0.0514,
+          "title": "File:Home Movies - Western U.S., New Mexico, Mexico, California, Colorado, Utah.",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/95/Home_Movies_-_Western_U.S.%2C_New_Mexico%2C_Mexico%2C_California%2C_Colorado%2C_Utah.webm/500px--Home_Movies_-_Western_U.S.%2C_New_Mexico%2C_Mexico%2C_California%2C_Colorado%2C_Utah.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public Domain"
+        },
+        {
+          "id": "wikimedia:165946414",
+          "source": "wikimedia",
+          "score": -0.0224,
+          "title": "File:Sage grouse GPS in southern Oregon (21510484742).webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/Sage_grouse_GPS_in_southern_Oregon_%2821510484742%29.webm/960px--Sage_grouse_GPS_in_southern_Oregon_%2821510484742%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_97c226b3586e4798af37/v1/thumb_010.jpg"
+    },
+    {
+      "scene": 11,
+      "start": 286.42,
+      "end": 289.9,
+      "duration": 3.48,
+      "narration": "Climate change is reshaping the way we grow food.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "nature",
+      "visual_plan": "A wide aerial shot of green agricultural fields under a bright sky.",
+      "queries": [
+        "green farm fields",
+        "agriculture aerial view",
+        "growing crops farm"
+      ],
+      "negative_terms": [
+        "dry land",
+        "dead plants"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "wikimedia:186480493",
+        "kind": "video",
+        "title": "File:Harvest (20200822-NRCS-LSC-1434).webm",
+        "source": "wikimedia",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Harvest_(20200822-NRCS-LSC-1434).webm",
+        "media_url": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Harvest_%2820200822-NRCS-LSC-1434%29.webm?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "licence": "Public domain",
+        "licence_url": "",
+        "attribution": "USDAgov via Wikimedia Commons (Public domain)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "agriculture aerial view"
+      },
+      "reason": "stock: wikimedia clip scored 0.250 >= tau 0.24; best unused of 12 safe candidates",
+      "relevance_score": 0.2503,
+      "judge": null,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2503,
+        "negative_max": 0.1953,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.579,
+      "alternatives": [
+        {
+          "id": "wikimedia:186478521",
+          "source": "wikimedia",
+          "score": 0.2533,
+          "title": "File:Establishing aerial video view from slightly above and in front of a motori",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bd/Establishing_aerial_video_view_from_slightly_above_and_in_front_of_a_motorized_cotton_picker_going_through_a_cotton_field_using_GPS-based_automatic_steering_to_precisely_navigate_thousands_of_cotton_rows_durin_%2820200823-NRCS-LSC-0900%29.webm/960px--thumbnail.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:186480493",
+          "source": "wikimedia",
+          "score": 0.2503,
+          "title": "File:Harvest (20200822-NRCS-LSC-1434).webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/Harvest_%2820200822-NRCS-LSC-1434%29.webm/960px--Harvest_%2820200822-NRCS-LSC-1434%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:186478713",
+          "source": "wikimedia",
+          "score": 0.245,
+          "title": "File:20200822-NRCS-LSC-1435 1.webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/52/20200822-NRCS-LSC-1435_1.webm/960px--20200822-NRCS-LSC-1435_1.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:186480592",
+          "source": "wikimedia",
+          "score": 0.2159,
+          "title": "File:Harvest (20200822-NRCS-LSC-1295).webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/Harvest_%2820200822-NRCS-LSC-1295%29.webm/960px--Harvest_%2820200822-NRCS-LSC-1295%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:186478814",
+          "source": "wikimedia",
+          "score": 0.1644,
+          "title": "File:Harvest (20200822-NRCS-LSC-1240).webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/47/Harvest_%2820200822-NRCS-LSC-1240%29.webm/960px--Harvest_%2820200822-NRCS-LSC-1240%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:155541048",
+          "source": "wikimedia",
+          "score": 0.1444,
+          "title": "File:Aerial Inspection of Typhoon-Affected Areas in Nueva Vizcaya 11-22-2024.web",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fe/Aerial_Inspection_of_Typhoon-Affected_Areas_in_Nueva_Vizcaya_11-22-2024.webm/960px--Aerial_Inspection_of_Typhoon-Affected_Areas_in_Nueva_Vizcaya_11-22-2024.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:147573500",
+          "source": "wikimedia",
+          "score": 0.1073,
+          "title": "File:Fresno Family Farm shareholder and individual producer Keng Xiong USDA inte",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9e/Fresno_Family_Farm_shareholder_and_individual_producer_Keng_Xiong_USDA_interview.webm/960px--Fresno_Family_Farm_shareholder_and_individual_producer_Keng_Xiong_USDA_interview.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:186472835",
+          "source": "wikimedia",
+          "score": 0.0655,
+          "title": "File:Bowling Green Farm-hogs-chicken (20211203-FPAC-PJK-V-001).webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4f/Bowling_Green_Farm-hogs-chicken_%2820211203-FPAC-PJK-V-001%29.webm/960px--Bowling_Green_Farm-hogs-chicken_%2820211203-FPAC-PJK-V-001%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_97c226b3586e4798af37/v1/thumb_011.jpg"
+    },
+    {
+      "scene": 12,
+      "start": 289.9,
+      "end": 294.54,
+      "duration": 4.64,
+      "narration": "Farmers in many regions now face longer dry seasons and sudden heavy rains.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "nature",
+      "visual_plan": "Heavy rain falling on a green crop field, demonstrating changing weather.",
+      "queries": [
+        "heavy rain on crops",
+        "storm over farm",
+        "weather change rain"
+      ],
+      "negative_terms": [
+        "urban flood",
+        "indoor"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "wikimedia:186481145",
+        "kind": "video",
+        "title": "File:20200822-NRCS-LSC-2986 TL.webm",
+        "source": "wikimedia",
+        "source_url": "https://commons.wikimedia.org/wiki/File:20200822-NRCS-LSC-2986_TL.webm",
+        "media_url": "https://upload.wikimedia.org/wikipedia/commons/8/88/20200822-NRCS-LSC-2986_TL.webm?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "licence": "Public domain",
+        "licence_url": "",
+        "attribution": "USDAgov via Wikimedia Commons (Public domain)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "storm over farm"
+      },
+      "reason": "stock (low confidence): wikimedia scored 0.220 (< tau 0.24, within 0.03); no AI option",
+      "relevance_score": 0.2203,
+      "judge": null,
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2203,
+        "negative_max": 0.1538,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.478,
+      "alternatives": [
+        {
+          "id": "wikimedia:186473863",
+          "source": "wikimedia",
+          "score": 0.2655,
+          "title": "File:Irrigation and Water (20210603-NRCS-LSC-0448).webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/Irrigation_and_Water_%2820210603-NRCS-LSC-0448%29.webm/960px--Irrigation_and_Water_%2820210603-NRCS-LSC-0448%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:186481145",
+          "source": "wikimedia",
+          "score": 0.2203,
+          "title": "File:20200822-NRCS-LSC-2986 TL.webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/88/20200822-NRCS-LSC-2986_TL.webm/960px--20200822-NRCS-LSC-2986_TL.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:186480345",
+          "source": "wikimedia",
+          "score": 0.1898,
+          "title": "File:Harvest (20200822-NRCS-LSC-1077).webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Harvest_%2820200822-NRCS-LSC-1077%29.webm/960px--Harvest_%2820200822-NRCS-LSC-1077%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:186473680",
+          "source": "wikimedia",
+          "score": 0.1829,
+          "title": "File:Irrigation and Water (20210603-NRCS-LSC-0449).webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/Irrigation_and_Water_%2820210603-NRCS-LSC-0449%29.webm/960px--Irrigation_and_Water_%2820210603-NRCS-LSC-0449%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:186478694",
+          "source": "wikimedia",
+          "score": 0.1563,
+          "title": "File:Harvest (20200822-NRCS-LSC-1359).webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Harvest_%2820200822-NRCS-LSC-1359%29.webm/960px--Harvest_%2820200822-NRCS-LSC-1359%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:186480855",
+          "source": "wikimedia",
+          "score": 0.1437,
+          "title": "File:Harvest (20200822-NRCS-LSC-1135).webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Harvest_%2820200822-NRCS-LSC-1135%29.webm/960px--Harvest_%2820200822-NRCS-LSC-1135%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:186480261",
+          "source": "wikimedia",
+          "score": 0.1042,
+          "title": "File:Harvest (20200822-NRCS-LSC-1115).webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/Harvest_%2820200822-NRCS-LSC-1115%29.webm/960px--Harvest_%2820200822-NRCS-LSC-1115%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:186478560",
+          "source": "wikimedia",
+          "score": 0.0412,
+          "title": "File:Harvest (20200822-NRCS-LSC-2035).webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/Harvest_%2820200822-NRCS-LSC-2035%29.webm/960px--Harvest_%2820200822-NRCS-LSC-2035%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_97c226b3586e4798af37/v1/thumb_012.jpg"
+    },
+    {
+      "scene": 13,
+      "start": 294.54,
+      "end": 298.66,
+      "duration": 4.12,
+      "narration": "Some are switching to crops that need less water, like millets and pulses.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "nature",
+      "visual_plan": "Close up of healthy millet crops growing in a dry region.",
+      "queries": [
+        "millet crops growing",
+        "grain agriculture field",
+        "drought resistant crops"
+      ],
+      "negative_terms": [
+        "rice paddy",
+        "wet mud"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:13",
+        "kind": "card",
+        "title": "Card: Some are switching to crops that need less water, like mille",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "judge": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [
+        {
+          "id": "wikimedia:17717005",
+          "source": "wikimedia",
+          "score": 0.2081,
+          "title": "File:20110716Getreideernte Hockenheim1.ogv",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ed/20110716Getreideernte_Hockenheim1.ogv/500px--20110716Getreideernte_Hockenheim1.ogv.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "CC0"
+        },
+        {
+          "id": "wikimedia:62431326",
+          "source": "wikimedia",
+          "score": 0.0696,
+          "title": "File:Shifting Cultivation.webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Shifting_Cultivation.webm/960px--Shifting_Cultivation.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "CC BY 3.0"
+        },
+        {
+          "id": "wikimedia:186381900",
+          "source": "wikimedia",
+          "score": 0.0231,
+          "title": "File:Secretary Vilsack visits Grain Elevator and Port Facility (20220311-OSEC-LS",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d1/Secretary_Vilsack_visits_Grain_Elevator_and_Port_Facility_%2820220311-OSEC-LSC-0961%29.webm/960px--Secretary_Vilsack_visits_Grain_Elevator_and_Port_Facility_%2820220311-OSEC-LSC-0961%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:186381940",
+          "source": "wikimedia",
+          "score": 0.0172,
+          "title": "File:Secretary Vilsack visits Grain Elevator and Port Facility (20220311-OSEC-LS",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/63/Secretary_Vilsack_visits_Grain_Elevator_and_Port_Facility_%2820220311-OSEC-LSC-0960mp4%29.webm/960px--Secretary_Vilsack_visits_Grain_Elevator_and_Port_Facility_%2820220311-OSEC-LSC-0960mp4%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:186381852",
+          "source": "wikimedia",
+          "score": -0.0393,
+          "title": "File:Secretary Vilsack visits Grain Elevator and Port Facility (20220311-OSEC-LS",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/Secretary_Vilsack_visits_Grain_Elevator_and_Port_Facility_%2820220311-OSEC-LSC-0959%29.webm/960px--Secretary_Vilsack_visits_Grain_Elevator_and_Port_Facility_%2820220311-OSEC-LSC-0959%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_97c226b3586e4798af37/v1/thumb_013.jpg"
+    },
+    {
+      "scene": 14,
+      "start": 298.66,
+      "end": 302.78,
+      "duration": 4.12,
+      "narration": "Others use drip irrigation to deliver water straight to the roots.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "technology",
+      "visual_plan": "Drip irrigation pipes watering plant roots directly in a neat row.",
+      "queries": [
+        "drip irrigation system",
+        "watering plant roots",
+        "farm water pipe"
+      ],
+      "negative_terms": [
+        "sprinkler",
+        "flood irrigation"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:14",
+        "kind": "card",
+        "title": "Card: Others use drip irrigation to deliver water straight to the ",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "judge": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [],
+      "thumbnail": "/files/jobs/job_97c226b3586e4798af37/v1/thumb_014.jpg"
+    },
+    {
+      "scene": 15,
+      "start": 302.78,
+      "end": 308.38,
+      "duration": 5.6,
+      "narration": "Solar pumps are replacing diesel engines in many villages, cutting both cost and pollution.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "technology",
+      "visual_plan": "Solar panels installed near a farm water pump in a rural setting.",
+      "queries": [
+        "solar water pump",
+        "solar panels farm",
+        "renewable energy agriculture"
+      ],
+      "negative_terms": [
+        "diesel generator",
+        "smoke pollution"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:15",
+        "kind": "card",
+        "title": "Card: Solar pumps are replacing diesel engines in many villages, c",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "judge": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [],
+      "thumbnail": "/files/jobs/job_97c226b3586e4798af37/v1/thumb_015.jpg"
+    },
+    {
+      "scene": 16,
+      "start": 308.38,
+      "end": 313.14,
+      "duration": 4.76,
+      "narration": "In cities, rooftop gardens and vertical farms grow vegetables close to the people who eat them.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "business",
+      "visual_plan": "A modern urban rooftop garden with green leafy vegetables growing.",
+      "queries": [
+        "rooftop garden city",
+        "urban farming vegetables",
+        "vertical farm indoor"
+      ],
+      "negative_terms": [
+        "wild forest",
+        "rural village"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:16",
+        "kind": "card",
+        "title": "Card: In cities, rooftop gardens and vertical farms grow vegetable",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "judge": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [],
+      "thumbnail": "/files/jobs/job_97c226b3586e4798af37/v1/thumb_016.jpg"
+    },
+    {
+      "scene": 17,
+      "start": 313.14,
+      "end": 317.66,
+      "duration": 4.52,
+      "narration": "Scientists are breeding rice that can survive under water for two weeks.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "technology",
+      "visual_plan": "Rice seedlings submerged in water inside a controlled agricultural greenhouse.",
+      "queries": [
+        "rice breeding lab",
+        "flooded rice plants",
+        "agricultural science research"
+      ],
+      "negative_terms": [
+        "dry soil",
+        "wheat field"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:17",
+        "kind": "card",
+        "title": "Card: Scientists are breeding rice that can survive under water fo",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "judge": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [],
+      "thumbnail": "/files/jobs/job_97c226b3586e4798af37/v1/thumb_017.jpg"
+    },
+    {
+      "scene": 18,
+      "start": 317.66,
+      "end": 321.8,
+      "duration": 4.14,
+      "narration": "Weather apps on simple phones warn farmers before storms arrive.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "technology",
+      "visual_plan": "A hand holding a smartphone displaying a weather forecast app.",
+      "queries": [
+        "weather app phone",
+        "mobile weather forecast",
+        "smartphone in hand"
+      ],
+      "negative_terms": [
+        "broken phone",
+        "computer screen"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:18",
+        "kind": "card",
+        "title": "Card: Weather apps on simple phones warn farmers before storms arr",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "judge": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [],
+      "thumbnail": "/files/jobs/job_97c226b3586e4798af37/v1/thumb_018.jpg"
+    },
+    {
+      "scene": 19,
+      "start": 321.8,
+      "end": 326.6,
+      "duration": 4.8,
+      "narration": "Cooperatives help small farmers share tractors, storage and fair prices.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "business",
+      "visual_plan": "Modern farm tractors parked together outside a storage facility.",
+      "queries": [
+        "farm tractors parked",
+        "agricultural machinery storage",
+        "farming cooperative"
+      ],
+      "negative_terms": [
+        "rusty old tractor",
+        "city traffic"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:19",
+        "kind": "card",
+        "title": "Card: Cooperatives help small farmers share tractors, storage and ",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "judge": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [],
+      "thumbnail": "/files/jobs/job_97c226b3586e4798af37/v1/thumb_019.jpg"
+    },
+    {
+      "scene": 20,
+      "start": 326.6,
+      "end": 331.28,
+      "duration": 4.68,
+      "narration": "Soil health cards tell each farmer exactly which nutrients the field needs.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "business",
+      "visual_plan": "Soil sample being tested in an agricultural laboratory setting.",
+      "queries": [
+        "soil test agriculture",
+        "soil health card",
+        "nutrients testing soil"
+      ],
+      "negative_terms": [
+        "dirty hands",
+        "construction sand"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:20",
+        "kind": "card",
+        "title": "Card: Soil health cards tell each farmer exactly which nutrients t",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "judge": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [],
+      "thumbnail": "/files/jobs/job_97c226b3586e4798af37/v1/thumb_020.jpg"
+    },
+    {
+      "scene": 21,
+      "start": 331.28,
+      "end": 337.04,
+      "duration": 5.76,
+      "narration": "Planting trees along field borders protects crops from wind and keeps the soil moist. Climate change is reshaping the way we grow food.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "nature",
+      "visual_plan": "Row of tall green trees planted along the edge of a crop field.",
+      "queries": [
+        "trees field border",
+        "windbreak trees farm",
+        "shelterbelt agriculture"
+      ],
+      "negative_terms": [
+        "dense jungle",
+        "city park"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:21",
+        "kind": "card",
+        "title": "Card: Planting trees along field borders protects crops from wind ",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "judge": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [
+        {
+          "id": "wikimedia:165924597",
+          "source": "wikimedia",
+          "score": 0.0719,
+          "title": "File:Grande Ronde Wild and Scenic River (35034510631).webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/Grande_Ronde_Wild_and_Scenic_River_%2835034510631%29.webm/960px--Grande_Ronde_Wild_and_Scenic_River_%2835034510631%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:65297604",
+          "source": "wikimedia",
+          "score": 0.0398,
+          "title": "File:Home Movies - Western U.S., New Mexico, Mexico, California, Colorado, Utah.",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/95/Home_Movies_-_Western_U.S.%2C_New_Mexico%2C_Mexico%2C_California%2C_Colorado%2C_Utah.webm/500px--Home_Movies_-_Western_U.S.%2C_New_Mexico%2C_Mexico%2C_California%2C_Colorado%2C_Utah.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public Domain"
+        },
+        {
+          "id": "wikimedia:165946414",
+          "source": "wikimedia",
+          "score": -0.014,
+          "title": "File:Sage grouse GPS in southern Oregon (21510484742).webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/Sage_grouse_GPS_in_southern_Oregon_%2821510484742%29.webm/960px--Sage_grouse_GPS_in_southern_Oregon_%2821510484742%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_97c226b3586e4798af37/v1/thumb_021.jpg"
+    },
+    {
+      "scene": 22,
+      "start": 337.04,
+      "end": 339.64,
+      "duration": 2.6,
+      "narration": "Farmers in many regions now face longer dry seasons and sudden heavy rains.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "nature",
+      "visual_plan": "Heavy rain falling on a green crop field, demonstrating changing weather.",
+      "queries": [
+        "heavy rain on crops",
+        "storm over farm",
+        "weather change rain"
+      ],
+      "negative_terms": [
+        "urban flood",
+        "indoor"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:22",
+        "kind": "card",
+        "title": "Card: Farmers in many regions now face longer dry seasons and sudd",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "judge": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [
+        {
+          "id": "wikimedia:186473863",
+          "source": "wikimedia",
+          "score": 0.2655,
+          "title": "File:Irrigation and Water (20210603-NRCS-LSC-0448).webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/Irrigation_and_Water_%2820210603-NRCS-LSC-0448%29.webm/960px--Irrigation_and_Water_%2820210603-NRCS-LSC-0448%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:186481145",
+          "source": "wikimedia",
+          "score": 0.2203,
+          "title": "File:20200822-NRCS-LSC-2986 TL.webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/88/20200822-NRCS-LSC-2986_TL.webm/960px--20200822-NRCS-LSC-2986_TL.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:186480345",
+          "source": "wikimedia",
+          "score": 0.1898,
+          "title": "File:Harvest (20200822-NRCS-LSC-1077).webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Harvest_%2820200822-NRCS-LSC-1077%29.webm/960px--Harvest_%2820200822-NRCS-LSC-1077%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:186473680",
+          "source": "wikimedia",
+          "score": 0.1829,
+          "title": "File:Irrigation and Water (20210603-NRCS-LSC-0449).webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/Irrigation_and_Water_%2820210603-NRCS-LSC-0449%29.webm/960px--Irrigation_and_Water_%2820210603-NRCS-LSC-0449%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:186478694",
+          "source": "wikimedia",
+          "score": 0.1563,
+          "title": "File:Harvest (20200822-NRCS-LSC-1359).webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Harvest_%2820200822-NRCS-LSC-1359%29.webm/960px--Harvest_%2820200822-NRCS-LSC-1359%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:186480855",
+          "source": "wikimedia",
+          "score": 0.1437,
+          "title": "File:Harvest (20200822-NRCS-LSC-1135).webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Harvest_%2820200822-NRCS-LSC-1135%29.webm/960px--Harvest_%2820200822-NRCS-LSC-1135%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:186480261",
+          "source": "wikimedia",
+          "score": 0.1042,
+          "title": "File:Harvest (20200822-NRCS-LSC-1115).webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/Harvest_%2820200822-NRCS-LSC-1115%29.webm/960px--Harvest_%2820200822-NRCS-LSC-1115%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:186478560",
+          "source": "wikimedia",
+          "score": 0.0412,
+          "title": "File:Harvest (20200822-NRCS-LSC-2035).webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/Harvest_%2820200822-NRCS-LSC-2035%29.webm/960px--Harvest_%2820200822-NRCS-LSC-2035%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_97c226b3586e4798af37/v1/thumb_022.jpg"
+    },
+    {
+      "scene": 23,
+      "start": 339.64,
+      "end": 342.24,
+      "duration": 2.6,
+      "narration": "Some are switching to crops that need less water, like millets and pulses.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "nature",
+      "visual_plan": "Close up of healthy millet crops growing in a dry region.",
+      "queries": [
+        "millet crops growing",
+        "grain agriculture field",
+        "drought resistant crops"
+      ],
+      "negative_terms": [
+        "rice paddy",
+        "wet mud"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:23",
+        "kind": "card",
+        "title": "Card: Some are switching to crops that need less water, like mille",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "judge": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [
+        {
+          "id": "wikimedia:17717005",
+          "source": "wikimedia",
+          "score": 0.2081,
+          "title": "File:20110716Getreideernte Hockenheim1.ogv",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ed/20110716Getreideernte_Hockenheim1.ogv/500px--20110716Getreideernte_Hockenheim1.ogv.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "CC0"
+        },
+        {
+          "id": "wikimedia:62431326",
+          "source": "wikimedia",
+          "score": 0.0696,
+          "title": "File:Shifting Cultivation.webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Shifting_Cultivation.webm/960px--Shifting_Cultivation.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "CC BY 3.0"
+        },
+        {
+          "id": "wikimedia:186381900",
+          "source": "wikimedia",
+          "score": 0.0231,
+          "title": "File:Secretary Vilsack visits Grain Elevator and Port Facility (20220311-OSEC-LS",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d1/Secretary_Vilsack_visits_Grain_Elevator_and_Port_Facility_%2820220311-OSEC-LSC-0961%29.webm/960px--Secretary_Vilsack_visits_Grain_Elevator_and_Port_Facility_%2820220311-OSEC-LSC-0961%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:186381940",
+          "source": "wikimedia",
+          "score": 0.0172,
+          "title": "File:Secretary Vilsack visits Grain Elevator and Port Facility (20220311-OSEC-LS",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/63/Secretary_Vilsack_visits_Grain_Elevator_and_Port_Facility_%2820220311-OSEC-LSC-0960mp4%29.webm/960px--Secretary_Vilsack_visits_Grain_Elevator_and_Port_Facility_%2820220311-OSEC-LSC-0960mp4%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:186381852",
+          "source": "wikimedia",
+          "score": -0.0393,
+          "title": "File:Secretary Vilsack visits Grain Elevator and Port Facility (20220311-OSEC-LS",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/Secretary_Vilsack_visits_Grain_Elevator_and_Port_Facility_%2820220311-OSEC-LSC-0959%29.webm/960px--Secretary_Vilsack_visits_Grain_Elevator_and_Port_Facility_%2820220311-OSEC-LSC-0959%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_97c226b3586e4798af37/v1/thumb_023.jpg"
+    },
+    {
+      "scene": 24,
+      "start": 342.24,
+      "end": 344.44,
+      "duration": 2.2,
+      "narration": "Others use drip irrigation to deliver water straight to the roots.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "technology",
+      "visual_plan": "Drip irrigation pipes watering plant roots directly in a neat row.",
+      "queries": [
+        "drip irrigation system",
+        "watering plant roots",
+        "farm water pipe"
+      ],
+      "negative_terms": [
+        "sprinkler",
+        "flood irrigation"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:24",
+        "kind": "card",
+        "title": "Card: Others use drip irrigation to deliver water straight to the ",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "judge": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [],
+      "thumbnail": "/files/jobs/job_97c226b3586e4798af37/v1/thumb_024.jpg"
+    },
+    {
+      "scene": 25,
+      "start": 344.44,
+      "end": 347.24,
+      "duration": 2.8,
+      "narration": "Solar pumps are replacing diesel engines in many villages, cutting both cost and pollution.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "technology",
+      "visual_plan": "Solar panels installed near a farm water pump in a rural setting.",
+      "queries": [
+        "solar water pump",
+        "solar panels farm",
+        "renewable energy agriculture"
+      ],
+      "negative_terms": [
+        "diesel generator",
+        "smoke pollution"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:25",
+        "kind": "card",
+        "title": "Card: Solar pumps are replacing diesel engines in many villages, c",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "judge": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [],
+      "thumbnail": "/files/jobs/job_97c226b3586e4798af37/v1/thumb_025.jpg"
+    },
+    {
+      "scene": 26,
+      "start": 347.24,
+      "end": 350.44,
+      "duration": 3.2,
+      "narration": "In cities, rooftop gardens and vertical farms grow vegetables close to the people who eat them.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "business",
+      "visual_plan": "A modern urban rooftop garden with green leafy vegetables growing.",
+      "queries": [
+        "rooftop garden city",
+        "urban farming vegetables",
+        "vertical farm indoor"
+      ],
+      "negative_terms": [
+        "wild forest",
+        "rural village"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:26",
+        "kind": "card",
+        "title": "Card: In cities, rooftop gardens and vertical farms grow vegetable",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "judge": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [],
+      "thumbnail": "/files/jobs/job_97c226b3586e4798af37/v1/thumb_026.jpg"
+    },
+    {
+      "scene": 27,
+      "start": 350.44,
+      "end": 356.84,
+      "duration": 6.4,
+      "narration": "Scientists are breeding rice that can survive under water for two weeks. Weather apps on simple phones warn farmers before storms arrive. Cooperatives help small farmers share tractors, storage and fair prices.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "technology",
+      "visual_plan": "Rice seedlings submerged in water inside a controlled agricultural greenhouse.",
+      "queries": [
+        "rice breeding lab",
+        "flooded rice plants",
+        "agricultural science research"
+      ],
+      "negative_terms": [
+        "dry soil",
+        "wheat field"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:27",
+        "kind": "card",
+        "title": "Card: Scientists are breeding rice that can survive under water fo",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "judge": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [],
+      "thumbnail": "/files/jobs/job_97c226b3586e4798af37/v1/thumb_027.jpg"
+    },
+    {
+      "scene": 28,
+      "start": 356.84,
+      "end": 359.24,
+      "duration": 2.4,
+      "narration": "Soil health cards tell each farmer exactly which nutrients the field needs.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "business",
+      "visual_plan": "Soil sample being tested in an agricultural laboratory setting.",
+      "queries": [
+        "soil test agriculture",
+        "soil health card",
+        "nutrients testing soil"
+      ],
+      "negative_terms": [
+        "dirty hands",
+        "construction sand"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:28",
+        "kind": "card",
+        "title": "Card: Soil health cards tell each farmer exactly which nutrients t",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "judge": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [],
+      "thumbnail": "/files/jobs/job_97c226b3586e4798af37/v1/thumb_028.jpg"
+    },
+    {
+      "scene": 29,
+      "start": 359.24,
+      "end": 363.84,
+      "duration": 4.6,
+      "narration": "Planting trees along field borders protects crops from wind and keeps the soil moist. Climate change is reshaping the way we grow food.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "nature",
+      "visual_plan": "Row of tall green trees planted along the edge of a crop field.",
+      "queries": [
+        "trees field border",
+        "windbreak trees farm",
+        "shelterbelt agriculture"
+      ],
+      "negative_terms": [
+        "dense jungle",
+        "city park"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:29",
+        "kind": "card",
+        "title": "Card: Planting trees along field borders protects crops from wind ",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "judge": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [
+        {
+          "id": "wikimedia:165924597",
+          "source": "wikimedia",
+          "score": 0.0719,
+          "title": "File:Grande Ronde Wild and Scenic River (35034510631).webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/Grande_Ronde_Wild_and_Scenic_River_%2835034510631%29.webm/960px--Grande_Ronde_Wild_and_Scenic_River_%2835034510631%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:65297604",
+          "source": "wikimedia",
+          "score": 0.0398,
+          "title": "File:Home Movies - Western U.S., New Mexico, Mexico, California, Colorado, Utah.",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/95/Home_Movies_-_Western_U.S.%2C_New_Mexico%2C_Mexico%2C_California%2C_Colorado%2C_Utah.webm/500px--Home_Movies_-_Western_U.S.%2C_New_Mexico%2C_Mexico%2C_California%2C_Colorado%2C_Utah.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public Domain"
+        },
+        {
+          "id": "wikimedia:165946414",
+          "source": "wikimedia",
+          "score": -0.014,
+          "title": "File:Sage grouse GPS in southern Oregon (21510484742).webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/Sage_grouse_GPS_in_southern_Oregon_%2821510484742%29.webm/960px--Sage_grouse_GPS_in_southern_Oregon_%2821510484742%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_97c226b3586e4798af37/v1/thumb_029.jpg"
+    },
+    {
+      "scene": 30,
+      "start": 363.84,
+      "end": 366.44,
+      "duration": 2.6,
+      "narration": "Farmers in many regions now face longer dry seasons and sudden heavy rains.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "nature",
+      "visual_plan": "Heavy rain falling on a green crop field, demonstrating changing weather.",
+      "queries": [
+        "heavy rain on crops",
+        "storm over farm",
+        "weather change rain"
+      ],
+      "negative_terms": [
+        "urban flood",
+        "indoor"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:30",
+        "kind": "card",
+        "title": "Card: Farmers in many regions now face longer dry seasons and sudd",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "judge": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [
+        {
+          "id": "wikimedia:186473863",
+          "source": "wikimedia",
+          "score": 0.2655,
+          "title": "File:Irrigation and Water (20210603-NRCS-LSC-0448).webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/Irrigation_and_Water_%2820210603-NRCS-LSC-0448%29.webm/960px--Irrigation_and_Water_%2820210603-NRCS-LSC-0448%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:186481145",
+          "source": "wikimedia",
+          "score": 0.2203,
+          "title": "File:20200822-NRCS-LSC-2986 TL.webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/88/20200822-NRCS-LSC-2986_TL.webm/960px--20200822-NRCS-LSC-2986_TL.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:186480345",
+          "source": "wikimedia",
+          "score": 0.1898,
+          "title": "File:Harvest (20200822-NRCS-LSC-1077).webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Harvest_%2820200822-NRCS-LSC-1077%29.webm/960px--Harvest_%2820200822-NRCS-LSC-1077%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:186473680",
+          "source": "wikimedia",
+          "score": 0.1829,
+          "title": "File:Irrigation and Water (20210603-NRCS-LSC-0449).webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/Irrigation_and_Water_%2820210603-NRCS-LSC-0449%29.webm/960px--Irrigation_and_Water_%2820210603-NRCS-LSC-0449%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:186478694",
+          "source": "wikimedia",
+          "score": 0.1563,
+          "title": "File:Harvest (20200822-NRCS-LSC-1359).webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Harvest_%2820200822-NRCS-LSC-1359%29.webm/960px--Harvest_%2820200822-NRCS-LSC-1359%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:186480855",
+          "source": "wikimedia",
+          "score": 0.1437,
+          "title": "File:Harvest (20200822-NRCS-LSC-1135).webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Harvest_%2820200822-NRCS-LSC-1135%29.webm/960px--Harvest_%2820200822-NRCS-LSC-1135%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:186480261",
+          "source": "wikimedia",
+          "score": 0.1042,
+          "title": "File:Harvest (20200822-NRCS-LSC-1115).webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/Harvest_%2820200822-NRCS-LSC-1115%29.webm/960px--Harvest_%2820200822-NRCS-LSC-1115%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:186478560",
+          "source": "wikimedia",
+          "score": 0.0412,
+          "title": "File:Harvest (20200822-NRCS-LSC-2035).webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/Harvest_%2820200822-NRCS-LSC-2035%29.webm/960px--Harvest_%2820200822-NRCS-LSC-2035%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_97c226b3586e4798af37/v1/thumb_030.jpg"
+    },
+    {
+      "scene": 31,
+      "start": 366.44,
+      "end": 369.04,
+      "duration": 2.6,
+      "narration": "Some are switching to crops that need less water, like millets and pulses.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "nature",
+      "visual_plan": "Close up of healthy millet crops growing in a dry region.",
+      "queries": [
+        "millet crops growing",
+        "grain agriculture field",
+        "drought resistant crops"
+      ],
+      "negative_terms": [
+        "rice paddy",
+        "wet mud"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:31",
+        "kind": "card",
+        "title": "Card: Some are switching to crops that need less water, like mille",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "judge": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [
+        {
+          "id": "wikimedia:17717005",
+          "source": "wikimedia",
+          "score": 0.2081,
+          "title": "File:20110716Getreideernte Hockenheim1.ogv",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ed/20110716Getreideernte_Hockenheim1.ogv/500px--20110716Getreideernte_Hockenheim1.ogv.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "CC0"
+        },
+        {
+          "id": "wikimedia:62431326",
+          "source": "wikimedia",
+          "score": 0.0696,
+          "title": "File:Shifting Cultivation.webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Shifting_Cultivation.webm/960px--Shifting_Cultivation.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "CC BY 3.0"
+        },
+        {
+          "id": "wikimedia:186381900",
+          "source": "wikimedia",
+          "score": 0.0231,
+          "title": "File:Secretary Vilsack visits Grain Elevator and Port Facility (20220311-OSEC-LS",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d1/Secretary_Vilsack_visits_Grain_Elevator_and_Port_Facility_%2820220311-OSEC-LSC-0961%29.webm/960px--Secretary_Vilsack_visits_Grain_Elevator_and_Port_Facility_%2820220311-OSEC-LSC-0961%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:186381940",
+          "source": "wikimedia",
+          "score": 0.0172,
+          "title": "File:Secretary Vilsack visits Grain Elevator and Port Facility (20220311-OSEC-LS",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/63/Secretary_Vilsack_visits_Grain_Elevator_and_Port_Facility_%2820220311-OSEC-LSC-0960mp4%29.webm/960px--Secretary_Vilsack_visits_Grain_Elevator_and_Port_Facility_%2820220311-OSEC-LSC-0960mp4%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:186381852",
+          "source": "wikimedia",
+          "score": -0.0393,
+          "title": "File:Secretary Vilsack visits Grain Elevator and Port Facility (20220311-OSEC-LS",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/Secretary_Vilsack_visits_Grain_Elevator_and_Port_Facility_%2820220311-OSEC-LSC-0959%29.webm/960px--Secretary_Vilsack_visits_Grain_Elevator_and_Port_Facility_%2820220311-OSEC-LSC-0959%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_97c226b3586e4798af37/v1/thumb_031.jpg"
+    },
+    {
+      "scene": 32,
+      "start": 369.04,
+      "end": 371.24,
+      "duration": 2.2,
+      "narration": "Others use drip irrigation to deliver water straight to the roots.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "technology",
+      "visual_plan": "Drip irrigation pipes watering plant roots directly in a neat row.",
+      "queries": [
+        "drip irrigation system",
+        "watering plant roots",
+        "farm water pipe"
+      ],
+      "negative_terms": [
+        "sprinkler",
+        "flood irrigation"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:32",
+        "kind": "card",
+        "title": "Card: Others use drip irrigation to deliver water straight to the ",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "judge": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [],
+      "thumbnail": "/files/jobs/job_97c226b3586e4798af37/v1/thumb_032.jpg"
+    },
+    {
+      "scene": 33,
+      "start": 371.24,
+      "end": 374.04,
+      "duration": 2.8,
+      "narration": "Solar pumps are replacing diesel engines in many villages, cutting both cost and pollution.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "technology",
+      "visual_plan": "Solar panels installed near a farm water pump in a rural setting.",
+      "queries": [
+        "solar water pump",
+        "solar panels farm",
+        "renewable energy agriculture"
+      ],
+      "negative_terms": [
+        "diesel generator",
+        "smoke pollution"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:33",
+        "kind": "card",
+        "title": "Card: Solar pumps are replacing diesel engines in many villages, c",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "judge": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [],
+      "thumbnail": "/files/jobs/job_97c226b3586e4798af37/v1/thumb_033.jpg"
+    },
+    {
+      "scene": 34,
+      "start": 374.04,
+      "end": 377.24,
+      "duration": 3.2,
+      "narration": "In cities, rooftop gardens and vertical farms grow vegetables close to the people who eat them.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "business",
+      "visual_plan": "A modern urban rooftop garden with green leafy vegetables growing.",
+      "queries": [
+        "rooftop garden city",
+        "urban farming vegetables",
+        "vertical farm indoor"
+      ],
+      "negative_terms": [
+        "wild forest",
+        "rural village"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:34",
+        "kind": "card",
+        "title": "Card: In cities, rooftop gardens and vertical farms grow vegetable",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "judge": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [],
+      "thumbnail": "/files/jobs/job_97c226b3586e4798af37/v1/thumb_034.jpg"
+    },
+    {
+      "scene": 35,
+      "start": 377.24,
+      "end": 383.64,
+      "duration": 6.4,
+      "narration": "Scientists are breeding rice that can survive under water for two weeks. Weather apps on simple phones warn farmers before storms arrive. Cooperatives help small farmers share tractors, storage and fair prices.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "technology",
+      "visual_plan": "Rice seedlings submerged in water inside a controlled agricultural greenhouse.",
+      "queries": [
+        "rice breeding lab",
+        "flooded rice plants",
+        "agricultural science research"
+      ],
+      "negative_terms": [
+        "dry soil",
+        "wheat field"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:35",
+        "kind": "card",
+        "title": "Card: Scientists are breeding rice that can survive under water fo",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "judge": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [],
+      "thumbnail": "/files/jobs/job_97c226b3586e4798af37/v1/thumb_035.jpg"
+    },
+    {
+      "scene": 36,
+      "start": 383.64,
+      "end": 386.04,
+      "duration": 2.4,
+      "narration": "Soil health cards tell each farmer exactly which nutrients the field needs.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "business",
+      "visual_plan": "Soil sample being tested in an agricultural laboratory setting.",
+      "queries": [
+        "soil test agriculture",
+        "soil health card",
+        "nutrients testing soil"
+      ],
+      "negative_terms": [
+        "dirty hands",
+        "construction sand"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:36",
+        "kind": "card",
+        "title": "Card: Soil health cards tell each farmer exactly which nutrients t",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "judge": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [],
+      "thumbnail": "/files/jobs/job_97c226b3586e4798af37/v1/thumb_036.jpg"
+    },
+    {
+      "scene": 37,
+      "start": 386.04,
+      "end": 335.672,
+      "duration": -50.368,
+      "narration": "Planting trees along field borders protects crops from wind and keeps the soil moist.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "nature",
+      "visual_plan": "Row of tall green trees planted along the edge of a crop field.",
+      "queries": [
+        "trees field border",
+        "windbreak trees farm",
+        "shelterbelt agriculture"
+      ],
+      "negative_terms": [
+        "dense jungle",
+        "city park"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:37",
+        "kind": "card",
+        "title": "Card: Planting trees along field borders protects crops from wind ",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "judge": null,
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [
+        {
+          "id": "wikimedia:165924597",
+          "source": "wikimedia",
+          "score": 0.0664,
+          "title": "File:Grande Ronde Wild and Scenic River (35034510631).webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/Grande_Ronde_Wild_and_Scenic_River_%2835034510631%29.webm/960px--Grande_Ronde_Wild_and_Scenic_River_%2835034510631%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:65297604",
+          "source": "wikimedia",
+          "score": 0.0514,
+          "title": "File:Home Movies - Western U.S., New Mexico, Mexico, California, Colorado, Utah.",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/95/Home_Movies_-_Western_U.S.%2C_New_Mexico%2C_Mexico%2C_California%2C_Colorado%2C_Utah.webm/500px--Home_Movies_-_Western_U.S.%2C_New_Mexico%2C_Mexico%2C_California%2C_Colorado%2C_Utah.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public Domain"
+        },
+        {
+          "id": "wikimedia:165946414",
+          "source": "wikimedia",
+          "score": -0.0224,
+          "title": "File:Sage grouse GPS in southern Oregon (21510484742).webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/Sage_grouse_GPS_in_southern_Oregon_%2821510484742%29.webm/960px--Sage_grouse_GPS_in_southern_Oregon_%2821510484742%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_97c226b3586e4798af37/v1/thumb_037.jpg"
+    }
+  ],
+  "music": {
+    "path": null,
+    "title": "Inspiring Progress",
+    "source": "openverse/jamendo",
+    "licence": "CC BY 3.0",
+    "licence_url": "https://creativecommons.org/licenses/by/3.0/",
+    "attribution": "\"Inspiring Progress\" by Soundrider/Dope (CC BY 3.0)",
+    "page_url": "https://www.jamendo.com/track/1670591",
+    "ai_generated": false
+  }
+}

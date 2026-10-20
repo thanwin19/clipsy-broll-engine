@@ -1,0 +1,8 @@
+{
+  "error": {
+    "code": "EMPTY_SCRIPT",
+    "message": "The script (or every scene text) is empty.",
+    "retryable": false,
+    "details": {}
+  }
+}

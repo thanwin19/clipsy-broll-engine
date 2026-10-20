@@ -1,0 +1,121 @@
+{
+  "job_id": "job_74eb6e3bf7a043bca2aa",
+  "version": 1,
+  "waveform": "/files/jobs/job_74eb6e3bf7a043bca2aa/v1/waveform.png",
+  "narration_seconds": 11.811,
+  "language": "en",
+  "transcript": "Starting a business is hard. You will build a product, talk to customers and fix problems every single day. But when the first customer pays you, every late night feels worth it.",
+  "aspect_ratios": [
+    "16:9"
+  ],
+  "mood": "inspiring",
+  "selection_rule": "Per scene: (1) statistics -> animated stat card. (2) Stock candidates from category-suited sources are scored with CLIP (image vs scene visual plan + narration, minus penalty for negative/avoid terms); unsafe candidates (avoid list, faces when avoided, AI for people/brands/sensitive) are removed. (3) Global assignment takes the highest (scene, clip) pairs first, each clip used once, if score >= tau=0.24. (4) If a scene's best stock score < tau+0.03 and AI is allowed, an AI image is generated and wins only if its CLIP score >= stock + 0.02. (5) Otherwise the best unused clip within 0.03 of tau, else a text card.",
+  "scenes": [
+    {
+      "scene": 0,
+      "start": 0.0,
+      "end": 7.62,
+      "duration": 7.62,
+      "narration": "Starting a business is hard. You will build a product, talk to customers and fix problems every single day.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "business",
+      "visual_plan": "A focused entrepreneur working late at a desk in a modern office with city lights in the background.",
+      "queries": [
+        "entrepreneur working late",
+        "person building product",
+        "business startup office",
+        "frustrated working at desk"
+      ],
+      "negative_terms": [
+        "snake",
+        "river",
+        "beach"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:0",
+        "kind": "card",
+        "title": "Card: Starting a business is hard. You will build a product, talk ",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "judge": {
+        "score": 4,
+        "why": "Animated text card showing the narration correctly counts as 4."
+      },
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [],
+      "thumbnail": "/files/jobs/job_74eb6e3bf7a043bca2aa/v1/thumb_000.jpg"
+    },
+    {
+      "scene": 1,
+      "start": 7.62,
+      "end": 11.811,
+      "duration": 4.191,
+      "narration": "But when the first customer pays you, every late night feels worth it.",
+      "visual_hint": null,
+      "scene_type": "metaphor",
+      "category": "business",
+      "visual_plan": "Close up of a credit card payment being processed on a modern mobile card reader, showing success.",
+      "queries": [
+        "customer paying digital",
+        "online payment success",
+        "happy business owner",
+        "celebrating success office"
+      ],
+      "negative_terms": [
+        "debt",
+        "bankruptcy",
+        "cash only"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:1",
+        "kind": "card",
+        "title": "Card: But when the first customer pays you, every late night feels",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "judge": {
+        "score": 4,
+        "why": "Animated text card showing the narration correctly counts as 4."
+      },
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [],
+      "thumbnail": "/files/jobs/job_74eb6e3bf7a043bca2aa/v1/thumb_001.jpg"
+    }
+  ],
+  "music": {
+    "path": null,
+    "title": "Inspiring Progress",
+    "source": "openverse/jamendo",
+    "licence": "CC BY 3.0",
+    "licence_url": "https://creativecommons.org/licenses/by/3.0/",
+    "attribution": "\"Inspiring Progress\" by Soundrider/Dope (CC BY 3.0)",
+    "page_url": "https://www.jamendo.com/track/1670591",
+    "ai_generated": false
+  }
+}

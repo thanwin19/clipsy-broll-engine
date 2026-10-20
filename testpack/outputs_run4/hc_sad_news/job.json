@@ -1,0 +1,18 @@
+{
+  "job_id": "job_b4f78d20a5ed4ea7a1c7",
+  "kind": "broll",
+  "status": "failed",
+  "progress": 30,
+  "stage": "failed",
+  "created_at": "2026-10-20T16:08:20.598575",
+  "updated_at": "2026-10-20T16:09:17.123387",
+  "result": null,
+  "error": {
+    "code": "INTERNAL_ERROR",
+    "message": "broken data stream when reading image file",
+    "retryable": true,
+    "details": {
+      "type": "OSError"
+    }
+  }
+}

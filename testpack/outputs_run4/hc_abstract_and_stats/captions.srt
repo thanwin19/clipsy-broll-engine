@@ -1,0 +1,11 @@
+1
+00:00:00,000 --> 00:00:04,520
+Trust is earned slowly and lost in seconds.
+
+2
+00:00:04,520 --> 00:00:07,680
+Sales grew 40% in 2025.
+
+3
+00:00:07,680 --> 00:00:10,641
+Only one in three startups survives five years.

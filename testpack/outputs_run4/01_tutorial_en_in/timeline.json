@@ -1,0 +1,647 @@
+{
+  "job_id": "job_adcb72927ca341f98b3b",
+  "version": 1,
+  "waveform": "/files/jobs/job_adcb72927ca341f98b3b/v1/waveform.png",
+  "narration_seconds": 21.051,
+  "language": "en",
+  "transcript": "Here is how to make a perfect cup of filter coffee at home. First, boil fresh water and let it cool for thirty seconds. Add two spoons of ground coffee to the filter. Pour the water slowly in circles. Wait four minutes, then add warm milk and a little sugar. Enjoy it while it is hot.",
+  "aspect_ratios": [
+    "16:9",
+    "9:16"
+  ],
+  "mood": "calm",
+  "selection_rule": "Per scene: (1) statistics -> animated stat card. (2) Stock candidates from category-suited sources are scored with CLIP (image vs scene visual plan + narration, minus penalty for negative/avoid terms); unsafe candidates (avoid list, faces when avoided, AI for people/brands/sensitive) are removed. (3) Global assignment takes the highest (scene, clip) pairs first, each clip used once, if score >= tau=0.24. (4) If a scene's best stock score < tau+0.03 and AI is allowed, an AI image is generated and wins only if its CLIP score >= stock + 0.02. (5) Otherwise the best unused clip within 0.03 of tau, else a text card.",
+  "scenes": [
+    {
+      "scene": 0,
+      "start": 0.0,
+      "end": 4.58,
+      "duration": 4.58,
+      "narration": "Here is how to make a perfect cup of filter coffee at home.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "food",
+      "visual_plan": "A steaming, perfect cup of freshly brewed South Indian filter coffee on a wooden table.",
+      "queries": [
+        "filter coffee cup",
+        "fresh coffee brew",
+        "hot coffee table"
+      ],
+      "negative_terms": [
+        "instant coffee",
+        "tea cup",
+        "machine"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:322244",
+        "kind": "video",
+        "title": "steaming mug, hot coffee, cozy cafe, minimalist table, warm natural light, morning vibe, soft bokeh, shallow depth of field, calm mood, hygge, ceramic cup, gentle steam, quiet moment, minimal composition, neutral tones, aesthetic, atmospheric, soft focus, lifestyle, cafe photography, comfort drink, indoor scene, serene, no people, negative space, ai generated",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-322244/",
+        "media_url": "https://cdn.pixabay.com/video/2025/12/16/322244_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by Solarselle77 on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "hot coffee table"
+      },
+      "reason": "stock: pixabay clip scored 0.307 >= tau 0.24; best unused of 12 safe candidates",
+      "relevance_score": 0.3068,
+      "judge": {
+        "score": 5,
+        "why": "Shows a steaming cup of coffee, fitting the introduction."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.3068,
+        "negative_max": 0.2853,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.536,
+      "alternatives": [
+        {
+          "id": "pixabay:322244",
+          "source": "pixabay",
+          "score": 0.3068,
+          "title": "steaming mug, hot coffee, cozy cafe, minimalist table, warm natural light, morni",
+          "thumb": "https://cdn.pixabay.com/video/2025/12/16/322244_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:346301",
+          "source": "pixabay",
+          "score": 0.298,
+          "title": "coffee, steam, cup, pour, drink, morning, hot, beverage, caffeine, fresh, brew, ",
+          "thumb": "https://cdn.pixabay.com/video/2026/04/14/346301_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:91261",
+          "source": "pixabay",
+          "score": 0.2977,
+          "title": "coffee, hot, drink, foam, fresh coffee, fresher, coffee shop, cofe, caffeine, cu",
+          "thumb": "https://cdn.pixabay.com/video/2021/10/07/91261-629546510_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:3158",
+          "source": "pixabay",
+          "score": 0.2691,
+          "title": "cup of coffee, hot, steaming, coffee, cup, drink, espresso, coffee cup, beverage",
+          "thumb": "https://cdn.pixabay.com/video/2016/05/12/3158-166338872_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:38059",
+          "source": "pixabay",
+          "score": 0.2643,
+          "title": "coffee, core, roasted, house, office, table, cafe, cup, caffeine, drink, morning",
+          "thumb": "https://cdn.pixabay.com/video/2020/05/04/38059-415315949_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:220217",
+          "source": "pixabay",
+          "score": 0.2584,
+          "title": "coffee, coffee beans, dripper, paper filter, espresso, espresso cup, hot water, ",
+          "thumb": "https://cdn.pixabay.com/video/2024/07/09/220217_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:368639",
+          "source": "pixabay",
+          "score": 0.2554,
+          "title": "ai generated, espresso, espresso machine, coffee, coffee extraction, crema, coff",
+          "thumb": "https://cdn.pixabay.com/video/2026/08/04/368639_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:220215",
+          "source": "pixabay",
+          "score": 0.2342,
+          "title": "coffee, coffee beans, dripper, paper filter, espresso, espresso cup, hot water, ",
+          "thumb": "https://cdn.pixabay.com/video/2024/07/09/220215_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_adcb72927ca341f98b3b/v1/thumb_000.jpg"
+    },
+    {
+      "scene": 1,
+      "start": 4.58,
+      "end": 9.44,
+      "duration": 4.86,
+      "narration": "First, boil fresh water and let it cool for thirty seconds.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "food",
+      "visual_plan": "Fresh water boiling in a modern kettle on a kitchen stove.",
+      "queries": [
+        "boiling water kettle",
+        "hot water pour",
+        "kitchen kettle boiling"
+      ],
+      "negative_terms": [
+        "cold water",
+        "tap water"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:267",
+        "kind": "video",
+        "title": "pot, cooking, steam, steaming, hot, food, kettle, preparation, kitchen, sepia, cook, heat, warm",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-267/",
+        "media_url": "https://cdn.pixabay.com/video/2015/08/10/267-135875613_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by Life-Of-Vids on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "boiling water kettle"
+      },
+      "reason": "stock: pixabay clip scored 0.287 >= tau 0.24; best unused of 12 safe candidates",
+      "relevance_score": 0.2873,
+      "judge": {
+        "score": 5,
+        "why": "Clearly shows a pot of boiling water with steam."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2873,
+        "negative_max": 0.2457,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.399,
+      "alternatives": [
+        {
+          "id": "pixabay:267",
+          "source": "pixabay",
+          "score": 0.2873,
+          "title": "pot, cooking, steam, steaming, hot, food, kettle, preparation, kitchen, sepia, c",
+          "thumb": "https://cdn.pixabay.com/video/2015/08/10/267-135875613_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:1036",
+          "source": "pixabay",
+          "score": 0.2671,
+          "title": "pot, fire, cooking, flames, heat, kettle, food, campfire, hot, cook, outdoor, bo",
+          "thumb": "https://cdn.pixabay.com/video/2015/10/16/1036-142621335_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:23955",
+          "source": "pixabay",
+          "score": 0.2587,
+          "title": "tea, kettle, hot, pour, glass, drink, liquid, pouring, water, natural",
+          "thumb": "https://cdn.pixabay.com/video/2019/05/25/23955-338863711_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:4882",
+          "source": "pixabay",
+          "score": 0.2481,
+          "title": "coffee, cup, tea, hot, pour, drink, porcelain, espresso, brown, breakfast",
+          "thumb": "https://cdn.pixabay.com/video/2016/09/02/4882-181170856_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:71900",
+          "source": "pixabay",
+          "score": 0.1594,
+          "title": "glass, water, refreshment, drink, liquid, pour, thirst",
+          "thumb": "https://cdn.pixabay.com/video/2021/04/22/71900-540475446_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:233902",
+          "source": "pixabay",
+          "score": 0.1531,
+          "title": "boil, kitchen, steam, heat, abstract, bubble, light, measuring, milliliter, tea,",
+          "thumb": "https://cdn.pixabay.com/video/2024/09/29/233902_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:220215",
+          "source": "pixabay",
+          "score": 0.1367,
+          "title": "coffee, coffee beans, dripper, paper filter, espresso, espresso cup, hot water, ",
+          "thumb": "https://cdn.pixabay.com/video/2024/07/09/220215_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:3591",
+          "source": "pixabay",
+          "score": 0.1316,
+          "title": "cooking, boiling, broccoli, vegetables, pot, hot, kitchen, cuisine, diet, food, ",
+          "thumb": "https://cdn.pixabay.com/video/2016/06/27/3591-172488274_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_adcb72927ca341f98b3b/v1/thumb_001.jpg"
+    },
+    {
+      "scene": 2,
+      "start": 9.44,
+      "end": 12.66,
+      "duration": 3.22,
+      "narration": "Add two spoons of ground coffee to the filter.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "food",
+      "visual_plan": "Adding dark roast ground coffee powder into a metal filter.",
+      "queries": [
+        "ground coffee powder",
+        "coffee filter spoon",
+        "making filter coffee"
+      ],
+      "negative_terms": [
+        "coffee beans",
+        "instant coffee powder"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:15484",
+        "kind": "video",
+        "title": "coffee, powder, coffee powder, instant coffee, powder coffee, quick coffee, nature, macro, medium, healthy, maintenance coffee, food, aroma, roasted, coffee shop, enjoyment, brown, health, roasting, may improve the, barista, prepare, preparation, coffee beans, drink, hot drink, coffee roasting, aromatic, roast, nourishment, luxury items, espresso, caffeine, roasting coffee, coffee enjoyment, yummy, close up, beverages, beans, break",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-15484/",
+        "media_url": "https://cdn.pixabay.com/video/2018/04/08/15484-264671701_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by ThorstenF on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "ground coffee powder"
+      },
+      "reason": "stock: pixabay clip scored 0.305 >= tau 0.24; best unused of 11 safe candidates",
+      "relevance_score": 0.3051,
+      "judge": {
+        "score": 4,
+        "why": "Shows adding coffee grounds to a portafilter/filter holder."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.3051,
+        "negative_max": 0.2576,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.361,
+      "alternatives": [
+        {
+          "id": "pixabay:15484",
+          "source": "pixabay",
+          "score": 0.3051,
+          "title": "coffee, powder, coffee powder, instant coffee, powder coffee, quick coffee, natu",
+          "thumb": "https://cdn.pixabay.com/video/2018/04/08/15484-264671701_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:209424",
+          "source": "pixabay",
+          "score": 0.2372,
+          "title": "coffee, cappuccino, caffeine, coffee funnel, processing, brew",
+          "thumb": "https://cdn.pixabay.com/video/2024/04/25/209424_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:15483",
+          "source": "pixabay",
+          "score": 0.2296,
+          "title": "coffee, espresso, coffee beans, beans, cup, datailaufnahme, portafilter, coffee ",
+          "thumb": "https://cdn.pixabay.com/video/2018/04/08/15483-264671695_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:180",
+          "source": "pixabay",
+          "score": 0.1918,
+          "title": "conversation, talk, dialogue, coffee, colleagues, discussion, discuss",
+          "thumb": "https://cdn.pixabay.com/video/2015/08/09/180-135788610_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:233024",
+          "source": "pixabay",
+          "score": 0.1874,
+          "title": "pie, fruit pie, dessert, coffee, cup",
+          "thumb": "https://cdn.pixabay.com/video/2024/09/24/233024_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:46989",
+          "source": "pixabay",
+          "score": 0.1841,
+          "title": "coffee, hot drink, coffee pot, enjoyment, drink, coffee enjoyment, caffeine, mot",
+          "thumb": "https://cdn.pixabay.com/video/2020/08/12/46989-449623829_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:126805",
+          "source": "pixabay",
+          "score": 0.1276,
+          "title": "coffee, coffee beans, coffee shop, coffee table, coffee break, coffee maker, cof",
+          "thumb": "https://cdn.pixabay.com/video/2022/08/05/126805-737028146_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:126804",
+          "source": "pixabay",
+          "score": 0.1248,
+          "title": "coffee, coffee beans, coffee shop, coffee table, coffee break, coffee maker, cof",
+          "thumb": "https://cdn.pixabay.com/video/2022/08/05/126804-737028143_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_adcb72927ca341f98b3b/v1/thumb_002.jpg"
+    },
+    {
+      "scene": 3,
+      "start": 12.66,
+      "end": 15.5,
+      "duration": 2.84,
+      "narration": "Pour the water slowly in circles.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "food",
+      "visual_plan": "Hot water being poured in slow circular motions over coffee grounds in a filter.",
+      "queries": [
+        "pouring hot water coffee",
+        "brewing filter coffee",
+        "coffee dripper pour"
+      ],
+      "negative_terms": [
+        "tea pouring",
+        "milk pouring"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:209419",
+        "kind": "video",
+        "title": "caffeine, coffee, brew, cappuccino, drink, coffee funnel",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-209419/",
+        "media_url": "https://cdn.pixabay.com/video/2024/04/25/209419_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by NGUYENTHONG7997 on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "brewing filter coffee"
+      },
+      "reason": "stock: pixabay clip scored 0.306 >= tau 0.24; best unused of 12 safe candidates",
+      "relevance_score": 0.3058,
+      "judge": {
+        "score": 5,
+        "why": "Shows pouring water over coffee grounds in a drip filter."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.3058,
+        "negative_max": 0.25,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.545,
+      "alternatives": [
+        {
+          "id": "pixabay:209419",
+          "source": "pixabay",
+          "score": 0.3058,
+          "title": "caffeine, coffee, brew, cappuccino, drink, coffee funnel",
+          "thumb": "https://cdn.pixabay.com/video/2024/04/25/209419_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:4882",
+          "source": "pixabay",
+          "score": 0.2902,
+          "title": "coffee, cup, tea, hot, pour, drink, porcelain, espresso, brown, breakfast",
+          "thumb": "https://cdn.pixabay.com/video/2016/09/02/4882-181170856_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:209424",
+          "source": "pixabay",
+          "score": 0.2543,
+          "title": "coffee, cappuccino, caffeine, coffee funnel, processing, brew",
+          "thumb": "https://cdn.pixabay.com/video/2024/04/25/209424_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:220215",
+          "source": "pixabay",
+          "score": 0.2447,
+          "title": "coffee, coffee beans, dripper, paper filter, espresso, espresso cup, hot water, ",
+          "thumb": "https://cdn.pixabay.com/video/2024/07/09/220215_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:23955",
+          "source": "pixabay",
+          "score": 0.2361,
+          "title": "tea, kettle, hot, pour, glass, drink, liquid, pouring, water, natural",
+          "thumb": "https://cdn.pixabay.com/video/2019/05/25/23955-338863711_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:46989",
+          "source": "pixabay",
+          "score": 0.2272,
+          "title": "coffee, hot drink, coffee pot, enjoyment, drink, coffee enjoyment, caffeine, mot",
+          "thumb": "https://cdn.pixabay.com/video/2020/08/12/46989-449623829_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:75135",
+          "source": "pixabay",
+          "score": 0.2259,
+          "title": "coffee, coffee maker, caffeine, hot",
+          "thumb": "https://cdn.pixabay.com/video/2021/05/24/75135-554550808_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:35730",
+          "source": "pixabay",
+          "score": 0.2206,
+          "title": "coffee, drink, caffeine, morning, brown, aroma, hot, beans, fresh, chemex, brew,",
+          "thumb": "https://cdn.pixabay.com/video/2020/04/11/35730-407701791_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_adcb72927ca341f98b3b/v1/thumb_003.jpg"
+    },
+    {
+      "scene": 4,
+      "start": 15.5,
+      "end": 21.051,
+      "duration": 5.551,
+      "narration": "Wait four minutes, then add warm milk and a little sugar. Enjoy it while it is hot.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "food",
+      "visual_plan": "Warm milk being mixed into freshly brewed coffee, creating a rich brown blend.",
+      "queries": [
+        "pouring milk coffee",
+        "hot coffee cup",
+        "milk blending coffee"
+      ],
+      "negative_terms": [
+        "black coffee",
+        "cold milk"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:4882",
+        "kind": "video",
+        "title": "coffee, cup, tea, hot, pour, drink, porcelain, espresso, brown, breakfast",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-4882/",
+        "media_url": "https://cdn.pixabay.com/video/2016/09/02/4882-181170856_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by klimkin on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "hot coffee cup"
+      },
+      "reason": "stock: pixabay clip scored 0.314 >= tau 0.24; best unused of 12 safe candidates",
+      "relevance_score": 0.3135,
+      "judge": {
+        "score": 3,
+        "why": "Shows pouring brewed coffee into a cup instead of adding milk."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.3135,
+        "negative_max": 0.2587,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.666,
+      "alternatives": [
+        {
+          "id": "pixabay:4882",
+          "source": "pixabay",
+          "score": 0.3135,
+          "title": "coffee, cup, tea, hot, pour, drink, porcelain, espresso, brown, breakfast",
+          "thumb": "https://cdn.pixabay.com/video/2016/09/02/4882-181170856_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:330339",
+          "source": "pixabay",
+          "score": 0.2648,
+          "title": "coffee, barista, pouring, milk, heart, cappuccino, espresso, cafe, drink, bevera",
+          "thumb": "https://cdn.pixabay.com/video/2026/01/25/330339_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:4315",
+          "source": "pixabay",
+          "score": 0.2589,
+          "title": "milk, bottle, pouring, organic milk, almond milk, drink, white, glass, dairy, ca",
+          "thumb": "https://cdn.pixabay.com/video/2016/08/08/4315-178218581_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:3595",
+          "source": "pixabay",
+          "score": 0.2525,
+          "title": "cup of coffee, hot, beverage, morning, aroma, steam, coffee, cup, drink, cafe, c",
+          "thumb": "https://cdn.pixabay.com/video/2016/06/27/3595-172488292_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:46989",
+          "source": "pixabay",
+          "score": 0.2524,
+          "title": "coffee, hot drink, coffee pot, enjoyment, drink, coffee enjoyment, caffeine, mot",
+          "thumb": "https://cdn.pixabay.com/video/2020/08/12/46989-449623829_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:3158",
+          "source": "pixabay",
+          "score": 0.2399,
+          "title": "cup of coffee, hot, steaming, coffee, cup, drink, espresso, coffee cup, beverage",
+          "thumb": "https://cdn.pixabay.com/video/2016/05/12/3158-166338872_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:209424",
+          "source": "pixabay",
+          "score": 0.2371,
+          "title": "coffee, cappuccino, caffeine, coffee funnel, processing, brew",
+          "thumb": "https://cdn.pixabay.com/video/2024/04/25/209424_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:251",
+          "source": "pixabay",
+          "score": 0.2141,
+          "title": "espresso, coffee, coffee machine, beverage, hot beverage, fresh, tasty, drink, c",
+          "thumb": "https://cdn.pixabay.com/video/2015/08/10/251-135872129_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_adcb72927ca341f98b3b/v1/thumb_004.jpg"
+    }
+  ],
+  "music": {
+    "path": null,
+    "title": "Procedural ambient pad",
+    "source": "procedural",
+    "licence": "Generated by this service (no third-party rights)",
+    "licence_url": "",
+    "attribution": "Generated by Clipsy",
+    "page_url": "",
+    "ai_generated": false
+  }
+}

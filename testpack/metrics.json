@@ -1,13 +1,13 @@
 {
-  "attempts": 38,
-  "succeeded": 21,
-  "videos_produced": 21,
+  "attempts": 76,
+  "succeeded": 50,
+  "videos_produced": 50,
   "repeat_clip_rate": 0.0,
-  "scenes": 99,
-  "qa_pass_rate": 1.0,
-  "mean_clip_score_stock_ai": 0.2719,
-  "median_seconds_per_minute_of_video": 443.8,
-  "narration_seconds_total": 613.7,
+  "scenes": 374,
+  "qa_pass_rate": 0.96,
+  "mean_clip_score_stock_ai": 0.2612,
+  "median_seconds_per_minute_of_video": 432.5,
+  "narration_seconds_total": 2346.0,
   "rows": [
     {
       "case": "01_tutorial_en_in",
@@ -27,6 +27,21 @@
       "warnings": 1
     },
     {
+      "case": "01_tutorial_en_in",
+      "run": "outputs_run4",
+      "narration_s": 21.051,
+      "scenes": 5,
+      "render_total_s": 82.525,
+      "seconds_per_minute": 235.2,
+      "qa_passed": true,
+      "sources": [
+        "pixabay"
+      ],
+      "ai_scenes": 0,
+      "cards": 0,
+      "warnings": 2
+    },
+    {
       "case": "02_news_summary_en_us",
       "run": "outputs_run1",
       "narration_s": 21.571,
@@ -42,6 +57,22 @@
       "ai_scenes": 0,
       "cards": 1,
       "warnings": 2
+    },
+    {
+      "case": "02_news_summary_en_us",
+      "run": "outputs_run4",
+      "narration_s": 21.011,
+      "scenes": 4,
+      "render_total_s": 139.6,
+      "seconds_per_minute": 398.6,
+      "qa_passed": true,
+      "sources": [
+        "card-renderer",
+        "pixabay"
+      ],
+      "ai_scenes": 0,
+      "cards": 1,
+      "warnings": 3
     },
     {
       "case": "03_product_promo_en_gb",
@@ -60,6 +91,21 @@
       "warnings": 1
     },
     {
+      "case": "03_product_promo_en_gb",
+      "run": "outputs_run4",
+      "narration_s": 14.771,
+      "scenes": 4,
+      "render_total_s": 130.047,
+      "seconds_per_minute": 528.3,
+      "qa_passed": true,
+      "sources": [
+        "pixabay"
+      ],
+      "ai_scenes": 0,
+      "cards": 0,
+      "warnings": 4
+    },
+    {
       "case": "04_story_en_in",
       "run": "outputs_run1",
       "narration_s": 21.72,
@@ -73,6 +119,21 @@
       ],
       "ai_scenes": 0,
       "cards": 1,
+      "warnings": 2
+    },
+    {
+      "case": "04_story_en_in",
+      "run": "outputs_run4",
+      "narration_s": 21.251,
+      "scenes": 5,
+      "render_total_s": 146.579,
+      "seconds_per_minute": 413.9,
+      "qa_passed": true,
+      "sources": [
+        "pixabay"
+      ],
+      "ai_scenes": 0,
+      "cards": 0,
       "warnings": 2
     },
     {
@@ -104,6 +165,22 @@
       "warnings": 2
     },
     {
+      "case": "05_finance_money_value",
+      "run": "outputs_run4",
+      "narration_s": 15.281,
+      "scenes": 4,
+      "render_total_s": 135.126,
+      "seconds_per_minute": 530.6,
+      "qa_passed": true,
+      "sources": [
+        "card-renderer",
+        "pixabay"
+      ],
+      "ai_scenes": 0,
+      "cards": 2,
+      "warnings": 3
+    },
+    {
       "case": "06_scene_list_city",
       "run": "outputs_run1",
       "narration_s": 11.56,
@@ -117,6 +194,21 @@
       ],
       "ai_scenes": 0,
       "cards": 1,
+      "warnings": 2
+    },
+    {
+      "case": "06_scene_list_city",
+      "run": "outputs_run4",
+      "narration_s": 11.29,
+      "scenes": 4,
+      "render_total_s": 140.648,
+      "seconds_per_minute": 747.5,
+      "qa_passed": true,
+      "sources": [
+        "pixabay"
+      ],
+      "ai_scenes": 0,
+      "cards": 0,
       "warnings": 2
     },
     {
@@ -136,6 +228,21 @@
       "warnings": 1
     },
     {
+      "case": "07_space_science",
+      "run": "outputs_run4",
+      "narration_s": 14.771,
+      "scenes": 3,
+      "render_total_s": 79.326,
+      "seconds_per_minute": 322.2,
+      "qa_passed": true,
+      "sources": [
+        "card-renderer"
+      ],
+      "ai_scenes": 0,
+      "cards": 3,
+      "warnings": 5
+    },
+    {
       "case": "08_health_short_20s",
       "run": "outputs_run1",
       "narration_s": 8.24,
@@ -151,6 +258,21 @@
       "warnings": 1
     },
     {
+      "case": "08_health_short_20s",
+      "run": "outputs_run4",
+      "narration_s": 5.971,
+      "scenes": 1,
+      "render_total_s": 98.966,
+      "seconds_per_minute": 994.5,
+      "qa_passed": true,
+      "sources": [
+        "card-renderer"
+      ],
+      "ai_scenes": 0,
+      "cards": 1,
+      "warnings": 4
+    },
+    {
       "case": "09_hindi_tutorial",
       "run": "outputs_run1",
       "narration_s": 10.6,
@@ -164,6 +286,36 @@
       ],
       "ai_scenes": 0,
       "cards": 1,
+      "warnings": 1
+    },
+    {
+      "case": "09_hindi_tutorial",
+      "run": "outputs_run4",
+      "narration_s": 9.92,
+      "scenes": 3,
+      "render_total_s": 87.077,
+      "seconds_per_minute": 526.7,
+      "qa_passed": false,
+      "sources": [
+        "card-renderer"
+      ],
+      "ai_scenes": 0,
+      "cards": 3,
+      "warnings": 8
+    },
+    {
+      "case": "09_hindi_tutorial",
+      "run": "outputs_run4b",
+      "narration_s": 9.92,
+      "scenes": 3,
+      "render_total_s": 95.942,
+      "seconds_per_minute": 580.3,
+      "qa_passed": true,
+      "sources": [
+        "pixabay"
+      ],
+      "ai_scenes": 0,
+      "cards": 0,
       "warnings": 1
     },
     {
@@ -190,6 +342,39 @@
       "warnings": 10
     },
     {
+      "case": "10_long_5min_agriculture",
+      "run": "outputs_run4",
+      "narration_s": 335.672,
+      "scenes": 38,
+      "render_total_s": 434.319,
+      "seconds_per_minute": 77.6,
+      "qa_passed": false,
+      "sources": [
+        "card-renderer",
+        "wikimedia"
+      ],
+      "ai_scenes": 0,
+      "cards": 34,
+      "warnings": 7
+    },
+    {
+      "case": "10_long_5min_agriculture",
+      "run": "outputs_run4b",
+      "narration_s": 335.672,
+      "scenes": 39,
+      "render_total_s": 577.22,
+      "seconds_per_minute": 103.2,
+      "qa_passed": true,
+      "sources": [
+        "card-renderer",
+        "pixabay",
+        "wikimedia"
+      ],
+      "ai_scenes": 0,
+      "cards": 5,
+      "warnings": 12
+    },
+    {
       "case": "audio_01_us_tutorial",
       "run": "outputs_run1",
       "narration_s": 15.131,
@@ -204,6 +389,21 @@
       "ai_scenes": 0,
       "cards": 1,
       "warnings": 1
+    },
+    {
+      "case": "audio_01_us_tutorial",
+      "run": "outputs_run4",
+      "narration_s": 15.131,
+      "scenes": 3,
+      "render_total_s": 69.552,
+      "seconds_per_minute": 275.8,
+      "qa_passed": true,
+      "sources": [
+        "card-renderer"
+      ],
+      "ai_scenes": 0,
+      "cards": 3,
+      "warnings": 4
     },
     {
       "case": "audio_02_gb_travel",
@@ -222,6 +422,22 @@
       "warnings": 1
     },
     {
+      "case": "audio_02_gb_travel",
+      "run": "outputs_run4",
+      "narration_s": 14.931,
+      "scenes": 3,
+      "render_total_s": 79.791,
+      "seconds_per_minute": 320.6,
+      "qa_passed": true,
+      "sources": [
+        "card-renderer",
+        "wikimedia"
+      ],
+      "ai_scenes": 0,
+      "cards": 2,
+      "warnings": 3
+    },
+    {
       "case": "audio_03_in_startup",
       "run": "outputs_run1",
       "narration_s": 11.811,
@@ -235,6 +451,21 @@
       "ai_scenes": 0,
       "cards": 0,
       "warnings": 2
+    },
+    {
+      "case": "audio_03_in_startup",
+      "run": "outputs_run4",
+      "narration_s": 11.811,
+      "scenes": 2,
+      "render_total_s": 94.183,
+      "seconds_per_minute": 478.5,
+      "qa_passed": true,
+      "sources": [
+        "card-renderer"
+      ],
+      "ai_scenes": 0,
+      "cards": 2,
+      "warnings": 4
     },
     {
       "case": "audio_04_tamil_nature",
@@ -254,6 +485,21 @@
       "warnings": 5
     },
     {
+      "case": "audio_04_tamil_nature",
+      "run": "outputs_run4",
+      "narration_s": 10.371,
+      "scenes": 2,
+      "render_total_s": 77.019,
+      "seconds_per_minute": 445.6,
+      "qa_passed": true,
+      "sources": [
+        "wikimedia"
+      ],
+      "ai_scenes": 0,
+      "cards": 0,
+      "warnings": 4
+    },
+    {
       "case": "audio_05_in_startup",
       "run": "outputs_run1",
       "narration_s": 11.811,
@@ -267,6 +513,21 @@
       "ai_scenes": 0,
       "cards": 0,
       "warnings": 2
+    },
+    {
+      "case": "audio_05_in_startup",
+      "run": "outputs_run4",
+      "narration_s": 11.811,
+      "scenes": 2,
+      "render_total_s": 53.298,
+      "seconds_per_minute": 270.8,
+      "qa_passed": true,
+      "sources": [
+        "card-renderer"
+      ],
+      "ai_scenes": 0,
+      "cards": 2,
+      "warnings": 4
     },
     {
       "case": "hc_916_edge_subject",
@@ -291,6 +552,21 @@
       "warnings": 1
     },
     {
+      "case": "hc_916_edge_subject",
+      "run": "outputs_run4",
+      "narration_s": 7.561,
+      "scenes": 2,
+      "render_total_s": 58.45,
+      "seconds_per_minute": 463.8,
+      "qa_passed": true,
+      "sources": [
+        "pixabay"
+      ],
+      "ai_scenes": 0,
+      "cards": 0,
+      "warnings": 2
+    },
+    {
       "case": "hc_abstract_and_stats",
       "run": "outputs_run1",
       "status": "failed",
@@ -313,8 +589,30 @@
       "warnings": 1
     },
     {
+      "case": "hc_abstract_and_stats",
+      "run": "outputs_run4",
+      "narration_s": 10.641,
+      "scenes": 3,
+      "render_total_s": 129.144,
+      "seconds_per_minute": 728.2,
+      "qa_passed": true,
+      "sources": [
+        "card-renderer",
+        "pixabay"
+      ],
+      "ai_scenes": 0,
+      "cards": 1,
+      "warnings": 3
+    },
+    {
       "case": "hc_audio_url_404",
       "run": "outputs_run1",
+      "status": "failed",
+      "error": "INPUT_DOWNLOAD_FAILED"
+    },
+    {
+      "case": "hc_audio_url_404",
+      "run": "outputs_run4",
       "status": "failed",
       "error": "INPUT_DOWNLOAD_FAILED"
     },
@@ -340,14 +638,41 @@
       "warnings": 1
     },
     {
+      "case": "hc_avoid_faces_alcohol",
+      "run": "outputs_run4",
+      "narration_s": 6.681,
+      "scenes": 1,
+      "render_total_s": 54.221,
+      "seconds_per_minute": 486.9,
+      "qa_passed": true,
+      "sources": [
+        "pixabay"
+      ],
+      "ai_scenes": 0,
+      "cards": 0,
+      "warnings": 1
+    },
+    {
       "case": "hc_bad_ratio",
       "run": "outputs_run1",
       "status": "rejected",
       "error": "INVALID_ASPECT_RATIO"
     },
     {
+      "case": "hc_bad_ratio",
+      "run": "outputs_run4",
+      "status": "rejected",
+      "error": "INVALID_ASPECT_RATIO"
+    },
+    {
       "case": "hc_corrupted_audio",
       "run": "outputs_run1",
+      "status": "rejected",
+      "error": "AUDIO_UNREADABLE"
+    },
+    {
+      "case": "hc_corrupted_audio",
+      "run": "outputs_run4",
       "status": "rejected",
       "error": "AUDIO_UNREADABLE"
     },
@@ -374,14 +699,41 @@
       "warnings": 2
     },
     {
+      "case": "hc_double_meanings",
+      "run": "outputs_run4",
+      "narration_s": 18.161,
+      "scenes": 5,
+      "render_total_s": 90.275,
+      "seconds_per_minute": 298.2,
+      "qa_passed": true,
+      "sources": [
+        "pixabay"
+      ],
+      "ai_scenes": 0,
+      "cards": 0,
+      "warnings": 3
+    },
+    {
       "case": "hc_empty_script",
       "run": "outputs_run1",
       "status": "rejected",
       "error": "EMPTY_SCRIPT"
     },
     {
+      "case": "hc_empty_script",
+      "run": "outputs_run4",
+      "status": "rejected",
+      "error": "EMPTY_SCRIPT"
+    },
+    {
       "case": "hc_music_only",
       "run": "outputs_run1",
+      "status": "failed",
+      "error": "NO_SPEECH_DETECTED"
+    },
+    {
+      "case": "hc_music_only",
+      "run": "outputs_run4",
       "status": "failed",
       "error": "NO_SPEECH_DETECTED"
     },
@@ -413,6 +765,27 @@
       "warnings": 3
     },
     {
+      "case": "hc_named_person_brand",
+      "run": "outputs_run4",
+      "status": "failed",
+      "error": "INTERNAL_ERROR"
+    },
+    {
+      "case": "hc_named_person_brand",
+      "run": "outputs_run4b",
+      "narration_s": 5.873,
+      "scenes": 2,
+      "render_total_s": 49.203,
+      "seconds_per_minute": 502.7,
+      "qa_passed": true,
+      "sources": [
+        "pixabay"
+      ],
+      "ai_scenes": 0,
+      "cards": 0,
+      "warnings": 3
+    },
+    {
       "case": "hc_sad_news",
       "run": "outputs_run1",
       "status": "failed",
@@ -434,8 +807,35 @@
       "warnings": 1
     },
     {
+      "case": "hc_sad_news",
+      "run": "outputs_run4",
+      "status": "failed",
+      "error": "INTERNAL_ERROR"
+    },
+    {
+      "case": "hc_sad_news",
+      "run": "outputs_run4b",
+      "narration_s": 18.201,
+      "scenes": 2,
+      "render_total_s": 64.352,
+      "seconds_per_minute": 212.1,
+      "qa_passed": true,
+      "sources": [
+        "pixabay"
+      ],
+      "ai_scenes": 0,
+      "cards": 0,
+      "warnings": 3
+    },
+    {
       "case": "hc_silent_audio",
       "run": "outputs_run1",
+      "status": "failed",
+      "error": "NO_SPEECH_DETECTED"
+    },
+    {
+      "case": "hc_silent_audio",
+      "run": "outputs_run4",
       "status": "failed",
       "error": "NO_SPEECH_DETECTED"
     },
@@ -444,6 +844,117 @@
       "run": "outputs_run1",
       "status": "rejected",
       "error": "UNSUPPORTED_FILE_TYPE"
+    },
+    {
+      "case": "hc_wrong_file_type_pdf",
+      "run": "outputs_run4",
+      "status": "rejected",
+      "error": "UNSUPPORTED_FILE_TYPE"
+    },
+    {
+      "case": "audio_06_gb_travel",
+      "run": "outputs_run4",
+      "narration_s": 14.931,
+      "scenes": 3,
+      "render_total_s": 47.875,
+      "seconds_per_minute": 192.4,
+      "qa_passed": true,
+      "sources": [
+        "card-renderer",
+        "wikimedia"
+      ],
+      "ai_scenes": 0,
+      "cards": 2,
+      "warnings": 3
+    },
+    {
+      "case": "audio_07_hindi_tutorial",
+      "run": "outputs_run4",
+      "narration_s": 10.418,
+      "scenes": 2,
+      "render_total_s": 78.229,
+      "seconds_per_minute": 450.5,
+      "qa_passed": true,
+      "sources": [
+        "pixabay"
+      ],
+      "ai_scenes": 0,
+      "cards": 0,
+      "warnings": 4
+    },
+    {
+      "case": "audio_08_long_5min_agriculture",
+      "run": "outputs_run4",
+      "narration_s": 298.73,
+      "scenes": 52,
+      "render_total_s": 643.391,
+      "seconds_per_minute": 129.2,
+      "qa_passed": true,
+      "sources": [
+        "card-renderer",
+        "pixabay",
+        "wikimedia"
+      ],
+      "ai_scenes": 0,
+      "cards": 11,
+      "warnings": 18
+    },
+    {
+      "case": "audio_08_long_5min_agriculture",
+      "run": "outputs_run4b",
+      "narration_s": 298.73,
+      "scenes": 52,
+      "render_total_s": 536.269,
+      "seconds_per_minute": 107.7,
+      "qa_passed": true,
+      "sources": [
+        "card-renderer",
+        "coverr",
+        "pixabay",
+        "wikimedia"
+      ],
+      "ai_scenes": 0,
+      "cards": 15,
+      "warnings": 17
+    },
+    {
+      "case": "60s_saving_money",
+      "run": "outputs_turnaround",
+      "narration_s": 80.881,
+      "scenes": 13,
+      "render_total_s": 188.35,
+      "seconds_per_minute": 139.7,
+      "qa_passed": true,
+      "sources": [
+        "card-renderer",
+        "pixabay"
+      ],
+      "ai_scenes": 0,
+      "cards": 2,
+      "warnings": 3
+    },
+    {
+      "case": "60s_saving_money_warm",
+      "run": "outputs_turnaround",
+      "narration_s": 80.881,
+      "scenes": 13,
+      "render_total_s": 143.875,
+      "seconds_per_minute": 106.7,
+      "qa_passed": true,
+      "sources": [
+        "card-renderer",
+        "pixabay"
+      ],
+      "ai_scenes": 0,
+      "cards": 3,
+      "warnings": 4
     }
-  ]
+  ],
+  "vlm_judge": {
+    "scenes_judged": 107,
+    "mean": 3.96,
+    "share_4_or_5": 0.822
+  },
+  "judge_coverage_3_plus": 0.923,
+  "human": null
 }

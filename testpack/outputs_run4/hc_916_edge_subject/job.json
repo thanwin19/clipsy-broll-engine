@@ -1,0 +1,41 @@
+{
+  "job_id": "job_21a6c5846ad64f64ac8f",
+  "kind": "broll",
+  "status": "succeeded",
+  "progress": 100,
+  "stage": "done",
+  "created_at": "2026-10-20T16:01:45.143415",
+  "updated_at": "2026-10-20T16:02:44.309036",
+  "result": {
+    "version": 1,
+    "links": {
+      "video_16x9": "http://127.0.0.1:8000/files/jobs/job_21a6c5846ad64f64ac8f/v1/video_16x9.mp4",
+      "video_9x16": "http://127.0.0.1:8000/files/jobs/job_21a6c5846ad64f64ac8f/v1/video_9x16.mp4",
+      "timeline": "http://127.0.0.1:8000/files/jobs/job_21a6c5846ad64f64ac8f/v1/timeline.json",
+      "manifest": "http://127.0.0.1:8000/files/jobs/job_21a6c5846ad64f64ac8f/v1/manifest.json",
+      "captions_srt": "http://127.0.0.1:8000/files/jobs/job_21a6c5846ad64f64ac8f/v1/captions.srt",
+      "thumb_000": "http://127.0.0.1:8000/files/jobs/job_21a6c5846ad64f64ac8f/v1/thumb_000.jpg",
+      "thumb_001": "http://127.0.0.1:8000/files/jobs/job_21a6c5846ad64f64ac8f/v1/thumb_001.jpg",
+      "waveform": "http://127.0.0.1:8000/files/jobs/job_21a6c5846ad64f64ac8f/v1/waveform.png"
+    },
+    "warnings": [
+      "PROVIDER_COOLDOWN: 'coverr' failed in a recent job; skipped for 109 more seconds",
+      "PROVIDER_COOLDOWN: 'openverse_images' failed in a recent job; skipped for 161 more seconds"
+    ],
+    "scenes": 2,
+    "narration_seconds": 7.561,
+    "timings_seconds": {
+      "narration": 8.574,
+      "planning": 26.667,
+      "search_and_score": 9.64,
+      "ai_generation": 0.0,
+      "download": 1.138,
+      "music_parallel": 10.779,
+      "render": 8.309,
+      "qa": 2.561,
+      "total": 58.45
+    },
+    "qa_passed": true
+  },
+  "error": null
+}

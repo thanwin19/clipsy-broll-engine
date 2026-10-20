@@ -1,0 +1,649 @@
+{
+  "job_id": "job_963785f0bdd94c12ad20",
+  "version": 1,
+  "waveform": "/files/jobs/job_963785f0bdd94c12ad20/v1/waveform.png",
+  "narration_seconds": 18.161,
+  "language": "en",
+  "transcript": "I deposited my salary at the bank. Later we had a picnic on the river bank. Our app runs on cloud computing and is written in Python. I clicked the mouse to buy a new laptop. The real value of a habit shows over time.",
+  "aspect_ratios": [
+    "16:9",
+    "9:16"
+  ],
+  "mood": "upbeat",
+  "selection_rule": "Per scene: (1) statistics -> animated stat card. (2) Stock candidates from category-suited sources are scored with CLIP (image vs scene visual plan + narration, minus penalty for negative/avoid terms); unsafe candidates (avoid list, faces when avoided, AI for people/brands/sensitive) are removed. (3) Global assignment takes the highest (scene, clip) pairs first, each clip used once, if score >= tau=0.24. (4) If a scene's best stock score < tau+0.03 and AI is allowed, an AI image is generated and wins only if its CLIP score >= stock + 0.02. (5) Otherwise the best unused clip within 0.03 of tau, else a text card.",
+  "scenes": [
+    {
+      "scene": 0,
+      "start": 0.0,
+      "end": 3.78,
+      "duration": 3.78,
+      "narration": "I deposited my salary at the bank.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "business",
+      "visual_plan": "A person depositing money at a modern bank counter or ATM.",
+      "queries": [
+        "atm cash deposit",
+        "bank teller transaction",
+        "putting money in bank"
+      ],
+      "negative_terms": [
+        "river",
+        "water",
+        "nature"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:172891",
+        "kind": "video",
+        "title": "money, currency, dollar, cash, finance",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-172891/",
+        "media_url": "https://cdn.pixabay.com/video/2023/07/23/172891-848187884_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by rashed7671 on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "atm cash deposit"
+      },
+      "reason": "stock: pixabay clip scored 0.245 >= tau 0.24; best unused of 12 safe candidates",
+      "relevance_score": 0.2448,
+      "judge": {
+        "score": 5,
+        "why": "Person counting money clearly illustrates depositing salary at the bank."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2448,
+        "negative_max": 0.1194,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.587,
+      "alternatives": [
+        {
+          "id": "pixabay:172891",
+          "source": "pixabay",
+          "score": 0.2448,
+          "title": "money, currency, dollar, cash, finance",
+          "thumb": "https://cdn.pixabay.com/video/2023/07/23/172891-848187884_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:172894",
+          "source": "pixabay",
+          "score": 0.2443,
+          "title": "money, currency, business, finance, cash",
+          "thumb": "https://cdn.pixabay.com/video/2023/07/23/172894-848187895_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:20857",
+          "source": "pixabay",
+          "score": 0.2425,
+          "title": "pay, money, dollar, hands, currency, bank note, finance, business, paper money, ",
+          "thumb": "https://cdn.pixabay.com/video/2019/01/20/20857-312437286_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:172892",
+          "source": "pixabay",
+          "score": 0.2402,
+          "title": "money, cash, finance, currency, business, office",
+          "thumb": "https://cdn.pixabay.com/video/2023/07/23/172892-848187888_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:51592",
+          "source": "pixabay",
+          "score": 0.211,
+          "title": "money, cash, dollars, business",
+          "thumb": "https://cdn.pixabay.com/video/2020/10/05/51592-465226688_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:198755",
+          "source": "pixabay",
+          "score": 0.2054,
+          "title": "dollar, money, finance, currency, cash, wealth, business, bank, saving, financia",
+          "thumb": "https://cdn.pixabay.com/video/2024/01/31/198755-908438394_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:12922",
+          "source": "pixabay",
+          "score": 0.2016,
+          "title": "piggy, bank, dollars, flying, money, finance, business, banking, currency, piggy",
+          "thumb": "https://cdn.pixabay.com/video/2017/11/13/12922-242538643_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:208082",
+          "source": "pixabay",
+          "score": 0.1957,
+          "title": "dollar, money, currency, finance, wealth, cash, banknotes, business, bank",
+          "thumb": "https://cdn.pixabay.com/video/2024/04/15/208082_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_963785f0bdd94c12ad20/v1/thumb_000.jpg"
+    },
+    {
+      "scene": 1,
+      "start": 3.78,
+      "end": 6.9,
+      "duration": 3.12,
+      "narration": "Later we had a picnic on the river bank.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "nature",
+      "visual_plan": "Friends enjoying a sunny picnic on a lush green river bank.",
+      "queries": [
+        "picnic by river",
+        "river bank landscape",
+        "people having picnic"
+      ],
+      "negative_terms": [
+        "money",
+        "bank building",
+        "atm"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:6591",
+        "kind": "video",
+        "title": "summer, irtysh, river, siberia, landscape, clouds, nature, water, forest, by the river, sky",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-6591/",
+        "media_url": "https://cdn.pixabay.com/video/2016/11/29/6591-193729480_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by samsonov on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "picnic by river"
+      },
+      "reason": "stock (low confidence): pixabay scored 0.212 (< tau 0.24, within 0.03); no AI option",
+      "relevance_score": 0.2123,
+      "judge": {
+        "score": 5,
+        "why": "Scenic aerial view of a river bank perfectly illustrates the location."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2123,
+        "negative_max": 0.133,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.44,
+      "alternatives": [
+        {
+          "id": "pixabay:6591",
+          "source": "pixabay",
+          "score": 0.2123,
+          "title": "summer, irtysh, river, siberia, landscape, clouds, nature, water, forest, by the",
+          "thumb": "https://cdn.pixabay.com/video/2016/11/29/6591-193729480_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:56959",
+          "source": "pixabay",
+          "score": 0.2115,
+          "title": "tree, picnic, field, forest, garden, landscape",
+          "thumb": "https://cdn.pixabay.com/video/2020/11/21/56959-482208626_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "wikimedia:70562430",
+          "source": "wikimedia",
+          "score": 0.209,
+          "title": "File:The President- November 1966. MP879..webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/The_President-_November_1966._MP879..webm/500px--The_President-_November_1966._MP879..webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "CC BY 3.0"
+        },
+        {
+          "id": "pixabay:369259",
+          "source": "pixabay",
+          "score": 0.1895,
+          "title": "fly fishing, patagonia, chile, fishing, river, landscape, scenic, sunset, evenin",
+          "thumb": "https://cdn.pixabay.com/video/2026/08/07/369259_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:174860",
+          "source": "pixabay",
+          "score": 0.184,
+          "title": "river, stream, waterfall, trees, forest, mountain river, landscape, nature",
+          "thumb": "https://cdn.pixabay.com/video/2023/08/06/174860-852215326_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "wikimedia:76032019",
+          "source": "wikimedia",
+          "score": 0.1805,
+          "title": "File:Salmon River wood jam & side channel restoration project at Wildwood.webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/Salmon_River_wood_jam_%26_side_channel_restoration_project_at_Wildwood.webm/960px--Salmon_River_wood_jam_%26_side_channel_restoration_project_at_Wildwood.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "pixabay:358693",
+          "source": "pixabay",
+          "score": 0.1726,
+          "title": "water, falls, waterfall, rivers, river, nature, landscape, forest, green",
+          "thumb": "https://cdn.pixabay.com/video/2026/06/16/358693_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:364783",
+          "source": "pixabay",
+          "score": 0.1709,
+          "title": "columbia gorge, washington, nature, columbia river, summer, sunset, water, trees",
+          "thumb": "https://cdn.pixabay.com/video/2026/07/18/364783_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_963785f0bdd94c12ad20/v1/thumb_001.jpg"
+    },
+    {
+      "scene": 2,
+      "start": 6.9,
+      "end": 11.3,
+      "duration": 4.4,
+      "narration": "Our app runs on cloud computing and is written in Python.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "technology",
+      "visual_plan": "Lines of computer code glowing on a monitor representing cloud software development.",
+      "queries": [
+        "coding on screen",
+        "software development code",
+        "server room racks"
+      ],
+      "negative_terms": [
+        "snake",
+        "reptile",
+        "sky cloud"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:4733",
+        "kind": "video",
+        "title": "source code, development, code, programming, typing, screen, developing, software, developer, coding, digital, information, application, computer, data, technology, web, internet, program, source, engineering, computing, platform, www, binary, web developer, programming code, programmer, php, java, javascript",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-4733/",
+        "media_url": "https://cdn.pixabay.com/video/2016/08/22/4733-179738669_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by Coverr-Free-Footage on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "coding on screen"
+      },
+      "reason": "stock: pixabay clip scored 0.287 >= tau 0.24; best unused of 12 safe candidates",
+      "relevance_score": 0.287,
+      "judge": {
+        "score": 5,
+        "why": "Close-up of code on a screen effectively shows software development."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.287,
+        "negative_max": 0.1761,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.408,
+      "alternatives": [
+        {
+          "id": "pixabay:4733",
+          "source": "pixabay",
+          "score": 0.287,
+          "title": "source code, development, code, programming, typing, screen, developing, softwar",
+          "thumb": "https://cdn.pixabay.com/video/2016/08/22/4733-179738669_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:1021",
+          "source": "pixabay",
+          "score": 0.2672,
+          "title": "coding, developing, girls, woman, programming code, internet, web, computer, tec",
+          "thumb": "https://cdn.pixabay.com/video/2015/10/16/1021-142621249_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:27706",
+          "source": "pixabay",
+          "score": 0.2603,
+          "title": "glitch, code, programming, hacker, data, technology, digital, matrix, binary, ne",
+          "thumb": "https://cdn.pixabay.com/video/2019/10/09/27706-365890968_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:41263",
+          "source": "pixabay",
+          "score": 0.2473,
+          "title": "coding, screen, hacker, data, network, communication, laptop, software, hacking,",
+          "thumb": "https://cdn.pixabay.com/video/2020/06/06/41263-429379223_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:32767",
+          "source": "pixabay",
+          "score": 0.2438,
+          "title": "code, coding, programming, programmer, computer, hacker, data, hacking, web, int",
+          "thumb": "https://cdn.pixabay.com/video/2020/02/24/32767-394004551_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:171",
+          "source": "pixabay",
+          "score": 0.2324,
+          "title": "source code, monitor, display, numbers, letters, programming, code, software dev",
+          "thumb": "https://cdn.pixabay.com/video/2015/08/09/171-135788231_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:14900",
+          "source": "pixabay",
+          "score": 0.2194,
+          "title": "network, internet, data, switch, router, cabinet, ethernet, equipment, connectio",
+          "thumb": "https://cdn.pixabay.com/video/2018/03/09/14900-259623335_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:14214",
+          "source": "pixabay",
+          "score": 0.2172,
+          "title": "code, programming, system, failure, computing, computer, screen, language, techn",
+          "thumb": "https://cdn.pixabay.com/video/2018/02/09/14214-255797028_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_963785f0bdd94c12ad20/v1/thumb_002.jpg"
+    },
+    {
+      "scene": 3,
+      "start": 11.3,
+      "end": 14.42,
+      "duration": 3.12,
+      "narration": "I clicked the mouse to buy a new laptop.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "technology",
+      "visual_plan": "A hand clicking a computer mouse while shopping online for a laptop.",
+      "queries": [
+        "clicking computer mouse",
+        "online shopping laptop",
+        "typing on keyboard"
+      ],
+      "negative_terms": [
+        "animal mouse",
+        "rodent"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:336228",
+        "kind": "video",
+        "title": "gaming mouse, mouse, hand, click, clicking, scroll, wheel, rgb, led, light, glow, technology, peripheral, hardware, computer, desk, interaction, control, button, electronics, finger, gamer, equipment, input, device",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-336228/",
+        "media_url": "https://cdn.pixabay.com/video/2026/02/23/336228_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by Solarselle77 on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "clicking computer mouse"
+      },
+      "reason": "stock: pixabay clip scored 0.323 >= tau 0.24; best unused of 12 safe candidates",
+      "relevance_score": 0.3225,
+      "judge": {
+        "score": 5,
+        "why": "Hand clicking a computer mouse directly illustrates the action described."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.3225,
+        "negative_max": 0.2324,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.554,
+      "alternatives": [
+        {
+          "id": "pixabay:336228",
+          "source": "pixabay",
+          "score": 0.3225,
+          "title": "gaming mouse, mouse, hand, click, clicking, scroll, wheel, rgb, led, light, glow",
+          "thumb": "https://cdn.pixabay.com/video/2026/02/23/336228_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:154373",
+          "source": "pixabay",
+          "score": 0.3099,
+          "title": "mouse, computer, office, technology, network, digital, click, hand, pc, study",
+          "thumb": "https://cdn.pixabay.com/video/2023/03/12/154373-807354080_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:1196",
+          "source": "pixabay",
+          "score": 0.2744,
+          "title": "computer, work, office, creative, workplace, keyboard, screen, monitor, mouse, h",
+          "thumb": "https://cdn.pixabay.com/video/2015/10/27/1196-143842675_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:43558",
+          "source": "pixabay",
+          "score": 0.2513,
+          "title": "keyboard, laptop, computer, technology, work, typing, desk, student, workplace, ",
+          "thumb": "https://cdn.pixabay.com/video/2020/07/01/43558-436237481_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:1046",
+          "source": "pixabay",
+          "score": 0.2511,
+          "title": "keyboard, hands, writing, computer, mouse, typing, project, design, coffee mug, ",
+          "thumb": "https://cdn.pixabay.com/video/2015/10/16/1046-142621379_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:40572",
+          "source": "pixabay",
+          "score": 0.2463,
+          "title": "shopping, online, payment, e-commerce, business, retail, pay, using, technology,",
+          "thumb": "https://cdn.pixabay.com/video/2020/05/29/40572-425837205_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:2988",
+          "source": "pixabay",
+          "score": 0.242,
+          "title": "ipad, imac, tablet, desktop, iphone, monitor, computer, display, mobile, network",
+          "thumb": "https://cdn.pixabay.com/video/2016/05/03/2988-165221419_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:43559",
+          "source": "pixabay",
+          "score": 0.2295,
+          "title": "keyboard, laptop, computer, technology, work, typing, desk, student, workplace, ",
+          "thumb": "https://cdn.pixabay.com/video/2020/07/01/43559-436237492_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_963785f0bdd94c12ad20/v1/thumb_003.jpg"
+    },
+    {
+      "scene": 4,
+      "start": 14.42,
+      "end": 18.161,
+      "duration": 3.741,
+      "narration": "The real value of a habit shows over time.",
+      "visual_hint": null,
+      "scene_type": "metaphor",
+      "category": "everyday",
+      "visual_plan": "A small plant growing steadily out of soil, symbolizing growth over time.",
+      "queries": [
+        "plant growing timelapse",
+        "seedling in soil",
+        "habit consistency growth"
+      ],
+      "negative_terms": [
+        "fast money",
+        "coins falling"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:260395",
+        "kind": "video",
+        "title": "seedling, germinate, grow, germination, potato seedling, nature, growth, plant",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-260395/",
+        "media_url": "https://cdn.pixabay.com/video/2025/02/23/260395_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by adege on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "seedling in soil"
+      },
+      "reason": "stock: pixabay clip scored 0.264 >= tau 0.24; best unused of 12 safe candidates",
+      "relevance_score": 0.2639,
+      "judge": {
+        "score": 5,
+        "why": "Timelapse of a plant growing symbolizes value showing over time."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2639,
+        "negative_max": 0.2072,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.43,
+      "alternatives": [
+        {
+          "id": "pixabay:260395",
+          "source": "pixabay",
+          "score": 0.2639,
+          "title": "seedling, germinate, grow, germination, potato seedling, nature, growth, plant",
+          "thumb": "https://cdn.pixabay.com/video/2025/02/23/260395_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:89536",
+          "source": "pixabay",
+          "score": 0.2466,
+          "title": "vine, grow, plant, spiral, sweet potato, spin, nature, timelapse, time lapse, le",
+          "thumb": "https://cdn.pixabay.com/video/2021/09/24/89536-614024920_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:283924",
+          "source": "pixabay",
+          "score": 0.2227,
+          "title": "houseleek, growth, plant growth, plant, nature, sempervivum hybrids",
+          "thumb": "https://cdn.pixabay.com/video/2025/06/06/283924_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:276058",
+          "source": "pixabay",
+          "score": 0.2151,
+          "title": "fern, worm fern, plant, plant growth, nature, flora, grow, growth",
+          "thumb": "https://cdn.pixabay.com/video/2025/05/01/276058_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:7924",
+          "source": "pixabay",
+          "score": 0.1802,
+          "title": "flowers, nature, time, blossom, leaf, petal, plant, summer, green, lapse, bloomi",
+          "thumb": "https://cdn.pixabay.com/video/2017/02/24/7924-205529295_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:22983",
+          "source": "pixabay",
+          "score": 0.1666,
+          "title": "germinate, germination, seedling, book seedling, plug, grow, sprout, development",
+          "thumb": "https://cdn.pixabay.com/video/2019/04/22/22983-332257703_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:112389",
+          "source": "pixabay",
+          "score": 0.153,
+          "title": "daffodils, easter bells, spring, easter, to flourish, bloom, spring flower, earl",
+          "thumb": "https://cdn.pixabay.com/video/2022/03/30/112389-694236433_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:5635",
+          "source": "pixabay",
+          "score": 0.1501,
+          "title": "plant, watering, grow, gardening, ewer, watering can, watering pot, water, natur",
+          "thumb": "https://cdn.pixabay.com/video/2016/09/22/5635-183850259_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_963785f0bdd94c12ad20/v1/thumb_004.jpg"
+    }
+  ],
+  "music": {
+    "path": null,
+    "title": "Key, Kida &amp; Eddie (feat. ICD) - Sundalo (acoustic)",
+    "source": "openverse/jamendo",
+    "licence": "CC BY 3.0",
+    "licence_url": "https://creativecommons.org/licenses/by/3.0/",
+    "attribution": "\"Key, Kida &amp; Eddie (feat. ICD) - Sundalo (acoustic)\" by Key, Kida &amp; Eddie (CC BY 3.0)",
+    "page_url": "https://www.jamendo.com/track/1522600",
+    "ai_generated": false
+  }
+}

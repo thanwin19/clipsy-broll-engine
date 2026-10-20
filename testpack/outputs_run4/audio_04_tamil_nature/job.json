@@ -1,0 +1,42 @@
+{
+  "job_id": "job_bf3b3881609349509ba0",
+  "kind": "broll",
+  "status": "succeeded",
+  "progress": 100,
+  "stage": "done",
+  "created_at": "2026-10-20T15:57:33.223501",
+  "updated_at": "2026-10-20T15:58:51.209920",
+  "result": {
+    "version": 1,
+    "links": {
+      "video_16x9": "http://127.0.0.1:8000/files/jobs/job_bf3b3881609349509ba0/v1/video_16x9.mp4",
+      "timeline": "http://127.0.0.1:8000/files/jobs/job_bf3b3881609349509ba0/v1/timeline.json",
+      "manifest": "http://127.0.0.1:8000/files/jobs/job_bf3b3881609349509ba0/v1/manifest.json",
+      "captions_srt": "http://127.0.0.1:8000/files/jobs/job_bf3b3881609349509ba0/v1/captions.srt",
+      "thumb_000": "http://127.0.0.1:8000/files/jobs/job_bf3b3881609349509ba0/v1/thumb_000.jpg",
+      "thumb_001": "http://127.0.0.1:8000/files/jobs/job_bf3b3881609349509ba0/v1/thumb_001.jpg",
+      "waveform": "http://127.0.0.1:8000/files/jobs/job_bf3b3881609349509ba0/v1/waveform.png"
+    },
+    "warnings": [
+      "PROVIDER_COOLDOWN: 'coverr' failed in a recent job; skipped for 355 more seconds",
+      "PROVIDER_COOLDOWN: 'openverse_images' failed in a recent job; skipped for 407 more seconds",
+      "PROVIDER_COOLDOWN: 'pixabay' failed in a recent job; skipped for 159 more seconds",
+      "QA_AUTOFIX: scenes [1] had black/frozen frames and were replaced"
+    ],
+    "scenes": 2,
+    "narration_seconds": 10.371,
+    "timings_seconds": {
+      "narration": 11.183,
+      "planning": 29.244,
+      "search_and_score": 8.998,
+      "ai_generation": 0.0,
+      "download": 1.708,
+      "music_parallel": 10.709,
+      "render": 6.963,
+      "qa": 16.327,
+      "total": 77.019
+    },
+    "qa_passed": true
+  },
+  "error": null
+}

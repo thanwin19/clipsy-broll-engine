@@ -1,0 +1,526 @@
+{
+  "job_id": "job_e534cb909f724de0a9e9",
+  "version": 1,
+  "waveform": "/files/jobs/job_e534cb909f724de0a9e9/v1/waveform.png",
+  "narration_seconds": 14.771,
+  "language": "en",
+  "transcript": "Meet the bottle that keeps your drink cold for twenty four hours. Take it on a mountain hike, to the gym, or to your desk at work. It is made from recycled steel and it never leaks. Stay fresh, wherever the day takes you.",
+  "aspect_ratios": [
+    "16:9",
+    "9:16",
+    "1:1"
+  ],
+  "mood": "upbeat",
+  "selection_rule": "Per scene: (1) statistics -> animated stat card. (2) Stock candidates from category-suited sources are scored with CLIP (image vs scene visual plan + narration, minus penalty for negative/avoid terms); unsafe candidates (avoid list, faces when avoided, AI for people/brands/sensitive) are removed. (3) Global assignment takes the highest (scene, clip) pairs first, each clip used once, if score >= tau=0.24. (4) If a scene's best stock score < tau+0.03 and AI is allowed, an AI image is generated and wins only if its CLIP score >= stock + 0.02. (5) Otherwise the best unused clip within 0.03 of tau, else a text card.",
+  "scenes": [
+    {
+      "scene": 0,
+      "start": 0.0,
+      "end": 4.2,
+      "duration": 4.2,
+      "narration": "Meet the bottle that keeps your drink cold for twenty four hours.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "everyday",
+      "visual_plan": "A sleek insulated steel water bottle sitting outdoors with water droplets on it.",
+      "queries": [
+        "insulated water bottle",
+        "cold water bottle",
+        "metal water bottle"
+      ],
+      "negative_terms": [
+        "plastic bottle",
+        "hot coffee",
+        "ceramic mug"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:133507",
+        "kind": "video",
+        "title": "cup, bottle, drink, beverage, water, lake, ocean, sea, vertical video",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-133507/",
+        "media_url": "https://cdn.pixabay.com/video/2022/10/04/133507-756991150_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by Marsel_beijing on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "insulated water bottle"
+      },
+      "reason": "stock (low confidence): pixabay scored 0.224 (< tau 0.24, within 0.03); no AI option",
+      "relevance_score": 0.2243,
+      "judge": {
+        "score": 4,
+        "why": "Shows a drink container outdoors near water."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2534,
+        "negative_max": 0.2625,
+        "penalty": 0.0291
+      },
+      "reframe_subject_x": 0.489,
+      "alternatives": [
+        {
+          "id": "pixabay:133507",
+          "source": "pixabay",
+          "score": 0.2243,
+          "title": "cup, bottle, drink, beverage, water, lake, ocean, sea, vertical video",
+          "thumb": "https://cdn.pixabay.com/video/2022/10/04/133507-756991150_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:19258",
+          "source": "pixabay",
+          "score": 0.1949,
+          "title": "water, young, bottle, woman, person, drink, beautiful, portrait, sed",
+          "thumb": "https://cdn.pixabay.com/video/2018/11/10/19258-300109082_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:19543",
+          "source": "pixabay",
+          "score": 0.1701,
+          "title": "bottle, garbage, waste, beach, recycling, trash, environment, ecology, sea, wate",
+          "thumb": "https://cdn.pixabay.com/video/2018/11/24/19543-302628044_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:126620",
+          "source": "pixabay",
+          "score": 0.1621,
+          "title": "glass, bottle, glass bottle, water, liquid",
+          "thumb": "https://cdn.pixabay.com/video/2022/08/03/126620-736345431_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:218339",
+          "source": "pixabay",
+          "score": 0.1532,
+          "title": "garbage, environmental protection, plastic waste, environmental pollution, envir",
+          "thumb": "https://cdn.pixabay.com/video/2024/06/26/218339_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:11066",
+          "source": "pixabay",
+          "score": 0.1124,
+          "title": "water, ripple, pool, run, flow, stream, surface, blue, closeup, liquid, cold, fl",
+          "thumb": "https://cdn.pixabay.com/video/2017/08/01/11066-228113758_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:31507",
+          "source": "pixabay",
+          "score": 0.1116,
+          "title": "flow, bottle, green, plastic, environment, environmental pollution, waste, pollu",
+          "thumb": "https://cdn.pixabay.com/video/2020/01/23/31507-387662222_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:154726",
+          "source": "pixabay",
+          "score": 0.1071,
+          "title": "waterfall, ice, water, melting, cold, spring, landscape, nature",
+          "thumb": "https://cdn.pixabay.com/video/2023/03/14/154726-808562497_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_e534cb909f724de0a9e9/v1/thumb_000.jpg"
+    },
+    {
+      "scene": 1,
+      "start": 4.2,
+      "end": 8.44,
+      "duration": 4.24,
+      "narration": "Take it on a mountain hike, to the gym, or to your desk at work.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "everyday",
+      "visual_plan": "A person holding a water bottle while hiking on a sunny mountain trail.",
+      "queries": [
+        "mountain hiking trail",
+        "person at gym workout",
+        "modern office desk"
+      ],
+      "negative_terms": [
+        "indoor gym equipment broken",
+        "rainy hike"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:137006",
+        "kind": "video",
+        "title": "hike, mountain hike, outlook, summit cross, trail, mountains, alps, landscape, path",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-137006/",
+        "media_url": "https://cdn.pixabay.com/video/2022/10/29/137006-765458032_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by adege on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "mountain hiking trail"
+      },
+      "reason": "stock: pixabay clip scored 0.245 >= tau 0.24; best unused of 12 safe candidates",
+      "relevance_score": 0.2448,
+      "judge": {
+        "score": 4,
+        "why": "Mountain hiking trail fits the outdoor lifestyle narration."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2448,
+        "negative_max": 0.1676,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.469,
+      "alternatives": [
+        {
+          "id": "pixabay:137006",
+          "source": "pixabay",
+          "score": 0.2448,
+          "title": "hike, mountain hike, outlook, summit cross, trail, mountains, alps, landscape, p",
+          "thumb": "https://cdn.pixabay.com/video/2022/10/29/137006-765458032_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:222082",
+          "source": "pixabay",
+          "score": 0.1993,
+          "title": "lake, trail, hike, mountain, mountain hiker, outlook, lungernsee, summer",
+          "thumb": "https://cdn.pixabay.com/video/2024/07/20/222082_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:293085",
+          "source": "pixabay",
+          "score": 0.183,
+          "title": "woman, cardio, workout, home fitness, intense workout, woman training, high inte",
+          "thumb": "https://cdn.pixabay.com/video/2025/07/23/293085_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:222083",
+          "source": "pixabay",
+          "score": 0.1799,
+          "title": "mountain, lake, trail, hike, outlook, mountain summer, lungernsee",
+          "thumb": "https://cdn.pixabay.com/video/2024/07/20/222083_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:222084",
+          "source": "pixabay",
+          "score": 0.1654,
+          "title": "mountain, lake, trail, hike, outlook, mountain summer, lungernsee, alpine",
+          "thumb": "https://cdn.pixabay.com/video/2024/07/20/222084_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:42305",
+          "source": "pixabay",
+          "score": 0.115,
+          "title": "man, computer, work, pc, home, mac, windows, desk, clics, house, mouse, books, t",
+          "thumb": "https://cdn.pixabay.com/video/2020/06/16/42305-431511171_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:22354",
+          "source": "pixabay",
+          "score": 0.1112,
+          "title": "notebook, laptop, computer, office, internet, open, oeffnen, monitor, pc, digita",
+          "thumb": "https://cdn.pixabay.com/video/2019/03/26/22354-326843263_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:31392",
+          "source": "pixabay",
+          "score": 0.101,
+          "title": "office, keyboard, laptop, computer, internet, workplace, monitor, desk, work, bu",
+          "thumb": "https://cdn.pixabay.com/video/2020/01/19/31392-386603663_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_e534cb909f724de0a9e9/v1/thumb_001.jpg"
+    },
+    {
+      "scene": 2,
+      "start": 8.44,
+      "end": 12.24,
+      "duration": 3.8,
+      "narration": "It is made from recycled steel and it never leaks.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "business",
+      "visual_plan": "Close up of recycled steel material texture and water drops sliding down a leakproof lid.",
+      "queries": [
+        "recycled steel texture",
+        "leakproof water test",
+        "metal manufacturing"
+      ],
+      "negative_terms": [
+        "rusty metal",
+        "broken metal",
+        "plastic waste"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:76395",
+        "kind": "video",
+        "title": "laboratory, test, tube, chemistry, hospital, research, medical, health, analysis, chemical, treatment, liquid, diagnosis, medicine",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-76395/",
+        "media_url": "https://cdn.pixabay.com/video/2021/06/03/76395-559159183_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by lumosajans on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "leakproof water test"
+      },
+      "reason": "stock (low confidence): pixabay scored 0.231 (< tau 0.24, within 0.03); no AI option",
+      "relevance_score": 0.2308,
+      "judge": {
+        "score": 3,
+        "why": "Shows industrial laboratory equipment instead of steel production."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2308,
+        "negative_max": 0.1896,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.542,
+      "alternatives": [
+        {
+          "id": "pixabay:76395",
+          "source": "pixabay",
+          "score": 0.2308,
+          "title": "laboratory, test, tube, chemistry, hospital, research, medical, health, analysis",
+          "thumb": "https://cdn.pixabay.com/video/2021/06/03/76395-559159183_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:189018",
+          "source": "pixabay",
+          "score": 0.1807,
+          "title": "lipstick, make up, bride, woman, fashion, wedding, close up, texture",
+          "thumb": "https://cdn.pixabay.com/video/2023/11/13/189018-884234917_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:202560",
+          "source": "pixabay",
+          "score": 0.1603,
+          "title": "recycling, dump, recycle, process, load, transport, port",
+          "thumb": "https://cdn.pixabay.com/video/2024/03/01/202560-918431383_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:2141",
+          "source": "pixabay",
+          "score": 0.1465,
+          "title": "test picture, tv, broadcast break, watch tv, break, broadcast deadline, image lo",
+          "thumb": "https://cdn.pixabay.com/video/2016/02/13/2141-155244186_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:1406",
+          "source": "pixabay",
+          "score": 0.1197,
+          "title": "mercedes glk, car, test, offroad, suv, 4wd, auto, design, new, automotive, trans",
+          "thumb": "https://cdn.pixabay.com/video/2015/11/27/1406-147169807_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:135849",
+          "source": "pixabay",
+          "score": 0.1129,
+          "title": "welder, source, industry, production, factory, workshop, work, employee, steel",
+          "thumb": "https://cdn.pixabay.com/video/2022/10/21/135849-764362069_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:26493",
+          "source": "pixabay",
+          "score": 0.1085,
+          "title": "colours, pattern, texture, abstract, macro, close-up",
+          "thumb": "https://cdn.pixabay.com/video/2019/09/03/26493-360248645_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:5451",
+          "source": "pixabay",
+          "score": 0.1057,
+          "title": "test tubes, experiment, science, lab, laboratory, beautiful wallpaper, test, med",
+          "thumb": "https://cdn.pixabay.com/video/2016/09/21/5451-183788677_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_e534cb909f724de0a9e9/v1/thumb_002.jpg"
+    },
+    {
+      "scene": 3,
+      "start": 12.24,
+      "end": 14.771,
+      "duration": 2.531,
+      "narration": "Stay fresh, wherever the day takes you.",
+      "visual_hint": null,
+      "scene_type": "metaphor",
+      "category": "everyday",
+      "visual_plan": "A vibrant energetic lifestyle shot of someone enjoying an outdoor adventure.",
+      "queries": [
+        "active lifestyle outdoor",
+        "person hiking adventure",
+        "fresh morning outdoors"
+      ],
+      "negative_terms": [
+        "gloomy day",
+        "sad person",
+        "nighttime"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:43137",
+        "kind": "video",
+        "title": "hiking, woman, walking, nature, mountain, person, happy, landscape, travel, adventure, female, success, alone, girl, canada, activity, backpack, trekking, cliff, standing, outdoor, freedom, forest, trail",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-43137/",
+        "media_url": "https://cdn.pixabay.com/video/2020/06/26/43137-435970355_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by thenickmurphy on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "person hiking adventure"
+      },
+      "reason": "stock: pixabay clip scored 0.252 >= tau 0.24; best unused of 12 safe candidates",
+      "relevance_score": 0.2522,
+      "judge": {
+        "score": 4,
+        "why": "Person walking on a nature trail fits travel theme."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2522,
+        "negative_max": 0.2044,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.492,
+      "alternatives": [
+        {
+          "id": "pixabay:43137",
+          "source": "pixabay",
+          "score": 0.2522,
+          "title": "hiking, woman, walking, nature, mountain, person, happy, landscape, travel, adve",
+          "thumb": "https://cdn.pixabay.com/video/2020/06/26/43137-435970355_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:32934",
+          "source": "pixabay",
+          "score": 0.2379,
+          "title": "exercise, running, fitness, lifestyle, woman, workout, active, jogging, fit, peo",
+          "thumb": "https://cdn.pixabay.com/video/2020/02/27/32934-395456365_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:8667",
+          "source": "pixabay",
+          "score": 0.2204,
+          "title": "forest, walking, walk, nature, man, adventure, outdoor, activity, trail, woods, ",
+          "thumb": "https://cdn.pixabay.com/video/2017/04/13/8667-213122451_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:82636",
+          "source": "pixabay",
+          "score": 0.2073,
+          "title": "bike, bicycle, cycling, fitness, sport, biking, leisure, healthy, ride, activity",
+          "thumb": "https://cdn.pixabay.com/video/2021/07/24/82636-580974567_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:925",
+          "source": "pixabay",
+          "score": 0.1989,
+          "title": "rock climbing, hiking, meteora, greece, rocks, turtles, sport, mountain, adventu",
+          "thumb": "https://cdn.pixabay.com/video/2015/10/09/925-141891355_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:282730",
+          "source": "pixabay",
+          "score": 0.1979,
+          "title": "mountains, stream, waterfall, alpine, valley, cabins, nature, scenic, rocks, gre",
+          "thumb": "https://cdn.pixabay.com/video/2025/05/30/282730_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:53540",
+          "source": "pixabay",
+          "score": 0.1851,
+          "title": "excursion, forest, trail, autumn, mountain, trekking, nature, dolomites, path, l",
+          "thumb": "https://cdn.pixabay.com/video/2020/10/27/53540-473869697_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:328650",
+          "source": "pixabay",
+          "score": 0.1709,
+          "title": "nature, river, mountain, forest, water, stream, rapids, flow, alpine, valley, ro",
+          "thumb": "https://cdn.pixabay.com/video/2026/01/19/328650_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_e534cb909f724de0a9e9/v1/thumb_003.jpg"
+    }
+  ],
+  "music": {
+    "path": null,
+    "title": "Key, Kida &amp; Eddie (feat. ICD) - Sundalo (acoustic)",
+    "source": "openverse/jamendo",
+    "licence": "CC BY 3.0",
+    "licence_url": "https://creativecommons.org/licenses/by/3.0/",
+    "attribution": "\"Key, Kida &amp; Eddie (feat. ICD) - Sundalo (acoustic)\" by Key, Kida &amp; Eddie (CC BY 3.0)",
+    "page_url": "https://www.jamendo.com/track/1522600",
+    "ai_generated": false
+  }
+}

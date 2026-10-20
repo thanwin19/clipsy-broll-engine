@@ -1,0 +1,48 @@
+{
+  "job_id": "job_c48b0fcf13354b3085de",
+  "kind": "broll",
+  "status": "succeeded",
+  "progress": 100,
+  "stage": "done",
+  "created_at": "2026-10-20T15:51:32.042788",
+  "updated_at": "2026-10-20T15:53:02.404488",
+  "result": {
+    "version": 1,
+    "links": {
+      "video_16x9": "http://127.0.0.1:8000/files/jobs/job_c48b0fcf13354b3085de/v1/video_16x9.mp4",
+      "video_9x16": "http://127.0.0.1:8000/files/jobs/job_c48b0fcf13354b3085de/v1/video_9x16.mp4",
+      "timeline": "http://127.0.0.1:8000/files/jobs/job_c48b0fcf13354b3085de/v1/timeline.json",
+      "manifest": "http://127.0.0.1:8000/files/jobs/job_c48b0fcf13354b3085de/v1/manifest.json",
+      "captions_srt": "http://127.0.0.1:8000/files/jobs/job_c48b0fcf13354b3085de/v1/captions.srt",
+      "thumb_000": "http://127.0.0.1:8000/files/jobs/job_c48b0fcf13354b3085de/v1/thumb_000.jpg",
+      "thumb_001": "http://127.0.0.1:8000/files/jobs/job_c48b0fcf13354b3085de/v1/thumb_001.jpg",
+      "thumb_002": "http://127.0.0.1:8000/files/jobs/job_c48b0fcf13354b3085de/v1/thumb_002.jpg",
+      "waveform": "http://127.0.0.1:8000/files/jobs/job_c48b0fcf13354b3085de/v1/waveform.png"
+    },
+    "warnings": [
+      "PLANNER_FALLBACK: LLM planner unavailable (RuntimeError); keyword heuristics used",
+      "PROVIDER_COOLDOWN: 'coverr' failed in a recent job; skipped for 62 more seconds",
+      "PROVIDER_COOLDOWN: 'openverse_images' failed in a recent job; skipped for 77 more seconds",
+      "PROVIDER_COOLDOWN: 'pixabay' failed in a recent job; skipped for 518 more seconds",
+      "ALL_FOOTAGE_SOURCES_EMPTY: every scene uses a rendered card",
+      "QA_AUTOFIX: scenes [1, 2] had black/frozen frames and were replaced",
+      "QA_FAILED: 16:9 still fails checks after auto-fix: black=[] freeze=[4.0, 6.6] drift=0.013",
+      "QA_FAILED: 9:16 still fails checks after auto-fix: black=[] freeze=[4.0, 6.6] drift=0.013"
+    ],
+    "scenes": 3,
+    "narration_seconds": 9.92,
+    "timings_seconds": {
+      "narration": 7.865,
+      "planning": 34.635,
+      "search_and_score": 0.186,
+      "ai_generation": 0.0,
+      "download": 0.449,
+      "music_parallel": 2.526,
+      "render": 17.511,
+      "qa": 21.652,
+      "total": 87.077
+    },
+    "qa_passed": false
+  },
+  "error": null
+}

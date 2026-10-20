@@ -1,0 +1,526 @@
+{
+  "job_id": "job_14464ac312e84ffb9468",
+  "version": 1,
+  "waveform": "/files/jobs/job_14464ac312e84ffb9468/v1/waveform.png",
+  "narration_seconds": 11.29,
+  "language": "en",
+  "transcript": "Our city wakes up before sunrise. Thousands of commuters rush to work. Street vendors set up their stalls. By night, the roads glow with light.",
+  "aspect_ratios": [
+    "16:9",
+    "9:16"
+  ],
+  "mood": "upbeat",
+  "selection_rule": "Per scene: (1) statistics -> animated stat card. (2) Stock candidates from category-suited sources are scored with CLIP (image vs scene visual plan + narration, minus penalty for negative/avoid terms); unsafe candidates (avoid list, faces when avoided, AI for people/brands/sensitive) are removed. (3) Global assignment takes the highest (scene, clip) pairs first, each clip used once, if score >= tau=0.24. (4) If a scene's best stock score < tau+0.03 and AI is allowed, an AI image is generated and wins only if its CLIP score >= stock + 0.02. (5) Otherwise the best unused clip within 0.03 of tau, else a text card.",
+  "scenes": [
+    {
+      "scene": 0,
+      "start": 0.0,
+      "end": 3.34,
+      "duration": 3.34,
+      "narration": "Our city wakes up before sunrise.",
+      "visual_hint": "city skyline at dawn",
+      "scene_type": "literal",
+      "category": "place",
+      "visual_plan": "City skyline at dawn with early morning light breaking over buildings.",
+      "queries": [
+        "city skyline sunrise",
+        "dawn urban cityscape",
+        "morning skyline view"
+      ],
+      "negative_terms": [
+        "night",
+        "sunset",
+        "crowd"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:243908",
+        "kind": "video",
+        "title": "buildings, city, urban, cityscape, town, skyline, sunrise, mountain",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-243908/",
+        "media_url": "https://cdn.pixabay.com/video/2024/11/29/243908_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by Oliverstar on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "city skyline sunrise"
+      },
+      "reason": "stock: pixabay clip scored 0.306 >= tau 0.24; best unused of 12 safe candidates",
+      "relevance_score": 0.3065,
+      "judge": {
+        "score": 5,
+        "why": "City skyline at dawn perfectly matches the narration."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.3065,
+        "negative_max": 0.245,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.58,
+      "alternatives": [
+        {
+          "id": "pixabay:243908",
+          "source": "pixabay",
+          "score": 0.3065,
+          "title": "buildings, city, urban, cityscape, town, skyline, sunrise, mountain",
+          "thumb": "https://cdn.pixabay.com/video/2024/11/29/243908_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:2143",
+          "source": "pixabay",
+          "score": 0.3056,
+          "title": "sunrise, sun, city, silhouette, city line, landscape, skyline, cityscape, city s",
+          "thumb": "https://cdn.pixabay.com/video/2016/02/13/2143-155246339_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:173137",
+          "source": "pixabay",
+          "score": 0.2834,
+          "title": "city, sunset, buildings, skyscrapers, towers, moscow, sky, urban, moscow city, p",
+          "thumb": "https://cdn.pixabay.com/video/2023/07/25/173137-848555631_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:296958",
+          "source": "pixabay",
+          "score": 0.281,
+          "title": "travel, burjkalifa, dubai, uae, emirate, arab, burj-al-arab, burj khalifa, touri",
+          "thumb": "https://cdn.pixabay.com/video/2025/08/12/296958_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:2337",
+          "source": "pixabay",
+          "score": 0.2663,
+          "title": "metropole, morning, city, mist, sunrise, early, urban, america, usa, buildings, ",
+          "thumb": "https://cdn.pixabay.com/video/2016/02/29/2337-157269912_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:231405",
+          "source": "pixabay",
+          "score": 0.2508,
+          "title": "sunset, skyscraper, nyc, manhattan, city, architecture, skyline, buildings, urba",
+          "thumb": "https://cdn.pixabay.com/video/2024/09/14/231405_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "wikimedia:127741592",
+          "source": "wikimedia",
+          "score": 0.2497,
+          "title": "File:Aerial views of Downtown Manhattan, New York City, USA in the morning inclu",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/81/Aerial_views_of_Downtown_Manhattan%2C_New_York_City%2C_USA_in_the_morning_including_Freedom_Tower%2C_One_World_Trade%2C_Manhattan_Skyline.webm/960px--Aerial_views_of_Downtown_Manhattan%2C_New_York_City%2C_USA_in_the_morning_including_Freedom_Tower%2C_One_World_Trade%2C_Manhattan_Skyline.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "CC BY 3.0"
+        },
+        {
+          "id": "pixabay:336666",
+          "source": "pixabay",
+          "score": 0.2047,
+          "title": "seoul, hangang river, south korea, sunrise, dawn, lotte world tower, cheongdam b",
+          "thumb": "https://cdn.pixabay.com/video/2026/02/25/336666_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_14464ac312e84ffb9468/v1/thumb_000.jpg"
+    },
+    {
+      "scene": 1,
+      "start": 3.34,
+      "end": 5.92,
+      "duration": 2.58,
+      "narration": "Thousands of commuters rush to work.",
+      "visual_hint": "busy train station",
+      "scene_type": "literal",
+      "category": "people_free",
+      "visual_plan": "Busy train station platform with commuters walking purposefully during morning rush hour.",
+      "queries": [
+        "busy train station",
+        "commuters rush hour",
+        "people walking station"
+      ],
+      "negative_terms": [
+        "empty station",
+        "night",
+        "beach"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:201",
+        "kind": "video",
+        "title": "people, crow, blur, bokeh, out of focus, men, women, walking, station, crowd, pedestrians, public transport, city, busy, many",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-201/",
+        "media_url": "https://cdn.pixabay.com/video/2015/08/10/201-135847376_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by Life-Of-Vids on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "people walking station"
+      },
+      "reason": "stock: pixabay clip scored 0.298 >= tau 0.24; best unused of 12 safe candidates",
+      "relevance_score": 0.298,
+      "judge": {
+        "score": 4,
+        "why": "Blurred commuters walking fit the rush to work description."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.298,
+        "negative_max": 0.2426,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.46,
+      "alternatives": [
+        {
+          "id": "pixabay:201",
+          "source": "pixabay",
+          "score": 0.298,
+          "title": "people, crow, blur, bokeh, out of focus, men, women, walking, station, crowd, pe",
+          "thumb": "https://cdn.pixabay.com/video/2015/08/10/201-135847376_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:6387",
+          "source": "pixabay",
+          "score": 0.2812,
+          "title": "people, commerce, shop, busy, mall, walking",
+          "thumb": "https://cdn.pixabay.com/video/2016/11/15/6387-191695740_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:165336",
+          "source": "pixabay",
+          "score": 0.2775,
+          "title": "people, walking, crowded, train station, transport, central station, holland, ro",
+          "thumb": "https://cdn.pixabay.com/video/2023/05/31/165336-832460251_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:197828",
+          "source": "pixabay",
+          "score": 0.2505,
+          "title": "people, walking, underpass, subway, train, metro, stairs, station, underground, ",
+          "thumb": "https://cdn.pixabay.com/video/2024/01/23/197828-905717479_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:44968",
+          "source": "pixabay",
+          "score": 0.2412,
+          "title": "waterloo station, london, people, busy, station, fast",
+          "thumb": "https://cdn.pixabay.com/video/2020/07/18/44968-441206533_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:3630",
+          "source": "pixabay",
+          "score": 0.2391,
+          "title": "crosswalk, crowd, people, many, crowded, city, street, pedestrians, urban, busy,",
+          "thumb": "https://cdn.pixabay.com/video/2016/06/27/3630-172488409_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:3608",
+          "source": "pixabay",
+          "score": 0.2278,
+          "title": "reading, comics, subway, subway station, train, passenger, waiting, asian, man, ",
+          "thumb": "https://cdn.pixabay.com/video/2016/06/27/3608-172488324_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:9005",
+          "source": "pixabay",
+          "score": 0.2204,
+          "title": "tube, metro, subway, underground, transport, transportation, urban, city, train,",
+          "thumb": "https://cdn.pixabay.com/video/2017/05/06/9005-216332135_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_14464ac312e84ffb9468/v1/thumb_001.jpg"
+    },
+    {
+      "scene": 2,
+      "start": 5.92,
+      "end": 8.26,
+      "duration": 2.34,
+      "narration": "Street vendors set up their stalls.",
+      "visual_hint": "street food market",
+      "scene_type": "literal",
+      "category": "everyday",
+      "visual_plan": "Street vendors setting up their food stalls and arranging fresh goods in the morning.",
+      "queries": [
+        "street food market",
+        "vendor setting stall",
+        "market morning prep"
+      ],
+      "negative_terms": [
+        "supermarket interior",
+        "fine dining",
+        "night"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:44663",
+        "kind": "video",
+        "title": "street food, vendor, selling, market, people, seller, asia, business, natural, fresh, chinatown, food, sausage, fire, grill, charcoal",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-44663/",
+        "media_url": "https://cdn.pixabay.com/video/2020/07/14/44663-439982507_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by My_Walking_Diary on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "street food market"
+      },
+      "reason": "stock: pixabay clip scored 0.315 >= tau 0.24; best unused of 12 safe candidates",
+      "relevance_score": 0.3145,
+      "judge": {
+        "score": 3,
+        "why": "Vendor is actively cooking rather than setting up."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.3145,
+        "negative_max": 0.1521,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.508,
+      "alternatives": [
+        {
+          "id": "pixabay:44663",
+          "source": "pixabay",
+          "score": 0.3145,
+          "title": "street food, vendor, selling, market, people, seller, asia, business, natural, f",
+          "thumb": "https://cdn.pixabay.com/video/2020/07/14/44663-439982507_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:42932",
+          "source": "pixabay",
+          "score": 0.2595,
+          "title": "market, countryside, travel, farmer, vendor, beautiful, daily life",
+          "thumb": "https://cdn.pixabay.com/video/2020/06/23/42932-434316667_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:199919",
+          "source": "pixabay",
+          "score": 0.2572,
+          "title": "people, market, street food, food, asia, vietnam, thailand",
+          "thumb": "https://cdn.pixabay.com/video/2024/02/09/199919-911677064_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:347278",
+          "source": "pixabay",
+          "score": 0.2323,
+          "title": "street food, cooking, deep fry, asian food, night market, crispy, sizzling, wok,",
+          "thumb": "https://cdn.pixabay.com/video/2026/04/17/347278_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:42089",
+          "source": "pixabay",
+          "score": 0.2158,
+          "title": "market, vendor, countryside, vietnam, market place",
+          "thumb": "https://cdn.pixabay.com/video/2020/06/15/42089-431423046_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:43707",
+          "source": "pixabay",
+          "score": 0.213,
+          "title": "night market, market, fairground, thailand, weekend, bazaar, fun, travel, touris",
+          "thumb": "https://cdn.pixabay.com/video/2020/07/03/43707-436825991_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:371474",
+          "source": "pixabay",
+          "score": 0.1948,
+          "title": "ai generated, market, food, shopping, shop, fresh, selling, marketplace, produce",
+          "thumb": "https://cdn.pixabay.com/video/2026/08/19/371474_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:11702",
+          "source": "pixabay",
+          "score": 0.1877,
+          "title": "bbq, squid, food, seafood, grill, grilled, barbecue, delicious, hot, cuisine, me",
+          "thumb": "https://cdn.pixabay.com/video/2017/08/30/11702-231758991_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_14464ac312e84ffb9468/v1/thumb_002.jpg"
+    },
+    {
+      "scene": 3,
+      "start": 8.26,
+      "end": 11.29,
+      "duration": 3.03,
+      "narration": "By night, the roads glow with light.",
+      "visual_hint": "night traffic light trails",
+      "scene_type": "literal",
+      "category": "place",
+      "visual_plan": "Long exposure night traffic light trails on a busy city highway.",
+      "queries": [
+        "night traffic trails",
+        "city highway lights",
+        "urban night traffic"
+      ],
+      "negative_terms": [
+        "daytime",
+        "empty road",
+        "countryside"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:254449",
+        "kind": "video",
+        "title": "highway, traffic, light traces, rush hour traffic, highway bridge, urban, car traffic",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-254449/",
+        "media_url": "https://cdn.pixabay.com/video/2025/01/24/254449_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by adege on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "city highway lights"
+      },
+      "reason": "stock: pixabay clip scored 0.314 >= tau 0.24; best unused of 12 safe candidates",
+      "relevance_score": 0.3136,
+      "judge": {
+        "score": 5,
+        "why": "Long exposure traffic light trails perfectly illustrate glowing roads at night."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.3136,
+        "negative_max": 0.2659,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.465,
+      "alternatives": [
+        {
+          "id": "pixabay:254449",
+          "source": "pixabay",
+          "score": 0.3136,
+          "title": "highway, traffic, light traces, rush hour traffic, highway bridge, urban, car tr",
+          "thumb": "https://cdn.pixabay.com/video/2025/01/24/254449_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:321831",
+          "source": "pixabay",
+          "score": 0.3064,
+          "title": "highway timelapse, traffic timelapse, motorway timelapse, urban timelapse, city ",
+          "thumb": "https://cdn.pixabay.com/video/2025/12/14/321831_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:321830",
+          "source": "pixabay",
+          "score": 0.3018,
+          "title": "highway timelapse, traffic timelapse, motorway timelapse, urban timelapse, city ",
+          "thumb": "https://cdn.pixabay.com/video/2025/12/14/321830_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:360754",
+          "source": "pixabay",
+          "score": 0.2949,
+          "title": "sky gate bridge, kansai airport, airport access bridge, osaka night view, road i",
+          "thumb": "https://cdn.pixabay.com/video/2026/06/26/360754_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:220940",
+          "source": "pixabay",
+          "score": 0.2926,
+          "title": "cars, traffic, city, road, night, motion, highway, colorful, street, glow, glowi",
+          "thumb": "https://cdn.pixabay.com/video/2024/07/13/220940_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:190482",
+          "source": "pixabay",
+          "score": 0.2917,
+          "title": "city, night, lights, busy, urban, street, drive, automobile, light trail, moving",
+          "thumb": "https://cdn.pixabay.com/video/2023/11/24/190482-888122628_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:324817",
+          "source": "pixabay",
+          "score": 0.2828,
+          "title": "city night, urban night, night cityscape, city timelapse, urban timelapse, night",
+          "thumb": "https://cdn.pixabay.com/video/2025/12/29/324817_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:98732",
+          "source": "pixabay",
+          "score": 0.2585,
+          "title": "traffic, city, road, traffic axis, cars, road transport, light trail, long expos",
+          "thumb": "https://cdn.pixabay.com/video/2021/11/23/98732-649311211_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_14464ac312e84ffb9468/v1/thumb_003.jpg"
+    }
+  ],
+  "music": {
+    "path": null,
+    "title": "Key, Kida &amp; Eddie (feat. ICD) - Sundalo (acoustic)",
+    "source": "openverse/jamendo",
+    "licence": "CC BY 3.0",
+    "licence_url": "https://creativecommons.org/licenses/by/3.0/",
+    "attribution": "\"Key, Kida &amp; Eddie (feat. ICD) - Sundalo (acoustic)\" by Key, Kida &amp; Eddie (CC BY 3.0)",
+    "page_url": "https://www.jamendo.com/track/1522600",
+    "ai_generated": false
+  }
+}

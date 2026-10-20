@@ -1,0 +1,11 @@
+1
+00:00:00,000 --> 00:00:01,183
+Elon Musk announced that Tesla will
+
+2
+00:00:01,183 --> 00:00:02,873
+open a new factory next year.
+
+3
+00:00:02,873 --> 00:00:05,873
+Apple and Samsung also reported record phone sales.

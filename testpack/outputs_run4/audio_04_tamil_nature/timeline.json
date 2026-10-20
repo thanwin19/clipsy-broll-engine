@@ -1,0 +1,194 @@
+{
+  "job_id": "job_bf3b3881609349509ba0",
+  "version": 1,
+  "waveform": "/files/jobs/job_bf3b3881609349509ba0/v1/waveform.png",
+  "narration_seconds": 10.371,
+  "language": "ml",
+  "transcript": "\u0bae\u0691\u0bc8\u0b95\u0bcd \u0b95\u0bbe\u0bb2\u0ba4\u0bcd\u0ba4\u0bbf\u0bb2\u0bcd \u0bae\u0bb2\u0bc8\u0b95\u0bb3\u0bcd \u0baa\u0b9a\u0bcd\u0b9a\u0bc8\u0baf\u0bbe\u0b95 \u0bae\u0bbe\u0bb1\u0bbf\u0b95\u0bcd\u0b95\u0bbf\u0ba9\u0bcd\u0ba9\u0ba9, \u0b85\u0bb0\u0bc1\u0bb5\u0bbf\u0b95\u0bb3\u0bcd \u0bb5\u0bc7\u0b95\u0bae\u0bbe\u0b95\u0b95\u0bcd \u0b95\u0bca\u0b9f\u0bc1\u0b95\u0bcd\u0b95\u0bbf\u0ba9\u0bcd\u0ba9\u0ba9, \u0baa\u0bb0\u0bb5\u0bc8\u0b95\u0bb3\u0bcd \u0bae\u0bb0\u0b99\u0bcd\u0b95\u0bb3\u0bbf\u0bb2\u0bcd \u0baa\u0bbe\u0b9f\u0bbf\u0b95\u0bcd\u0b95\u0bbf\u0ba9\u0bcd\u0ba9\u0ba9.",
+  "aspect_ratios": [
+    "16:9"
+  ],
+  "mood": "calm",
+  "selection_rule": "Per scene: (1) statistics -> animated stat card. (2) Stock candidates from category-suited sources are scored with CLIP (image vs scene visual plan + narration, minus penalty for negative/avoid terms); unsafe candidates (avoid list, faces when avoided, AI for people/brands/sensitive) are removed. (3) Global assignment takes the highest (scene, clip) pairs first, each clip used once, if score >= tau=0.24. (4) If a scene's best stock score < tau+0.03 and AI is allowed, an AI image is generated and wins only if its CLIP score >= stock + 0.02. (5) Otherwise the best unused clip within 0.03 of tau, else a text card.",
+  "scenes": [
+    {
+      "scene": 0,
+      "start": 0.0,
+      "end": 4.34,
+      "duration": 4.34,
+      "narration": "\u0bae\u0691\u0bc8\u0b95\u0bcd \u0b95\u0bbe\u0bb2\u0ba4\u0bcd\u0ba4\u0bbf\u0bb2\u0bcd \u0bae\u0bb2\u0bc8\u0b95\u0bb3\u0bcd \u0baa\u0b9a\u0bcd\u0b9a\u0bc8\u0baf\u0bbe\u0b95 \u0bae\u0bbe\u0bb1\u0bbf\u0b95\u0bcd\u0b95\u0bbf\u0ba9\u0bcd\u0ba9\u0ba9,",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "nature",
+      "visual_plan": "Lush green mountains during the monsoon season with misty clouds.",
+      "queries": [
+        "green mountains monsoon",
+        "lush hills rain",
+        "monsoon mountain landscape"
+      ],
+      "negative_terms": [
+        "dry mountains",
+        "desert",
+        "snow"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "wikimedia:175460222",
+        "kind": "video",
+        "title": "File:Timelapse 2025 Kinnaur Monsoon.webm",
+        "source": "wikimedia",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Timelapse_2025_Kinnaur_Monsoon.webm",
+        "media_url": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Timelapse_2025_Kinnaur_Monsoon.webm?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "licence": "CC BY 4.0",
+        "licence_url": "https://creativecommons.org/licenses/by/4.0",
+        "attribution": "Dfromhimalayas via Wikimedia Commons (CC BY 4.0)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "monsoon mountain landscape"
+      },
+      "reason": "stock: wikimedia clip scored 0.267 >= tau 0.24; best unused of 3 safe candidates",
+      "relevance_score": 0.2667,
+      "judge": {
+        "score": 3,
+        "why": "Shows mountains and fog, but not green mountains."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2667,
+        "negative_max": 0.2251,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.341,
+      "alternatives": [
+        {
+          "id": "wikimedia:175460222",
+          "source": "wikimedia",
+          "score": 0.2667,
+          "title": "File:Timelapse 2025 Kinnaur Monsoon.webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3d/Timelapse_2025_Kinnaur_Monsoon.webm/960px--Timelapse_2025_Kinnaur_Monsoon.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "CC BY 4.0"
+        },
+        {
+          "id": "wikimedia:85092583",
+          "source": "wikimedia",
+          "score": 0.0635,
+          "title": "File:Birds of Sahyadri -Asian Paradise Flycatcher -.webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/Birds_of_Sahyadri_-Asian_Paradise_Flycatcher_-.webm/960px--Birds_of_Sahyadri_-Asian_Paradise_Flycatcher_-.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "CC BY 3.0"
+        },
+        {
+          "id": "wikimedia:43670500",
+          "source": "wikimedia",
+          "score": 0.0034,
+          "title": "File:Monsoon Clouds - Albuquerque, New Mexico, USA - 5 July 2015.webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/88/Monsoon_Clouds_-_Albuquerque%2C_New_Mexico%2C_USA_-_5_July_2015.webm/960px--Monsoon_Clouds_-_Albuquerque%2C_New_Mexico%2C_USA_-_5_July_2015.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "CC BY 2.0"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_bf3b3881609349509ba0/v1/thumb_000.jpg"
+    },
+    {
+      "scene": 1,
+      "start": 4.34,
+      "end": 10.371,
+      "duration": 6.031,
+      "narration": "\u0b85\u0bb0\u0bc1\u0bb5\u0bbf\u0b95\u0bb3\u0bcd \u0bb5\u0bc7\u0b95\u0bae\u0bbe\u0b95\u0b95\u0bcd \u0b95\u0bca\u0b9f\u0bc1\u0b95\u0bcd\u0b95\u0bbf\u0ba9\u0bcd\u0ba9\u0ba9, \u0baa\u0bb0\u0bb5\u0bc8\u0b95\u0bb3\u0bcd \u0bae\u0bb0\u0b99\u0bcd\u0b95\u0bb3\u0bbf\u0bb2\u0bcd \u0baa\u0bbe\u0b9f\u0bbf\u0b95\u0bcd\u0b95\u0bbf\u0ba9\u0bcd\u0ba9\u0ba9.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "nature",
+      "visual_plan": "Fast flowing waterfalls in a dense green forest with birds on trees.",
+      "queries": [
+        "waterfall forest nature",
+        "rushing stream monsoon",
+        "birds on green trees"
+      ],
+      "negative_terms": [
+        "dried waterfall",
+        "urban",
+        "pollution"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "wikimedia:190256471",
+        "kind": "video",
+        "title": "File:Laysan albatross nests on Midway Atoll NWR (55226395261).webm",
+        "source": "wikimedia",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Laysan_albatross_nests_on_Midway_Atoll_NWR_(55226395261).webm",
+        "media_url": "https://upload.wikimedia.org/wikipedia/commons/f/fd/Laysan_albatross_nests_on_Midway_Atoll_NWR_%2855226395261%29.webm?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "licence": "Public domain",
+        "licence_url": "",
+        "attribution": "USFWS Pacific via Wikimedia Commons (Public domain)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "birds on green trees"
+      },
+      "reason": "auto-replaced by QA (black/frozen frames); wikimedia scored 0.044",
+      "relevance_score": 0.0436,
+      "judge": {
+        "score": 2,
+        "why": "Shows birds on ground, line mentions waterfalls and trees."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.1198,
+        "negative_max": 0.1761,
+        "penalty": 0.0762
+      },
+      "reframe_subject_x": 0.511,
+      "alternatives": [
+        {
+          "id": "wikimedia:190256471",
+          "source": "wikimedia",
+          "score": 0.0436,
+          "title": "File:Laysan albatross nests on Midway Atoll NWR (55226395261).webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fd/Laysan_albatross_nests_on_Midway_Atoll_NWR_%2855226395261%29.webm/960px--Laysan_albatross_nests_on_Midway_Atoll_NWR_%2855226395261%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:55873100",
+          "source": "wikimedia",
+          "score": 0.0374,
+          "title": "File:Midway Atoll - Bird Sightings - Mar-Apr 2015.webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4f/Midway_Atoll_-_Bird_Sightings_-_Mar-Apr_2015.webm/960px--Midway_Atoll_-_Bird_Sightings_-_Mar-Apr_2015.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "CC BY 2.0"
+        },
+        {
+          "id": "wikimedia:173977800",
+          "source": "wikimedia",
+          "score": 0.0358,
+          "title": "File:BLM drone training above Horning Seed Orchard (35179078385).webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/BLM_drone_training_above_Horning_Seed_Orchard_%2835179078385%29.webm/960px--BLM_drone_training_above_Horning_Seed_Orchard_%2835179078385%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:76808361",
+          "source": "wikimedia",
+          "score": -0.0848,
+          "title": "File:Lady Bird Johnson Home Movie -31, HM31- 1965 in Washington, Air Force One, ",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4a/Lady_Bird_Johnson_Home_Movie_-31%2C_HM31-_1965_in_Washington%2C_Air_Force_One%2C_and_LBJ_Ranch_%281280x720%29.webm/960px--Lady_Bird_Johnson_Home_Movie_-31%2C_HM31-_1965_in_Washington%2C_Air_Force_One%2C_and_LBJ_Ranch_%281280x720%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "CC BY 3.0"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_bf3b3881609349509ba0/v1/thumb_001.jpg"
+    }
+  ],
+  "music": {
+    "path": null,
+    "title": "Procedural ambient pad",
+    "source": "procedural",
+    "licence": "Generated by this service (no third-party rights)",
+    "licence_url": "",
+    "attribution": "Generated by Clipsy",
+    "page_url": "",
+    "ai_generated": false
+  }
+}

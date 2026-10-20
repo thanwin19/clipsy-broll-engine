@@ -1,0 +1,44 @@
+{
+  "job_id": "job_8d9ced6e4da947b9a5e8",
+  "kind": "broll",
+  "status": "succeeded",
+  "progress": 100,
+  "stage": "done",
+  "created_at": "2026-10-20T15:42:45.249557",
+  "updated_at": "2026-10-20T15:46:27.662413",
+  "result": {
+    "version": 1,
+    "links": {
+      "video_16x9": "http://127.0.0.1:8000/files/jobs/job_8d9ced6e4da947b9a5e8/v1/video_16x9.mp4",
+      "video_9x16": "http://127.0.0.1:8000/files/jobs/job_8d9ced6e4da947b9a5e8/v1/video_9x16.mp4",
+      "timeline": "http://127.0.0.1:8000/files/jobs/job_8d9ced6e4da947b9a5e8/v1/timeline.json",
+      "manifest": "http://127.0.0.1:8000/files/jobs/job_8d9ced6e4da947b9a5e8/v1/manifest.json",
+      "captions_srt": "http://127.0.0.1:8000/files/jobs/job_8d9ced6e4da947b9a5e8/v1/captions.srt",
+      "thumb_000": "http://127.0.0.1:8000/files/jobs/job_8d9ced6e4da947b9a5e8/v1/thumb_000.jpg",
+      "thumb_001": "http://127.0.0.1:8000/files/jobs/job_8d9ced6e4da947b9a5e8/v1/thumb_001.jpg",
+      "thumb_002": "http://127.0.0.1:8000/files/jobs/job_8d9ced6e4da947b9a5e8/v1/thumb_002.jpg",
+      "thumb_003": "http://127.0.0.1:8000/files/jobs/job_8d9ced6e4da947b9a5e8/v1/thumb_003.jpg",
+      "waveform": "http://127.0.0.1:8000/files/jobs/job_8d9ced6e4da947b9a5e8/v1/waveform.png"
+    },
+    "warnings": [
+      "PROVIDER_COOLDOWN: 'coverr' failed in a recent job; skipped for 488 more seconds",
+      "PROVIDER_COOLDOWN: 'openverse_images' failed in a recent job; skipped for 504 more seconds",
+      "LOW_RELEVANCE: scene 0 best clip scored 0.217"
+    ],
+    "scenes": 4,
+    "narration_seconds": 21.011,
+    "timings_seconds": {
+      "narration": 3.665,
+      "planning": 60.636,
+      "search_and_score": 35.485,
+      "ai_generation": 0.0,
+      "download": 5.969,
+      "music_parallel": 41.458,
+      "render": 24.845,
+      "qa": 7.726,
+      "total": 139.6
+    },
+    "qa_passed": true
+  },
+  "error": null
+}

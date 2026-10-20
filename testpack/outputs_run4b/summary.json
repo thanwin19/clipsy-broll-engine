@@ -1,0 +1,57 @@
+[
+  {
+    "case": "09_hindi_tutorial",
+    "status": "succeeded",
+    "error_code": "",
+    "seconds": 679.84,
+    "scenes": 3,
+    "narration_seconds": 9.92,
+    "qa_passed": true,
+    "warnings": 1,
+    "job_id": "job_15df8ee5ed5d4fceaf5d"
+  },
+  {
+    "case": "10_long_5min_agriculture",
+    "status": "succeeded",
+    "error_code": "",
+    "seconds": 583.61,
+    "scenes": 39,
+    "narration_seconds": 335.672,
+    "qa_passed": true,
+    "warnings": 11,
+    "job_id": "job_80bf81e4847c4df985ce"
+  },
+  {
+    "case": "audio_08_long_5min_agriculture",
+    "status": "succeeded",
+    "error_code": "",
+    "seconds": 642.88,
+    "scenes": 52,
+    "narration_seconds": 298.73,
+    "qa_passed": true,
+    "warnings": 17,
+    "job_id": "job_22b0dd6a1a1d4c57b19a"
+  },
+  {
+    "case": "hc_named_person_brand",
+    "status": "succeeded",
+    "error_code": "",
+    "seconds": 605.42,
+    "scenes": 2,
+    "narration_seconds": 5.873,
+    "qa_passed": true,
+    "warnings": 3,
+    "job_id": "job_1ab9fc3baa404bcebc90"
+  },
+  {
+    "case": "hc_sad_news",
+    "status": "succeeded",
+    "error_code": "",
+    "seconds": 102.27,
+    "scenes": 2,
+    "narration_seconds": 18.201,
+    "qa_passed": true,
+    "warnings": 3,
+    "job_id": "job_b3291c965d8148fdb6b7"
+  }
+]

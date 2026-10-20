@@ -1,0 +1,74 @@
+{
+  "job_id": "job_8d3aa6f0017340c6b0fc",
+  "version": 1,
+  "waveform": "/files/jobs/job_8d3aa6f0017340c6b0fc/v1/waveform.png",
+  "narration_seconds": 5.971,
+  "language": "en",
+  "transcript": "Drinking enough water keeps your body and mind sharp. Start every morning with a full glass.",
+  "aspect_ratios": [
+    "16:9",
+    "9:16"
+  ],
+  "mood": "upbeat",
+  "selection_rule": "Per scene: (1) statistics -> animated stat card. (2) Stock candidates from category-suited sources are scored with CLIP (image vs scene visual plan + narration, minus penalty for negative/avoid terms); unsafe candidates (avoid list, faces when avoided, AI for people/brands/sensitive) are removed. (3) Global assignment takes the highest (scene, clip) pairs first, each clip used once, if score >= tau=0.24. (4) If a scene's best stock score < tau+0.03 and AI is allowed, an AI image is generated and wins only if its CLIP score >= stock + 0.02. (5) Otherwise the best unused clip within 0.03 of tau, else a text card.",
+  "scenes": [
+    {
+      "scene": 0,
+      "start": 0.0,
+      "end": 5.971,
+      "duration": 5.971,
+      "narration": "Drinking enough water keeps your body and mind sharp. Start every morning with a full glass.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "health",
+      "visual_plan": "A person pouring fresh water into a clear glass in morning sunlight on a clean wooden kitchen counter.",
+      "queries": [
+        "pouring water glass",
+        "morning glass water",
+        "fresh water kitchen"
+      ],
+      "negative_terms": [
+        "alcohol",
+        "soda",
+        "dirty water",
+        "plastic bottle"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:0",
+        "kind": "card",
+        "title": "Card: Drinking enough water keeps your body and mind sharp. Start ",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "judge": {
+        "score": 4,
+        "why": "Animated text card showing the exact narration words."
+      },
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [],
+      "thumbnail": "/files/jobs/job_8d3aa6f0017340c6b0fc/v1/thumb_000.jpg"
+    }
+  ],
+  "music": {
+    "path": null,
+    "title": "Key, Kida &amp; Eddie (feat. ICD) - Sundalo (acoustic)",
+    "source": "openverse/jamendo",
+    "licence": "CC BY 3.0",
+    "licence_url": "https://creativecommons.org/licenses/by/3.0/",
+    "attribution": "\"Key, Kida &amp; Eddie (feat. ICD) - Sundalo (acoustic)\" by Key, Kida &amp; Eddie (CC BY 3.0)",
+    "page_url": "https://www.jamendo.com/track/1522600",
+    "ai_generated": false
+  }
+}

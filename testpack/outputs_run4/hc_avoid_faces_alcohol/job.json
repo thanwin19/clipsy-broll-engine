@@ -1,0 +1,39 @@
+{
+  "job_id": "job_5f4972e362634d8fbd52",
+  "kind": "broll",
+  "status": "succeeded",
+  "progress": 100,
+  "stage": "done",
+  "created_at": "2026-10-20T16:05:06.671996",
+  "updated_at": "2026-10-20T16:06:01.368192",
+  "result": {
+    "version": 1,
+    "links": {
+      "video_16x9": "http://127.0.0.1:8000/files/jobs/job_5f4972e362634d8fbd52/v1/video_16x9.mp4",
+      "video_9x16": "http://127.0.0.1:8000/files/jobs/job_5f4972e362634d8fbd52/v1/video_9x16.mp4",
+      "timeline": "http://127.0.0.1:8000/files/jobs/job_5f4972e362634d8fbd52/v1/timeline.json",
+      "manifest": "http://127.0.0.1:8000/files/jobs/job_5f4972e362634d8fbd52/v1/manifest.json",
+      "captions_srt": "http://127.0.0.1:8000/files/jobs/job_5f4972e362634d8fbd52/v1/captions.srt",
+      "thumb_000": "http://127.0.0.1:8000/files/jobs/job_5f4972e362634d8fbd52/v1/thumb_000.jpg",
+      "waveform": "http://127.0.0.1:8000/files/jobs/job_5f4972e362634d8fbd52/v1/waveform.png"
+    },
+    "warnings": [
+      "PROVIDER_COOLDOWN: 'coverr' failed in a recent job; skipped for 528 more seconds"
+    ],
+    "scenes": 1,
+    "narration_seconds": 6.681,
+    "timings_seconds": {
+      "narration": 5.976,
+      "planning": 29.144,
+      "search_and_score": 8.142,
+      "ai_generation": 0.0,
+      "download": 3.935,
+      "music_parallel": 12.081,
+      "render": 5.052,
+      "qa": 1.524,
+      "total": 54.221
+    },
+    "qa_passed": true
+  },
+  "error": null
+}

@@ -1,0 +1,6 @@
+case,status,error_code,seconds,scenes,narration_seconds,qa_passed,warnings,job_id
+09_hindi_tutorial,succeeded,,679.84,3,9.92,True,1,job_15df8ee5ed5d4fceaf5d
+10_long_5min_agriculture,succeeded,,583.61,39,335.672,True,11,job_80bf81e4847c4df985ce
+audio_08_long_5min_agriculture,succeeded,,642.88,52,298.73,True,17,job_22b0dd6a1a1d4c57b19a
+hc_named_person_brand,succeeded,,605.42,2,5.873,True,3,job_1ab9fc3baa404bcebc90
+hc_sad_news,succeeded,,102.27,2,18.201,True,3,job_b3291c965d8148fdb6b7

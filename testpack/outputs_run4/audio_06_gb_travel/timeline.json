@@ -1,0 +1,264 @@
+{
+  "job_id": "job_a49d51a8f2a84c29bd5b",
+  "version": 1,
+  "waveform": "/files/jobs/job_a49d51a8f2a84c29bd5b/v1/waveform.png",
+  "narration_seconds": 14.931,
+  "language": "en",
+  "transcript": "The old harbour town sits at the end of a winding coastal road, fishing boats bob in the water, and narrow lanes lead up to a lighthouse on the cliff. In the evening, the whole bay turns orange as the sun goes down.",
+  "aspect_ratios": [
+    "16:9"
+  ],
+  "mood": "calm",
+  "selection_rule": "Per scene: (1) statistics -> animated stat card. (2) Stock candidates from category-suited sources are scored with CLIP (image vs scene visual plan + narration, minus penalty for negative/avoid terms); unsafe candidates (avoid list, faces when avoided, AI for people/brands/sensitive) are removed. (3) Global assignment takes the highest (scene, clip) pairs first, each clip used once, if score >= tau=0.24. (4) If a scene's best stock score < tau+0.03 and AI is allowed, an AI image is generated and wins only if its CLIP score >= stock + 0.02. (5) Otherwise the best unused clip within 0.03 of tau, else a text card.",
+  "scenes": [
+    {
+      "scene": 0,
+      "start": 0.0,
+      "end": 4.68,
+      "duration": 4.68,
+      "narration": "The old harbour town sits at the end of a winding coastal road,",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "place",
+      "visual_plan": "A scenic drone shot following a winding coastal road leading to an old harbour town.",
+      "queries": [
+        "winding coastal road",
+        "historic harbour town",
+        "coastal road aerial"
+      ],
+      "negative_terms": [
+        "highway",
+        "city traffic",
+        "skyscraper"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:0",
+        "kind": "card",
+        "title": "Card: The old harbour town sits at the end of a winding coastal ro",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "judge": {
+        "score": 4,
+        "why": "Animated text card displaying the narration line."
+      },
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [
+        {
+          "id": "wikimedia:12839219",
+          "source": "wikimedia",
+          "score": 0.1427,
+          "title": "File:Pfnswiki.ogv",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3b/Pfnswiki.ogv/250px--Pfnswiki.ogv.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "CC BY 3.0"
+        },
+        {
+          "id": "wikimedia:65957171",
+          "source": "wikimedia",
+          "score": -0.0637,
+          "title": "File:Why We Fight- The Battle of Britain.webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Why_We_Fight-_The_Battle_of_Britain.webm/960px--Why_We_Fight-_The_Battle_of_Britain.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_a49d51a8f2a84c29bd5b/v1/thumb_000.jpg"
+    },
+    {
+      "scene": 1,
+      "start": 4.68,
+      "end": 10.32,
+      "duration": 5.64,
+      "narration": "fishing boats bob in the water, and narrow lanes lead up to a lighthouse on the cliff.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "place",
+      "visual_plan": "Traditional fishing boats bob gently in calm harbour water near narrow streets and a cliffside lighthouse.",
+      "queries": [
+        "fishing boats harbour",
+        "lighthouse on cliff",
+        "narrow coastal lanes"
+      ],
+      "negative_terms": [
+        "speedboat",
+        "cruise ship",
+        "industrial port"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:1",
+        "kind": "card",
+        "title": "Card: fishing boats bob in the water, and narrow lanes lead up to ",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "judge": {
+        "score": 4,
+        "why": "Animated text card displaying the narration line."
+      },
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [
+        {
+          "id": "wikimedia:178615675",
+          "source": "wikimedia",
+          "score": 0.1844,
+          "title": "File:Sora big-sur.webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/Sora_big-sur.webm/960px--Sora_big-sur.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:159877555",
+          "source": "wikimedia",
+          "score": 0.1555,
+          "title": "File:San Jaun Islands.webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b8/San_Jaun_Islands.webm/960px--San_Jaun_Islands.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "CC BY 2.0"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_a49d51a8f2a84c29bd5b/v1/thumb_001.jpg"
+    },
+    {
+      "scene": 2,
+      "start": 10.32,
+      "end": 14.931,
+      "duration": 4.611,
+      "narration": "In the evening, the whole bay turns orange as the sun goes down.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "nature",
+      "visual_plan": "A stunning evening sunset casting a warm orange glow over a tranquil ocean bay.",
+      "queries": [
+        "sunset over bay",
+        "orange evening sky",
+        "coastal sunset ocean"
+      ],
+      "negative_terms": [
+        "storm",
+        "rain",
+        "midnight"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "wikimedia:194269385",
+        "kind": "video",
+        "title": "File:Narmada River water waves at twilight, Narmadapura.webm",
+        "source": "wikimedia",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Narmada_River_water_waves_at_twilight,_Narmadapura.webm",
+        "media_url": "https://upload.wikimedia.org/wikipedia/commons/2/29/Narmada_River_water_waves_at_twilight%2C_Narmadapura.webm?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "licence": "CC BY 4.0",
+        "licence_url": "https://creativecommons.org/licenses/by/4.0",
+        "attribution": "Tanishq pandey via Wikimedia Commons (CC BY 4.0)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "orange evening sky"
+      },
+      "reason": "stock: wikimedia clip scored 0.248 >= tau 0.24; best unused of 6 safe candidates",
+      "relevance_score": 0.2484,
+      "judge": {
+        "score": 3,
+        "why": "Shows a bay at dusk, but lacks the promised orange color."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2484,
+        "negative_max": 0.2177,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.407,
+      "alternatives": [
+        {
+          "id": "wikimedia:194269385",
+          "source": "wikimedia",
+          "score": 0.2484,
+          "title": "File:Narmada River water waves at twilight, Narmadapura.webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Narmada_River_water_waves_at_twilight%2C_Narmadapura.webm/960px--Narmada_River_water_waves_at_twilight%2C_Narmadapura.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "CC BY 4.0"
+        },
+        {
+          "id": "wikimedia:165954788",
+          "source": "wikimedia",
+          "score": 0.181,
+          "title": "File:King Range National Conservation Area (18372912993).webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/King_Range_National_Conservation_Area_%2818372912993%29.webm/960px--King_Range_National_Conservation_Area_%2818372912993%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:165954747",
+          "source": "wikimedia",
+          "score": 0.1782,
+          "title": "File:King Range National Conservation Area (18993643595).webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1a/King_Range_National_Conservation_Area_%2818993643595%29.webm/960px--King_Range_National_Conservation_Area_%2818993643595%29.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:167744271",
+          "source": "wikimedia",
+          "score": 0.15,
+          "title": "File:The blue sky kisses the green ocean, as I stand on the shore of little brow",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/63/The_blue_sky_kisses_the_green_ocean%2C_as_I_stand_on_the_shore_of_little_brown_sand%2C_watching_evening_melt_into_waves.webm/960px--The_blue_sky_kisses_the_green_ocean%2C_as_I_stand_on_the_shore_of_little_brown_sand%2C_watching_evening_melt_into_waves.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "CC BY 4.0"
+        },
+        {
+          "id": "wikimedia:103869551",
+          "source": "wikimedia",
+          "score": 0.0795,
+          "title": "File:Size Comparison of the Universe 2021 - Musik - Quellen.webm",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ea/Size_Comparison_of_the_Universe_2021_-_Musik_-_Quellen.webm/960px--Size_Comparison_of_the_Universe_2021_-_Musik_-_Quellen.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public domain"
+        },
+        {
+          "id": "wikimedia:65297604",
+          "source": "wikimedia",
+          "score": -0.1139,
+          "title": "File:Home Movies - Western U.S., New Mexico, Mexico, California, Colorado, Utah.",
+          "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/95/Home_Movies_-_Western_U.S.%2C_New_Mexico%2C_Mexico%2C_California%2C_Colorado%2C_Utah.webm/500px--Home_Movies_-_Western_U.S.%2C_New_Mexico%2C_Mexico%2C_California%2C_Colorado%2C_Utah.webm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo",
+          "kind": "video",
+          "licence": "Public Domain"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_a49d51a8f2a84c29bd5b/v1/thumb_002.jpg"
+    }
+  ],
+  "music": {
+    "path": null,
+    "title": "Procedural ambient pad",
+    "source": "procedural",
+    "licence": "Generated by this service (no third-party rights)",
+    "licence_url": "",
+    "attribution": "Generated by Clipsy",
+    "page_url": "",
+    "ai_generated": false
+  }
+}

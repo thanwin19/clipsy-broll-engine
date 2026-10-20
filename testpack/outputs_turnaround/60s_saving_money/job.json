@@ -1,0 +1,53 @@
+{
+  "job_id": "job_670275c1378b4ee6b925",
+  "kind": "broll",
+  "status": "succeeded",
+  "progress": 100,
+  "stage": "done",
+  "created_at": "2026-10-20T16:17:36.141211",
+  "updated_at": "2026-10-20T16:20:46.317548",
+  "result": {
+    "version": 1,
+    "links": {
+      "video_16x9": "http://127.0.0.1:8000/files/jobs/job_670275c1378b4ee6b925/v1/video_16x9.mp4",
+      "video_9x16": "http://127.0.0.1:8000/files/jobs/job_670275c1378b4ee6b925/v1/video_9x16.mp4",
+      "timeline": "http://127.0.0.1:8000/files/jobs/job_670275c1378b4ee6b925/v1/timeline.json",
+      "manifest": "http://127.0.0.1:8000/files/jobs/job_670275c1378b4ee6b925/v1/manifest.json",
+      "captions_srt": "http://127.0.0.1:8000/files/jobs/job_670275c1378b4ee6b925/v1/captions.srt",
+      "thumb_000": "http://127.0.0.1:8000/files/jobs/job_670275c1378b4ee6b925/v1/thumb_000.jpg",
+      "thumb_001": "http://127.0.0.1:8000/files/jobs/job_670275c1378b4ee6b925/v1/thumb_001.jpg",
+      "thumb_002": "http://127.0.0.1:8000/files/jobs/job_670275c1378b4ee6b925/v1/thumb_002.jpg",
+      "thumb_003": "http://127.0.0.1:8000/files/jobs/job_670275c1378b4ee6b925/v1/thumb_003.jpg",
+      "thumb_004": "http://127.0.0.1:8000/files/jobs/job_670275c1378b4ee6b925/v1/thumb_004.jpg",
+      "thumb_005": "http://127.0.0.1:8000/files/jobs/job_670275c1378b4ee6b925/v1/thumb_005.jpg",
+      "thumb_006": "http://127.0.0.1:8000/files/jobs/job_670275c1378b4ee6b925/v1/thumb_006.jpg",
+      "thumb_007": "http://127.0.0.1:8000/files/jobs/job_670275c1378b4ee6b925/v1/thumb_007.jpg",
+      "thumb_008": "http://127.0.0.1:8000/files/jobs/job_670275c1378b4ee6b925/v1/thumb_008.jpg",
+      "thumb_009": "http://127.0.0.1:8000/files/jobs/job_670275c1378b4ee6b925/v1/thumb_009.jpg",
+      "thumb_010": "http://127.0.0.1:8000/files/jobs/job_670275c1378b4ee6b925/v1/thumb_010.jpg",
+      "thumb_011": "http://127.0.0.1:8000/files/jobs/job_670275c1378b4ee6b925/v1/thumb_011.jpg",
+      "thumb_012": "http://127.0.0.1:8000/files/jobs/job_670275c1378b4ee6b925/v1/thumb_012.jpg",
+      "waveform": "http://127.0.0.1:8000/files/jobs/job_670275c1378b4ee6b925/v1/waveform.png"
+    },
+    "warnings": [
+      "PROVIDER_DOWN: 'coverr' failed repeatedly (HTTPStatusError); continuing with other sources",
+      "LOW_RELEVANCE: scene 1 best clip scored 0.229",
+      "LOW_RELEVANCE: scene 9 best clip scored 0.224"
+    ],
+    "scenes": 13,
+    "narration_seconds": 80.881,
+    "timings_seconds": {
+      "narration": 12.736,
+      "planning": 33.031,
+      "search_and_score": 66.838,
+      "ai_generation": 0.002,
+      "download": 8.912,
+      "music_parallel": 75.763,
+      "render": 53.458,
+      "qa": 10.101,
+      "total": 188.35
+    },
+    "qa_passed": true
+  },
+  "error": null
+}

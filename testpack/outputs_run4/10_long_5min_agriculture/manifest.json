@@ -1,0 +1,448 @@
+{
+  "job_id": "job_97c226b3586e4798af37",
+  "version": 1,
+  "service": {
+    "name": "clipsy",
+    "version": "1.0.0"
+  },
+  "providers": {
+    "asr": {
+      "name": "faster-whisper",
+      "version": "faster-whisper/tiny",
+      "purpose": "timing of known script words",
+      "script_language": "en"
+    },
+    "tts": {
+      "name": "gemini-tts",
+      "version": "gemini-3.8-flash-tts,gemini-3.8-flash-lite-tts,gemini-2.5-flash-preview-tts,gemini-3.1-flash-tts-preview",
+      "voice": "en-IN-male",
+      "voice_style": "natural",
+      "requested_style": "natural"
+    },
+    "input_type": "script",
+    "planner": "gemini/gemini-3.5-flash-lite",
+    "relevance_model": {
+      "name": "open_clip",
+      "version": "open_clip/ViT-B-32/laion2b_s34b_b79k"
+    },
+    "footage_sources_enabled": [
+      "pixabay",
+      "coverr",
+      "pexels",
+      "nasa",
+      "wikimedia",
+      "internet_archive",
+      "openverse_images"
+    ],
+    "footage_sources_used": [
+      "card-renderer",
+      "wikimedia"
+    ],
+    "ai_image": null,
+    "music": "openverse/jamendo",
+    "renderer": "ffmpeg",
+    "face_detector": "opencv-haarcascade",
+    "saliency": "spectral-residual (numpy)"
+  },
+  "settings": {
+    "aspect_ratios": [
+      "16:9"
+    ],
+    "style": "bright, modern, real-world footage",
+    "avoid": [],
+    "captions": {
+      "burn_in": true,
+      "srt": true,
+      "color": "#FFFFFF",
+      "size": "medium",
+      "font": "sans",
+      "position": "bottom",
+      "box": false
+    },
+    "voice": "en-IN-male",
+    "fps": 30,
+    "stock_min_score_tau": 0.24,
+    "ai_margin": 0.02,
+    "min_scene_seconds": 2.0,
+    "max_scene_seconds": 8.0,
+    "video_preset": "veryfast",
+    "crf": 23
+  },
+  "seed": 1234,
+  "narration": {
+    "seconds": 335.672,
+    "language": "en",
+    "words": 536
+  },
+  "mood": "inspiring",
+  "topic": "Climate resilient agriculture",
+  "avoid_terms_expanded": [],
+  "timings_seconds": {
+    "narration": 73.83,
+    "planning": 34.427,
+    "search_and_score": 36.514,
+    "ai_generation": 0.0,
+    "download": 4.342,
+    "music_parallel": 40.859,
+    "render": 153.569,
+    "qa": 125.932,
+    "total": 434.319
+  },
+  "cost_estimate_usd": {
+    "total": 0.0,
+    "note": "All providers used on free tiers / open-source models; compute is the host machine."
+  },
+  "warnings": [
+    "PROVIDER_COOLDOWN: 'coverr' failed in a recent job; skipped for 556 more seconds",
+    "PROVIDER_COOLDOWN: 'pixabay' failed in a recent job; skipped for 360 more seconds",
+    "PROVIDER_DOWN: 'openverse_images' failed repeatedly (ReadTimeout); continuing with other sources",
+    "LOW_RELEVANCE: scene 12 best clip scored 0.220",
+    "QA_AUTOFIX: scenes [6, 7] had black/frozen frames and were replaced",
+    "QA_FAILED: 16:9 still fails checks after auto-fix: black=[] freeze=[31.6, 36.4, 42.8, 49.0, 55.2, 61.6, 67.8, 74.2, 80.4, 86.8, 93.0, 99.4, 105.6, 111.8, 118.2, 124.4, 130.8, 137.0, 143.4, 149.6, 156.0, 162.2, 168.4, 174.8, 181.0, 187.4, 193.6, 200.0, 206.2, 212.6, 218.8, 225.2, 231.4, 237.6, 244.0, 250.2, 256.6, 262.8] drift=0.028",
+    "JUDGE_UNAVAILABLE: the independent VLM judge could not score some scenes (quota or error)"
+  ],
+  "rights": {
+    "all_commercial_use": true,
+    "clips": [
+      {
+        "scene": 0,
+        "source": "wikimedia",
+        "licence": "Public domain",
+        "attribution": "USDAgov via Wikimedia Commons (Public domain)",
+        "ai_generated": false
+      },
+      {
+        "scene": 1,
+        "source": "wikimedia",
+        "licence": "Public domain",
+        "attribution": "USDAgov via Wikimedia Commons (Public domain)",
+        "ai_generated": false
+      },
+      {
+        "scene": 2,
+        "source": "card-renderer",
+        "licence": "Rendered by this service (no third-party rights)",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "ai_generated": false
+      },
+      {
+        "scene": 3,
+        "source": "card-renderer",
+        "licence": "Rendered by this service (no third-party rights)",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "ai_generated": false
+      },
+      {
+        "scene": 4,
+        "source": "card-renderer",
+        "licence": "Rendered by this service (no third-party rights)",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "ai_generated": false
+      },
+      {
+        "scene": 5,
+        "source": "card-renderer",
+        "licence": "Rendered by this service (no third-party rights)",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "ai_generated": false
+      },
+      {
+        "scene": 6,
+        "source": "card-renderer",
+        "licence": "Rendered by this service (no third-party rights)",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "ai_generated": false
+      },
+      {
+        "scene": 7,
+        "source": "card-renderer",
+        "licence": "Rendered by this service (no third-party rights)",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "ai_generated": false
+      },
+      {
+        "scene": 8,
+        "source": "card-renderer",
+        "licence": "Rendered by this service (no third-party rights)",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "ai_generated": false
+      },
+      {
+        "scene": 9,
+        "source": "card-renderer",
+        "licence": "Rendered by this service (no third-party rights)",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "ai_generated": false
+      },
+      {
+        "scene": 10,
+        "source": "card-renderer",
+        "licence": "Rendered by this service (no third-party rights)",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "ai_generated": false
+      },
+      {
+        "scene": 11,
+        "source": "wikimedia",
+        "licence": "Public domain",
+        "attribution": "USDAgov via Wikimedia Commons (Public domain)",
+        "ai_generated": false
+      },
+      {
+        "scene": 12,
+        "source": "wikimedia",
+        "licence": "Public domain",
+        "attribution": "USDAgov via Wikimedia Commons (Public domain)",
+        "ai_generated": false
+      },
+      {
+        "scene": 13,
+        "source": "card-renderer",
+        "licence": "Rendered by this service (no third-party rights)",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "ai_generated": false
+      },
+      {
+        "scene": 14,
+        "source": "card-renderer",
+        "licence": "Rendered by this service (no third-party rights)",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "ai_generated": false
+      },
+      {
+        "scene": 15,
+        "source": "card-renderer",
+        "licence": "Rendered by this service (no third-party rights)",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "ai_generated": false
+      },
+      {
+        "scene": 16,
+        "source": "card-renderer",
+        "licence": "Rendered by this service (no third-party rights)",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "ai_generated": false
+      },
+      {
+        "scene": 17,
+        "source": "card-renderer",
+        "licence": "Rendered by this service (no third-party rights)",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "ai_generated": false
+      },
+      {
+        "scene": 18,
+        "source": "card-renderer",
+        "licence": "Rendered by this service (no third-party rights)",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "ai_generated": false
+      },
+      {
+        "scene": 19,
+        "source": "card-renderer",
+        "licence": "Rendered by this service (no third-party rights)",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "ai_generated": false
+      },
+      {
+        "scene": 20,
+        "source": "card-renderer",
+        "licence": "Rendered by this service (no third-party rights)",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "ai_generated": false
+      },
+      {
+        "scene": 21,
+        "source": "card-renderer",
+        "licence": "Rendered by this service (no third-party rights)",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "ai_generated": false
+      },
+      {
+        "scene": 22,
+        "source": "card-renderer",
+        "licence": "Rendered by this service (no third-party rights)",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "ai_generated": false
+      },
+      {
+        "scene": 23,
+        "source": "card-renderer",
+        "licence": "Rendered by this service (no third-party rights)",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "ai_generated": false
+      },
+      {
+        "scene": 24,
+        "source": "card-renderer",
+        "licence": "Rendered by this service (no third-party rights)",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "ai_generated": false
+      },
+      {
+        "scene": 25,
+        "source": "card-renderer",
+        "licence": "Rendered by this service (no third-party rights)",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "ai_generated": false
+      },
+      {
+        "scene": 26,
+        "source": "card-renderer",
+        "licence": "Rendered by this service (no third-party rights)",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "ai_generated": false
+      },
+      {
+        "scene": 27,
+        "source": "card-renderer",
+        "licence": "Rendered by this service (no third-party rights)",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "ai_generated": false
+      },
+      {
+        "scene": 28,
+        "source": "card-renderer",
+        "licence": "Rendered by this service (no third-party rights)",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "ai_generated": false
+      },
+      {
+        "scene": 29,
+        "source": "card-renderer",
+        "licence": "Rendered by this service (no third-party rights)",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "ai_generated": false
+      },
+      {
+        "scene": 30,
+        "source": "card-renderer",
+        "licence": "Rendered by this service (no third-party rights)",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "ai_generated": false
+      },
+      {
+        "scene": 31,
+        "source": "card-renderer",
+        "licence": "Rendered by this service (no third-party rights)",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "ai_generated": false
+      },
+      {
+        "scene": 32,
+        "source": "card-renderer",
+        "licence": "Rendered by this service (no third-party rights)",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "ai_generated": false
+      },
+      {
+        "scene": 33,
+        "source": "card-renderer",
+        "licence": "Rendered by this service (no third-party rights)",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "ai_generated": false
+      },
+      {
+        "scene": 34,
+        "source": "card-renderer",
+        "licence": "Rendered by this service (no third-party rights)",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "ai_generated": false
+      },
+      {
+        "scene": 35,
+        "source": "card-renderer",
+        "licence": "Rendered by this service (no third-party rights)",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "ai_generated": false
+      },
+      {
+        "scene": 36,
+        "source": "card-renderer",
+        "licence": "Rendered by this service (no third-party rights)",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "ai_generated": false
+      },
+      {
+        "scene": 37,
+        "source": "card-renderer",
+        "licence": "Rendered by this service (no third-party rights)",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "ai_generated": false
+      }
+    ],
+    "music": {
+      "title": "Inspiring Progress",
+      "source": "openverse/jamendo",
+      "licence": "CC BY 3.0",
+      "attribution": "\"Inspiring Progress\" by Soundrider/Dope (CC BY 3.0)",
+      "url": "https://www.jamendo.com/track/1670591"
+    },
+    "narration": "synthetic TTS voice (no real person)"
+  },
+  "qa": {
+    "16:9": {
+      "file": "video_16x9.mp4",
+      "video_codec": "h264",
+      "audio_codec": "aac",
+      "width": 1920,
+      "height": 1080,
+      "pix_fmt": "yuv420p",
+      "fps": 30.0,
+      "video_seconds": 335.7,
+      "audio_seconds": 335.672,
+      "av_drift_seconds": 0.028,
+      "narration_seconds": 335.672,
+      "black_segments": [],
+      "freeze_starts": [
+        31.6,
+        36.4,
+        42.8,
+        49.0,
+        55.2,
+        61.6,
+        67.8,
+        74.2,
+        80.4,
+        86.8,
+        93.0,
+        99.4,
+        105.6,
+        111.8,
+        118.2,
+        124.4,
+        130.8,
+        137.0,
+        143.4,
+        149.6,
+        156.0,
+        162.2,
+        168.4,
+        174.8,
+        181.0,
+        187.4,
+        193.6,
+        200.0,
+        206.2,
+        212.6,
+        218.8,
+        225.2,
+        231.4,
+        237.6,
+        244.0,
+        250.2,
+        256.6,
+        262.8
+      ],
+      "passed": false
+    }
+  },
+  "independent_judge": {
+    "model": null,
+    "scenes_scored": 0,
+    "of": 38,
+    "mean_score_1_to_5": null,
+    "share_scored_4_or_5": null,
+    "seconds_after_delivery": 251.61
+  }
+}

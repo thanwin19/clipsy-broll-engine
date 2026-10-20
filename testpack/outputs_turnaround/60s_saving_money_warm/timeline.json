@@ -1,0 +1,1477 @@
+{
+  "job_id": "job_08470316bb844ced9b11",
+  "version": 1,
+  "waveform": "/files/jobs/job_08470316bb844ced9b11/v1/waveform.png",
+  "narration_seconds": 80.881,
+  "language": "en",
+  "transcript": "Most people think saving money means giving up everything they enjoy. It does not. It starts with knowing where your money goes. For one month, write down every rupee you spend: rent, groceries, the bus fare, the late-night snack. At the end of the month, sort it into three groups: needs, wants and savings. You will be surprised how much slips away on small things nobody remembers buying. Next, pay yourself first. On payday, move a fixed amount into a separate savings account before you spend anything else. Even five percent of your salary adds up. Then build an emergency fund that covers three months of expenses, so a broken phone or a hospital bill does not push you into debt. Cook at home a few more nights each week, cancel the subscriptions you forgot about, and compare prices before every big purchase. Small habits, repeated every day, turn into real security. Start this month, and in a year you will not recognise your bank balance.",
+  "aspect_ratios": [
+    "16:9",
+    "9:16"
+  ],
+  "mood": "upbeat",
+  "selection_rule": "Per scene: (1) statistics -> animated stat card. (2) Stock candidates from category-suited sources are scored with CLIP (image vs scene visual plan + narration, minus penalty for negative/avoid terms); unsafe candidates (avoid list, faces when avoided, AI for people/brands/sensitive) are removed. (3) Global assignment takes the highest (scene, clip) pairs first, each clip used once, if score >= tau=0.24. (4) If a scene's best stock score < tau+0.03 and AI is allowed, an AI image is generated and wins only if its CLIP score >= stock + 0.02. (5) Otherwise the best unused clip within 0.03 of tau, else a text card.",
+  "scenes": [
+    {
+      "scene": 0,
+      "start": 0.0,
+      "end": 6.04,
+      "duration": 6.04,
+      "narration": "Most people think saving money means giving up everything they enjoy. It does not.",
+      "visual_hint": null,
+      "scene_type": "metaphor",
+      "category": "business",
+      "visual_plan": "A person smiling while drinking coffee in a cozy cafe, representing enjoyable life without deprivation.",
+      "queries": [
+        "person enjoying coffee cafe",
+        "happy lifestyle relaxing",
+        "positive budgeting concept"
+      ],
+      "negative_terms": [
+        "sad",
+        "stressed",
+        "empty wallet"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:31672",
+        "kind": "video",
+        "title": "drinking coffee, while enjoying the coffee, coffee, enjoy, morning, hot, delicious, woman",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-31672/",
+        "media_url": "https://cdn.pixabay.com/video/2020/01/28/31672-387972311_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by kelvinreislavras on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "person enjoying coffee cafe"
+      },
+      "reason": "stock (low confidence): pixabay scored 0.236 (< tau 0.24, within 0.03); no AI option",
+      "relevance_score": 0.2359,
+      "judge": {
+        "score": 3,
+        "why": "Relaxing with coffee, loosely matches enjoying life."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2523,
+        "negative_max": 0.2487,
+        "penalty": 0.0164
+      },
+      "reframe_subject_x": 0.424,
+      "alternatives": [
+        {
+          "id": "pixabay:31672",
+          "source": "pixabay",
+          "score": 0.2359,
+          "title": "drinking coffee, while enjoying the coffee, coffee, enjoy, morning, hot, delicio",
+          "thumb": "https://cdn.pixabay.com/video/2020/01/28/31672-387972311_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:22728",
+          "source": "pixabay",
+          "score": 0.2128,
+          "title": "caf\u00e9, coffee, drink, porcelain, cafe, smoke, caffeine, cup, ceramic",
+          "thumb": "https://cdn.pixabay.com/video/2019/04/10/22728-329691509_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:27230",
+          "source": "pixabay",
+          "score": 0.2075,
+          "title": "coffee, cup, morning, breakfast, reading, book, bible, cafe, caffeine, food, esp",
+          "thumb": "https://cdn.pixabay.com/video/2019/09/25/27230-362518559_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:236256",
+          "source": "pixabay",
+          "score": 0.2024,
+          "title": "coffee, cup, cafe, caffeine, colombia, drink, smell, breakfast, clock, hot, capp",
+          "thumb": "https://cdn.pixabay.com/video/2024/10/13/236256_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:200260",
+          "source": "pixabay",
+          "score": 0.1889,
+          "title": "ai generated, coffee, caffeine, relax, cafe, lifestyle, cozy",
+          "thumb": "https://cdn.pixabay.com/video/2024/02/12/200260-912384743_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:293083",
+          "source": "pixabay",
+          "score": 0.1808,
+          "title": "asian woman, coffee break, working from home, remote work, happy moment, cozy li",
+          "thumb": "https://cdn.pixabay.com/video/2025/07/23/293083_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:46989",
+          "source": "pixabay",
+          "score": 0.1463,
+          "title": "coffee, hot drink, coffee pot, enjoyment, drink, coffee enjoyment, caffeine, mot",
+          "thumb": "https://cdn.pixabay.com/video/2020/08/12/46989-449623829_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:124252",
+          "source": "pixabay",
+          "score": 0.1218,
+          "title": "girl, sofa, education, couch, book, lifestyle, woman, student, sitting, room, re",
+          "thumb": "https://cdn.pixabay.com/video/2022/07/15/124252-730508538_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_08470316bb844ced9b11/v1/thumb_000.jpg"
+    },
+    {
+      "scene": 1,
+      "start": 6.04,
+      "end": 8.98,
+      "duration": 2.94,
+      "narration": "It starts with knowing where your money goes.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "business",
+      "visual_plan": "Close-up of a person tracking expenses on a laptop with a clean spreadsheet.",
+      "queries": [
+        "tracking expenses laptop",
+        "budget planning spreadsheet",
+        "financial tracking close up"
+      ],
+      "negative_terms": [
+        "gambling",
+        "loss"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:293084",
+        "kind": "video",
+        "title": "accountant, financial report, office work, business finance, budget planning, tax documents, number analysis, paperwork, working desk, accounting profession, business data, spreadsheet review, finance expert, desk work, financial audit, tax season, bookkeeping, economic analysis, professional focus, budget review, laptop work, money management, corporate finance, report checking, financial control",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-293084/",
+        "media_url": "https://cdn.pixabay.com/video/2025/07/23/293084_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by RainMeditateHub on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "budget planning spreadsheet"
+      },
+      "reason": "stock: pixabay clip scored 0.262 >= tau 0.24; best unused of 12 safe candidates",
+      "relevance_score": 0.2615,
+      "judge": {
+        "score": 5,
+        "why": "Tracking money and expenses on computer and charts."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2615,
+        "negative_max": 0.1865,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.534,
+      "alternatives": [
+        {
+          "id": "pixabay:293084",
+          "source": "pixabay",
+          "score": 0.2615,
+          "title": "accountant, financial report, office work, business finance, budget planning, ta",
+          "thumb": "https://cdn.pixabay.com/video/2025/07/23/293084_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:5441",
+          "source": "pixabay",
+          "score": 0.2515,
+          "title": "business books, profits, beautiful wallpaper, financial, accounting, finance, in",
+          "thumb": "https://cdn.pixabay.com/video/2016/09/21/5441-184226793_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:10822",
+          "source": "pixabay",
+          "score": 0.2071,
+          "title": "keyboard, typing, writing, notebook, computer, technology, laptop, business, int",
+          "thumb": "https://cdn.pixabay.com/video/2017/07/23/10822-226624975_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:59139",
+          "source": "pixabay",
+          "score": 0.1697,
+          "title": "money, budget, count, cash, counting, calculator, finance, mortgage, economy, pa",
+          "thumb": "https://cdn.pixabay.com/video/2020/12/14/59139-491926092_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:142363",
+          "source": "pixabay",
+          "score": 0.1495,
+          "title": "spy, cia, fbi, mi6, military, travel, helicopter, hud, computer, loading, tracki",
+          "thumb": "https://cdn.pixabay.com/video/2022/12/10/142363-780562112_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:153460",
+          "source": "pixabay",
+          "score": 0.1254,
+          "title": "cash, bills, banknotes, income, business, currency, dollar, finance, money, coun",
+          "thumb": "https://cdn.pixabay.com/video/2023/03/06/153460-805688493_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:2340",
+          "source": "pixabay",
+          "score": 0.114,
+          "title": "meeting, planning, marketing, business, team, people, office, teamwork, group, d",
+          "thumb": "https://cdn.pixabay.com/video/2016/02/29/2340-157269921_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:1028",
+          "source": "pixabay",
+          "score": 0.0815,
+          "title": "homework, girl, student, laptop, study, studying, notebook, work, fan, chair, de",
+          "thumb": "https://cdn.pixabay.com/video/2015/10/16/1028-142624363_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_08470316bb844ced9b11/v1/thumb_001.jpg"
+    },
+    {
+      "scene": 2,
+      "start": 8.98,
+      "end": 15.8,
+      "duration": 6.82,
+      "narration": "For one month, write down every rupee you spend: rent, groceries, the bus fare, the late-night snack.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "business",
+      "visual_plan": "A person writing down notes and numbers in a notebook with a pen.",
+      "queries": [
+        "writing budget notebook",
+        "hand writing notes pen",
+        "calculating expenses paper"
+      ],
+      "negative_terms": [
+        "exam",
+        "school"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:100344",
+        "kind": "video",
+        "title": "write, letter, to write, pen, office, paper, feeling, feelings, post, note, notes, writing, hand, hands",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-100344/",
+        "media_url": "https://cdn.pixabay.com/video/2021/12/11/100344-656497420_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by egemen_izmirli on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "hand writing notes pen"
+      },
+      "reason": "stock: pixabay clip scored 0.284 >= tau 0.24; best unused of 12 safe candidates",
+      "relevance_score": 0.284,
+      "judge": {
+        "score": 5,
+        "why": "Writing down expenses manually on paper."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.284,
+        "negative_max": 0.2434,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.544,
+      "alternatives": [
+        {
+          "id": "pixabay:100344",
+          "source": "pixabay",
+          "score": 0.284,
+          "title": "write, letter, to write, pen, office, paper, feeling, feelings, post, note, note",
+          "thumb": "https://cdn.pixabay.com/video/2021/12/11/100344-656497420_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:8256",
+          "source": "pixabay",
+          "score": 0.2458,
+          "title": "pencil, write, author, education, pen, paper, school, writing, notes, office, ta",
+          "thumb": "https://cdn.pixabay.com/video/2017/03/08/8256-207598612_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:4952",
+          "source": "pixabay",
+          "score": 0.2411,
+          "title": "book, write, pen, diary, letter, hands, girl, notebook",
+          "thumb": "https://cdn.pixabay.com/video/2016/09/05/4952-181538531_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:12040",
+          "source": "pixabay",
+          "score": 0.2146,
+          "title": "on the table lies a thick textbook, homework, textbook, tutorial, pen, notebook,",
+          "thumb": "https://cdn.pixabay.com/video/2017/09/17/12040-236265335_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:131993",
+          "source": "pixabay",
+          "score": 0.1962,
+          "title": "to write, to study, task, job, issue, question, study, student, hand, ballpoint,",
+          "thumb": "https://cdn.pixabay.com/video/2022/09/20/131993-751915314_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:3145",
+          "source": "pixabay",
+          "score": 0.1462,
+          "title": "laptop, keyboard, typing, writing, notebook, developer, user, using, study, work",
+          "thumb": "https://cdn.pixabay.com/video/2016/05/12/3145-166335957_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:117",
+          "source": "pixabay",
+          "score": 0.1416,
+          "title": "notebook, laptop, blur, home office, typing, writing, programming, developer, pr",
+          "thumb": "https://cdn.pixabay.com/video/2015/08/08/117-135736418_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:174007",
+          "source": "pixabay",
+          "score": 0.1385,
+          "title": "woman, cash, money, paper, business, worker, calculator, background, investment,",
+          "thumb": "https://cdn.pixabay.com/video/2023/07/31/174007-850361313_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_08470316bb844ced9b11/v1/thumb_002.jpg"
+    },
+    {
+      "scene": 3,
+      "start": 15.8,
+      "end": 24.34,
+      "duration": 8.54,
+      "narration": "At the end of the month, sort",
+      "visual_hint": null,
+      "scene_type": "abstract",
+      "category": "business",
+      "visual_plan": "Various receipts and coins being organized neatly on a wooden table.",
+      "queries": [
+        "organizing receipts coins",
+        "sorting money paperwork",
+        "budget organization flatlay"
+      ],
+      "negative_terms": [
+        "mess",
+        "trash"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:34616",
+        "kind": "video",
+        "title": "bitcoin, coin, money, currency, crypto, cash, digital, virtual, gold, electronic, payment, exchange, financial, mining, cryptography, cryptocurrency, trade",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-34616/",
+        "media_url": "https://cdn.pixabay.com/video/2020/03/30/34616-402679736_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by Monoar_CGI_Artist on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "organizing receipts coins"
+      },
+      "reason": "stock (low confidence): pixabay scored 0.210 (< tau 0.24, within 0.03); no AI option",
+      "relevance_score": 0.2105,
+      "judge": {
+        "score": 4,
+        "why": "Coins falling, representing sorting money."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2205,
+        "negative_max": 0.1792,
+        "penalty": 0.0,
+        "short_clip_penalty": 0.01
+      },
+      "reframe_subject_x": 0.47,
+      "alternatives": [
+        {
+          "id": "pixabay:34616",
+          "source": "pixabay",
+          "score": 0.2105,
+          "title": "bitcoin, coin, money, currency, crypto, cash, digital, virtual, gold, electronic",
+          "thumb": "https://cdn.pixabay.com/video/2020/03/30/34616-402679736_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:13460",
+          "source": "pixabay",
+          "score": 0.1845,
+          "title": "bitcoin, currency, crypto, money, business, finance, electronic, bit, coin, virt",
+          "thumb": "https://cdn.pixabay.com/video/2017/12/18/13460-248644879_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:59139",
+          "source": "pixabay",
+          "score": 0.1812,
+          "title": "money, budget, count, cash, counting, calculator, finance, mortgage, economy, pa",
+          "thumb": "https://cdn.pixabay.com/video/2020/12/14/59139-491926092_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:12564",
+          "source": "pixabay",
+          "score": 0.1584,
+          "title": "coin, back, money, slowly",
+          "thumb": "https://cdn.pixabay.com/video/2017/10/22/12564-240358890_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:87146",
+          "source": "pixabay",
+          "score": 0.1507,
+          "title": "file, documents, office, paperwork",
+          "thumb": "https://cdn.pixabay.com/video/2021/09/01/87146-601076915_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:153460",
+          "source": "pixabay",
+          "score": 0.1348,
+          "title": "cash, bills, banknotes, income, business, currency, dollar, finance, money, coun",
+          "thumb": "https://cdn.pixabay.com/video/2023/03/06/153460-805688493_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:27453",
+          "source": "pixabay",
+          "score": 0.1217,
+          "title": "bitcoin, coin, rotate, stock exchange, courses, cryptocurrency, currency, digita",
+          "thumb": "https://cdn.pixabay.com/video/2019/10/01/27453-363961164_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:85156",
+          "source": "pixabay",
+          "score": 0.0903,
+          "title": "coin, bitcoin, cryptocoins, litecoin, ethereum, cryptocurrency, digital, 3d, ble",
+          "thumb": "https://cdn.pixabay.com/video/2021/08/15/85156-590779424_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_08470316bb844ced9b11/v1/thumb_003.jpg"
+    },
+    {
+      "scene": 4,
+      "start": 24.34,
+      "end": 37.54,
+      "duration": 13.2,
+      "narration": "it into three",
+      "visual_hint": null,
+      "scene_type": "statistic",
+      "category": "business",
+      "visual_plan": "An animated stat card showing three distinct category columns.",
+      "queries": [
+        "financial categories chart",
+        "three columns infographic",
+        "budget breakdown graphic"
+      ],
+      "negative_terms": [
+        "complex graph"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:4",
+        "kind": "card",
+        "title": "Card: 3",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "statistic '3' -> animated stat card (rule: numbers are shown, not searched)",
+      "relevance_score": null,
+      "judge": {
+        "score": 4,
+        "why": "Animated text card showing 3 key groups."
+      },
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [],
+      "thumbnail": "/files/jobs/job_08470316bb844ced9b11/v1/thumb_004.jpg"
+    },
+    {
+      "scene": 5,
+      "start": 37.54,
+      "end": 41.06,
+      "duration": 3.52,
+      "narration": "groups: needs, wants and savings.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "business",
+      "visual_plan": "Coins dropping into a glass jar representing savings growth.",
+      "queries": [
+        "coins dropping jar",
+        "savings jar coins",
+        "saving money concept"
+      ],
+      "negative_terms": [
+        "spending",
+        "empty"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:98141",
+        "kind": "video",
+        "title": "coins, jar, saving, investing, investment, money, glass, cash, finance, economy, currency, profit, stop motion",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-98141/",
+        "media_url": "https://cdn.pixabay.com/video/2021/11/17/98141-647151472_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by adamlapunik on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "savings jar coins"
+      },
+      "reason": "stock: pixabay clip scored 0.275 >= tau 0.24; best unused of 12 safe candidates",
+      "relevance_score": 0.2752,
+      "judge": {
+        "score": 4,
+        "why": "Coins going into a jar, representing savings."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2752,
+        "negative_max": 0.2355,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.507,
+      "alternatives": [
+        {
+          "id": "pixabay:98141",
+          "source": "pixabay",
+          "score": 0.2752,
+          "title": "coins, jar, saving, investing, investment, money, glass, cash, finance, economy,",
+          "thumb": "https://cdn.pixabay.com/video/2021/11/17/98141-647151472_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:12922",
+          "source": "pixabay",
+          "score": 0.2491,
+          "title": "piggy, bank, dollars, flying, money, finance, business, banking, currency, piggy",
+          "thumb": "https://cdn.pixabay.com/video/2017/11/13/12922-242538643_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:12751",
+          "source": "pixabay",
+          "score": 0.2202,
+          "title": "coins, money, pennies, saving, economy, tip, cash, metal, silver, energy, moveme",
+          "thumb": "https://cdn.pixabay.com/video/2017/11/04/12751-241674238_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:298813",
+          "source": "pixabay",
+          "score": 0.1905,
+          "title": "investment, financial growth, business growth, finance, money, coin stack, savin",
+          "thumb": "https://cdn.pixabay.com/video/2025/08/21/298813_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:267605",
+          "source": "pixabay",
+          "score": 0.1706,
+          "title": "ai generated, boy, happy, anime, cheerful, smiling, coins, money, savings, jar, ",
+          "thumb": "https://cdn.pixabay.com/video/2025/03/26/267605_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:12564",
+          "source": "pixabay",
+          "score": 0.1382,
+          "title": "coin, back, money, slowly",
+          "thumb": "https://cdn.pixabay.com/video/2017/10/22/12564-240358890_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:313",
+          "source": "pixabay",
+          "score": 0.0213,
+          "title": "rain, bad weather, rainy, night, dark, precipitation, water, water drops, droppi",
+          "thumb": "https://cdn.pixabay.com/video/2015/08/11/313-135979796_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:6432",
+          "source": "pixabay",
+          "score": 0.0119,
+          "title": "particles, blue, falling, abstract, dropping, background, arts, beautiful wallpa",
+          "thumb": "https://cdn.pixabay.com/video/2016/11/15/6432-191736527_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_08470316bb844ced9b11/v1/thumb_005.jpg"
+    },
+    {
+      "scene": 6,
+      "start": 41.06,
+      "end": 48.34,
+      "duration": 7.28,
+      "narration": "You will be surprised how much slips away on small things nobody remembers buying. Next, pay yourself first.",
+      "visual_hint": null,
+      "scene_type": "metaphor",
+      "category": "business",
+      "visual_plan": "A banking app screen on a smartphone showing a transfer of funds.",
+      "queries": [
+        "mobile banking app",
+        "smartphone money transfer",
+        "digital savings account"
+      ],
+      "negative_terms": [
+        "error",
+        "fraud"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:108835",
+        "kind": "video",
+        "title": "mobile banking, app payment, fast payment, mobile, hand, green screen, paying with mobile, online payment green screen, pay with online banking, playing with mobile green screen, modern payment, payment gateway, business green screen",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-108835/",
+        "media_url": "https://cdn.pixabay.com/video/2022/02/25/108835-682116123_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by GreenScreenFX on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "mobile banking app"
+      },
+      "reason": "stock: pixabay clip scored 0.261 >= tau 0.24; best unused of 12 safe candidates",
+      "relevance_score": 0.2613,
+      "judge": {
+        "score": 4,
+        "why": "Mobile banking app graphic."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2613,
+        "negative_max": 0.1504,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.535,
+      "alternatives": [
+        {
+          "id": "pixabay:108835",
+          "source": "pixabay",
+          "score": 0.2613,
+          "title": "mobile banking, app payment, fast payment, mobile, hand, green screen, paying wi",
+          "thumb": "https://cdn.pixabay.com/video/2022/02/25/108835-682116123_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:142641",
+          "source": "pixabay",
+          "score": 0.2309,
+          "title": "man, phone, smartphone, mobile",
+          "thumb": "https://cdn.pixabay.com/video/2022/12/12/142641-780599369_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:202987",
+          "source": "pixabay",
+          "score": 0.2148,
+          "title": "phone, smartphone, mobile, portable, screen, digital, communication, texting, bu",
+          "thumb": "https://cdn.pixabay.com/video/2024/03/04/202987-919379330_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:90",
+          "source": "pixabay",
+          "score": 0.2145,
+          "title": "smartphone, scroll, touch, android, touchscreen, ios, iphone, mobile, navigation",
+          "thumb": "https://cdn.pixabay.com/video/2015/08/08/90-135735293_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:38084",
+          "source": "pixabay",
+          "score": 0.2129,
+          "title": "woman, phone, smartphone, technology, mobile, telephone, cellphone, person, fema",
+          "thumb": "https://cdn.pixabay.com/video/2020/05/04/38084-416330724_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:42408",
+          "source": "pixabay",
+          "score": 0.1829,
+          "title": "mobile phone, man, chat, dating, partner search, smartphone, app, fun, mobile, b",
+          "thumb": "https://cdn.pixabay.com/video/2020/06/17/42408-431511624_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:12922",
+          "source": "pixabay",
+          "score": 0.1574,
+          "title": "piggy, bank, dollars, flying, money, finance, business, banking, currency, piggy",
+          "thumb": "https://cdn.pixabay.com/video/2017/11/13/12922-242538643_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:128210",
+          "source": "pixabay",
+          "score": 0.1563,
+          "title": "app, business, cloud, communication, computer, concept, connection, data, design",
+          "thumb": "https://cdn.pixabay.com/video/2022/08/17/128210-747086064_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_08470316bb844ced9b11/v1/thumb_006.jpg"
+    },
+    {
+      "scene": 7,
+      "start": 48.34,
+      "end": 53.74,
+      "duration": 5.4,
+      "narration": "On payday, move a fixed amount into a separate savings account before you spend anything else.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "business",
+      "visual_plan": "A person transferring money online using a laptop at home.",
+      "queries": [
+        "online banking laptop",
+        "transferring money digital",
+        "paying bills online"
+      ],
+      "negative_terms": [
+        "shopping cart"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:92480",
+        "kind": "video",
+        "title": "laptop, work, internet, business, occupation, sitting, social media, typing, home, freelancer, entrepreneur, computer, workplace, working, technology, table, person, people, online, office, job, interior, employee",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-92480/",
+        "media_url": "https://cdn.pixabay.com/video/2021/10/18/92480-637690589_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by jamescheney82 on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "online banking laptop"
+      },
+      "reason": "stock: pixabay clip scored 0.252 >= tau 0.24; best unused of 12 safe candidates",
+      "relevance_score": 0.2523,
+      "judge": {
+        "score": 4,
+        "why": "Using laptop for online banking or transferring savings."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2523,
+        "negative_max": 0.1382,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.619,
+      "alternatives": [
+        {
+          "id": "pixabay:92480",
+          "source": "pixabay",
+          "score": 0.2523,
+          "title": "laptop, work, internet, business, occupation, sitting, social media, typing, hom",
+          "thumb": "https://cdn.pixabay.com/video/2021/10/18/92480-637690589_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:61037",
+          "source": "pixabay",
+          "score": 0.2382,
+          "title": "laptop, working, computer, job, freelancer, typing, business, publish, online, w",
+          "thumb": "https://cdn.pixabay.com/video/2021/01/03/61037-497754241_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:2988",
+          "source": "pixabay",
+          "score": 0.2239,
+          "title": "ipad, imac, tablet, desktop, iphone, monitor, computer, display, mobile, network",
+          "thumb": "https://cdn.pixabay.com/video/2016/05/03/2988-165221419_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:40572",
+          "source": "pixabay",
+          "score": 0.2118,
+          "title": "shopping, online, payment, e-commerce, business, retail, pay, using, technology,",
+          "thumb": "https://cdn.pixabay.com/video/2020/05/29/40572-425837205_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:6378",
+          "source": "pixabay",
+          "score": 0.2027,
+          "title": "notebook, keyboard, typing, writing, hand, fingers, computer, internet, laptop, ",
+          "thumb": "https://cdn.pixabay.com/video/2016/11/15/6378-191636243_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:64212",
+          "source": "pixabay",
+          "score": 0.1881,
+          "title": "money, euro, currency, inflation, wealth, cash, dollar bill, seem, success, busi",
+          "thumb": "https://cdn.pixabay.com/video/2021/02/05/64212-509543056_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:31577",
+          "source": "pixabay",
+          "score": 0.163,
+          "title": "dollar, bill, money, cash, currency, finance, 1, one, 5, euro, number, internet,",
+          "thumb": "https://cdn.pixabay.com/video/2020/01/25/31577-387675234_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:377126",
+          "source": "pixabay",
+          "score": 0.147,
+          "title": "mobile payment, digital payment, online payment, money transfer, financial trans",
+          "thumb": "https://cdn.pixabay.com/video/2026/09/18/377126_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_08470316bb844ced9b11/v1/thumb_007.jpg"
+    },
+    {
+      "scene": 8,
+      "start": 53.74,
+      "end": 56.96,
+      "duration": 3.22,
+      "narration": "Even five percent of your salary adds up.",
+      "visual_hint": null,
+      "scene_type": "statistic",
+      "category": "business",
+      "visual_plan": "Stat card highlighting five percent growth on a clean financial background.",
+      "queries": [
+        "percentage growth icon",
+        "financial increase metric",
+        "savings percentage up"
+      ],
+      "negative_terms": [
+        "decline",
+        "loss"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:8",
+        "kind": "card",
+        "title": "Card: 5%",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "statistic '5%' -> animated stat card (rule: numbers are shown, not searched)",
+      "relevance_score": null,
+      "judge": {
+        "score": 4,
+        "why": "Animated text card showing five percent savings."
+      },
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [],
+      "thumbnail": "/files/jobs/job_08470316bb844ced9b11/v1/thumb_008.jpg"
+    },
+    {
+      "scene": 9,
+      "start": 56.96,
+      "end": 65.26,
+      "duration": 8.3,
+      "narration": "Then build an emergency fund that covers three months of expenses, so a broken phone or a hospital bill does not push you into debt.",
+      "visual_hint": null,
+      "scene_type": "metaphor",
+      "category": "business",
+      "visual_plan": "A small piggy bank sitting securely next to a plant, symbolizing financial protection and security.",
+      "queries": [
+        "piggy bank security",
+        "emergency fund savings",
+        "financial safety net"
+      ],
+      "negative_terms": [
+        "broke",
+        "debt"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:12922",
+        "kind": "video",
+        "title": "piggy, bank, dollars, flying, money, finance, business, banking, currency, piggy bank, pig, savings, cash, financial, investment, wealth, save, coin, deposit, economy, piggybank, invest, beautiful wallpaper, account, retirement, income, investing, rich, symbol, fund, loan, safe, dollar, golden, gold, rotating, moving, bill, design, 3d, background, loop, seamless, banknote",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-12922/",
+        "media_url": "https://cdn.pixabay.com/video/2017/11/13/12922-242538643_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by QuinceCreative on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "piggy bank security"
+      },
+      "reason": "stock: pixabay clip scored 0.258 >= tau 0.24; best unused of 12 safe candidates",
+      "relevance_score": 0.2578,
+      "judge": {
+        "score": 5,
+        "why": "Golden piggy bank with money symbols, perfect for emergency funds."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2578,
+        "negative_max": 0.219,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.463,
+      "alternatives": [
+        {
+          "id": "pixabay:12922",
+          "source": "pixabay",
+          "score": 0.2578,
+          "title": "piggy, bank, dollars, flying, money, finance, business, banking, currency, piggy",
+          "thumb": "https://cdn.pixabay.com/video/2017/11/13/12922-242538643_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:12924",
+          "source": "pixabay",
+          "score": 0.2358,
+          "title": "piggy, bank, money, finance, business, banking, currency, piggy bank, pig, savin",
+          "thumb": "https://cdn.pixabay.com/video/2017/11/13/12924-242538649_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:138317",
+          "source": "pixabay",
+          "score": 0.2037,
+          "title": "coins, piggy bank, smash, save up, inflation, shopping, savings, finance, hammer",
+          "thumb": "https://cdn.pixabay.com/video/2022/11/09/138317-769163818_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:24917",
+          "source": "pixabay",
+          "score": 0.1766,
+          "title": "brittany, celtic, celt, breton, britain, pig, piggy bank, bank, business, econom",
+          "thumb": "https://cdn.pixabay.com/video/2019/07/03/24917-346340776_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:2176",
+          "source": "pixabay",
+          "score": 0.1389,
+          "title": "security, data security, data backup, access data, information security, data re",
+          "thumb": "https://cdn.pixabay.com/video/2016/02/15/2176-155747466_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:172449",
+          "source": "pixabay",
+          "score": 0.1004,
+          "title": "pig, piggy bank, finance, block chain, crypto currency, decentralization, digita",
+          "thumb": "https://cdn.pixabay.com/video/2023/07/20/172449-847505203_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:198752",
+          "source": "pixabay",
+          "score": 0.0407,
+          "title": "dollar, money, finance, currency, cash, wealth, business, saving",
+          "thumb": "https://cdn.pixabay.com/video/2024/01/31/198752-908438377_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:198751",
+          "source": "pixabay",
+          "score": 0.0404,
+          "title": "money, dollars, finance, currency, cash, wealth, business, bank, saving, banknot",
+          "thumb": "https://cdn.pixabay.com/video/2024/01/31/198751-908438369_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_08470316bb844ced9b11/v1/thumb_009.jpg"
+    },
+    {
+      "scene": 10,
+      "start": 65.26,
+      "end": 72.96,
+      "duration": 7.7,
+      "narration": "Cook at home a few more nights each week, cancel the subscriptions you forgot about, and compare prices before every big purchase.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "food",
+      "visual_plan": "Fresh vegetables and ingredients laid out on a kitchen counter for home cooking.",
+      "queries": [
+        "cooking at home kitchen",
+        "fresh vegetables ingredients",
+        "healthy meal prep"
+      ],
+      "negative_terms": [
+        "restaurant",
+        "fast food"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:45101",
+        "kind": "video",
+        "title": "cucumber, peel, kitchen, snack, tasty, food, delicious, eat, green, meal, prep, lunch, healthy, fresh, salad, vegetables, organic, nutrition, natural, dinner, vegetarian, produce, diet, cooking",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-45101/",
+        "media_url": "https://cdn.pixabay.com/video/2020/07/20/45101-442509254_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by Phill_Dillow on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "healthy meal prep"
+      },
+      "reason": "stock (low confidence): pixabay scored 0.223 (< tau 0.24, within 0.03); no AI option",
+      "relevance_score": 0.2232,
+      "judge": {
+        "score": 4,
+        "why": "Cooking at home, matching the narration."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2232,
+        "negative_max": 0.1691,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.477,
+      "alternatives": [
+        {
+          "id": "pixabay:45101",
+          "source": "pixabay",
+          "score": 0.2232,
+          "title": "cucumber, peel, kitchen, snack, tasty, food, delicious, eat, green, meal, prep, ",
+          "thumb": "https://cdn.pixabay.com/video/2020/07/20/45101-442509254_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:11638",
+          "source": "pixabay",
+          "score": 0.2079,
+          "title": "chop, vegetables, food, cooking, kitchen, meal, dinner, healthy, cuisine, choppi",
+          "thumb": "https://cdn.pixabay.com/video/2017/08/29/11638-231758689_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:11597",
+          "source": "pixabay",
+          "score": 0.2069,
+          "title": "chopping, chives, food, fresh, vegetable, ingredient, green, vegetarian, board, ",
+          "thumb": "https://cdn.pixabay.com/video/2017/08/29/11597-231571839_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:11612",
+          "source": "pixabay",
+          "score": 0.2043,
+          "title": "slicing, peppers, sweet, food, fresh, vegetable, healthy, slice, ingredient, mea",
+          "thumb": "https://cdn.pixabay.com/video/2017/08/29/11612-231571889_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:267",
+          "source": "pixabay",
+          "score": 0.1871,
+          "title": "pot, cooking, steam, steaming, hot, food, kettle, preparation, kitchen, sepia, c",
+          "thumb": "https://cdn.pixabay.com/video/2015/08/10/267-135875613_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:292871",
+          "source": "pixabay",
+          "score": 0.1827,
+          "title": "frying broccoli, broccoli cooking, healthy food, vegan recipe, green vegetable, ",
+          "thumb": "https://cdn.pixabay.com/video/2025/07/22/292871_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:11596",
+          "source": "pixabay",
+          "score": 0.1741,
+          "title": "chopping, food, cooking, meal, table, preparation, ginger, organic, nutrition, i",
+          "thumb": "https://cdn.pixabay.com/video/2017/08/29/11596-231571835_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:11656",
+          "source": "pixabay",
+          "score": 0.164,
+          "title": "cooking, noodles, food, meal, dish, dinner, fresh, asian, healthy, vegetable, gr",
+          "thumb": "https://cdn.pixabay.com/video/2017/08/30/11656-231758771_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_08470316bb844ced9b11/v1/thumb_010.jpg"
+    },
+    {
+      "scene": 11,
+      "start": 72.96,
+      "end": 76.94,
+      "duration": 3.98,
+      "narration": "Small habits, repeated every day, turn into real security.",
+      "visual_hint": null,
+      "scene_type": "metaphor",
+      "category": "business",
+      "visual_plan": "A small seedling growing in rich soil, representing small habits turning into security.",
+      "queries": [
+        "plant seedling growth",
+        "financial growth metaphor",
+        "green plant sprout"
+      ],
+      "negative_terms": [
+        "dead plant",
+        "drought"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:341309",
+        "kind": "video",
+        "title": "sprout, growth, seedling, nature, soil, plant, green, rain, drop, life, hope, macro, environment, ecology, garden, agriculture, birth, fresh, earth, contrast, bokeh, cinematic, realistic, moist, organic",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-341309/",
+        "media_url": "https://cdn.pixabay.com/video/2026/03/20/341309_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by Solarselle77 on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "plant seedling growth"
+      },
+      "reason": "stock: pixabay clip scored 0.303 >= tau 0.24; best unused of 12 safe candidates",
+      "relevance_score": 0.3031,
+      "judge": {
+        "score": 5,
+        "why": "Sprout growing, perfectly illustrating small habits growing into security."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.3031,
+        "negative_max": 0.2696,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.506,
+      "alternatives": [
+        {
+          "id": "pixabay:341309",
+          "source": "pixabay",
+          "score": 0.3031,
+          "title": "sprout, growth, seedling, nature, soil, plant, green, rain, drop, life, hope, ma",
+          "thumb": "https://cdn.pixabay.com/video/2026/03/20/341309_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:339922",
+          "source": "pixabay",
+          "score": 0.2709,
+          "title": "nature, sustainability, eco, green, seedling, plant, environment, earth, growth,",
+          "thumb": "https://cdn.pixabay.com/video/2026/03/12/339922_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:337745",
+          "source": "pixabay",
+          "score": 0.2262,
+          "title": "sprout, seedling, plant, growth, growing, nature, soil, agriculture, gardening, ",
+          "thumb": "https://cdn.pixabay.com/video/2026/03/03/337745_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:344995",
+          "source": "pixabay",
+          "score": 0.2129,
+          "title": "herbs, plants, pots, garden, gardening, organic, nature, green, growth, terracot",
+          "thumb": "https://cdn.pixabay.com/video/2026/04/07/344995_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:260395",
+          "source": "pixabay",
+          "score": 0.2056,
+          "title": "seedling, germinate, grow, germination, potato seedling, nature, growth, plant",
+          "thumb": "https://cdn.pixabay.com/video/2025/02/23/260395_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:380025",
+          "source": "pixabay",
+          "score": 0.1983,
+          "title": "ai generated, macro shot, green sprouts, raindrops, morning dew, water droplets,",
+          "thumb": "https://cdn.pixabay.com/video/2026/09/30/380025_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:76301",
+          "source": "pixabay",
+          "score": 0.1862,
+          "title": "beets, foliage, seedlings, garden, agriculture, plants, green, sprout vegetables",
+          "thumb": "https://cdn.pixabay.com/video/2021/06/03/76301-559113052_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:108459",
+          "source": "pixabay",
+          "score": 0.1634,
+          "title": "growth, grow, success, chart, graph, financial, finance, profit, data, wealth, b",
+          "thumb": "https://cdn.pixabay.com/video/2022/02/21/108459-680697612_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_08470316bb844ced9b11/v1/thumb_011.jpg"
+    },
+    {
+      "scene": 12,
+      "start": 76.94,
+      "end": 80.881,
+      "duration": 3.941,
+      "narration": "Start this month, and in a year you will not recognise your bank balance.",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "business",
+      "visual_plan": "A person looking confidently at a growing investment portfolio on a computer screen.",
+      "queries": [
+        "growing bank balance",
+        "successful financial portfolio",
+        "happy investor screen"
+      ],
+      "negative_terms": [
+        "market crash",
+        "sadness"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "card:12",
+        "kind": "card",
+        "title": "Card: Start this month, and in a year you will not recognise your ",
+        "source": "card-renderer",
+        "source_url": "",
+        "media_url": null,
+        "licence": "Rendered by this service (no third-party rights)",
+        "licence_url": "",
+        "attribution": "Generated card (IncuBrix B-roll engine)",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": null
+      },
+      "reason": "card: no safe clip scored near tau and AI not allowed/available -> text card",
+      "relevance_score": null,
+      "judge": {
+        "score": 4,
+        "why": "Animated text card summarizing the final advice."
+      },
+      "relevance_detail": {},
+      "reframe_subject_x": 0.5,
+      "alternatives": [
+        {
+          "id": "pixabay:12922",
+          "source": "pixabay",
+          "score": 0.178,
+          "title": "piggy, bank, dollars, flying, money, finance, business, banking, currency, piggy",
+          "thumb": "https://cdn.pixabay.com/video/2017/11/13/12922-242538643_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:12923",
+          "source": "pixabay",
+          "score": 0.1191,
+          "title": "piggy, bank, finance, money, business, banking, currency, piggy bank, beautiful ",
+          "thumb": "https://cdn.pixabay.com/video/2017/11/13/12923-242538645_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:31251",
+          "source": "pixabay",
+          "score": 0.107,
+          "title": "analysis, reference information, balance, bank, banking, diagram, commercial, co",
+          "thumb": "https://cdn.pixabay.com/video/2020/01/14/31251-385265625_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:5438",
+          "source": "pixabay",
+          "score": 0.1027,
+          "title": "finance, numbers, calculate, maths, profits, business, financial, investment, mo",
+          "thumb": "https://cdn.pixabay.com/video/2016/09/21/5438-183788547_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:13111",
+          "source": "pixabay",
+          "score": 0.0537,
+          "title": "photography, photographer, portfolio, fruit",
+          "thumb": "https://cdn.pixabay.com/video/2017/11/29/13111-245530624_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:337459",
+          "source": "pixabay",
+          "score": 0.0122,
+          "title": "seoul, hangang river, yeouido, national assembly, ifc seoul, parc1, night view, ",
+          "thumb": "https://cdn.pixabay.com/video/2026/03/02/337459_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:5635",
+          "source": "pixabay",
+          "score": -0.0061,
+          "title": "plant, watering, grow, gardening, ewer, watering can, watering pot, water, natur",
+          "thumb": "https://cdn.pixabay.com/video/2016/09/22/5635-183850259_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:42470",
+          "source": "pixabay",
+          "score": -0.0122,
+          "title": "rock balance, stacked rocks, balance, harmony, natural, lake, peaceful, waves, w",
+          "thumb": "https://cdn.pixabay.com/video/2020/06/18/42470-431738783_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_08470316bb844ced9b11/v1/thumb_012.jpg"
+    }
+  ],
+  "music": {
+    "path": null,
+    "title": "Key, Kida &amp; Eddie (feat. ICD) - Sundalo (acoustic)",
+    "source": "openverse/jamendo",
+    "licence": "CC BY 3.0",
+    "licence_url": "https://creativecommons.org/licenses/by/3.0/",
+    "attribution": "\"Key, Kida &amp; Eddie (feat. ICD) - Sundalo (acoustic)\" by Key, Kida &amp; Eddie (CC BY 3.0)",
+    "page_url": "https://www.jamendo.com/track/1522600",
+    "ai_generated": false
+  }
+}

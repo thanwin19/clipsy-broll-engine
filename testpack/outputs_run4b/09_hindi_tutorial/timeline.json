@@ -1,0 +1,404 @@
+{
+  "job_id": "job_15df8ee5ed5d4fceaf5d",
+  "version": 1,
+  "waveform": "/files/jobs/job_15df8ee5ed5d4fceaf5d/v1/waveform.png",
+  "narration_seconds": 9.92,
+  "language": "hi",
+  "transcript": "\u0938\u0941\u092c\u0939 \u091c\u0932\u094d\u0926\u0940 \u0909\u0920\u0928\u093e \u090f\u0915 \u0905\u091a\u094d\u091b\u0940 \u0906\u0926\u0924 \u0939\u0948\u0964 \u0925\u094b\u0921\u093c\u0940 \u0926\u0947\u0930 \u091f\u0939\u0932\u0947\u0902, \u0924\u093e\u091c\u093c\u0940 \u0939\u0935\u093e \u0932\u0947\u0902 \u0914\u0930 \u0926\u093f\u0928 \u0915\u0940 \u092f\u094b\u091c\u0928\u093e \u092c\u0928\u093e\u090f\u0902\u0964 \u0907\u0938\u0938\u0947 \u092a\u0942\u0930\u093e \u0926\u093f\u0928 \u090a\u0930\u094d\u091c\u093e \u0938\u0947 \u092d\u0930\u093e \u0930\u0939\u0924\u093e \u0939\u0948\u0964",
+  "aspect_ratios": [
+    "16:9",
+    "9:16"
+  ],
+  "mood": "upbeat",
+  "selection_rule": "Per scene: (1) statistics -> animated stat card. (2) Stock candidates from category-suited sources are scored with CLIP (image vs scene visual plan + narration, minus penalty for negative/avoid terms); unsafe candidates (avoid list, faces when avoided, AI for people/brands/sensitive) are removed. (3) Global assignment takes the highest (scene, clip) pairs first, each clip used once, if score >= tau=0.24. (4) If a scene's best stock score < tau+0.03 and AI is allowed, an AI image is generated and wins only if its CLIP score >= stock + 0.02. (5) Otherwise the best unused clip within 0.03 of tau, else a text card.",
+  "scenes": [
+    {
+      "scene": 0,
+      "start": 0.0,
+      "end": 2.581,
+      "duration": 2.581,
+      "narration": "\u0938\u0941\u092c\u0939 \u091c\u0932\u094d\u0926\u0940 \u0909\u0920\u0928\u093e \u090f\u0915 \u0905\u091a\u094d\u091b\u0940 \u0906\u0926\u0924 \u0939\u0948\u0964",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "everyday",
+      "visual_plan": "Bright morning sunlight streaming through a window onto a comfortable bed, setting a fresh tone.",
+      "queries": [
+        "sunrise morning window",
+        "sunlight room interior",
+        "early morning light"
+      ],
+      "negative_terms": [
+        "night",
+        "dark",
+        "sunset",
+        "evening"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:270544",
+        "kind": "video",
+        "title": "living room, cozy, interior, traditional, home, tranquility, sunlight, open door, outdoor view, domestic, comfortable, home decor, relaxing, scenic, warm, peaceful, ai created",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-270544/",
+        "media_url": "https://cdn.pixabay.com/video/2025/04/07/270544_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by SYG_Anime on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "sunlight room interior"
+      },
+      "reason": "stock: pixabay clip scored 0.242 >= tau 0.24; best unused of 12 safe candidates",
+      "relevance_score": 0.2425,
+      "judge": {
+        "score": 5,
+        "why": "Morning sunlight entering a room perfectly illustrates waking up early."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2425,
+        "negative_max": 0.2193,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.508,
+      "alternatives": [
+        {
+          "id": "pixabay:270544",
+          "source": "pixabay",
+          "score": 0.2425,
+          "title": "living room, cozy, interior, traditional, home, tranquility, sunlight, open door",
+          "thumb": "https://cdn.pixabay.com/video/2025/04/07/270544_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:265663",
+          "source": "pixabay",
+          "score": 0.2201,
+          "title": "ai generated, grand piano, piano, music, musical instrument, room, living room, ",
+          "thumb": "https://cdn.pixabay.com/video/2025/03/18/265663_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:364923",
+          "source": "pixabay",
+          "score": 0.2141,
+          "title": "ai generated, electric fan, vintage fan, desk fan, retro appliance, summer, japa",
+          "thumb": "https://cdn.pixabay.com/video/2026/07/19/364923_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:375228",
+          "source": "pixabay",
+          "score": 0.2003,
+          "title": "ai generated, houseplants, indoor plants, bright window, natural light, plant de",
+          "thumb": "https://cdn.pixabay.com/video/2026/09/09/375228_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:285759",
+          "source": "pixabay",
+          "score": 0.194,
+          "title": "coffee, tea, steam, morning, sunrise, window, warmth, cup, hot, relax, calm, coz",
+          "thumb": "https://cdn.pixabay.com/video/2025/06/13/285759_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:339340",
+          "source": "pixabay",
+          "score": 0.1834,
+          "title": "train, window, raindrops, sunset, golden hour, railway, travel, commute, scenery",
+          "thumb": "https://cdn.pixabay.com/video/2026/03/10/339340_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "coverr:Ak073dfaaU",
+          "source": "coverr",
+          "score": 0.1257,
+          "title": "Swinging microphone",
+          "thumb": "https://cdn.coverr.co/videos/coverr-swinging-microphone-7144/thumbnail?width=640",
+          "kind": "video",
+          "licence": "Coverr License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:265611",
+          "source": "pixabay",
+          "score": 0.1218,
+          "title": "ai generated, anime, headphones, relaxing, couch, living room, cozy, comfortable",
+          "thumb": "https://cdn.pixabay.com/video/2025/03/18/265611_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_15df8ee5ed5d4fceaf5d/v1/thumb_000.jpg"
+    },
+    {
+      "scene": 1,
+      "start": 2.581,
+      "end": 6.647,
+      "duration": 4.066,
+      "narration": "\u0925\u094b\u0921\u093c\u0940 \u0926\u0947\u0930 \u091f\u0939\u0932\u0947\u0902, \u0924\u093e\u091c\u093c\u0940 \u0939\u0935\u093e \u0932\u0947\u0902 \u0914\u0930 \u0926\u093f\u0928 \u0915\u0940 \u092f\u094b\u091c\u0928\u093e \u092c\u0928\u093e\u090f\u0902\u0964",
+      "visual_hint": null,
+      "scene_type": "literal",
+      "category": "nature",
+      "visual_plan": "A person walking peacefully in a lush green park during the early morning hours, breathing fresh air.",
+      "queries": [
+        "morning park walk",
+        "person walking park",
+        "green park morning"
+      ],
+      "negative_terms": [
+        "crowded city",
+        "night",
+        "traffic",
+        "pollution"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:177081",
+        "kind": "video",
+        "title": "man, alone, walking, hiking, morning, fog, national park, netherlands, drenthe, dwingelderveld, nature, scenic, landscape",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-177081/",
+        "media_url": "https://cdn.pixabay.com/video/2023/08/21/177081-857004160_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by Matthias_Groeneveld on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "morning park walk"
+      },
+      "reason": "stock: pixabay clip scored 0.303 >= tau 0.24; best unused of 12 safe candidates",
+      "relevance_score": 0.3026,
+      "judge": {
+        "score": 5,
+        "why": "Walking outdoors in morning light illustrates taking a walk and fresh air."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.3026,
+        "negative_max": 0.1853,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.39,
+      "alternatives": [
+        {
+          "id": "pixabay:177081",
+          "source": "pixabay",
+          "score": 0.3026,
+          "title": "man, alone, walking, hiking, morning, fog, national park, netherlands, drenthe, ",
+          "thumb": "https://cdn.pixabay.com/video/2023/08/21/177081-857004160_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:177092",
+          "source": "pixabay",
+          "score": 0.2676,
+          "title": "man, walking, hiking, morning, fog, national park, netherlands, drenthe, dwingel",
+          "thumb": "https://cdn.pixabay.com/video/2023/08/21/177092-857013222_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:28042",
+          "source": "pixabay",
+          "score": 0.2447,
+          "title": "person, red hair, woman, taking a walk, a walk in the park, walking, forest, tre",
+          "thumb": "https://cdn.pixabay.com/video/2019/10/18/28042-367222503_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "coverr:YoUDHDkmc1",
+          "source": "coverr",
+          "score": 0.2421,
+          "title": "Contemplative Evening Walk in the Park with Headphones",
+          "thumb": "https://cdn.coverr.co/videos/coverr-contemplative-stroll-in-twilight-park/thumbnail?width=640",
+          "kind": "video",
+          "licence": "Coverr License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "coverr:a17tSgw34T",
+          "source": "coverr",
+          "score": 0.2373,
+          "title": "Fitness Enthusiast Walking with her Yoga Mat and a Water Bottle",
+          "thumb": "https://cdn.coverr.co/videos/coverr-fitness-enthusiast-carrying-yoga-mat/thumbnail?width=640",
+          "kind": "video",
+          "licence": "Coverr License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "coverr:q4c7dlzgsm",
+          "source": "coverr",
+          "score": 0.2252,
+          "title": "Young Woman Performing Jumping Jacks in a Serene Park",
+          "thumb": "https://cdn.coverr.co/videos/coverr-serene-park-stroll-moment/thumbnail?width=640",
+          "kind": "video",
+          "licence": "Coverr License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:48416",
+          "source": "pixabay",
+          "score": 0.2121,
+          "title": "person, forest, walk, mountains, water, lake, river, landscape, national park, i",
+          "thumb": "https://cdn.pixabay.com/video/2020/08/27/48416-454346708_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:8667",
+          "source": "pixabay",
+          "score": 0.2061,
+          "title": "forest, walking, walk, nature, man, adventure, outdoor, activity, trail, woods, ",
+          "thumb": "https://cdn.pixabay.com/video/2017/04/13/8667-213122451_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_15df8ee5ed5d4fceaf5d/v1/thumb_001.jpg"
+    },
+    {
+      "scene": 2,
+      "start": 6.647,
+      "end": 9.92,
+      "duration": 3.273,
+      "narration": "\u0907\u0938\u0938\u0947 \u092a\u0942\u0930\u093e \u0926\u093f\u0928 \u090a\u0930\u094d\u091c\u093e \u0938\u0947 \u092d\u0930\u093e \u0930\u0939\u0924\u093e \u0939\u0948\u0964",
+      "visual_hint": null,
+      "scene_type": "metaphor",
+      "category": "everyday",
+      "visual_plan": "A vibrant and energetic view of a bright sunny day symbolizing high energy and productivity.",
+      "queries": [
+        "sunny day sky",
+        "bright day nature",
+        "energetic morning light"
+      ],
+      "negative_terms": [
+        "rain",
+        "storm",
+        "dull",
+        "night"
+      ],
+      "entities": [],
+      "clip": {
+        "id": "pixabay:4753",
+        "kind": "video",
+        "title": "clouds, sky, oxygen, air, atmosphere, heaven, wind, cloudy, sunny, summer, weather, blue, nature, blue sky, outdoors, clear, sun, sunshine, bright, light, day, daylight, sun rays, rays of light, warmth, heat",
+        "source": "pixabay",
+        "source_url": "https://pixabay.com/videos/id-4753/",
+        "media_url": "https://cdn.pixabay.com/video/2016/08/22/4753-179739298_medium.mp4",
+        "licence": "Pixabay Content License (free for commercial use, no attribution required)",
+        "licence_url": "https://pixabay.com/service/license-summary/",
+        "attribution": "Video by Life-Of-Vids on Pixabay",
+        "commercial_use": true,
+        "watermark": false,
+        "ai_generated": false,
+        "matched_query": "sunny day sky"
+      },
+      "reason": "stock: pixabay clip scored 0.265 >= tau 0.24; best unused of 12 safe candidates",
+      "relevance_score": 0.2645,
+      "judge": {
+        "score": 4,
+        "why": "Sunlight through clouds visually represents high energy."
+      },
+      "relevance_detail": {
+        "method": "clip",
+        "positive": 0.2645,
+        "negative_max": 0.2271,
+        "penalty": 0.0
+      },
+      "reframe_subject_x": 0.46,
+      "alternatives": [
+        {
+          "id": "pixabay:4753",
+          "source": "pixabay",
+          "score": 0.2645,
+          "title": "clouds, sky, oxygen, air, atmosphere, heaven, wind, cloudy, sunny, summer, weath",
+          "thumb": "https://cdn.pixabay.com/video/2016/08/22/4753-179739298_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "coverr:MPpqcccjlf",
+          "source": "coverr",
+          "score": 0.2623,
+          "title": "Flying birds animation",
+          "thumb": "https://cdn.coverr.co/videos/coverr-flying-birds-animation-6922/thumbnail?width=640",
+          "kind": "video",
+          "licence": "Coverr License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:116306",
+          "source": "pixabay",
+          "score": 0.2113,
+          "title": "sheet, sky, wild grapes, wind, nature, sunny day",
+          "thumb": "https://cdn.pixabay.com/video/2022/05/07/116306-707404770_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:41452",
+          "source": "pixabay",
+          "score": 0.2032,
+          "title": "blue, clouds, blue sky, bright, clouds sky, cloudscape, cloudy, day, fluffy, lig",
+          "thumb": "https://cdn.pixabay.com/video/2020/06/08/41452-429661119_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "coverr:xee53qcBr8",
+          "source": "coverr",
+          "score": 0.1784,
+          "title": "Autumn leaves on a sunny day ",
+          "thumb": "https://cdn.coverr.co/videos/coverr-autumn-leaves-on-a-sunny-day-9217/thumbnail?width=640",
+          "kind": "video",
+          "licence": "Coverr License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:1700",
+          "source": "pixabay",
+          "score": 0.154,
+          "title": "blue, calm, cloudy, coast, landscape, loneliness, mountains, nature, sunset, tra",
+          "thumb": "https://cdn.pixabay.com/video/2015/12/19/1700-149532716_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "coverr:tHlDPuZqDQ",
+          "source": "coverr",
+          "score": 0.1535,
+          "title": "Sun shining on the seawater",
+          "thumb": "https://cdn.coverr.co/videos/coverr-sun-shining-on-the-seawater-7420/thumbnail?width=640",
+          "kind": "video",
+          "licence": "Coverr License (free for commercial use, no attribution required)"
+        },
+        {
+          "id": "pixabay:4507",
+          "source": "pixabay",
+          "score": 0.1413,
+          "title": "summer, meadow, herd, cow, nature, field, grass, landscape, greens, sky, green g",
+          "thumb": "https://cdn.pixabay.com/video/2016/08/16/4507-179376452_tiny.jpg",
+          "kind": "video",
+          "licence": "Pixabay Content License (free for commercial use, no attribution required)"
+        }
+      ],
+      "thumbnail": "/files/jobs/job_15df8ee5ed5d4fceaf5d/v1/thumb_002.jpg"
+    }
+  ],
+  "music": {
+    "path": null,
+    "title": "Key, Kida &amp; Eddie (feat. ICD) - Sundalo (acoustic)",
+    "source": "openverse/jamendo",
+    "licence": "CC BY 3.0",
+    "licence_url": "https://creativecommons.org/licenses/by/3.0/",
+    "attribution": "\"Key, Kida &amp; Eddie (feat. ICD) - Sundalo (acoustic)\" by Key, Kida &amp; Eddie (CC BY 3.0)",
+    "page_url": "https://www.jamendo.com/track/1522600",
+    "ai_generated": false
+  }
+}
