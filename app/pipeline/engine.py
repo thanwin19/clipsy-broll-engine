@@ -1,0 +1,520 @@
+"""Job orchestrator: input -> narration -> plan -> retrieve/score -> route + assign -> render -> QA -> outputs."""
+import json
+import re
+import shutil
+import time
+from dataclasses import asdict
+from pathlib import Path
+from typing import Callable
+
+from app.config import get_settings
+from app.errors import ApiError
+from app.logs import get_logger
+from app.pipeline import media
+from app.pipeline.music import find_music
+from app.pipeline.narration import Narration, Word, even_words, get_asr, get_tts
+from app.pipeline.planner import Scene, plan_scenes, scenes_from_words, segment
+from app.pipeline.qa import check_video
+from app.pipeline.render import RATIOS, concat_and_mux, frame_bounds, render_segment, scene_cues, write_srt
+from app.pipeline.rerank import get_scorer, score_candidates
+from app.pipeline.sources import Candidate, CircuitBreaker, CloudflareFlux, download, search_all
+from app.storage import get_storage
+
+log = get_logger("engine")
+Progress = Callable[[int, str], None]
+
+
+class Timer:
+    def __init__(self):
+        self.t = {}
+
+    def __call__(self, name):
+        timer = self
+
+        class _C:
+            def __enter__(self):
+                self.s = time.perf_counter()
+
+            def __exit__(self, *a):
+                timer.t[name] = round(timer.t.get(name, 0) + time.perf_counter() - self.s, 3)
+        return _C()
+
+
+def ratio_key(r: str) -> str:
+    return r.replace(":", "x")
+
+
+# ------------------------------------------------------------------ narration
+def fetch_audio(url: str, work: Path) -> Path:
+    import httpx
+    s = get_settings()
+    ext = Path(url.split("?")[0]).suffix.lower() or ".mp3"
+    dest = work / f"input{ext}"
+    try:
+        with httpx.Client(timeout=60, follow_redirects=True) as c, c.stream("GET", url) as r:
+            r.raise_for_status()
+            size = 0
+            with open(dest, "wb") as f:
+                for chunk in r.iter_bytes(1 << 16):
+                    size += len(chunk)
+                    if size > s.max_upload_mb * 1024 * 1024:
+                        raise ApiError("FILE_TOO_LARGE", details={"max_mb": s.max_upload_mb})
+                    f.write(chunk)
+    except ApiError:
+        raise
+    except Exception as e:
+        raise ApiError("INPUT_DOWNLOAD_FAILED", details={"url": url, "reason": str(e)[:200]})
+    if ext not in (".mp3", ".wav", ".m4a"):
+        raise ApiError("UNSUPPORTED_FILE_TYPE", details={"url": url})
+    if not media.has_audio(dest):
+        raise ApiError("UNSUPPORTED_FILE_TYPE", "Downloaded file has no audio stream")
+    return dest
+
+
+def build_narration(req: dict, work: Path, warnings: list[str]) -> tuple[Narration, list[list[Word]] | None, list]:
+    s = get_settings()
+    asr, groups, hints = get_asr(), None, None
+    providers = {"asr": {"name": asr.name, "version": asr.version}}
+    if req.get("audio_url") and not req.get("audio_path"):
+        req["audio_path"] = str(fetch_audio(req["audio_url"], work))
+    if req.get("audio_path"):
+        src = Path(req["audio_path"])
+        dur = media.duration(src)
+        if dur > s.max_audio_seconds:
+            raise ApiError("AUDIO_TOO_LONG", details={"seconds": round(dur, 1), "max": s.max_audio_seconds})
+        if dur < 0.5:
+            raise ApiError("NO_SPEECH_DETECTED", "Audio is shorter than 0.5 seconds")
+        wav16 = media.to_wav(src, work / "asr.wav", 16000)
+        mix = media.to_wav(src, work / "narration.wav", 48000)
+        if media.mean_volume_db(wav16) < -55:
+            raise ApiError("NO_SPEECH_DETECTED", "The audio is silent", {"mean_volume_db": media.mean_volume_db(wav16)})
+        words, lang = asr.transcribe(wav16, req.get("language"))
+        speech = sum(w.end - w.start for w in words)
+        if len(words) < 2 or speech < 0.15 * dur and len(words) < 0.5 * dur:
+            raise ApiError("NO_SPEECH_DETECTED", "No narration found (silent or music-only audio)",
+                           {"words_found": len(words), "seconds": round(dur, 1)})
+        total = media.duration(mix)
+        source = "audio"
+    else:
+        if req.get("scenes"):
+            texts = [(sc.get("text") or "").strip() for sc in req["scenes"]]
+            hints = [sc.get("visual_hint") for sc in req["scenes"] if (sc.get("text") or "").strip()]
+            texts = [t for t in texts if t]
+            script = " ".join(texts)
+        else:
+            script, texts = (req.get("script") or "").strip(), None
+        if not script:
+            raise ApiError("EMPTY_SCRIPT")
+        tts = get_tts()
+        raw = tts.synthesize(script, req.get("voice") or "en-IN-female", work / "tts.wav")
+        providers["tts"] = {"name": tts.name, "version": tts.version, "voice": req.get("voice")}
+        mix = media.to_wav(raw, work / "narration.wav", 48000)
+        total = media.duration(mix)
+        if asr.name == "mock-asr":
+            words, lang = even_words(script, 0.2, total - 0.2), "en"
+        else:
+            words, lang = asr.transcribe(media.to_wav(raw, work / "asr.wav", 16000), req.get("language"))
+            if len(words) < 2:
+                words, lang = even_words(script, 0.2, total - 0.2), "en"
+                warnings.append("ASR_ON_TTS_EMPTY: timestamps estimated evenly over TTS audio")
+        if texts:  # map user scene list onto word timings by token proportion
+            counts = [len(t.split()) for t in texts]
+            n, acc, groups, prev = sum(counts), 0, [], 0
+            for c in counts:
+                acc += c
+                cut = round(acc / n * len(words))
+                if cut > prev:
+                    groups.append(words[prev:cut])
+                    prev = cut
+            if len(groups) != len(hints):
+                hints = (hints + [None] * len(groups))[: len(groups)]
+        source = "scenes" if texts else "script"
+    transcript = " ".join(w.text for w in words)
+    nar = Narration(audio_path=mix, words=words, duration=total, language=lang, transcript=transcript, providers=providers)
+    nar.providers["input_type"] = source
+    return nar, groups, hints
+
+
+# ------------------------------------------------------------------ selection
+def card_for(scene: Scene) -> Candidate:
+    if scene.stat:
+        head, body, kind = str(scene.stat.get("value", "")), scene.stat.get("label") or scene.text, "stat"
+    else:
+        head, body, kind = scene.text, "", "text"
+    c = Candidate(id=f"card:{scene.index}", provider="card-renderer", kind="card", title=f"Card: {head[:60]}",
+                  page_url="", download_url="", thumb_url="", licence="Rendered by this service (no third-party rights)",
+                  licence_url="", attribution="Generated card (IncuBrix B-roll engine)")
+    c.score_detail.update({"headline": head, "body": body, "card_kind": kind})
+    return c
+
+
+def select_clips(plan, nar: Narration, req: dict, work: Path, warnings: list[str], progress: Progress, timer: Timer):
+    s = get_settings()
+    breaker = CircuitBreaker(warnings)
+    scorer = get_scorer()
+    avoid = plan.avoid_terms
+    avoid_faces = any(re.search(r"face|people|person", a, re.I) for a in avoid)
+    pools: dict[int, list[Candidate]] = {}
+    scenes = plan.scenes
+    from concurrent.futures import ThreadPoolExecutor
+
+    def work_scene(sc: Scene):
+        if sc.type == "statistic" and sc.stat:
+            return sc.index, []
+        queries = list(sc.queries)
+        if sc.sensitive:
+            queries = [q + " calm" if "calm" not in q else q for q in queries]
+        cands = search_all(queries, sc.category, breaker)
+        return sc.index, score_candidates(sc, cands, avoid, avoid_faces, scorer, work / "thumbs")
+
+    done = 0
+    with timer("search_and_score"), ThreadPoolExecutor(max_workers=3) as ex:
+        for idx, ranked in ex.map(work_scene, scenes):
+            pools[idx] = ranked
+            done += 1
+            progress(30 + int(30 * done / len(scenes)), f"scored scene {done}/{len(scenes)}")
+
+    # global assignment: best (scene, clip) pairs first, each clip used at most once
+    tau = s.stock_min_score
+    chosen: dict[int, Candidate] = {}
+    reasons: dict[int, str] = {}
+    used: set[str] = set()
+    pairs = sorted(((c.score, sc.index, c) for sc in scenes for c in pools.get(sc.index, [])), key=lambda x: -x[0])
+    for score, idx, c in pairs:
+        if idx in chosen or c.id in used or score < tau:
+            continue
+        chosen[idx], reasons[idx] = c, (f"stock: {c.provider} clip scored {score:.3f} >= tau {tau:.2f}; "
+                                        f"best unused of {len(pools[idx])} safe candidates")
+        used.add(c.id)
+
+    flux = CloudflareFlux()
+    with timer("ai_generation"):
+        for sc in scenes:
+            if sc.type == "statistic" and sc.stat:
+                chosen[sc.index] = card_for(sc)
+                reasons[sc.index] = f"statistic '{sc.stat.get('value')}' -> animated stat card (rule: numbers are shown, not searched)"
+                continue
+            cur = chosen.get(sc.index)
+            weak = cur is None or cur.score < tau + 0.03
+            if weak and sc.ai_allowed and flux.available():
+                try:
+                    ai = flux.generate(sc.ai_prompt, work / "ai" / f"scene_{sc.index}.jpg", s.seed + sc.index)
+                    scored = score_candidates(sc, [ai], avoid, avoid_faces, scorer, work / "thumbs")
+                    if scored and (cur is None or scored[0].score >= cur.score + s.ai_margin):
+                        if cur:
+                            used.discard(cur.id)
+                        chosen[sc.index] = scored[0]
+                        reasons[sc.index] = (f"ai: generated image scored {scored[0].score:.3f} vs best stock "
+                                             f"{(cur.score if cur else 0):.3f} (rule: AI wins only if >= stock + {s.ai_margin})")
+                        continue
+                except Exception as e:
+                    breaker.record("cloudflare", e)
+            if sc.index not in chosen:
+                # nothing above tau: take the best remaining safe clip only if it is close, else a text card
+                rest = [c for c in pools.get(sc.index, []) if c.id not in used and c.score >= tau - 0.03]
+                if rest:
+                    chosen[sc.index] = rest[0]
+                    used.add(rest[0].id)
+                    reasons[sc.index] = (f"stock (low confidence): {rest[0].provider} scored {rest[0].score:.3f} "
+                                         f"(< tau {tau:.2f}, within 0.03); no AI option")
+                    warnings.append(f"LOW_RELEVANCE: scene {sc.index} best clip scored {rest[0].score:.3f}")
+                else:
+                    chosen[sc.index] = card_for(sc)
+                    reasons[sc.index] = "card: no safe clip scored near tau and AI not allowed/available -> text card"
+            if not sc.ai_allowed and (sc.entities or sc.sensitive):
+                reasons[sc.index] += ("; safety: " + ("named person/brand -> neutral footage, no AI faces/logos"
+                                                       if sc.entities else "sensitive topic -> calm respectful footage"))
+
+    # download chosen clips; corrupt/failed download -> next best unused candidate -> card
+    with timer("download"):
+        for i, sc in enumerate(scenes):
+            c = chosen[sc.index]
+            tried = 0
+            while c.kind == "video" and c.local_path is None:
+                try:
+                    c.local_path = download(c, work / "clips")
+                except Exception as e:
+                    tried += 1
+                    breaker.record(c.provider, e) if not isinstance(e, ApiError) else None
+                    warnings.append(f"CLIP_DOWNLOAD_FAILED: scene {sc.index} {c.id} ({type(e).__name__}); replaced")
+                    used.discard(c.id)
+                    nxt = [x for x in pools.get(sc.index, []) if x.id not in used and x.id != c.id
+                           and x.score >= tau - 0.03 and x.local_path is None and tried < 3]
+                    if nxt:
+                        c = nxt[0]
+                        used.add(c.id)
+                        reasons[sc.index] = f"replacement after failed download: {c.provider} scored {c.score:.3f}"
+                    else:
+                        c = card_for(sc)
+                        reasons[sc.index] = "card: all candidate downloads failed"
+                    chosen[sc.index] = c
+            progress(60 + int(8 * (i + 1) / len(scenes)), "downloading clips")
+    if not any(c.kind in ("video", "ai_image") for c in chosen.values()) and any(pools.values()) is False:
+        warnings.append("ALL_FOOTAGE_SOURCES_EMPTY: every scene uses a rendered card")
+    return chosen, reasons, pools
+
+
+# ------------------------------------------------------------------ outputs
+def clip_record(sc: Scene, c: Candidate, reason: str, alternatives: list[Candidate]) -> dict:
+    return {
+        "scene": sc.index, "start": round(sc.start, 3), "end": round(sc.end, 3), "duration": round(sc.duration, 3),
+        "narration": sc.text, "visual_hint": sc.hint, "scene_type": sc.type, "category": sc.category,
+        "visual_plan": sc.visual, "queries": sc.queries, "negative_terms": sc.negative, "entities": sc.entities,
+        "clip": {"id": c.id, "kind": c.kind, "title": c.title, "source": c.provider, "source_url": c.page_url,
+                 "media_url": c.download_url or None, "licence": c.licence, "licence_url": c.licence_url,
+                 "attribution": c.attribution, "commercial_use": True, "watermark": False,
+                 "ai_generated": c.ai_generated or c.kind == "ai_image", "matched_query": c.query or None},
+        "reason": reason,
+        "relevance_score": round(c.score, 4) if c.kind != "card" else None,
+        "relevance_detail": {k: v for k, v in c.score_detail.items() if k not in ("headline", "body", "card_kind")},
+        "reframe_subject_x": round(c.subject_x, 3),
+        "alternatives": [{"id": a.id, "source": a.provider, "score": a.score, "title": a.title[:80]} for a in alternatives[:5]],
+    }
+
+
+def render_all(scenes, chosen, nar, music, ratios, burn, work: Path, progress: Progress, only: set[int] | None = None):
+    s = get_settings()
+    bounds = frame_bounds(scenes, s.fps)
+    outputs = {}
+    for ri, ratio in enumerate(ratios):
+        seg_dir = work / "segments" / ratio_key(ratio)
+        segs = []
+        for sc, (a, b) in zip(scenes, bounds):
+            name = f"seg_{sc.index:03d}"
+            p = seg_dir / f"{name}.mp4"
+            if only is None or sc.index in only or not p.exists():
+                p = render_segment(sc, chosen[sc.index], ratio, max(1, b - a), seg_dir, burn, name)
+            segs.append(p)
+            if only is None:
+                progress(68 + int(22 * (ri + (sc.index + 1) / len(scenes)) / len(ratios)), f"rendering {ratio}")
+        out = work / f"video_{ratio_key(ratio)}.mp4"
+        concat_and_mux(segs, nar.audio_path, music, nar.duration, out)
+        outputs[ratio] = out
+    return outputs
+
+
+def qa_and_fix(outputs, scenes, chosen, pools, nar, music, burn, work, warnings, reasons):
+    """If a check finds black/frozen frames inside a scene, swap that scene for its next-best clip once."""
+    reports = {r: check_video(p, nar.duration) for r, p in outputs.items()}
+    bad: set[int] = set()
+    for rep in reports.values():
+        times = [b[0] for b in rep["black_segments"]] + rep["freeze_starts"]
+        for t in times:
+            for sc in scenes:
+                if sc.start - 0.05 <= t < sc.end:
+                    bad.add(sc.index)
+    if bad:
+        used = {c.id for c in chosen.values()}
+        for idx in bad:
+            alt = [c for c in pools.get(idx, []) if c.id not in used and c.kind == "video"]
+            for c in alt[:2]:
+                try:
+                    c.local_path = download(c, work / "clips")
+                    chosen[idx] = c
+                    used.add(c.id)
+                    reasons[idx] = f"auto-replaced by QA (black/frozen frames); {c.provider} scored {c.score:.3f}"
+                    break
+                except Exception:
+                    continue
+            else:
+                chosen[idx] = card_for(next(s for s in scenes if s.index == idx))
+                reasons[idx] = "auto-replaced by QA with card (black/frozen frames, no alternative)"
+        warnings.append(f"QA_AUTOFIX: scenes {sorted(bad)} had black/frozen frames and were replaced")
+        outputs.update(render_all(scenes, chosen, nar, music, list(outputs), burn, work, lambda *_: None, only=bad))
+        reports = {r: check_video(p, nar.duration) for r, p in outputs.items()}
+        for r, rep in reports.items():
+            if not rep["passed"]:
+                warnings.append(f"QA_FAILED: {r} still fails checks after auto-fix: "
+                                f"black={rep['black_segments']} freeze={rep['freeze_starts']} drift={rep['av_drift_seconds']}")
+    return reports
+
+
+def publish(job_id: str, version: int, files: dict[str, Path]) -> dict:
+    st = get_storage()
+    links = {}
+    for name, p in files.items():
+        links[name] = st.put(p, f"jobs/{job_id}/v{version}/{p.name}")
+    return links
+
+
+def build_manifest(job_id, req, nar, plan, music, timer, warnings, qa, chosen, version, extra=None) -> dict:
+    s = get_settings()
+    scorer = get_scorer()
+    sources = sorted({c.provider for c in chosen.values()})
+    return {
+        "job_id": job_id, "version": version, "service": {"name": s.app_name, "version": s.app_version},
+        "providers": {**nar.providers,
+                      "planner": plan.planner,
+                      "relevance_model": {"name": scorer.name, "version": getattr(scorer, "version", "")},
+                      "footage_sources_enabled": s.provider_list(),
+                      "footage_sources_used": sources,
+                      "ai_image": {"name": "cloudflare-flux", "model": s.cloudflare_model} if CloudflareFlux().available() else None,
+                      "music": music.source if music else None,
+                      "renderer": "ffmpeg", "face_detector": "opencv-haarcascade", "saliency": "spectral-residual (numpy)"},
+        "settings": {"aspect_ratios": req.get("aspect_ratios"), "style": req.get("style"), "avoid": req.get("avoid"),
+                     "captions": req.get("captions"), "voice": req.get("voice"), "fps": s.fps,
+                     "stock_min_score_tau": s.stock_min_score, "ai_margin": s.ai_margin,
+                     "min_scene_seconds": s.min_scene_seconds, "max_scene_seconds": s.max_scene_seconds,
+                     "video_preset": s.video_preset, "crf": s.video_crf},
+        "seed": s.seed,
+        "narration": {"seconds": round(nar.duration, 3), "language": nar.language, "words": len(nar.words)},
+        "mood": plan.mood, "topic": plan.topic, "avoid_terms_expanded": plan.avoid_terms,
+        "timings_seconds": timer.t,
+        "cost_estimate_usd": {"total": 0.0, "note": "All providers used on free tiers / open-source models; "
+                                                    "compute is the host machine."},
+        "warnings": warnings,
+        "rights": {"all_commercial_use": True,
+                   "clips": [{"scene": i, "source": c.provider, "licence": c.licence, "attribution": c.attribution,
+                              "ai_generated": c.ai_generated or c.kind == "ai_image"} for i, c in sorted(chosen.items())],
+                   "music": ({"title": music.title, "source": music.source, "licence": music.licence,
+                              "attribution": music.attribution, "url": music.page_url} if music else None),
+                   "narration": "user-supplied audio" if req.get("audio_path") else "synthetic TTS voice (no real person)"},
+        "qa": qa,
+        **(extra or {}),
+    }
+
+
+# ------------------------------------------------------------------ entry points
+def run_job(job_id: str, req: dict, progress: Progress) -> dict:
+    s = get_settings()
+    work = s.data_dir / "work" / job_id
+    work.mkdir(parents=True, exist_ok=True)
+    timer, warnings = Timer(), []
+    ratios = req.get("aspect_ratios") or ["16:9"]
+    caps = req.get("captions") or {"burn_in": True, "srt": True}
+    burn = bool(caps.get("burn_in", True))
+    t0 = time.perf_counter()
+
+    progress(5, "preparing narration")
+    with timer("narration"):
+        nar, groups, hints = build_narration(req, work, warnings)
+    progress(20, "planning scenes")
+    with timer("planning"):
+        scenes = scenes_from_words(nar.words, nar.duration, s.min_scene_seconds, s.max_scene_seconds, groups, hints)
+        plan = plan_scenes(scenes, nar.transcript, req.get("style") or "", req.get("avoid") or [])
+        warnings += plan.warnings
+    progress(30, "finding footage")
+    chosen, reasons, pools = select_clips(plan, nar, req, work, warnings, progress, timer)
+
+    music = None
+    if req.get("music", True):
+        with timer("music"):
+            music, mw = find_music(plan.mood, nar.duration, work)
+            warnings += mw
+    with timer("render"):
+        outputs = render_all(plan.scenes, chosen, nar, music, ratios, burn, work, progress)
+    progress(92, "quality checks")
+    with timer("qa"):
+        qa = qa_and_fix(outputs, plan.scenes, chosen, pools, nar, music, burn, work, warnings, reasons)
+
+    srt = write_srt([c for sc in plan.scenes for c in scene_cues(sc)], work / "captions.srt")
+    timeline = {"job_id": job_id, "version": 1, "narration_seconds": round(nar.duration, 3), "language": nar.language,
+                "transcript": nar.transcript, "aspect_ratios": ratios, "mood": plan.mood,
+                "selection_rule": selection_rule_text(),
+                "scenes": [clip_record(sc, chosen[sc.index], reasons[sc.index], pools.get(sc.index, []))
+                           for sc in plan.scenes],
+                "music": asdict(music) | {"path": None} if music else None}
+    timer.t["total"] = round(time.perf_counter() - t0, 3)
+    manifest = build_manifest(job_id, req, nar, plan, music, timer, warnings, qa, chosen, 1)
+    (work / "timeline.json").write_text(json.dumps(timeline, indent=2, default=str), encoding="utf-8")
+    (work / "manifest.json").write_text(json.dumps(manifest, indent=2, default=str), encoding="utf-8")
+    save_state(work, plan, chosen, pools, reasons, nar, music, req, ratios, burn)
+
+    progress(96, "uploading outputs")
+    files = {f"video_{ratio_key(r)}": p for r, p in outputs.items()}
+    files.update({"timeline": work / "timeline.json", "manifest": work / "manifest.json"})
+    if caps.get("srt", True):
+        files["captions_srt"] = srt
+    links = publish(job_id, 1, files)
+    return {"version": 1, "links": links, "warnings": warnings, "scenes": len(plan.scenes),
+            "narration_seconds": round(nar.duration, 3), "timings_seconds": timer.t,
+            "qa_passed": all(r["passed"] for r in qa.values())}
+
+
+def selection_rule_text() -> str:
+    s = get_settings()
+    return (f"Per scene: (1) statistics -> animated stat card. (2) Stock candidates from category-suited sources are "
+            f"scored with CLIP (image vs scene visual plan + narration, minus penalty for negative/avoid terms); unsafe "
+            f"candidates (avoid list, faces when avoided, AI for people/brands/sensitive) are removed. (3) Global "
+            f"assignment takes the highest (scene, clip) pairs first, each clip used once, if score >= tau={s.stock_min_score}. "
+            f"(4) If a scene's best stock score < tau+0.03 and AI is allowed, an AI image is generated and wins only if "
+            f"its CLIP score >= stock + {s.ai_margin}. (5) Otherwise the best unused clip within 0.03 of tau, else a text card.")
+
+
+# ------------------------------------------------------------------ swap a clip
+def save_state(work, plan, chosen, pools, reasons, nar, music, req, ratios, burn):
+    import pickle
+    with open(work / "state.pkl", "wb") as f:
+        pickle.dump({"plan": plan, "chosen": chosen, "pools": pools, "reasons": reasons, "nar": nar,
+                     "music": music, "req": req, "ratios": ratios, "burn": burn}, f)
+
+
+def swap_scene(parent_id: str, job_id: str, scene_index: int, body: dict, progress: Progress) -> dict:
+    import pickle
+    s = get_settings()
+    work = s.data_dir / "work" / parent_id
+    state_file = work / "state.pkl"
+    if not state_file.exists():
+        raise ApiError("JOB_NOT_FOUND", "Parent job state not found")
+    with open(state_file, "rb") as f:
+        st = pickle.load(f)
+    plan, chosen, pools, reasons = st["plan"], st["chosen"], st["pools"], st["reasons"]
+    scene = next((x for x in plan.scenes if x.index == scene_index), None)
+    if scene is None:
+        raise ApiError("SCENE_NOT_FOUND", details={"scene": scene_index, "scenes": len(plan.scenes)})
+    timer, warnings = Timer(), []
+    t0 = time.perf_counter()
+    used = {c.id for c in chosen.values()}
+    old = chosen[scene_index]
+    progress(10, "choosing replacement")
+    with timer("select"):
+        new = None
+        if body.get("candidate_id"):
+            new = next((c for c in pools.get(scene_index, []) if c.id == body["candidate_id"]), None)
+            if new is None:
+                raise ApiError("VALIDATION_ERROR", "candidate_id is not among this scene's alternatives")
+        elif body.get("query"):
+            breaker = CircuitBreaker(warnings)
+            cands = search_all([body["query"]], scene.category, breaker, 1)
+            ranked = score_candidates(scene, cands, plan.avoid_terms,
+                                      any(re.search(r"face|people", a, re.I) for a in plan.avoid_terms),
+                                      get_scorer(), work / "thumbs")
+            pools[scene_index] = ranked + [c for c in pools.get(scene_index, []) if c.id not in {r.id for r in ranked}]
+            new = next((c for c in ranked if c.id not in used), None)
+        else:
+            new = next((c for c in pools.get(scene_index, []) if c.id not in used), None)
+        if new is None:
+            new = card_for(scene)
+        if new.kind == "video" and new.local_path is None:
+            new.local_path = download(new, work / "clips")
+    chosen[scene_index] = new
+    reasons[scene_index] = f"user swap: replaced {old.id} with {new.id} (score {new.score:.3f})"
+    progress(40, "re-rendering affected scene only")
+    with timer("render_affected_scene"):
+        outputs = render_all(plan.scenes, chosen, st["nar"], st["music"], st["ratios"], st["burn"], work,
+                             lambda *_: None, only={scene_index})
+    progress(85, "quality checks")
+    with timer("qa"):
+        qa = {r: check_video(p, st["nar"].duration) for r, p in outputs.items()}
+    version = int(body.get("_version", 2))
+    timeline = json.loads((work / "timeline.json").read_text(encoding="utf-8"))
+    timeline["version"] = version
+    timeline["scenes"] = [clip_record(sc, chosen[sc.index], reasons[sc.index], pools.get(sc.index, []))
+                          for sc in plan.scenes]
+    out_dir = work / f"v{version}"
+    out_dir.mkdir(exist_ok=True)
+    (out_dir / "timeline.json").write_text(json.dumps(timeline, indent=2, default=str), encoding="utf-8")
+    timer.t["total"] = round(time.perf_counter() - t0, 3)
+    manifest = build_manifest(job_id, st["req"], st["nar"], plan, st["music"], timer, warnings, qa, chosen, version,
+                              {"swap": {"parent_job_id": parent_id, "scene": scene_index, "old_clip": old.id,
+                                        "new_clip": new.id, "segments_re_rendered": len(st["ratios"]),
+                                        "segments_reused": len(st["ratios"]) * (len(plan.scenes) - 1)}})
+    (out_dir / "manifest.json").write_text(json.dumps(manifest, indent=2, default=str), encoding="utf-8")
+    for r, p in outputs.items():
+        shutil.copyfile(p, out_dir / p.name)
+    save_state(work, plan, chosen, pools, reasons, st["nar"], st["music"], st["req"], st["ratios"], st["burn"])
+    files = {f"video_{ratio_key(r)}": out_dir / p.name for r, p in outputs.items()}
+    files.update({"timeline": out_dir / "timeline.json", "manifest": out_dir / "manifest.json"})
+    links = publish(parent_id, version, files)
+    return {"version": version, "parent_job_id": parent_id, "scene": scene_index, "links": links,
+            "warnings": warnings, "timings_seconds": timer.t, "qa_passed": all(r["passed"] for r in qa.values())}

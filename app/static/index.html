@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>B-roll Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b1220; --panel:#111a2e; --panel2:#16213a; --line:#22304d; --text:#e6edf7; --muted:#8fa3bf;
+  --accent:#14b8a6; --accent2:#0ea5e9; --warn:#f59e0b; --bad:#ef4444; --good:#22c55e; --radius:14px;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:14px/1.5 Inter,system-ui,sans-serif}
+header{display:flex;align-items:center;justify-content:space-between;padding:16px 28px;border-bottom:1px solid var(--line);
+  background:linear-gradient(90deg,#0b1220,#0f1d33)}
+.brand{display:flex;gap:12px;align-items:center;font-weight:700;font-size:17px}
+.logo{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center}
+.logo svg{width:18px;height:18px}
+.sub{color:var(--muted);font-weight:500;font-size:13px}
+.pill{font-size:12px;padding:4px 10px;border-radius:99px;border:1px solid var(--line);color:var(--muted)}
+.pill.ok{color:var(--good);border-color:#1f5135}
+main{display:grid;grid-template-columns:420px 1fr;gap:22px;padding:22px 28px;max-width:1500px;margin:auto}
+@media(max-width:1000px){main{grid-template-columns:1fr;padding:16px}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+h2{margin:0 0 4px;font-size:15px} .hint{color:var(--muted);font-size:12.5px;margin:0 0 14px}
+.tabs{display:flex;background:var(--panel2);border-radius:10px;padding:4px;margin-bottom:14px}
+.tabs button{flex:1;background:none;border:0;color:var(--muted);padding:8px;border-radius:7px;font:600 13px Inter;cursor:pointer}
+.tabs button.on{background:var(--accent);color:#04201d}
+label{display:block;font-size:12px;color:var(--muted);margin:12px 0 6px;font-weight:600;letter-spacing:.02em}
+textarea,input[type=text],input[type=url],select{width:100%;background:#0c1527;border:1px solid var(--line);border-radius:10px;
+  color:var(--text);padding:10px 12px;font:14px Inter}
+textarea{min-height:140px;resize:vertical}
+textarea:focus,input:focus,select:focus{outline:2px solid #14b8a655;border-color:var(--accent)}
+.drop{border:1.5px dashed var(--line);border-radius:12px;padding:22px;text-align:center;color:var(--muted);cursor:pointer}
+.drop.has{border-color:var(--accent);color:var(--text)}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+.chk{display:flex;align-items:center;gap:6px;background:var(--panel2);border:1px solid var(--line);padding:7px 11px;border-radius:9px;cursor:pointer;font-size:13px}
+.chk input{accent-color:var(--accent)}
+.btn{width:100%;margin-top:18px;background:linear-gradient(90deg,var(--accent),var(--accent2));border:0;color:#03151a;
+  padding:12px;border-radius:11px;font:700 14px Inter;cursor:pointer}
+.btn:disabled{opacity:.5;cursor:wait}
+.btn.ghost{background:var(--panel2);color:var(--text);border:1px solid var(--line);width:auto;margin:0;padding:8px 12px;font-weight:600}
+.err{background:#2a1215;border:1px solid #5b1d24;color:#fecaca;border-radius:10px;padding:10px 12px;margin-top:12px;display:none;white-space:pre-wrap;font-size:13px}
+.progress{height:8px;background:var(--panel2);border-radius:99px;overflow:hidden;margin:10px 0 6px}
+.progress div{height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .4s}
+.status{display:flex;justify-content:space-between;color:var(--muted);font-size:12.5px}
+.empty{display:grid;place-items:center;min-height:420px;color:var(--muted);text-align:center}
+.videos{display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start}
+.vid{background:#000;border-radius:12px;overflow:hidden;border:1px solid var(--line)}
+.vid video{display:block;max-height:420px;max-width:100%}
+.vid .cap{background:var(--panel2);padding:7px 10px;font-size:12px;display:flex;justify-content:space-between;gap:10px}
+a{color:var(--accent2);text-decoration:none} a:hover{text-decoration:underline}
+.files{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+.files a{background:var(--panel2);border:1px solid var(--line);padding:6px 10px;border-radius:8px;font-size:12.5px;color:var(--text)}
+.warns{margin:6px 0 12px} .warn{background:#2a2110;border:1px solid #5a4313;color:#fde68a;border-radius:8px;padding:6px 10px;font-size:12.5px;margin-top:6px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;color:var(--muted);font-weight:600;font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;padding:8px;border-bottom:1px solid var(--line)}
+td{padding:10px 8px;border-bottom:1px solid #1a2640;vertical-align:top}
+tr:hover td{background:#0f1930}
+.tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:99px;background:var(--panel2);border:1px solid var(--line);color:var(--muted);margin:1px}
+.tag.ai{color:#c4b5fd;border-color:#4c3a8a} .tag.card{color:#93c5fd;border-color:#1e3a8a}
+.score{font-variant-numeric:tabular-nums;font-weight:600}
+.bar{height:4px;border-radius:9px;background:var(--panel2);margin-top:4px;width:80px;overflow:hidden}.bar div{height:100%;background:var(--accent)}
+.why{color:var(--muted);font-size:12px;max-width:380px}
+.mono{font-family:ui-monospace,Consolas,monospace;font-size:12px;color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0}
+.stat{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.stat b{display:block;font-size:18px}.stat span{color:var(--muted);font-size:11.5px}
+@media(max-width:700px){.stats{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><div class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="#04201d" stroke-width="2.4"><path d="M4 6h11v12H4zM15 10l5-3v10l-5-3"/></svg></div>
+    <div>B-roll Studio<div class="sub">Script &amp; voiceover → licence-clean B-roll video</div></div></div>
+  <div class="row"><span class="pill" id="health">checking…</span><a class="pill" href="/docs" target="_blank">API docs</a></div>
+</header>
+<main>
+  <section class="card">
+    <h2>New video</h2><p class="hint">Upload a voiceover, paste a script, or send an IncuBrix scene list.</p>
+    <div class="tabs"><button data-t="script" class="on">Script</button><button data-t="audio">Voiceover</button><button data-t="scenes">Scene list</button></div>
+    <div id="t-script"><label>Script</label><textarea id="script" placeholder="Write the narration…">A few years ago I had no savings at all. Then I learned to track every rupee I spent. Value is not about spending less, it is about spending on what matters. My savings grew 40% in one year.</textarea>
+      <label>Voice</label><select id="voice"><option value="en-IN-female">English (India) · female</option><option value="en-IN-male">English (India) · male</option>
+        <option value="en-US-female">English (US) · female</option><option value="en-GB-male">English (UK) · male</option>
+        <option value="hi-IN-female">Hindi · female</option><option value="ta-IN-female">Tamil · female</option></select></div>
+    <div id="t-audio" hidden><label>Voiceover file (mp3, wav, m4a · up to 10 min)</label>
+      <div class="drop" id="drop">Click or drop an audio file here<input type="file" id="file" accept=".mp3,.wav,.m4a" hidden></div>
+      <label>…or audio URL</label><input type="url" id="audio_url" placeholder="https://…/voiceover.mp3"></div>
+    <div id="t-scenes" hidden><label>Scenes (JSON)</label><textarea id="scenes" spellcheck="false">[
+  {"text": "Our city wakes up before sunrise.", "visual_hint": "city skyline at dawn"},
+  {"text": "Thousands of commuters head to work.", "visual_hint": "busy train station"},
+  {"text": "By night, the streets glow again.", "visual_hint": "night traffic light trails"}
+]</textarea></div>
+    <label>Aspect ratios</label>
+    <div class="row"><label class="chk"><input type="checkbox" name="ar" value="16:9" checked>16:9</label>
+      <label class="chk"><input type="checkbox" name="ar" value="9:16" checked>9:16</label><label class="chk"><input type="checkbox" name="ar" value="1:1">1:1</label></div>
+    <label>Style</label><input type="text" id="style" value="bright, modern, real-world footage">
+    <label>Avoid (comma separated)</label><input type="text" id="avoid" placeholder="people's faces, alcohol">
+    <label>Options</label>
+    <div class="row"><label class="chk"><input type="checkbox" id="burn" checked>Burn-in captions</label>
+      <label class="chk"><input type="checkbox" id="music" checked>Background music</label></div>
+    <button class="btn" id="go">Generate video</button>
+    <div class="err" id="err"></div>
+  </section>
+  <section class="card" id="out"><div class="empty"><div><div style="font-size:40px">🎬</div>Your video, timeline and licence record will appear here.</div></div></section>
+</main>
+<script>
+const $=s=>document.querySelector(s); let tab='script', file=null, timer=null;
+const TOKEN=new URLSearchParams(location.search).get('token')||localStorage.getItem('broll_token')||'';
+const H=()=>TOKEN?{Authorization:'Bearer '+TOKEN}:{};
+document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{tab=b.dataset.t;document.querySelectorAll('.tabs button').forEach(x=>x.classList.toggle('on',x===b));
+  ['script','audio','scenes'].forEach(t=>$('#t-'+t).hidden=t!==tab)});
+$('#drop').onclick=()=>$('#file').click();
+$('#file').onchange=e=>setFile(e.target.files[0]);
+$('#drop').ondragover=e=>{e.preventDefault()}; $('#drop').ondrop=e=>{e.preventDefault();setFile(e.dataTransfer.files[0])};
+function setFile(f){file=f;$('#drop').textContent=f?`${f.name} · ${(f.size/1048576).toFixed(1)} MB`:'Click or drop an audio file here';$('#drop').classList.toggle('has',!!f)}
+fetch('/ready').then(r=>r.json()).then(j=>{$('#health').textContent=j.status==='ready'?'● service ready':'service not ready';$('#health').classList.toggle('ok',j.status==='ready')}).catch(()=>$('#health').textContent='offline');
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function showErr(e){const el=$('#err');el.style.display=e?'block':'none';el.textContent=e?`${e.code}: ${e.message}`+(e.details&&Object.keys(e.details).length?`\n${JSON.stringify(e.details)}`:''):''}
+
+$('#go').onclick=async()=>{
+  showErr(null);
+  const req={aspect_ratios:[...document.querySelectorAll('input[name=ar]:checked')].map(x=>x.value),style:$('#style').value,
+    avoid:$('#avoid').value.split(',').map(s=>s.trim()).filter(Boolean),captions:{burn_in:$('#burn').checked,srt:true},music:$('#music').checked};
+  let body, headers={...H(),'Idempotency-Key':crypto.randomUUID(),'X-Correlation-Id':'ui-'+Date.now()};
+  if(tab==='script'){req.script=$('#script').value;req.voice=$('#voice').value}
+  if(tab==='scenes'){try{req.scenes=JSON.parse($('#scenes').value)}catch{return showErr({code:'VALIDATION_ERROR',message:'Scene list is not valid JSON'})}}
+  if(tab==='audio'&&!file&&$('#audio_url').value)req.audio_url=$('#audio_url').value;
+  if(tab==='audio'&&file){body=new FormData();body.append('file',file);body.append('request',JSON.stringify(req))}
+  else{body=JSON.stringify(req);headers['Content-Type']='application/json'}
+  if(tab==='audio'&&!file&&!req.audio_url)return showErr({code:'NO_INPUT',message:'Choose an audio file or give a URL'});
+  $('#go').disabled=true;
+  try{const r=await fetch('/api/v1/broll/jobs',{method:'POST',headers,body});const j=await r.json();
+    if(!r.ok){showErr(j.error);$('#go').disabled=false;return}
+    poll(j.job_id)}catch(e){showErr({code:'NETWORK',message:String(e)});$('#go').disabled=false}
+};
+function progressView(j){$('#out').innerHTML=`<h2>Rendering</h2><p class="hint mono">${j.job_id}</p>
+  <div class="progress"><div style="width:${j.progress}%"></div></div><div class="status"><span>${esc(j.stage)}</span><span>${j.progress}%</span></div>`}
+function poll(id){clearTimeout(timer);fetch('/api/v1/jobs/'+id,{headers:H()}).then(r=>r.json()).then(async j=>{
+  if(j.status==='succeeded'){$('#go').disabled=false;return showResult(j)}
+  if(j.status==='failed'){$('#go').disabled=false;progressView(j);showErr(j.error);return}
+  progressView(j);timer=setTimeout(()=>poll(id),1500)}).catch(()=>timer=setTimeout(()=>poll(id),3000))}
+
+async function showResult(j){
+  const L=j.result.links; const tl=await fetch(L.timeline).then(r=>r.json()); const mf=await fetch(L.manifest).then(r=>r.json());
+  const vids=Object.keys(L).filter(k=>k.startsWith('video_'));
+  const sec=(mf.timings_seconds||{}).total; const avg=tl.scenes.filter(s=>s.relevance_score!=null).map(s=>s.relevance_score);
+  $('#out').innerHTML=`<div class="row" style="justify-content:space-between;align-items:center"><div><h2>${j.kind==='swap'?'Updated video (v'+j.result.version+')':'Finished video'}</h2>
+    <p class="hint mono">${j.job_id}${j.parent_job_id?' · from '+j.parent_job_id:''}</p></div></div>
+    <div class="stats"><div class="stat"><b>${tl.narration_seconds.toFixed(1)}s</b><span>narration</span></div>
+      <div class="stat"><b>${tl.scenes.length}</b><span>scenes</span></div>
+      <div class="stat"><b>${avg.length?(avg.reduce((a,b)=>a+b,0)/avg.length).toFixed(3):'–'}</b><span>avg CLIP relevance</span></div>
+      <div class="stat"><b>${sec?sec.toFixed(0)+'s':'–'}</b><span>render time</span></div></div>
+    <div class="videos">${vids.map(k=>`<div class="vid"><video controls src="${L[k]}"></video><div class="cap"><span>${k.replace('video_','').replace('x',':')}</span><a href="${L[k]}" download>Download</a></div></div>`).join('')}</div>
+    <div class="files">${Object.entries(L).map(([k,v])=>`<a href="${v}" target="_blank">${k}</a>`).join('')}</div>
+    ${(mf.warnings||[]).length?`<div class="warns">${mf.warnings.map(w=>`<div class="warn">⚠ ${esc(w)}</div>`).join('')}</div>`:''}
+    <h2 style="margin-top:8px">Timeline</h2><p class="hint">Every clip with its source, licence and why it was chosen. Swap any scene — only that scene is re-rendered.</p>
+    <div style="overflow-x:auto"><table><thead><tr><th>#</th><th>Time</th><th>Narration</th><th>Clip</th><th>Relevance</th><th>Why</th><th></th></tr></thead><tbody>
+    ${tl.scenes.map(s=>`<tr><td>${s.scene}</td><td class="mono">${s.start.toFixed(1)}–${s.end.toFixed(1)}s</td>
+      <td style="max-width:260px">${esc(s.narration)}<div>${'<span class="tag">'+esc(s.scene_type)+'</span>'}</div></td>
+      <td style="max-width:220px">${s.clip.source_url?`<a href="${esc(s.clip.source_url)}" target="_blank">${esc(s.clip.title||s.clip.id).slice(0,60)}</a>`:esc(s.clip.title).slice(0,60)}
+        <div><span class="tag ${s.clip.ai_generated?'ai':''}${s.clip.kind==='card'?'card':''}">${esc(s.clip.source)}</span>${s.clip.ai_generated?'<span class="tag ai">AI-generated</span>':''}</div>
+        <div class="mono" title="${esc(s.clip.licence)}">${esc(s.clip.licence).slice(0,48)}…</div></td>
+      <td>${s.relevance_score==null?'<span class="mono">card</span>':`<span class="score">${s.relevance_score.toFixed(3)}</span><div class="bar"><div style="width:${Math.min(100,Math.max(0,(s.relevance_score-0.1)/0.25*100))}%"></div></div>`}</td>
+      <td class="why">${esc(s.reason)}</td>
+      <td>${j.kind==='swap'&&false?'':`<button class="btn ghost" onclick="swap('${j.parent_job_id||j.job_id}',${s.scene})">Swap</button>`}</td></tr>`).join('')}
+    </tbody></table></div>
+    <p class="hint" style="margin-top:14px">Music: ${mf.rights.music?esc(mf.rights.music.attribution):'none'} · Planner: ${esc(mf.providers.planner)} · Relevance model: ${esc(mf.providers.relevance_model.version)}</p>`;
+}
+async function swap(parent,scene){
+  const q=prompt('Optional: type a new search query for this scene (leave empty for the next-best clip)')??null; if(q===null)return;
+  const r=await fetch(`/api/v1/broll/jobs/${parent}/scenes/${scene}/swap`,{method:'POST',headers:{...H(),'Content-Type':'application/json','Idempotency-Key':crypto.randomUUID()},
+    body:JSON.stringify(q.trim()?{query:q.trim()}:{})}); const j=await r.json(); if(!r.ok)return showErr(j.error); poll(j.job_id)}
+</script>
+</body>
+</html>
