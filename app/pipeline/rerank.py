@@ -64,20 +64,24 @@ def get_scorer():
     return MockScorer() if get_settings().rerank_provider == "mock" else ClipScorer()
 
 
-_face = None
+_face_local = threading.local()  # CascadeClassifier is not thread-safe: one instance per worker thread
 
 
 def faces_in(path: Path) -> int:
-    global _face
+    """Number of frontal faces in an image. On any detector error returns 1 (fail safe: treat as a face)."""
     import cv2
-    if _face is None:
-        _face = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
-    img = cv2.imread(str(path), cv2.IMREAD_GRAYSCALE)
-    if img is None:
-        return 0
-    found = _face.detectMultiScale(img, scaleFactor=1.15, minNeighbors=6,
-                                   minSize=(max(24, img.shape[1] // 20), max(24, img.shape[1] // 20)))
-    return len(found)
+    try:
+        face = getattr(_face_local, "clf", None)
+        if face is None:
+            face = _face_local.clf = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
+        img = cv2.imread(str(path), cv2.IMREAD_GRAYSCALE)
+        if img is None or min(img.shape[:2]) < 48:
+            return 0
+        side = max(24, img.shape[1] // 20)
+        return len(face.detectMultiScale(img, scaleFactor=1.15, minNeighbors=6, minSize=(side, side)))
+    except Exception as e:
+        log.warning("face detection failed on %s: %s", path.name, e)
+        return 1
 
 
 def subject_and_brightness(path: Path) -> tuple[float, float]:
