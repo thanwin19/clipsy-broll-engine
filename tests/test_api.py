@@ -32,10 +32,12 @@ def wait(client, job_id, timeout=300):
 def read(link: str) -> bytes:
     from app.storage import get_storage
     st = get_storage()
+    key = link.split("/files/", 1)[1]
     if st.name == "local":
-        return (get_settings().data_dir / "outputs" / link.split("/files/", 1)[1]).read_bytes()
-    import httpx
-    return httpx.get(link).content
+        return (get_settings().data_dir / "outputs" / key).read_bytes()
+    # S3: links go through the API (proxy mode) and point at the test client's host, so read the bucket directly
+    body = st.open_range(key, None)[0]
+    return body.read()
 
 
 # ------------------------------------------------------------ integration
