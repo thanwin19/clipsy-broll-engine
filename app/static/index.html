@@ -504,10 +504,12 @@ const L=c.links,vids=Object.keys(L).filter(k=>k.startsWith('video_'));let cur=vi
     <div style="background:#000;display:grid;place-items:center;height:62vh"><video id="rvid" controls autoplay playsinline style="max-width:100%;max-height:62vh"></video></div></div>
     <div class="tabs" style="position:static;margin-top:14px;border:0;padding:0;max-width:420px"><button class="on" data-rt="sb">Storyboard</button><button data-rt="dir">AI Director</button><button data-rt="notes">Notes${(c.mf.warnings||[]).length?' · '+c.mf.warnings.length:''}</button></div><div id="rtab" style="margin-top:12px"></div>`;
   const setV=k=>{cur=k;$('#rvid').src=L[k];$('#rdl').href=L[k];$$('#rv button').forEach(b=>b.classList.toggle('on',b.dataset.k===k))};
-  $$('#rv button').forEach(b=>b.onclick=()=>setV(b.dataset.k));setV(cur);$('#rfs').onclick=async()=>{try{await $('#rvid').requestFullscreen()}catch{const v=$('#rvid');const o=document.createElement('div');o.className='theaterbox';
+  $$('#rv button').forEach(b=>b.onclick=()=>setV(b.dataset.k));setV(cur);$('#rfs').onclick=()=>{{const v=$('#rvid');const o=document.createElement('div');o.className='theaterbox';
     o.innerHTML='<button class="btn sm" style="position:absolute;top:14px;right:14px;z-index:2">✕ Close (Esc)</button>';const t=v.currentTime;const nv=v.cloneNode();nv.style.cssText='width:100%;height:100%;object-fit:contain';
     v.pause();o.appendChild(nv);document.body.appendChild(o);nv.currentTime=t;nv.play();const close=()=>{v.currentTime=nv.currentTime;o.remove();document.removeEventListener('keydown',k)};
-    const k=e=>{if(e.key==='Escape')close()};document.addEventListener('keydown',k);o.querySelector('button').onclick=close}};
+    const k=e=>{if(e.key==='Escape')close()};document.addEventListener('keydown',k);o.querySelector('button').onclick=close;
+    try{const pr=o.requestFullscreen&&o.requestFullscreen();if(pr&&pr.catch)pr.catch(()=>{})}catch{}
+    document.addEventListener('fullscreenchange',function f(){if(!document.fullscreenElement&&document.body.contains(o)){close();document.removeEventListener('fullscreenchange',f)}})}};
   const tab=t=>{$$('[data-rt]').forEach(b=>b.classList.toggle('on',b.dataset.rt===t));const R=$('#rtab');
     if(t==='sb')R.innerHTML=`<div class="scenes">${c.tl.scenes.map((s,i)=>sceneCard(s,i)).join('')}</div>`;
     if(t==='dir'){R.innerHTML='<div class="card pad" id="director"></div>';director(c,true)}
