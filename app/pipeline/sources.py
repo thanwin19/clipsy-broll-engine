@@ -46,6 +46,7 @@ class Candidate:
     local_path: Path | None = None
     thumb_path: Path | None = None
     subject_x: float = 0.5          # horizontal position of main subject (0..1), for reframing
+    start_at: float = 0.0           # seconds into the source to start from (skip title cards of long films)
     brightness: float = 0.45
 
 
@@ -240,6 +241,87 @@ class Wikimedia:
         return out
 
 
+class InternetArchive:
+    """Prelinger Archives (archive.org): historical/vintage film. Only items whose licence URL says public domain."""
+    name = "internet_archive"
+
+    def __init__(self, s):
+        self.timeout, self.n = s.provider_timeout_seconds, s.candidates_per_query
+
+    def available(self):
+        return True
+
+    def search(self, query: str) -> list[Candidate]:
+        with _client(self.timeout) as c:
+            r = c.get("https://archive.org/advancedsearch.php", params={
+                "q": f"collection:prelinger AND mediatype:movies AND ({query})", "rows": self.n * 2, "output": "json",
+                "fl[]": ["identifier", "title", "licenseurl", "runtime", "description"]})
+            r.raise_for_status()
+            docs = r.json().get("response", {}).get("docs", [])
+        out = []
+        for d in docs:
+            lic = d.get("licenseurl") or ""
+            if "publicdomain" not in lic:          # unknown or non-PD rights -> never used
+                continue
+            ident = d["identifier"]
+            runtime = 0.0
+            try:
+                for x in [float(v) for v in str(d.get("runtime", "0")).split(":")]:
+                    runtime = runtime * 60 + x
+            except ValueError:
+                pass
+            title = d.get("title") or ident
+            if isinstance(title, list):
+                title = title[0]
+            desc = d.get("description") or ""
+            if isinstance(desc, list):
+                desc = " ".join(desc)
+            out.append(Candidate(id=f"internet_archive:{ident}", provider=self.name, kind="video", title=str(title),
+                                 page_url=f"https://archive.org/details/{ident}",
+                                 download_url=f"https://archive.org/download/{ident}/{ident}_512kb.mp4",
+                                 thumb_url=f"https://archive.org/services/img/{ident}",
+                                 licence="Public domain (Prelinger Archives, Internet Archive)", licence_url=lic,
+                                 attribution=f'"{title}" - Prelinger Archives via Internet Archive (public domain)',
+                                 duration=runtime, start_at=round(runtime / 3, 1) if runtime > 60 else 0.0,
+                                 tags=f"{title} {desc[:200]}", query=query))
+            if len(out) >= self.n:
+                break
+        return out
+
+
+class OpenverseImages:
+    """Openverse photo search, restricted to CC0 / Public Domain Mark / CC BY. Animated by the renderer."""
+    name = "openverse_images"
+    NAMES = {"cc0": "CC0", "pdm": "Public Domain Mark", "by": "CC BY"}
+
+    def __init__(self, s):
+        self.timeout, self.n = min(8.0, s.provider_timeout_seconds), s.candidates_per_query  # slow API: cap wait
+
+    def available(self):
+        return True
+
+    def search(self, query: str) -> list[Candidate]:
+        with _client(self.timeout) as c:
+            r = c.get("https://api.openverse.org/v1/images/", params={
+                "q": query[:100], "license": "cc0,pdm,by", "page_size": self.n, "mature": "false"})
+            r.raise_for_status()
+            results = r.json().get("results", [])
+        out = []
+        for x in results:
+            lic = (x.get("license") or "").lower()
+            if lic not in self.NAMES or (x.get("width") or 0) < 1000:
+                continue
+            name = f"{self.NAMES[lic]} {x.get('license_version') or ''}".rstrip()
+            title = x.get("title") or "Photo"
+            tags = " ".join(t.get("name", "") for t in (x.get("tags") or [])[:15])
+            out.append(Candidate(id=f"openverse:{x['id']}", provider=self.name, kind="image", title=title,
+                                 page_url=x.get("foreign_landing_url") or "", download_url=x.get("url") or "",
+                                 thumb_url=x.get("thumbnail") or "", licence=name, licence_url=x.get("license_url") or "",
+                                 attribution=f'"{title}" by {x.get("creator") or "unknown"} ({name}) via Openverse/{x.get("source")}',
+                                 width=x.get("width") or 0, height=x.get("height") or 0, tags=f"{tags} {title}", query=query))
+        return out
+
+
 class MockFootage:
     """Synthesises small coloured test clips locally - lets the full pipeline run with no network or keys."""
     name = "mock"
@@ -259,15 +341,16 @@ class MockFootage:
 
 
 PROVIDERS = {"pixabay": Pixabay, "coverr": Coverr, "pexels": Pexels, "nasa": Nasa, "wikimedia": Wikimedia,
-             "mock": MockFootage}
+             "internet_archive": InternetArchive, "openverse_images": OpenverseImages, "mock": MockFootage}
 
 # which providers suit which scene category (smart routing instead of a fixed order)
 CATEGORY_SOURCES = {
     "space_science": ["nasa", "pixabay", "coverr", "pexels", "mock"],
-    "place": ["pixabay", "wikimedia", "coverr", "pexels", "mock"],
-    "nature": ["pixabay", "coverr", "pexels", "wikimedia", "mock"],
+    "place": ["pixabay", "wikimedia", "coverr", "pexels", "openverse_images", "mock"],
+    "nature": ["pixabay", "coverr", "pexels", "wikimedia", "openverse_images", "mock"],
+    "history": ["internet_archive", "wikimedia", "pixabay", "openverse_images", "mock"],
 }
-DEFAULT_SOURCES = ["pixabay", "coverr", "pexels", "mock"]
+DEFAULT_SOURCES = ["pixabay", "coverr", "pexels", "openverse_images", "mock"]
 
 
 class CircuitBreaker:
@@ -375,6 +458,20 @@ def download(cand: Candidate, dest_dir: Path, max_mb: int = 80) -> Path:
                 if size > max_mb * 1024 * 1024:
                     raise ProviderDown("clip too large")
                 f.write(chunk)
+    if cand.kind == "image":   # verify, and shrink huge originals (Openverse can return 6000-px photos)
+        from PIL import Image
+        try:
+            with Image.open(tmp) as im:
+                if max(im.size) < 1280:      # too small for a 1080p frame
+                    raise ValueError("image below 1280 px")
+                im = im.convert("RGB")
+                im.thumbnail((2560, 2560))
+                im.save(path, format="JPEG", quality=92)
+        except Exception:
+            raise ProviderDown("downloaded image is corrupt or too small")
+        finally:
+            tmp.unlink(missing_ok=True)
+        return path
     vs = media.video_stream(tmp)  # raises if corrupt
     if not vs:
         tmp.unlink(missing_ok=True)
@@ -387,7 +484,7 @@ def download_part(cand: Candidate, dest_dir: Path, seconds: float) -> Path:
     """Fetch only the first `seconds` of a clip: ffmpeg reads the URL with HTTP range requests and stops early,
     so a 4-second scene no longer downloads a whole 30-second 1080p file. Falls back to a full download."""
     s = get_settings()
-    if cand.provider == "mock":
+    if cand.provider == "mock" or cand.kind == "image":
         return download(cand, dest_dir)
     dest_dir.mkdir(parents=True, exist_ok=True)
     safe = re.sub(r"[^A-Za-z0-9_-]", "_", cand.id)
@@ -402,7 +499,7 @@ def download_part(cand: Candidate, dest_dir: Path, seconds: float) -> Path:
         url = Nasa(s).resolve(cand) if cand.provider == "nasa" else cand.download_url
         tmp = path.with_suffix(".part.mp4")
         media.ffmpeg("-user_agent", UA["User-Agent"], "-rw_timeout", str(int(s.provider_timeout_seconds * 1e6)),
-                     "-t", str(need), "-i", url, "-map", "0:v:0", "-c", "copy", "-an", "-movflags", "+faststart", tmp,
+                     *(["-ss", str(cand.start_at)] if cand.start_at else []), "-t", str(need), "-i", url, "-map", "0:v:0", "-c", "copy", "-an", "-movflags", "+faststart", tmp,
                      timeout=120)
         vs = media.video_stream(tmp)
         if not vs or media.duration(tmp) < min(seconds, (cand.duration or seconds)) * 0.8:

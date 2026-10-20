@@ -185,3 +185,20 @@ def test_script_with_inline_shot_descriptions(client):
     assert "[" not in tl["transcript"] and "Scene 1" not in tl["transcript"]   # descriptions are not spoken
     r = client.post("/api/v1/broll/jobs", json={"script": "[only a shot description]"})
     assert r.json()["error"]["code"] == "EMPTY_SCRIPT"
+
+
+def test_voice_catalog_and_unknown_voice(client):
+    j = client.get("/api/v1/voices").json()
+    ids = {v["id"] for v in j["voices"]}
+    assert "gemini:Charon" in ids and "kokoro:af_bella" in ids
+    r = client.post("/api/v1/broll/jobs", json={"script": "Hello there world.", "voice": "kokoro:nobody"})
+    assert r.status_code == 422 and r.json()["error"]["code"] == "VALIDATION_ERROR"
+    r = client.post("/api/v1/broll/jobs", json={"script": "Hello there world.", "voice_speed": 3})
+    assert r.status_code == 422
+
+
+def test_speed_and_clean_options_accepted(client):
+    j = wait(client, client.post("/api/v1/broll/jobs", json={
+        "script": "A quiet morning by the lake. Birds call across the water.", "voice_speed": 1.2,
+        "aspect_ratios": ["1:1"]}).json()["job_id"])
+    assert j["status"] == "succeeded", j["error"]

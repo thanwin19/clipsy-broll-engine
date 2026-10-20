@@ -131,6 +131,38 @@ def get_asr(for_alignment: bool = False):
 
 # ---------------------------------------------------------------- TTS
 VOICES = {"female": "Kore", "male": "Puck"}
+# Gemini prebuilt voices (name -> gender), for the voice picker
+GEMINI_VOICES = {
+    "Kore": "female", "Zephyr": "female", "Leda": "female", "Aoede": "female", "Callirrhoe": "female",
+    "Autonoe": "female", "Despina": "female", "Erinome": "female", "Laomedeia": "female", "Achernar": "female",
+    "Gacrux": "female", "Pulcherrima": "female", "Vindemiatrix": "female", "Sulafat": "female",
+    "Puck": "male", "Charon": "male", "Fenrir": "male", "Orus": "male", "Enceladus": "male", "Iapetus": "male",
+    "Umbriel": "male", "Algieba": "male", "Algenib": "male", "Rasalgethi": "male", "Alnilam": "male",
+    "Schedar": "male", "Achird": "male", "Zubenelgenubi": "male", "Sadachbia": "male", "Sadaltager": "male"}
+# Kokoro voices: prefix letter = language (a US English, b UK English, h Hindi), 2nd letter = gender
+KOKORO_VOICES = ["af_heart", "af_bella", "af_nicole", "af_sarah", "af_sky", "af_nova", "af_river", "af_jessica",
+                 "am_michael", "am_adam", "am_eric", "am_liam", "am_onyx", "am_echo",
+                 "bf_emma", "bf_isabella", "bf_alice", "bf_lily", "bm_george", "bm_lewis", "bm_daniel", "bm_fable",
+                 "hf_alpha", "hf_beta", "hm_omega", "hm_psi"]
+KOKORO_LANG = {"a": "en-us", "b": "en-gb", "h": "hi"}
+
+
+def voice_catalog() -> list[dict]:
+    out = [{"id": f"gemini:{n}", "engine": "gemini", "gender": g, "languages": "auto (many)", "accent": "follows text"}
+           for n, g in GEMINI_VOICES.items()]
+    out += [{"id": f"kokoro:{v}", "engine": "kokoro (local)", "gender": "female" if v[1] == "f" else "male",
+             "languages": KOKORO_LANG[v[0]], "accent": {"a": "American", "b": "British", "h": "Hindi"}[v[0]]}
+            for v in KOKORO_VOICES]
+    return out
+
+
+def _gender_of(voice: str) -> str:
+    if voice.startswith("gemini:"):
+        return GEMINI_VOICES.get(voice.split(":", 1)[1], "female")
+    if voice.startswith("kokoro:"):
+        v = voice.split(":", 1)[1]
+        return "male" if len(v) > 1 and v[1] == "m" else "female"
+    return "male" if "male" in voice and "female" not in voice else "female"
 ACCENTS = {"en-IN": "Indian English", "en-US": "American English", "en-GB": "British English",
            "hi-IN": "Hindi", "ta-IN": "Tamil"}
 
@@ -158,9 +190,12 @@ class GeminiTTS:
     def synthesize(self, text: str, voice: str, out_wav: Path) -> Path:
         if not self.key:
             raise ApiError("TTS_FAILED", "GEMINI_API_KEY is not set")
-        locale = "-".join(voice.split("-")[:2]) if voice else "en-IN"
-        gender = "male" if "male" in voice and "female" not in voice else "female"
-        accent = ACCENTS.get(locale, "neutral English")
+        voice = voice or "en-IN-female"
+        if voice.startswith("kokoro:"):
+            raise ApiError("TTS_FAILED", "a Kokoro voice was requested")
+        voice_name = voice.split(":", 1)[1] if voice.startswith("gemini:") else VOICES[_gender_of(voice)]
+        if voice_name not in GEMINI_VOICES:
+            raise ApiError("VALIDATION_ERROR", f"Unknown Gemini voice {voice_name}", {"see": "/api/v1/voices"})
         import hashlib
         cache_dir = get_settings().data_dir / "tts_cache"
         cache_dir.mkdir(parents=True, exist_ok=True)
@@ -176,7 +211,7 @@ class GeminiTTS:
             prompt = chunk
             body = {"contents": [{"parts": [{"text": prompt}]}],
                     "generationConfig": {"responseModalities": ["AUDIO"], "speechConfig": {
-                        "voiceConfig": {"prebuiltVoiceConfig": {"voiceName": VOICES[gender]}}}}}
+                        "voiceConfig": {"prebuiltVoiceConfig": {"voiceName": voice_name}}}}}
             errors = []
             for attempt, model in enumerate(models + models[:2]):
                 try:
@@ -190,7 +225,7 @@ class GeminiTTS:
                     audio = base64.b64decode(data)
                     cached.write_bytes(audio)
                     pcm += audio
-                    self.version = model
+                    self.version = f"{model}/{voice_name}"
                     break
                 except Exception as e:
                     errors.append(f"{model}: {type(e).__name__}")
@@ -248,12 +283,21 @@ class KokoroTTS:
     def synthesize(self, text: str, voice: str, out_wav: Path) -> Path:
         import numpy as np
         import soundfile as sf
-        locale = "-".join((voice or "en-IN-female").split("-")[:2])
-        gender = "male" if "male" in voice and "female" not in voice else "female"
-        if (locale, gender) not in self.VOICE_MAP:
-            raise ApiError("TTS_FAILED", f"Local TTS has no voice for {locale}; send a voiceover file instead",
-                           {"voice": voice, "supported": sorted({k[0] for k in self.VOICE_MAP})})
-        kv, lang = self.VOICE_MAP[(locale, gender)]
+        voice = voice or "en-IN-female"
+        if voice.startswith("kokoro:"):
+            kv = voice.split(":", 1)[1]
+            if kv not in KOKORO_VOICES:
+                raise ApiError("VALIDATION_ERROR", f"Unknown Kokoro voice {kv}", {"see": "/api/v1/voices"})
+            lang = KOKORO_LANG[kv[0]]
+        elif voice.startswith("gemini:"):
+            kv, lang = self.VOICE_MAP[("en-IN", _gender_of(voice))]
+        else:
+            locale = "-".join(voice.split("-")[:2])
+            gender = _gender_of(voice)
+            if (locale, gender) not in self.VOICE_MAP:
+                raise ApiError("TTS_FAILED", f"Local TTS has no voice for {locale}; send a voiceover file instead",
+                               {"voice": voice, "supported": sorted({k[0] for k in self.VOICE_MAP})})
+            kv, lang = self.VOICE_MAP[(locale, gender)]
         model = self._load()
         parts = []
         with KokoroTTS._lock:
@@ -279,11 +323,13 @@ class ChainTTS:
             try:
                 out = p.synthesize(text, voice, out_wav)
                 self.name, self.version = p.name, p.version
-                if i > 0:
+                if i > 0 and not voice.startswith("kokoro:"):
                     self.warnings.append(f"TTS_FALLBACK: {self.providers[0].name} unavailable "
                                          f"({errors[0][:120]}); narration generated locally with {p.name}")
                 return out
             except ApiError as e:
+                if e.code == "VALIDATION_ERROR":
+                    raise
                 errors.append(f"{p.name}: {e.message}")
         raise ApiError("TTS_FAILED", "No TTS provider could generate the narration", {"attempts": errors})
 

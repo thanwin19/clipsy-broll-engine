@@ -12,6 +12,7 @@ from app.config import get_settings
 from app.errors import ApiError
 from app.logs import get_logger
 from app.pipeline import media
+from app.pipeline.judge import judge_scenes
 from app.pipeline.music import find_music
 from app.pipeline.narration import Narration, Word, align_script, even_words, get_asr, get_tts
 from app.pipeline.planner import Scene, _split_long, plan_scenes, scenes_from_words, script_to_scenes, segment
@@ -86,7 +87,11 @@ def build_narration(req: dict, work: Path, warnings: list[str]) -> tuple[Narrati
         if dur < 0.5:
             raise ApiError("NO_SPEECH_DETECTED", "Audio is shorter than 0.5 seconds")
         wav16 = media.to_wav(src, work / "asr.wav", 16000)
-        mix = media.to_wav(src, work / "narration.wav", 48000)
+        clean = req.get("clean_audio", True)
+        mix = media.to_wav(src, work / "narration.wav", 48000, media.CLEAN_FILTER if clean else None)
+        speed = float(req.get("voice_speed") or 1.0)
+        if abs(speed - 1.0) > 0.01:
+            warnings.append("VOICE_SPEED_IGNORED: voice_speed applies to generated narration, not uploaded audio")
         if media.mean_volume_db(wav16) < -55:
             raise ApiError("NO_SPEECH_DETECTED", "The audio is silent", {"mean_volume_db": media.mean_volume_db(wav16)})
         words, lang = asr.transcribe(wav16, req.get("language"))
@@ -123,7 +128,11 @@ def build_narration(req: dict, work: Path, warnings: list[str]) -> tuple[Narrati
                      trimmed)
         if media.duration(trimmed) > 0.5:
             raw = trimmed
-        mix = media.to_wav(raw, work / "narration.wav", 48000)
+        speed = min(1.25, max(0.75, float(req.get("voice_speed") or 1.0)))
+        af = media.LEVEL_FILTER if abs(speed - 1.0) < 0.01 else f"atempo={speed:.3f},{media.LEVEL_FILTER}"
+        mix = media.to_wav(raw, work / "narration.wav", 48000, af)
+        if abs(speed - 1.0) >= 0.01:   # keep ASR timing consistent with the narration actually used
+            raw = media.to_wav(raw, work / "tts_speed.wav", 24000, f"atempo={speed:.3f}")
         total = media.duration(mix)
         asr = get_asr(for_alignment=True)
         providers["asr"] = {"name": asr.name, "version": asr.version, "purpose": "timing of known script words"}
@@ -256,7 +265,7 @@ def select_clips(plan, nar: Narration, req: dict, work: Path, warnings: list[str
 
     def fetch(sc: Scene):
         c, tried = chosen[sc.index], 0
-        while c.kind == "video" and c.local_path is None:
+        while c.kind in ("video", "image") and c.local_path is None:
             try:
                 c.local_path = download_part(c, work / "clips", sc.duration)
             except Exception as e:
@@ -285,7 +294,7 @@ def select_clips(plan, nar: Narration, req: dict, work: Path, warnings: list[str
 
 
 # ------------------------------------------------------------------ outputs
-def clip_record(sc: Scene, c: Candidate, reason: str, alternatives: list[Candidate]) -> dict:
+def clip_record(sc: Scene, c: Candidate, reason: str, alternatives: list[Candidate], judge: dict | None = None) -> dict:
     return {
         "scene": sc.index, "start": round(sc.start, 3), "end": round(sc.end, 3), "duration": round(sc.duration, 3),
         "narration": sc.text, "visual_hint": sc.hint, "scene_type": sc.type, "category": sc.category,
@@ -296,6 +305,7 @@ def clip_record(sc: Scene, c: Candidate, reason: str, alternatives: list[Candida
                  "ai_generated": c.ai_generated or c.kind == "ai_image", "matched_query": c.query or None},
         "reason": reason,
         "relevance_score": round(c.score, 4) if c.kind != "card" else None,
+        "judge": judge,   # independent VLM rating 1-5 (Gemini vision), see app/pipeline/judge.py
         "relevance_detail": {k: v for k, v in c.score_detail.items() if k not in ("headline", "body", "card_kind")},
         "reframe_subject_x": round(c.subject_x, 3),
         "alternatives": [{"id": a.id, "source": a.provider, "score": a.score, "title": a.title[:80]} for a in alternatives[:5]],
@@ -475,15 +485,26 @@ def run_job(job_id: str, req: dict, progress: Progress) -> dict:
     with timer("qa"):
         qa = qa_and_fix(outputs, plan.scenes, chosen, pools, nar, music, burn, work, warnings, reasons)
 
+    progress(94, "independent relevance check")
+    with timer("judge"):
+        first = ratio_key(ratios[0])
+        judged, judge_model, jw = judge_scenes(
+            plan.scenes, {sc.index: work / "segments" / first / f"seg_{sc.index:03d}.mp4" for sc in plan.scenes}, work)
+        if jw:
+            warnings.append(jw)
     srt = write_srt([c for sc in plan.scenes for c in scene_cues(sc)], work / "captions.srt")
     timeline = {"job_id": job_id, "version": 1, "narration_seconds": round(nar.duration, 3), "language": nar.language,
                 "transcript": nar.transcript, "aspect_ratios": ratios, "mood": plan.mood,
                 "selection_rule": selection_rule_text(),
-                "scenes": [clip_record(sc, chosen[sc.index], reasons[sc.index], pools.get(sc.index, []))
+                "scenes": [clip_record(sc, chosen[sc.index], reasons[sc.index], pools.get(sc.index, []), judged.get(sc.index))
                            for sc in plan.scenes],
                 "music": asdict(music) | {"path": None} if music else None}
     timer.t["total"] = round(time.perf_counter() - t0, 3)
-    manifest = build_manifest(job_id, req, nar, plan, music, timer, warnings, qa, chosen, 1)
+    scores = [v["score"] for v in judged.values()]
+    manifest = build_manifest(job_id, req, nar, plan, music, timer, warnings, qa, chosen, 1, {"independent_judge": {
+        "model": judge_model, "scenes_scored": len(scores), "of": len(plan.scenes),
+        "mean_score_1_to_5": round(sum(scores) / len(scores), 2) if scores else None,
+        "share_scored_4_or_5": round(sum(x >= 4 for x in scores) / len(scores), 3) if scores else None}})
     (work / "timeline.json").write_text(json.dumps(timeline, indent=2, default=str), encoding="utf-8")
     (work / "manifest.json").write_text(json.dumps(manifest, indent=2, default=str), encoding="utf-8")
     save_state(work, plan, chosen, pools, reasons, nar, music, req, ratios, burn)
@@ -553,7 +574,7 @@ def swap_scene(parent_id: str, job_id: str, scene_index: int, body: dict, progre
             new = next((c for c in pools.get(scene_index, []) if c.id not in used), None)
         if new is None:
             new = card_for(scene)
-        if new.kind == "video" and new.local_path is None:
+        if new.kind in ("video", "image") and new.local_path is None:
             new.local_path = download(new, work / "clips")
     chosen[scene_index] = new
     reasons[scene_index] = f"user swap: replaced {old.id} with {new.id} (score {new.score:.3f})"

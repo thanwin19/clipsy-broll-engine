@@ -166,6 +166,9 @@ def score_candidates(scene, cands: list[Candidate], avoid_terms: list[str], avoi
     for c in kept:
         if c.thumb_path:
             c.subject_x, c.brightness = subject_and_brightness(c.thumb_path)
+        if c.kind == "image":
+            c.score = round(c.score - 0.015, 4)  # still photo: prefer real motion footage when scores are close
+            c.score_detail["still_image_penalty"] = 0.015
         if c.kind == "video" and c.duration and c.duration < scene.duration:
             c.score = round(c.score - 0.01, 4)  # slight preference for clips long enough to avoid looping
             c.score_detail["short_clip_penalty"] = 0.01

@@ -155,6 +155,20 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/voices:
+    get:
+      tags:
+      - meta
+      summary: Voices
+      description: Voices for text input. Gemini voices use the free cloud quota;
+        Kokoro voices run locally without limits.
+      operationId: voices_api_v1_voices_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
   /api/v1/errors:
     get:
       tags:

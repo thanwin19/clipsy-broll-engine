@@ -57,9 +57,14 @@ def video_stream(path: Path) -> dict | None:
     return next((s for s in probe(path).get("streams", []) if s.get("codec_type") == "video"), None)
 
 
-def to_wav(src: Path, dest: Path, rate: int = 16000) -> Path:
-    ffmpeg("-i", src, "-vn", "-ac", "1", "-ar", str(rate), "-c:a", "pcm_s16le", dest)
+def to_wav(src: Path, dest: Path, rate: int = 16000, af: str | None = None) -> Path:
+    ffmpeg("-i", src, "-vn", *(["-af", af] if af else []), "-ac", "1", "-ar", str(rate), "-c:a", "pcm_s16le", dest)
     return dest
+
+
+# voiceover clean-up: remove rumble, reduce steady background noise, then broadcast loudness (-16 LUFS)
+CLEAN_FILTER = "highpass=f=70,afftdn=nf=-25:tn=1,loudnorm=I=-16:TP=-1.5:LRA=11"
+LEVEL_FILTER = "loudnorm=I=-16:TP=-1.5:LRA=11"
 
 
 def mean_volume_db(path: Path) -> float:

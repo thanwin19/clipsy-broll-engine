@@ -18,7 +18,7 @@ from app.pipeline.narration import Word
 log = get_logger("planner")
 
 SCENE_TYPES = ["literal", "metaphor", "abstract", "statistic", "named_entity", "sensitive"]
-CATEGORIES = ["everyday", "business", "technology", "nature", "space_science", "place", "people_free", "food", "health"]
+CATEGORIES = ["everyday", "business", "technology", "nature", "space_science", "place", "history", "people_free", "food", "health"]
 
 
 @dataclass

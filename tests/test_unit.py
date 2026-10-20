@@ -70,3 +70,19 @@ def test_error_shape():
 def test_hmac_signature():
     body = b'{"a":1}'
     assert sign(body, "s3cret") == "sha256=" + hmac.new(b"s3cret", body, hashlib.sha256).hexdigest()
+
+
+def test_parallax_renders_moving_frames(tmp_path):
+    """Depth parallax on a synthetic image produces a valid clip whose first and last frames differ."""
+    import numpy as np
+    from PIL import Image
+    from app.pipeline import media, parallax
+    from app.pipeline.render import encoder_args
+    img = np.zeros((900, 1600, 3), dtype=np.uint8)
+    img[:, :, 0] = np.linspace(0, 255, 1600, dtype=np.uint8)[None, :]
+    img[450:, :, 1] = 200
+    Image.fromarray(img).save(tmp_path / "p.jpg")
+    parallax.depth_map = lambda im, cache=None: np.tile(np.linspace(0, 1, im.shape[0], dtype=np.float32)[:, None], (1, im.shape[1]))
+    parallax.render_parallax(tmp_path / "p.jpg", 640, 360, 30, 0.5, "", encoder_args("libx264") + ["-frames:v", "30"],
+                             "out.mp4", tmp_path, 30)
+    assert media.duration(tmp_path / "out.mp4") > 0.9

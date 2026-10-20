@@ -126,21 +126,39 @@ def _render_segment(scene, cand, ratio: str, frames: int, seg_dir: Path, burn: b
         vf = (f"scale={cw}:{ch}:flags=bilinear,crop={W}:{H}:{x}:{(ch - H) // 2},fps={s.fps},{norm},"
               f"setsar=1,format=yuv420p{sub}")
         media.ffmpeg("-filter_threads", str(s.ffmpeg_threads), *loop, "-ss", f"{offset:.2f}", "-i", cand.local_path.resolve(), "-vf", vf, *enc, out.name, cwd=seg_dir)
-    else:  # still image (AI image, card): gentle Ken Burns push-in so the shot is never frozen
-        img = cand.local_path
-        if cand.kind == "card":
-            img = render_card(seg_dir / f"{name}_card.png", W, H, cand.score_detail.get("headline", ""),
-                              cand.score_detail.get("body", ""), cand.score_detail.get("card_kind", "stat"))
-        from PIL import Image
-        with Image.open(img) as im:
-            sw, sh = im.size
-        cw, ch = _cover(sw, sh, W, H)
-        x = int(min(max(cand.subject_x * cw - W / 2, 0), cw - W))
-        zoom = 0.06 if cand.kind != "card" else 0.03
-        vf = (f"scale={cw}:{ch},crop={W}:{H}:{x}:{(ch - H) // 2},"
-              f"scale={W * 3 // 2}:{H * 3 // 2},zoompan=z='1+{zoom}*on/{max(frames, 1)}':x='iw/2-(iw/zoom/2)':"
-              f"y='ih/2-(ih/zoom/2)':d=1:s={W}x{H}:fps={s.fps},{norm},setsar=1,format=yuv420p{sub}")
-        media.ffmpeg("-loop", "1", "-framerate", str(s.fps), "-i", Path(img).resolve(), "-vf", vf, *enc, out.name, cwd=seg_dir)
+    elif cand.kind in ("ai_image", "image") and s.parallax:
+        # still photo / AI image: 2.5D parallax camera move from a depth map (falls back to Ken Burns on error)
+        from app.pipeline.parallax import render_parallax
+        try:
+            render_parallax(Path(cand.local_path).resolve(), W, H, frames, cand.subject_x, f",{norm}{sub}",
+                            enc, out.name, seg_dir, s.fps)
+            return out
+        except Exception as e:
+            from app.logs import get_logger
+            get_logger("render").warning("parallax failed for %s, using Ken Burns: %s", cand.id, e)
+        return _ken_burns(cand, W, H, frames, seg_dir, name, norm, sub, enc, out)
+    else:  # card: gentle Ken Burns push-in so the shot is never frozen
+        return _ken_burns(cand, W, H, frames, seg_dir, name, norm, sub, enc, out)
+    return out
+
+
+def _ken_burns(cand, W, H, frames, seg_dir, name, norm, sub, enc, out):
+    """Gentle push-in for cards (and fallback for photos) so the shot is never frozen."""
+    s = get_settings()
+    img = cand.local_path
+    if cand.kind == "card":
+        img = render_card(seg_dir / f"{name}_card.png", W, H, cand.score_detail.get("headline", ""),
+                          cand.score_detail.get("body", ""), cand.score_detail.get("card_kind", "stat"))
+    from PIL import Image
+    with Image.open(img) as im:
+        sw, sh = im.size
+    cw, ch = _cover(sw, sh, W, H)
+    x = int(min(max(cand.subject_x * cw - W / 2, 0), cw - W))
+    zoom = 0.06 if cand.kind != "card" else 0.03
+    vf = (f"scale={cw}:{ch},crop={W}:{H}:{x}:{(ch - H) // 2},"
+          f"scale={W * 3 // 2}:{H * 3 // 2},zoompan=z='1+{zoom}*on/{max(frames, 1)}':x='iw/2-(iw/zoom/2)':"
+          f"y='ih/2-(ih/zoom/2)':d=1:s={W}x{H}:fps={s.fps},{norm},setsar=1,format=yuv420p{sub}")
+    media.ffmpeg("-loop", "1", "-framerate", str(s.fps), "-i", Path(img).resolve(), "-vf", vf, *enc, out.name, cwd=seg_dir)
     return out
 
 

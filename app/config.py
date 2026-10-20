@@ -44,9 +44,11 @@ class Settings(BaseSettings):
     llm_provider: str = "gemini"           # gemini | mock
     gemini_model: str = "gemini-3.5-flash,gemini-3.5-flash-lite,gemini-flash-lite-latest"  # tried in order
     rerank_provider: str = "clip"          # clip | mock
+    judge_provider: str = "gemini"         # gemini | none  (independent VLM relevance judge)
+    judge_model: str = "gemini-3.5-flash-lite,gemini-flash-lite-latest,gemini-3.5-flash"
     clip_model: str = "ViT-B-32"
     clip_pretrained: str = "laion2b_s34b_b79k"
-    footage_providers: str = "pixabay,coverr,pexels,nasa,wikimedia"
+    footage_providers: str = "pixabay,coverr,pexels,nasa,wikimedia,internet_archive,openverse_images"
     ai_image_provider: str = "cloudflare"  # cloudflare | none | mock
     cloudflare_model: str = "@cf/black-forest-labs/flux-1-schnell"
     music_provider: str = "openverse"      # openverse | none | mock
@@ -80,6 +82,7 @@ class Settings(BaseSettings):
     render_parallel: int = 6         # scenes rendered at once
     multi_ratio_render: bool = True  # decode each clip once and split into all aspect ratios
     hw_decode: bool = True           # let ffmpeg use the GPU video decoder when available
+    parallax: bool = True            # 2.5D depth parallax for still images (Depth-Anything-V2-Small)
     ffmpeg_threads: int = 2          # threads per ffmpeg process
     video_crf: int = 23
     music_volume_db: float = -20.0

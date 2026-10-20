@@ -17,6 +17,7 @@ from app.config import get_settings
 from app.errors import ERROR_CODES, ApiError, install_handlers
 from app.logs import correlation_id_var, get_logger, setup_logging
 from app.pipeline import media
+from app.pipeline.narration import voice_catalog
 from app.pipeline.planner import script_to_scenes
 from app.storage import get_storage
 
@@ -47,7 +48,10 @@ class BrollRequest(BaseModel):
     script: str | None = Field(None, description="Plain-text script; narration is generated with TTS. Text in "
                                                 "[square brackets] is a shot description for the words after it and is not spoken.")
     scenes: list[SceneIn] | None = Field(None, description="IncuBrix scene list: text plus optional visual hint")
-    voice: str = Field("en-IN-female", description="Used only for text input, e.g. en-IN-female, en-US-male, hi-IN-female")
+    voice: str = Field("en-IN-female", description="Text input only: en-IN-female, en-US-male, hi-IN-female ... or a "
+                                                    "specific voice from GET /api/v1/voices, e.g. gemini:Charon, kokoro:af_bella")
+    voice_speed: float = Field(1.0, ge=0.75, le=1.25, description="Speaking speed for generated narration (0.75-1.25)")
+    clean_audio: bool = Field(True, description="Uploaded voiceovers: noise reduction + loudness normalisation")
     aspect_ratios: list[Literal["16:9", "9:16", "1:1"]] = Field(default_factory=lambda: ["16:9"], min_length=1)
     style: str = "bright, modern, real-world footage"
     avoid: list[str] = Field(default_factory=list)
@@ -202,6 +206,9 @@ async def create_broll_job(request: Request, idempotency_key: str | None = Heade
                 raise ApiError("EMPTY_SCRIPT", "Only shot descriptions in [brackets] were given; add words to speak")
             req["scenes"], req["script"] = shots, None
     _validate(req, upload_path is not None)
+    v = req.get("voice") or ""
+    if ":" in v and v not in {x["id"] for x in voice_catalog()}:
+        raise ApiError("VALIDATION_ERROR", f"Unknown voice '{v}'", {"see": "/api/v1/voices"})
     req["aspect_ratios"] = list(dict.fromkeys(req["aspect_ratios"]))
     return _accept(req, idempotency_key, body_hash)
 
@@ -232,6 +239,14 @@ def swap_scene(job_id: str, scene_index: int, body: SwapRequest,
     req["_version"] = n + 2
     h = hashlib.sha256(json.dumps({**body.model_dump(), "scene": scene_index, "parent": job_id}, sort_keys=True).encode()).hexdigest()
     return _accept(req, idempotency_key, h, kind="swap", parent=job_id)
+
+
+@app.get("/api/v1/voices", tags=["meta"])
+def voices():
+    """Voices for text input. Gemini voices use the free cloud quota; Kokoro voices run locally without limits."""
+    return {"default": "en-IN-female", "generic": ["en-IN-female", "en-IN-male", "en-US-female", "en-US-male",
+                                                    "en-GB-female", "en-GB-male", "hi-IN-female", "hi-IN-male", "ta-IN-female"],
+            "voices": voice_catalog()}
 
 
 @app.get("/api/v1/errors", tags=["meta"])
