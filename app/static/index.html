@@ -84,7 +84,7 @@ h3{font-size:13px;margin:0;font-weight:600;color:var(--muted);text-transform:upp
 .wave{display:flex;align-items:center;gap:3px;height:38px}
 .wave i{width:3px;border-radius:2px;background:linear-gradient(var(--cyan),var(--vio));opacity:.75;animation:wv 1.6s ease-in-out infinite}
 @keyframes wv{50%{transform:scaleY(.45)}}
-.choices{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.choices{display:grid;grid-template-columns:1fr;gap:12px}
 .choice{padding:16px;border-radius:12px;background:var(--panel);border:1px solid var(--line);cursor:pointer;transition:.15s;text-align:left}
 .choice:hover{border-color:var(--vio);transform:translateY(-1px)}
 .choice .ic{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;background:rgba(139,92,246,.12);color:#C4B5FD;margin-bottom:10px}
@@ -275,9 +275,7 @@ textarea:focus,input:focus,select:focus{border-color:var(--vio);box-shadow:0 0 0
   <div class="main">
     <header class="top">
       <div class="crumbs" id="crumbs"></div>
-      <div class="search" id="openPalette" role="button" tabindex="0" aria-label="Search and commands"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span style="flex:1">Search projects, jump to…</span><kbd>Ctrl K</kbd></div>
-      <div class="saved" id="saved"><span class="dot" id="srvdot"></span><span id="srvtxt">Connecting…</span></div>
-      <button class="ibtn hide-m" id="bell" aria-label="Notifications"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><span class="badge" id="nbadge" hidden>0</span></button>
+      <span style="flex:1"></span><span class="dot" id="srvdot" title="Engine status"></span><span id="srvtxt" hidden></span>
       <button class="btn pri" onclick="go('#/studio')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14M5 12h14"/></svg><span class="hide-m">Create Video</span></button>
     </header>
     <main class="view" id="view"></main>
@@ -319,8 +317,7 @@ const I={home:'<path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 
  film:'<rect x="2" y="3" width="20" height="18" rx="2"/><path d="M7 3v18M17 3v18M2 8h5M17 8h5M2 16h5M17 16h5"/>', music:'<path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>',
  text:'<path d="M4 7V5h16v2M9 19h6M12 5v14"/>', check:'<path d="m5 12 5 5 9-10"/>', x:'<path d="M6 6l12 12M18 6 6 18"/>', copy:'<rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>'};
 const svg=(k,w=2)=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round">${I[k]||''}</svg>`;
-const NAV=[['home','Home','#/home'],['studio','AI Studio','#/studio'],['projects','Projects','#/projects'],['board','Storyboard','#/storyboard'],
-  ['editor','Editor','#/editor'],['media','Media','#/media'],['export','Export','#/export'],['settings','Settings','#/settings']];
+const NAV=[['home','Home','#/home'],['studio','Create','#/studio'],['projects','Projects','#/projects'],['settings','Settings','#/settings']];
 $('#navs').innerHTML=NAV.map(([k,l,h])=>`<button class="nav" data-r="${h}" onclick="go('${h}')" aria-label="${l}">${svg(k)}<span>${l.split(' ').pop()}</span></button>`).join('');
 function go(h){if(location.hash===h)route();else location.hash=h}
 
@@ -340,14 +337,14 @@ async function openProject(id){
   return S.cur}
 function parseSrt(t){const out=[];(t||'').replace(/\r/g,'').split('\n\n').forEach(b=>{const m=b.match(/(\d+):(\d+):(\d+),(\d+) --> (\d+):(\d+):(\d+),(\d+)\n([\s\S]*)/);
   if(m){const s=(+m[1])*3600+(+m[2])*60+(+m[3])+(+m[4])/1000,e=(+m[5])*3600+(+m[6])*60+(+m[7])+(+m[8])/1000;out.push({s,e,t:m[9].trim()})}});return out}
-function note(msg,kind){S.notes.unshift({msg,kind,at:new Date().toISOString()});S.unread++;const b=$('#nbadge');b.hidden=false;b.textContent=S.unread}
+function note(){}
 async function poll(id,onp){for(;;){let j;try{j=await api('/api/v1/jobs/'+id)}catch(e){await new Promise(r=>setTimeout(r,3000));continue}
   onp&&onp(j);if(j.status==='succeeded'||j.status==='failed')return j;await new Promise(r=>setTimeout(r,1200))}}
 
 /* ===================== router ===================== */
 async function route(){
   const [_,page,id]=(location.hash||'#/home').split('/');
-  $$('.nav').forEach(n=>n.classList.toggle('on',n.dataset.r==='#/'+page||(page===''&&n.dataset.r==='#/home')));
+  const navOf={editor:'projects',export:'projects',storyboard:'projects',media:'projects'};$$('.nav').forEach(n=>n.classList.toggle('on',n.dataset.r==='#/'+(navOf[page]||page||'home')));
   const v=$('#view');v.scrollTop=0;
   const pages={home:Home,studio:Studio,projects:Projects,storyboard:Board,editor:Editor,media:Media,export:Export,settings:Settings};
   try{await (pages[page]||Home)(v,id)}catch(e){v.innerHTML=`<div class="empty">${svg('x')}<div><b>Something went wrong</b><div class="muted">${esc(e.message||e.code||e)}</div></div></div>`}}
@@ -376,15 +373,12 @@ async function Home(v){
       <button class="choice" onclick="S.studioTab='audio';go('#/studio')"><div class="ic">${svg('mic')}</div><b>Voiceover to B-roll</b><div class="hint">Your voice sets the timing; footage follows meaning</div></button>
       <button class="choice" id="cont"><div class="ic">${svg('editor')}</div><b>Continue Editing</b><div class="hint" id="conth">Open your latest project</div></button>
      </div>
-     <div class="card pad"><h3 style="margin-bottom:10px">How Clipsy works</h3><div class="flow"><span class="s">Script</span><span class="a">→</span><span class="s">Scenes</span><span class="a">→</span><span class="s" style="color:var(--cyan)">B-roll</span><span class="a">→</span><span class="s">Edit</span><span class="a">→</span><span class="s">Export</span></div>
-      <p class="hint" style="margin-top:10px">The narration sets every cut. Each scene is matched by meaning, checked for relevance and licence, and rendered in 16:9, 9:16 and 1:1.</p></div>
     </div>
    </div>
    <div class="row between" style="margin:34px 0 14px"><h2>Recent projects</h2><a href="#/projects" class="muted">View all →</a></div>
-   <div style="display:grid;grid-template-columns:1fr 320px;gap:20px" class="homegrid"><div class="grid" id="recent">${Array.from({length:4},()=>'<div class="sk" style="height:210px"></div>').join('')}</div>
-    <div class="card pad"><h3 style="margin-bottom:6px">Recent AI activity</h3><div class="act" id="activity"><div class="sk" style="height:120px"></div></div></div></div>
+   <div class="homegrid"><div class="grid" id="recent">${Array.from({length:4},()=>'<div class="sk" style="height:210px"></div>').join('')}</div></div></div>
   </div>`;
-  if(innerWidth<1000)$('.homegrid').style.gridTemplateColumns='1fr';
+  
   const drop=$('#drop');['dragenter','dragover'].forEach(e=>drop.addEventListener(e,ev=>{ev.preventDefault();drop.classList.add('over')}));
   ['dragleave','drop'].forEach(e=>drop.addEventListener(e,ev=>{ev.preventDefault();drop.classList.remove('over')}));
   drop.addEventListener('drop',ev=>useFile(ev.dataTransfer.files[0]));$('#qfile').onchange=e=>useFile(e.target.files[0]);
@@ -395,7 +389,6 @@ async function Home(v){
   hydrateThumbs(ps.slice(0,6));
   const last=ps.find(p=>p.status==='succeeded');$('#cont').onclick=()=>last?go('#/editor/'+last.job_id):toast('No finished project yet');
   $('#conth').textContent=last?last.title:'No finished project yet';
-  $('#activity').innerHTML=ps.slice(0,7).map(p=>{const[t,c]=STATUS(p);return`<div class="i"><span class="chip ${c}" style="flex-shrink:0">${t}</span><div style="min-width:0"><div style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(p.title)}</div><div class="hint" style="margin:0">${esc(p.status==='running'?p.stage:ago(p.updated_at))}</div></div></div>`}).join('')||'<div class="muted">Nothing yet.</div>';
 }
 function projCard(p){const[t,c]=STATUS(p);const r=p.result||{};
   return`<div class="proj" onclick="go('${p.status==='succeeded'?'#/editor/':'#/studio/'}${p.job_id}')"><div class="thumb" data-thumb="${p.job_id}"><span class="st chip ${c}">${t}${p.status==='running'?' · '+p.progress+'%':''}</span>${r.narration_seconds?`<span class="dur">${mmss(r.narration_seconds)}</span>`:''}</div>
@@ -585,12 +578,9 @@ async function Editor(v,id){
   const sugg=issues.filter(x=>!S.dismissed.has(id+':'+x.t+':'+x.s));
   v.innerHTML=`<div class="editor">
    <div class="etool"><b style="max-width:280px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" class="tip" data-tip="Title from the script">${esc(c.p.title)}</b><span class="chip ok">${svg('check',3)} Saved · v${ver}</span><div class="sep"></div>
-    <button class="tbtn tip" disabled data-tip="Undo: not available yet — every swap is kept as a version">${svg('undo')}</button><button class="tbtn tip" disabled data-tip="Redo: not available yet">${svg('redo')}</button><div class="sep"></div>
-    <button class="tbtn on tip" data-tip="Select (V)">${svg('sel')}</button><button class="tbtn tip" disabled data-tip="Split: not available yet">${svg('split')}</button><button class="tbtn tip" disabled data-tip="Trim: cuts follow the narration">${svg('trim')}</button>
-    <button class="tbtn on tip" data-tip="Snapping to scene boundaries">${svg('magnet')}</button><div class="sep"></div>
     <select id="ratio" style="width:auto;padding:5px 10px" aria-label="Aspect ratio">${vids.map(k=>`<option value="${k}" ${k===S.ratio?'selected':''}>${k.replace('video_','').replace('x',':')}</option>`).join('')}</select>
     <button class="tbtn tip" id="safebtn" data-tip="Safe-area guides">${svg('safe')}</button>
-    <span style="flex:1"></span><span class="hint tip" style="margin:0" data-tip="Space play · J/L scenes · ← → frame">Shortcuts</span>
+    <span style="flex:1"></span>
     <button class="btn sm" id="sharebtn">${svg('share')}Share</button><button class="btn pri sm" onclick="go('#/export/${id}')">${svg('export')}Export</button></div>
    <aside class="epanel l"><div class="tabs">${['Scenes','B-roll','Audio','Text'].map((t,i)=>`<button class="${i?'':'on'}" data-lt="${t}">${t}</button>`).join('')}</div><div id="ltab" style="padding:8px"></div></aside>
    <section class="stagewrap"><div class="screen"><div class="frame" id="frame"><video id="vid" src="${links[S.ratio]}" preload="auto" playsinline></video><div class="safe" id="safe"></div></div>
@@ -727,9 +717,7 @@ async function palette(){const ps=S.projects.length?S.projects:await loadProject
   $('#pin').oninput=e=>{const q=e.target.value.toLowerCase();rows=cmds.filter(c=>c.t.toLowerCase().includes(q));sel=0;draw()};
   $('#pin').onkeydown=e=>{if(e.key==='ArrowDown'){sel=Math.min(rows.length-1,sel+1);draw()}if(e.key==='ArrowUp'){sel=Math.max(0,sel-1);draw()}if(e.key==='Enter'&&rows[sel]){$('#layer').innerHTML='';go(rows[sel].h)}};
   $('#pm').onclick=e=>{if(e.target.id==='pm')$('#layer').innerHTML=''};draw();$('#pin').focus()}
-$('#openPalette').onclick=palette;$('#openPalette').onkeydown=e=>{if(e.key==='Enter')palette()};
-$('#bell').onclick=()=>{S.unread=0;$('#nbadge').hidden=true;if($('.notif')){$('#layer').innerHTML='';return}
-  $('#layer').innerHTML=`<div class="card notif"><div class="pad" style="padding:12px 14px;border-bottom:1px solid var(--line)"><b>Notifications</b></div>${S.notes.length?S.notes.slice(0,12).map(n=>`<div class="sg"><span class="chip ${n.kind==='ok'?'ok':n.kind==='bad'?'bad':'run'}">${n.kind==='ok'?'Done':n.kind==='bad'?'Failed':'Running'}</span> ${esc(n.msg)}<div class="hint" style="margin:2px 0 0">${ago(n.at)}</div></div>`).join(''):'<div class="sg muted">No notifications in this session.</div>'}</div>`};
+
 async function ping(){try{const r=await (await fetch('/ready')).json();const ok=r.status==='ready';$('#srvdot').className='dot'+(ok?'':' run');$('#srvdot').style.background=ok?'':'var(--bad)';$('#srvtxt').textContent=ok?'Engine online · autosaved':'Engine not ready'}
   catch{$('#srvdot').style.background='var(--bad)';$('#srvtxt').textContent='Offline'}}
 ping();setInterval(ping,30000);route();
