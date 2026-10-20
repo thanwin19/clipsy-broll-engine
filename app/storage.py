@@ -1,4 +1,4 @@
-"""Output storage: S3-compatible (MinIO) or local disk. Returns download links."""
+"""Output storage: S3-compatible (SeaweedFS or any S3 API) or local disk. Returns download links."""
 import mimetypes
 import shutil
 from pathlib import Path
@@ -22,7 +22,7 @@ class LocalStorage:
         return self.url(key)
 
     def url(self, key: str) -> str:
-        return f"{self.base}/files/{key}"
+        return f"/files/{key}"   # made absolute per request (works on localhost, behind a tunnel or a proxy)
 
     def get(self, key: str, local: Path) -> Path:
         shutil.copyfile(self.root / key, local)
@@ -34,6 +34,15 @@ class LocalStorage:
 
 class S3Storage:
     name = "s3"
+
+    def open_range(self, key: str, rng: str | None):
+        """Streams an object (optionally a byte range) -> (body, length, content_type, content_range, status)."""
+        kw = {"Bucket": self.bucket, "Key": key}
+        if rng:
+            kw["Range"] = rng
+        obj = self.client.get_object(**kw)
+        return (obj["Body"], obj["ContentLength"], obj.get("ContentType") or "application/octet-stream",
+                obj.get("ContentRange"), 206 if rng else 200)
 
     def __init__(self):
         import boto3
@@ -57,6 +66,8 @@ class S3Storage:
         return self.url(key)
 
     def url(self, key: str) -> str:
+        if self.s.s3_link_mode == "proxy":   # served by the API at /files/... (S3 endpoint stays private)
+            return f"/files/{key}"
         return self.signer.generate_presigned_url("get_object", Params={"Bucket": self.bucket, "Key": key},
                                                   ExpiresIn=self.s.link_ttl_seconds)
 

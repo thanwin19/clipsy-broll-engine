@@ -339,7 +339,7 @@ body.mkt .view{background:var(--ivory);color:var(--char)}
 <body>
 <div class="app">
   <nav class="rail" aria-label="Main navigation">
-    <a class="logo" href="#/" title="clipsy" aria-label="clipsy home"><svg width="22" height="22" viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="5" width="26" height="22" rx="3" fill="#F4EBDD"/><g fill="#25241F"><rect x="5.5" y="7.5" width="2.5" height="2.5" rx=".6"/><rect x="5.5" y="14.75" width="2.5" height="2.5" rx=".6"/><rect x="5.5" y="22" width="2.5" height="2.5" rx=".6"/><rect x="24" y="7.5" width="2.5" height="2.5" rx=".6"/><rect x="24" y="14.75" width="2.5" height="2.5" rx=".6"/><rect x="24" y="22" width="2.5" height="2.5" rx=".6"/></g><path d="M13 10.5v11l9-5.5z" fill="#B84C3A"/></svg></a>
+    <a class="logo" href="#/home" title="clipsy" aria-label="clipsy home"><svg width="22" height="22" viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="5" width="26" height="22" rx="3" fill="#F4EBDD"/><g fill="#25241F"><rect x="5.5" y="7.5" width="2.5" height="2.5" rx=".6"/><rect x="5.5" y="14.75" width="2.5" height="2.5" rx=".6"/><rect x="5.5" y="22" width="2.5" height="2.5" rx=".6"/><rect x="24" y="7.5" width="2.5" height="2.5" rx=".6"/><rect x="24" y="14.75" width="2.5" height="2.5" rx=".6"/><rect x="24" y="22" width="2.5" height="2.5" rx=".6"/></g><path d="M13 10.5v11l9-5.5z" fill="#B84C3A"/></svg></a>
     <div id="navs" style="display:contents"></div>
     <div class="spacer"></div>
     <div class="avatar" title="Workspace">C</div>
@@ -415,10 +415,10 @@ async function poll(id,onp){for(;;){let j;try{j=await api('/api/v1/jobs/'+id)}ca
 
 /* ===================== router ===================== */
 async function route(){
-  const [_,page,id]=(location.hash||'#/').split('/');document.body.classList.toggle('mkt',!page);
+  let [_,page,id]=(location.hash||'#/home').split('/');if(!page)page='home';document.body.classList.toggle('mkt',page==='welcome');
   const navOf={editor:'projects',export:'projects',storyboard:'projects',media:'projects'};$$('.nav').forEach(n=>n.classList.toggle('on',n.dataset.r==='#/'+(navOf[page]||page||'home')));
   const v=$('#view');v.scrollTop=0;
-  if(!page){return Landing(v)}
+  if(page==='welcome'){return Landing(v)}
   const pages={home:Home,studio:Studio,projects:Projects,storyboard:Board,editor:Editor,media:Media,export:Export,settings:Settings};
   try{await (pages[page]||Home)(v,id)}catch(e){v.innerHTML=`<div class="empty">${svg('x')}<div><b>Something went wrong</b><div class="muted">${esc(e.message||e.code||e)}</div></div></div>`}}
 window.addEventListener('hashchange',route);
@@ -862,8 +862,11 @@ async function Settings(v){
    <div class="card pad" style="margin-top:20px"><h2>Access</h2><label class="lb">API access token</label><div class="row"><input type="text" id="tok" value="${esc(TOKEN)}" placeholder="Only needed when the server sets API_TOKEN"><button class="btn" id="savetok">Save</button></div><div class="hint">Stored in this browser only.</div></div>
    <div class="card pad" style="margin-top:14px"><h2>Service status</h2><dl class="kv" style="margin-top:10px">${Object.entries(ready.checks||{}).map(([k,v])=>`<dt>${esc(k)}</dt><dd><span class="chip ${v?'ok':'bad'}">${v?'OK':'Down'}</span></dd>`).join('')}<dt>Voices available</dt><dd>${vc.voices.length} + ${(vc.styles||[]).length} styles</dd></dl>
     <div class="row" style="margin-top:12px"><a class="btn sm" href="/docs" target="_blank">API docs ↗</a><a class="btn sm" href="/api/v1/errors" target="_blank">Error codes ↗</a></div></div>
+   <div class="card pad" style="margin-top:14px"><h2>Footage sources</h2><p class="hint">Switch a source off at any time — even during a render. Running jobs skip it from their next search and finish with the others.</p><div id="provs" class="pills" style="margin-top:10px"></div></div>
    <div class="card pad" style="margin-top:14px"><h2>Keyboard shortcuts</h2><dl class="kv" style="margin-top:10px"><dt>Command palette</dt><dd><kbd>Ctrl K</kbd></dd><dt>Play / pause (editor)</dt><dd><kbd>Space</kbd></dd><dt>Previous / next scene</dt><dd><kbd>J</kbd> <kbd>L</kbd></dd><dt>Step one frame</dt><dd><kbd>←</kbd> <kbd>→</kbd></dd><dt>Close dialogs</dt><dd><kbd>Esc</kbd></dd></dl></div>
    <div class="card pad" style="margin-top:14px"><h2>Defaults & connected services</h2><p class="muted">Footage: Pixabay, Coverr, Pexels, NASA, Wikimedia, Internet Archive, Openverse · Voice: Gemini, Kokoro, eSpeak NG · Planning & judge: Gemini. Keys are configured on the server (.env), never in the browser.</p></div></div>`;
+  const drawProv=async()=>{try{const j=await api('/api/v1/admin/providers');$('#provs').innerHTML=j.providers.filter(p=>p.name!=='mock').map(p=>`<button class="pill ${p.enabled?'on':''}" data-p="${p.name}">${p.enabled?'● ':'○ '}${p.name.replace('_',' ')}</button>`).join('');
+    $$('#provs .pill').forEach(b=>b.onclick=async()=>{const on=!b.classList.contains('on');await api('/api/v1/admin/providers/'+b.dataset.p,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({enabled:on})});toast(`${b.dataset.p} switched ${on?'on':'off'}`,'ok');drawProv()})}catch(e){$('#provs').textContent=e.message||e.code}};drawProv();
   $('#savetok').onclick=()=>{TOKEN=$('#tok').value.trim();try{localStorage.setItem('clipsy_token',TOKEN)}catch{}toast('Token saved','ok');ping()}}
 
 /* ===================== dialogs ===================== */

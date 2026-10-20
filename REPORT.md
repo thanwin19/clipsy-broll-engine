@@ -21,7 +21,7 @@ Wikimedia) with a circuit breaker → **CLIP rerank** with negative/avoid penalt
 (face detection, AI ban for people/brands/sensitive) → **global assignment** and the source router (stock /
 AI image / stat card) → partial downloads → per-scene render (1080p, 30 fps, yuv420p, colour/brightness
 normalisation, saliency-centred reframing, captions) → music (Openverse CC0/CC-BY or procedural) with
-ducking → **Self-QA** (black/frozen frames, drift, format; auto-replace once) → S3/MinIO + manifest.
+ducking → **Self-QA** (black/frozen frames, drift, format; auto-replace once) → S3-compatible storage (SeaweedFS) + manifest.
 
 ## 2. Measurable source-selection rule
 

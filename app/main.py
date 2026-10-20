@@ -233,7 +233,7 @@ async def create_broll_job(request: Request, idempotency_key: str | None = Heade
 
 
 @app.get("/api/v1/projects", dependencies=[Depends(auth)], tags=["jobs"])
-def list_projects(limit: int = 60):
+def list_projects(request: Request, limit: int = 60):
     """Projects (B-roll jobs), newest first, each with its latest finished version (after clip swaps)."""
     from sqlalchemy import select
     with db.session() as s:
@@ -258,17 +258,17 @@ def list_projects(limit: int = 60):
                   "voice_style": req.get("voice_style"), "narration_language": req.get("narration_language"),
                   "input": "voiceover" if (req.get("audio_path") or req.get("audio_url")) else "script",
                   "request": {k: v for k, v in req.items() if k not in ("audio_path", "callback_url")}})
-        out.append(v)
+        out.append(absolute_links(v, request))
     return {"projects": out}
 
 
 @app.get("/api/v1/jobs/{job_id}", dependencies=[Depends(auth)], tags=["jobs"])
-def get_job(job_id: str):
+def get_job(job_id: str, request: Request):
     """Job status (queued, running, succeeded, failed), progress 0-100 and result links."""
     job = db.get_job(job_id)
     if not job:
         raise ApiError("JOB_NOT_FOUND", details={"job_id": job_id})
-    return jobs.job_view(job)
+    return absolute_links(jobs.job_view(job), request)
 
 
 @app.post("/api/v1/broll/jobs/{job_id}/scenes/{scene_index}/swap", status_code=202, response_model=JobAccepted,
@@ -299,6 +299,33 @@ def voices():
             "styles": style_catalog(), "voices": voice_catalog()}
 
 
+class ProviderSwitch(BaseModel):
+    enabled: bool
+
+
+SWITCHABLE = ["pixabay", "coverr", "pexels", "nasa", "wikimedia", "internet_archive", "openverse_images", "openverse",
+              "cloudflare", "mock"]
+
+
+@app.get("/api/v1/admin/providers", dependencies=[Depends(auth)], tags=["admin"])
+def provider_status():
+    """Footage / music / AI sources and whether each is switched on."""
+    return {"providers": [{"name": n, "enabled": not settings.is_disabled(n)} for n in SWITCHABLE]}
+
+
+@app.post("/api/v1/admin/providers/{name}", dependencies=[Depends(auth)], tags=["admin"])
+def switch_provider(name: str, body: ProviderSwitch):
+    """Switch a source on or off at runtime - takes effect immediately, including for jobs already running
+    (the next search request skips it and the job finishes with the other sources)."""
+    if name not in SWITCHABLE:
+        raise ApiError("VALIDATION_ERROR", f"Unknown provider '{name}'", {"providers": SWITCHABLE})
+    off = {p.strip() for p in settings.disabled_providers.split(",") if p.strip()}
+    off.discard(name) if body.enabled else off.add(name)
+    settings.disabled_providers = ",".join(sorted(off))
+    log.info("provider switched", extra={"extra_fields": {"provider": name, "enabled": body.enabled}})
+    return {"name": name, "enabled": body.enabled, "disabled_providers": sorted(off)}
+
+
 @app.get("/api/v1/errors", tags=["meta"])
 def error_codes():
     """All error codes this service returns."""
@@ -322,12 +349,47 @@ def ready():
 
 
 @app.get("/files/{key:path}", include_in_schema=False)
-def files(key: str):
+def files(key: str, request: Request):
+    """Download links. Local storage: served from disk. S3 storage: streamed from the bucket (supports Range,
+    so videos can be seeked)."""
+    st = get_storage()
+    if st.name == "s3":
+        if ".." in key:
+            raise ApiError("NOT_FOUND")
+        from fastapi.responses import StreamingResponse
+        try:
+            body, length, ctype, crange, status = st.open_range(key, request.headers.get("range"))
+        except Exception:
+            body = None
+        if body is None:   # projects rendered before S3 was enabled still live on local disk
+            root = (settings.data_dir / "outputs").resolve()
+            p = (root / key).resolve()
+            if str(p).startswith(str(root)) and p.exists():
+                return FileResponse(p)
+            raise ApiError("NOT_FOUND")
+        headers = {"Accept-Ranges": "bytes", "Content-Length": str(length)}
+        if crange:
+            headers["Content-Range"] = crange
+        return StreamingResponse(body.iter_chunks(1 << 16), status_code=status, media_type=ctype, headers=headers)
     root = (settings.data_dir / "outputs").resolve()
     p = (root / key).resolve()
     if not str(p).startswith(str(root)) or not p.exists():
         raise ApiError("NOT_FOUND")
     return FileResponse(p)
+
+
+def absolute_links(view: dict, request: Request) -> dict:
+    """Result links are stored as /files/...; return them absolute for whichever address the caller used."""
+    base = str(request.base_url).rstrip("/")
+    for holder in (view.get("result") or {}, view.get("latest") or {}):
+        links = holder.get("links") if isinstance(holder, dict) else None
+        if links:
+            for k, u in links.items():
+                if isinstance(u, str) and u.startswith("/files/"):
+                    links[k] = base + u
+                elif isinstance(u, str) and "/files/" in u and u.startswith("http://localhost"):
+                    links[k] = base + u[u.index("/files/"):]   # older jobs stored localhost links
+    return view
 
 
 @app.get("/", include_in_schema=False)

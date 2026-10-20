@@ -20,15 +20,16 @@ class Settings(BaseSettings):
     log_level: str = "INFO"
     preload_models: bool = True  # load Whisper + CLIP at startup (faster first job)
 
-    # storage: "local" or "s3" (MinIO / any S3-compatible store)
+    # storage: "local" or "s3" (SeaweedFS / any S3-compatible store)
     storage_backend: str = "local"
-    s3_endpoint_url: str = "http://minio:9000"
+    s3_endpoint_url: str = "http://s3:8333"
     s3_public_endpoint_url: str = ""  # endpoint used inside presigned links (defaults to s3_endpoint_url)
-    s3_bucket: str = "broll-outputs"
-    s3_access_key: str = "minioadmin"
-    s3_secret_key: str = "minioadmin"
+    s3_bucket: str = "clipsy-outputs"
+    s3_access_key: str = "clipsy"
+    s3_secret_key: str = "clipsy-dev-only-secret"
     s3_region: str = "us-east-1"
     link_ttl_seconds: int = 7 * 24 * 3600
+    s3_link_mode: str = "proxy"   # proxy: links go through the API (/files/...); presigned: direct S3 links
 
     # input limits
     max_audio_seconds: float = 600.0

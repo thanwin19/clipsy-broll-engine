@@ -52,7 +52,7 @@ music tracks, inspector with alternatives and clip swap), **Export**, **Projects
    colour, reframe, captions) ─ 8 music (Openverse CC0/CC-BY | procedural) + ducking ─ 9 Self-QA
                             │
                             ▼
-              S3-compatible storage (MinIO) → presigned download links (+ signed callback)
+              S3-compatible storage (SeaweedFS (S3-compatible)) → presigned download links (+ signed callback)
 ```
 
 Every external service sits behind a small adapter selected in configuration, each with a **mock**
@@ -64,7 +64,7 @@ Every external service sits behind a small adapter selected in configuration, ea
 ```bash
 git clone <repo> && cd broll-engine
 cp .env.example .env            # add your free keys (Gemini, Pixabay, Coverr, optional Pexels/Cloudflare)
-docker compose up --build       # API + Postgres + MinIO; open http://localhost:8000
+docker compose up --build       # API + Postgres + SeaweedFS (S3-compatible); open http://localhost:8000
 ```
 
 Without Docker (Windows/macOS/Linux, needs Python 3.11 and ffmpeg):

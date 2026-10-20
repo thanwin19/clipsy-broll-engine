@@ -205,6 +205,77 @@ paths:
           content:
             application/json:
               schema: {}
+  /api/v1/admin/providers:
+    get:
+      tags:
+      - admin
+      summary: Provider Status
+      description: Footage / music / AI sources and whether each is switched on.
+      operationId: provider_status_api_v1_admin_providers_get
+      parameters:
+      - name: authorization
+        in: header
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Authorization
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/admin/providers/{name}:
+    post:
+      tags:
+      - admin
+      summary: Switch Provider
+      description: 'Switch a source on or off at runtime - takes effect immediately,
+        including for jobs already running
+
+        (the next search request skips it and the job finishes with the other sources).'
+      operationId: switch_provider_api_v1_admin_providers__name__post
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Name
+      - name: authorization
+        in: header
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Authorization
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProviderSwitch'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
   /api/v1/errors:
     get:
       tags:
@@ -270,6 +341,15 @@ components:
       - status
       - status_url
       title: JobAccepted
+    ProviderSwitch:
+      properties:
+        enabled:
+          type: boolean
+          title: Enabled
+      type: object
+      required:
+      - enabled
+      title: ProviderSwitch
     SwapRequest:
       properties:
         candidate_id:

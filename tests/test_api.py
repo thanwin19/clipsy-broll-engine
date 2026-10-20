@@ -216,3 +216,11 @@ def test_translation_failure_falls_back_to_original(client):
         "narration_language": "ta", "aspect_ratios": ["1:1"]}).json()["job_id"])
     assert j["status"] == "succeeded", j["error"]
     assert any(w.startswith("TRANSLATION_FAILED") for w in j["result"]["warnings"])
+
+
+def test_switch_provider_off_and_on_at_runtime(client):
+    r = client.post("/api/v1/admin/providers/pixabay", json={"enabled": False})
+    assert r.status_code == 200 and "pixabay" in r.json()["disabled_providers"]
+    assert {p["name"]: p["enabled"] for p in client.get("/api/v1/admin/providers").json()["providers"]}["pixabay"] is False
+    assert client.post("/api/v1/admin/providers/pixabay", json={"enabled": True}).json()["enabled"] is True
+    assert client.post("/api/v1/admin/providers/nope", json={"enabled": False}).status_code == 422

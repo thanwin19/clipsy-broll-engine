@@ -58,7 +58,8 @@ models or media are used. No AGPL code ships in the service.
 | FFmpeg (system binary; Debian `ffmpeg` package in the container) | LGPL-2.1+/GPL depending on build; invoked as a separate process, not linked |
 | DejaVu fonts | Bitstream Vera / DejaVu licence (free, commercial use) |
 | Inter font (UI, Google Fonts) | SIL OFL 1.1 |
-| PostgreSQL 16, MinIO (compose services, run as separate containers) | PostgreSQL licence; MinIO is AGPL-3.0, used only as an unmodified external test service in the compose file; any S3-compatible store can replace it |
+| PostgreSQL 16 (compose service) | PostgreSQL licence |
+| SeaweedFS 4.48 (S3-compatible storage; compose service and local server) | Apache-2.0 |
 
 ## Datasets
 

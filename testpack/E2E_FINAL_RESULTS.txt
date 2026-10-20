@@ -1,0 +1,31 @@
+PASS  ready (db, ffmpeg, S3 storage)  {"database": true, "ffmpeg": true, "storage": true}
+PASS  health  
+PASS  empty script -> EMPTY_SCRIPT  
+PASS  wrong file type -> 415 UNSUPPORTED_FILE_TYPE  
+PASS  bad ratio -> INVALID_ASPECT_RATIO  
+PASS  error shape {code,message,retryable,details}  
+PASS  POST returns 202 + job_id  
+PASS  Idempotency-Key replay returns the same job  
+PASS  source switched off mid-job, job still finished  83s; warnings=["PROVIDER_DOWN: 'openverse_images' failed"]
+PASS  links are absolute download URLs  http://127.0.0.1:8000/files/jobs/job_5331d5d7940943a3b341/v1
+PASS  output present: video_16x9  
+PASS  output present: video_9x16  
+PASS  output present: video_1x1  
+PASS  output present: captions_srt  
+PASS  output present: timeline  
+PASS  output present: manifest  
+PASS  video served from S3 with Range (206)  
+PASS  scenes contiguous, cover all narration  
+PASS  no repeated clips  
+PASS  licence/source/attribution/ai flag per clip  
+PASS  reason + relevance per scene  
+PASS  statistic -> stat card  
+PASS  QA: all ratios H.264/AAC 30fps yuv420p, no drift/black/frozen  {"16:9": [1920, 1080], "9:16": [1080, 1920], "1:1": [1080, 1080]}
+PASS  manifest has models, settings, seed, timings, cost, warnings, rights  
+PASS  captions.srt timed  
+PASS  swap a clip (only that scene re-rendered)  swap 16s vs full 83s
+PASS  voiceover upload -> video (concurrent with another user)  62s
+PASS  silent audio -> NO_SPEECH_DETECTED  
+PASS  IncuBrix scene list input  
+
+29/29 checks passed
