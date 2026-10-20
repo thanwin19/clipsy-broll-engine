@@ -54,6 +54,8 @@ class BrollRequest(BaseModel):
                                                     "specific voice from GET /api/v1/voices, e.g. gemini:Charon, kokoro:af_bella")
     narration_language: str | None = Field(None, description="Speak the script in this language (ISO code: ta, hi, te, "
                                          "kn, ml, bn, mr, en ...). The script is translated; footage follows the original meaning")
+    target_seconds: int | None = Field(None, ge=5, le=600, description="Desired video length; the voice pace adapts "
+                                       "(0.85-1.15x) and the last shot is held if needed. Auto-read from prompts like '(40 Seconds)'")
     voice_speed: float = Field(1.0, ge=0.75, le=1.25, description="Speaking speed for generated narration (0.75-1.25)")
     voice_style: Literal["natural", "soft", "cute", "warm", "deep", "calm", "energetic", "storyteller", "news", "auto"] = Field(
         "natural", description="Voice character: picks a fitting voice + speed + audio shaping. 'auto' chooses from the script")

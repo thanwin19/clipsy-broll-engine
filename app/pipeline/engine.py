@@ -125,6 +125,10 @@ def build_narration(req: dict, work: Path, warnings: list[str],
         total = media.duration(mix)
         source = "audio"
     else:
+        if req.get("script") and not req.get("target_seconds"):
+            m = re.search(r"(\d{2,3})\s*[- ]?\s*(?:sec|second)s?", req["script"][:600], re.I)
+            if m and 5 <= int(m.group(1)) <= 600:
+                req = {**req, "target_seconds": int(m.group(1))}
         if req.get("script") and not req.get("scenes"):
             progress(6, "reading your prompt")
             read, info, rw = interpret(req["script"])  # prompt documents: speak only the voiceover
@@ -185,6 +189,11 @@ def build_narration(req: dict, work: Path, warnings: list[str],
         if media.duration(trimmed) > 0.5:
             raw = trimmed
         speed = min(1.3, max(0.75, float(req.get("voice_speed") or 1.0) * style_speed))
+        target = float(req.get("target_seconds") or 0)
+        if target:   # fit the requested length: adjust pace within natural limits (0.85x-1.15x)
+            spoken = media.duration(raw) / speed
+            speed = min(1.15 * speed, max(0.85 * speed, speed * spoken / target)) if spoken else speed
+            speed = min(1.3, max(0.7, speed))
         chain = [x for x in (style_af, f"atempo={speed:.3f}" if abs(speed - 1.0) >= 0.01 else "", media.LEVEL_FILTER) if x]
         try:
             mix = media.to_wav(raw, work / "narration.wav", 48000, ",".join(chain))
@@ -194,6 +203,14 @@ def build_narration(req: dict, work: Path, warnings: list[str],
         if abs(speed - 1.0) >= 0.01:   # keep ASR timing consistent with the narration actually used
             raw = media.to_wav(raw, work / "tts_speed.wav", 24000, f"atempo={speed:.3f}")
         total = media.duration(mix)
+        if target and total < target - 0.3:   # still short: hold the last shot (music continues) up to the target
+            pad = min(target - total, max(3.0, 0.35 * total))
+            padded = work / "narration_padded.wav"
+            media.ffmpeg("-i", mix, "-af", f"apad=pad_dur={pad:.3f}", padded)
+            mix, total = padded, media.duration(padded)
+            warnings.append(f"DURATION_FITTED: narration slowed to fit; last shot held {pad:.1f} s to reach the requested {target:.0f} s")
+        elif target and abs(total - target) > 1.5:
+            warnings.append(f"DURATION_FITTED: video is {total:.0f} s; the requested {target:.0f} s needs a longer or shorter script")
         text_lang = detect_language(script)
         asr = get_asr(for_alignment=(text_lang == "en"))   # non-English scripts: the larger model times them better
         if text_lang != "en" and not req.get("language"):

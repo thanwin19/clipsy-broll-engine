@@ -429,6 +429,8 @@ async function Studio(v,id){
     <label class="lb">Pacing · speaking speed <span class="mono" id="spv">1.00×</span></label><input type="range" id="speed" min="0.75" max="1.25" step="0.05" value="1" style="width:100%;accent-color:var(--vio)">
     <label class="lb">Avoid</label><input type="text" id="avoid" placeholder="people's faces, alcohol">
     <div class="row" style="margin-top:12px;gap:16px;font-size:13px"><label class="row"><input type="checkbox" id="burn" checked> Burn-in captions</label></div>
+    <label class="lb">Target duration</label><div class="row"><input type="text" id="tdur" inputmode="numeric" placeholder="Auto — from the script, or e.g. 40" style="flex:1"><span class="muted">seconds</span></div>
+    <div class="hint">The voice pace adapts and the last shot is held if needed.</div>
     <label class="lb">Background music</label><div class="pills" id="mmood">${[['auto','✨ Auto'],['lofi','🎧 Lo-fi'],['calm','🌙 Calm'],['upbeat','⚡ Upbeat'],['cinematic','🎬 Cinematic'],['corporate','💼 Corporate'],['none','🔇 None']].map(([k,l])=>`<button class="pill ${k==='auto'?'on':''}" data-m="${k}">${l}</button>`).join('')}</div>
     <div class="hint">Licensed music, automatically lowered under the voice.</div>
     </details>
@@ -465,7 +467,7 @@ async function Studio(v,id){
     $('#err').innerHTML='';const req={aspect_ratios:[...st.ratios],style:`${st.style.toLowerCase()}, real-world footage`,voice_style:st.tone,
       avoid:$('#avoid').value.split(',').map(s=>s.trim()).filter(Boolean),captions:{burn_in:$('#burn').checked,srt:true},music:st.music!=='none',music_mood:st.music==='none'?'auto':st.music};
     let body,headers={'Idempotency-Key':crypto.randomUUID(),'X-Correlation-Id':'clipsy-'+Date.now()};
-    if(S.studioTab==='script'){req.script=$('#script').value;req.voice=$('#voice').value;req.voice_speed=+$('#speed').value;if($('#nlang').value)req.narration_language=$('#nlang').value}
+    if(S.studioTab==='script'){req.script=$('#script').value;req.voice=$('#voice').value;req.voice_speed=+$('#speed').value;const td=parseInt($('#tdur').value);if(td>=5)req.target_seconds=td;if($('#nlang').value)req.narration_language=$('#nlang').value}
     else{req.clean_audio=$('#clean').checked;if(!S.audioFile&&$('#aurl').value)req.audio_url=$('#aurl').value;if(!S.audioFile&&!req.audio_url){showErr({code:'NO_INPUT',message:'Choose a voiceover file or give a URL'});return}}
     if(S.studioTab==='audio'&&S.audioFile){body=new FormData();body.append('file',S.audioFile);body.append('request',JSON.stringify(req))}else{body=JSON.stringify(req);headers['Content-Type']='application/json'}
     $('#gen').disabled=true;try{const j=await api('/api/v1/broll/jobs',{method:'POST',headers,body});S.audioFile=null;history.replaceState(null,'','#/studio/'+j.job_id);note('Generation started','run');track(j.job_id)}
@@ -495,7 +497,7 @@ function friendly(w){const m=w.match(/^([A-Z_]+):\s*(.*)$/);if(!m)return w;const
   return({PROVIDER_DOWN:`One footage library (${(r.match(/'([^']+)'/)||[])[1]||'a source'}) was slow or unavailable — other libraries were used.`,PROVIDER_COOLDOWN:`A footage library is temporarily skipped after recent errors.`,
    LOW_RELEVANCE:`${n}: the closest available clip is only a loose match — try “Find better B-roll” in the Editor.`,QA_AUTOFIX:`A clip with frozen or black frames was detected and replaced automatically.`,
    TTS_FALLBACK:`The cloud voice was unavailable, so a local voice was used.`,TRANSLATION_FAILED:`Translation failed, so the original language was narrated.`,PLANNER_FALLBACK:`AI planning was unavailable; keyword matching was used.`,
-   JUDGE_UNAVAILABLE:`The independent quality check could not score every scene.`,MUSIC_SOURCE_DOWN:`Music library unavailable — a generated ambient track was used.`,NARRATION_WRITTEN:`Your prompt had no voiceover, so narration was written for the shots.`,TTS_TAIL_CLEANED:`A click at the end of the generated voice was removed.`})[k]||r}
+   JUDGE_UNAVAILABLE:`The independent quality check could not score every scene.`,MUSIC_SOURCE_DOWN:`Music library unavailable — a generated ambient track was used.`,NARRATION_WRITTEN:`Your prompt had no voiceover, so narration was written for the shots.`,TTS_TAIL_CLEANED:`A click at the end of the generated voice was removed.`,DURATION_FITTED:r})[k]||r}
 function resultView(center,c,jid){$('.studio').classList.add('done');const rq=c.p.request||{};const ta=$('#script');
   if(ta&&!ta.value)ta.value=rq.script||(rq.scenes||[]).map(x=>(x.visual_hint?`[${x.visual_hint}] `:'')+x.text).join('\n');
 const L=c.links,vids=Object.keys(L).filter(k=>k.startsWith('video_'));let cur=vids[0];

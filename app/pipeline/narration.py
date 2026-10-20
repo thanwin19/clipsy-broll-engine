@@ -222,6 +222,15 @@ def detect_language(text: str) -> str:
     return "en"
 
 
+def strip_metadata(pcm: bytes) -> bytes:
+    """Gemini appends a C2PA content-credentials record (AI provenance, SynthID note) after the PCM samples.
+    It is metadata, not sound: played as audio it is a harsh burst at the end. Cut the PCM where it starts."""
+    i = pcm.find(b"C2PA")
+    if i >= 0:
+        pcm = pcm[:i]
+    return pcm[: len(pcm) // 2 * 2]
+
+
 def pick_voice(voice: str, engine: str) -> str:
     """A style hands over "gemini:X|kokoro:Y"; each engine takes its own part."""
     if "|" in voice:
@@ -281,7 +290,7 @@ class GeminiTTS:
             key = hashlib.sha256(f"{voice}|{chunk}".encode()).hexdigest()[:32]
             cached = cache_dir / f"{key}.pcm"
             if cached.exists():                       # same text + voice never spends quota twice
-                pcm += cached.read_bytes()
+                pcm += strip_metadata(cached.read_bytes())
                 continue
             # plain text only: newer TTS models read any style instruction aloud
             prompt = chunk
@@ -298,7 +307,7 @@ class GeminiTTS:
                         continue
                     r.raise_for_status()
                     data = r.json()["candidates"][0]["content"]["parts"][0]["inlineData"]["data"]
-                    audio = base64.b64decode(data)
+                    audio = strip_metadata(base64.b64decode(data))
                     cached.write_bytes(audio)
                     pcm += audio
                     self.version = f"{model}/{voice_name}"
