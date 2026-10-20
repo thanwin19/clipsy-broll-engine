@@ -69,18 +69,56 @@ def _cover(sw: int, sh: int, W: int, H: int) -> tuple[int, int]:
     return math.ceil(sw * f / 2) * 2, math.ceil(sh * f / 2) * 2
 
 
-def overlay_filter(scene, seg_dir: Path, name: str, W: int, H: int, rel: str = "") -> str:
-    """On-screen text from the prompt as a boxed title at the top of the frame for the whole scene."""
+def title_png(scene, seg_dir: Path, name: str, W: int, H: int) -> tuple[str, int, int] | None:
+    """On-screen text from the prompt, drawn ONCE as a small transparent PNG (rounded dark box, white bold text).
+    It is laid over the video with ffmpeg's overlay filter, which is almost free per frame (libass box borders
+    cost ~2 s per scene). Returns (file name, x, y) or None."""
     if not getattr(scene, "overlay", None) or getattr(scene, "_overlay_on_card", False):
-        return ""
+        return None
     import textwrap
-    text = "\n".join(textwrap.wrap(scene.overlay, 38 if W >= H else 26)[:4])
-    path = seg_dir / f"{name}_title.srt"
-    path.write_text(f"1\n00:00:00,000 --> 00:59:59,000\n{text}\n", encoding="utf-8")
-    size = 17 if W >= H else 12
-    style = (f"FontName=DejaVu Sans,FontSize={size},Bold=1,PrimaryColour=&H00FFFFFF,BackColour=&H66000000,"
-             f"BorderStyle=3,Outline=6,Shadow=0,Alignment=6,MarginV={24 if W >= H else 40}")  # 6 = top centre (SSA numbering)
-    return f",subtitles={rel}{path.name}:force_style='{style}'"
+    from PIL import Image, ImageDraw
+    from app.pipeline.cards import _font
+    landscape = W >= H
+    font = _font(int(H * 0.042) if landscape else int(W * 0.05))
+    lines = textwrap.wrap(scene.overlay, 40 if landscape else 26)[:4]
+    probe = ImageDraw.Draw(Image.new("RGBA", (10, 10)))
+    sizes = [probe.textbbox((0, 0), ln, font=font) for ln in lines]
+    lh = max(b[3] - b[1] for b in sizes)
+    gap, pad = int(lh * 0.35), int(lh * 0.6)
+    bw = max(b[2] - b[0] for b in sizes) + 2 * pad
+    bh = len(lines) * lh + (len(lines) - 1) * gap + 2 * pad
+    img = Image.new("RGBA", (bw, bh), (0, 0, 0, 0))
+    d = ImageDraw.Draw(img)
+    d.rounded_rectangle([0, 0, bw - 1, bh - 1], radius=int(lh * 0.4), fill=(8, 16, 30, 175))
+    for i, (ln, b) in enumerate(zip(lines, sizes)):
+        d.text(((bw - (b[2] - b[0])) / 2 - b[0], pad + i * (lh + gap) - b[1]), ln, font=font, fill=(255, 255, 255, 255))
+    fname = f"{name}_title_{W}x{H}.png"
+    img.save(seg_dir / fname)
+    return fname, (W - bw) // 2, int(H * (0.05 if landscape else 0.09))
+
+
+def with_title(chain: str, title, rel: str = "", label: str = "") -> str:
+    """Appends the title overlay to a filter chain; `label` names the final output in a complex graph."""
+    if not title:
+        return chain + (f"[{label}]" if label else "")
+    fname, x, y = title
+    tag = label or "o"
+    return (f"{chain}[{tag}base];movie={rel}{fname}[{tag}t];[{tag}base][{tag}t]overlay={x}:{y}:format=yuv420,scale=out_range=tv,format=yuv420p"
+            + (f"[{label}]" if label else ""))
+
+
+def crop_then_scale(sw: int, sh: int, W: int, H: int, subject_x: float) -> str:
+    """Cut the output's aspect ratio out of the SOURCE frame (around the subject), then scale just that region
+    to W x H. Same picture as scale-to-cover-then-crop, but never resizes a huge intermediate frame
+    (a 720p clip for 9:16 used to be upscaled to 3413x1920 on every frame before cropping)."""
+    a = W / H
+    if sw / sh > a:
+        cw, ch = max(2, int(round(sh * a / 2)) * 2), sh // 2 * 2
+        x, y = int(min(max(subject_x * sw - cw / 2, 0), sw - cw)), 0
+    else:
+        cw, ch = sw // 2 * 2, max(2, int(round(sw / a / 2)) * 2)
+        x, y = 0, (sh - ch) // 2
+    return f"crop={cw}:{ch}:{x}:{y},scale={W}:{H}:flags=bilinear"
 
 
 def _caption_style(W: int, H: int) -> str:
@@ -127,7 +165,7 @@ def _render_segment(scene, cand, ratio: str, frames: int, seg_dir: Path, burn: b
     if cues:  # an empty .srt makes ffmpeg's subtitles filter fail, so only burn when there is text
         srt = write_srt(cues, seg_dir / f"{name}.srt", offset=scene.start)
         sub = f",subtitles={srt.name}:force_style='{_caption_style(W, H)}'"
-    sub += overlay_filter(scene, seg_dir, name, W, H)
+    title = title_png(scene, seg_dir, name, W, H)
     enc = encoder_args(encoder) + ["-r", str(s.fps), "-g", str(s.fps * 2), "-an", "-frames:v", str(frames)]
 
     if cand.kind == "video":
@@ -138,26 +176,26 @@ def _render_segment(scene, cand, ratio: str, frames: int, seg_dir: Path, burn: b
         src_dur = media.duration(cand.local_path)  # real file length (clips may be partial downloads)
         offset = min(1.0, max(0.0, (src_dur - dur) / 3)) if src_dur > dur else 0.0
         loop = ["-stream_loop", "-1"] if src_dur and src_dur < dur + offset else []
-        vf = (f"scale={cw}:{ch}:flags=bilinear,crop={W}:{H}:{x}:{(ch - H) // 2},fps={s.fps},{norm},"
-              f"setsar=1,format=yuv420p{sub}")
+        vf = with_title(f"{crop_then_scale(sw, sh, W, H, cand.subject_x)},fps={s.fps},{norm},"
+                        f"setsar=1,format=yuv420p{sub}", title)
         media.ffmpeg("-filter_threads", str(s.ffmpeg_threads), *loop, "-ss", f"{offset:.2f}", "-i", cand.local_path.resolve(), "-vf", vf, *enc, out.name, cwd=seg_dir)
     elif cand.kind in ("ai_image", "image") and s.parallax:
         # still photo / AI image: 2.5D parallax camera move from a depth map (falls back to Ken Burns on error)
         from app.pipeline.parallax import render_parallax
         try:
-            render_parallax(Path(cand.local_path).resolve(), W, H, frames, cand.subject_x, f",{norm}{sub}",
+            render_parallax(Path(cand.local_path).resolve(), W, H, frames, cand.subject_x, with_title(f",{norm}{sub}", title),
                             enc, out.name, seg_dir, s.fps)
             return out
         except Exception as e:
             from app.logs import get_logger
             get_logger("render").warning("parallax failed for %s, using Ken Burns: %s", cand.id, e)
-        return _ken_burns(cand, W, H, frames, seg_dir, name, norm, sub, enc, out)
+        return _ken_burns(cand, W, H, frames, seg_dir, name, norm, sub, enc, out, title)
     else:  # card: gentle Ken Burns push-in so the shot is never frozen
-        return _ken_burns(cand, W, H, frames, seg_dir, name, norm, sub, enc, out)
+        return _ken_burns(cand, W, H, frames, seg_dir, name, norm, sub, enc, out, title)
     return out
 
 
-def _ken_burns(cand, W, H, frames, seg_dir, name, norm, sub, enc, out):
+def _ken_burns(cand, W, H, frames, seg_dir, name, norm, sub, enc, out, title=None):
     """Gentle push-in for cards (and fallback for photos) so the shot is never frozen."""
     s = get_settings()
     img = cand.local_path
@@ -181,7 +219,8 @@ def _ken_burns(cand, W, H, frames, seg_dir, name, norm, sub, enc, out):
         vf = (f"scale={cw}:{ch},crop={W}:{H}:{x}:{(ch - H) // 2},"
               f"scale={W * 3 // 2}:{H * 3 // 2},zoompan=z='1+{zoom}*on/{max(frames, 1)}':x='iw/2-(iw/zoom/2)':"
               f"y='ih/2-(ih/zoom/2)':d=1:s={W}x{H}:fps={s.fps},{norm},setsar=1,format=yuv420p{sub}")
-    media.ffmpeg("-loop", "1", "-framerate", str(s.fps), "-i", Path(img).resolve(), "-vf", vf, *enc, out.name, cwd=seg_dir)
+    media.ffmpeg("-loop", "1", "-framerate", str(s.fps), "-i", Path(img).resolve(), "-vf", with_title(vf, title),
+                 *enc, out.name, cwd=seg_dir)
     return out
 
 
@@ -202,7 +241,8 @@ def render_video_multi(scene, cand, jobs: list[tuple[str, Path]], frames: int, b
     b = max(-0.12, min(0.12, (TARGET_LUMA - (cand.brightness or TARGET_LUMA)) * 0.5))
     cues = scene_cues(scene) if burn and scene.words else []
     n = len(jobs)
-    graph = [f"[0:v]fps={s.fps},eq=brightness={b:.3f}:saturation=1.05,split={n}" + "".join(f"[i{k}]" for k in range(n))]
+    eq = f",eq=brightness={b:.3f}:saturation=1.05" if abs(b) >= 0.02 else ""   # skip when already balanced
+    graph = [f"[0:v]fps={s.fps}{eq},split={n}" + "".join(f"[i{k}]" for k in range(n))]
     outs, maps = {}, []
     for k, (ratio, seg_dir) in enumerate(jobs):
         W, H = RATIOS[ratio]
@@ -212,8 +252,9 @@ def render_video_multi(scene, cand, jobs: list[tuple[str, Path]], frames: int, b
         if cues:
             srt = write_srt(cues, seg_dir / f"{name}.srt", offset=scene.start)
             sub = f",subtitles={seg_dir.name}/{srt.name}:force_style='{_caption_style(W, H)}'"
-        sub += overlay_filter(scene, seg_dir, name, W, H, rel=f"{seg_dir.name}/")
-        graph.append(f"[i{k}]scale={cw}:{ch}:flags=bilinear,crop={W}:{H}:{x}:{(ch - H) // 2},setsar=1,format=yuv420p{sub}[o{k}]")
+        title = title_png(scene, seg_dir, name, W, H)
+        graph.append(with_title(f"[i{k}]{crop_then_scale(sw, sh, W, H, cand.subject_x)},setsar=1,format=yuv420p{sub}",
+                                title, rel=f"{seg_dir.name}/", label=f"o{k}"))
         out = seg_dir / f"{name}.mp4"
         outs[ratio] = out
         maps += ["-map", f"[o{k}]", *encoder_args(s.video_encoder), "-r", str(s.fps), "-g", str(s.fps * 2), "-an",

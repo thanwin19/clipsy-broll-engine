@@ -72,7 +72,7 @@ class Settings(BaseSettings):
     stock_min_score: float = 0.24        # tau: stock clip used only if CLIP score >= tau
     ai_margin: float = 0.02              # AI image must beat best stock by this margin
     candidates_per_query: int = 6
-    max_scored_candidates: int = 18      # CLIP looks at most at this many per scene (text pre-filter)
+    max_scored_candidates: int = 12      # CLIP looks at most at this many per scene (text pre-filter)
     min_scene_seconds: float = 2.0
     max_scene_seconds: float = 8.0
 

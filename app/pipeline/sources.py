@@ -85,7 +85,7 @@ class Pixabay:
                 continue
             out.append(Candidate(id=f"pixabay:{h['id']}", provider=self.name, kind="video", title=h.get("tags", ""),
                                  page_url=h.get("pageURL", ""), download_url=pick["url"],
-                                 thumb_url=pick.get("thumbnail") or v.get("medium", {}).get("thumbnail", ""),
+                                 thumb_url=(v.get("tiny") or {}).get("thumbnail") or pick.get("thumbnail", ""),
                                  licence=self.LICENCE[0], licence_url=self.LICENCE[1],
                                  attribution=f"Video by {h.get('user', 'unknown')} on Pixabay",
                                  duration=float(h.get("duration", 0)), width=pick.get("width", 0),
@@ -405,8 +405,19 @@ def active_providers(category: str) -> list:
     return out
 
 
-_search_cache: dict[tuple[str, str], tuple[float, list]] = {}
 _cache_lock = threading.Lock()
+_slots: dict[str, threading.Semaphore] = {}
+
+
+def _provider_slot(name: str) -> threading.Semaphore:
+    """At most 3 requests in flight per provider: a failing provider is cut off after 2 errors, not 20."""
+    with _cache_lock:
+        if name not in _slots:
+            _slots[name] = threading.Semaphore(3)
+        return _slots[name]
+
+
+_search_cache: dict[tuple[str, str], tuple[float, list]] = {}
 SEARCH_CACHE_SECONDS = 3600
 
 
@@ -416,6 +427,10 @@ def search_all(queries: list[str], category: str, breaker: CircuitBreaker, limit
     from concurrent.futures import ThreadPoolExecutor
 
     def one(p, q):
+        with _provider_slot(p.name):
+            return _one(p, q)
+
+    def _one(p, q):
         if breaker.is_open(p.name):
             return []
         if get_settings().is_disabled(p.name):  # live switch-off mid job
@@ -529,6 +544,20 @@ def download_part(cand: Candidate, dest_dir: Path, seconds: float) -> Path:
         return download(cand, dest_dir)
 
 
+_thumb_client: httpx.Client | None = None
+_thumb_lock = threading.Lock()
+
+
+def _thumbs() -> httpx.Client:
+    """One keep-alive connection pool for all thumbnail downloads (no new TLS handshake per image)."""
+    global _thumb_client
+    with _thumb_lock:
+        if _thumb_client is None:
+            _thumb_client = httpx.Client(headers=UA, timeout=8, follow_redirects=True,
+                                         limits=httpx.Limits(max_connections=24, max_keepalive_connections=24))
+    return _thumb_client
+
+
 def fetch_thumb(cand: Candidate, dest_dir: Path) -> Path | None:
     if not cand.thumb_url:
         return None
@@ -537,10 +566,9 @@ def fetch_thumb(cand: Candidate, dest_dir: Path) -> Path | None:
     if path.exists():
         return path
     try:
-        with _client(8) as c:
-            r = c.get(cand.thumb_url.replace(" ", "%20"))
-            r.raise_for_status()
-            path.write_bytes(r.content)
+        r = _thumbs().get(cand.thumb_url.replace(" ", "%20"))
+        r.raise_for_status()
+        path.write_bytes(r.content)
         return path
     except Exception:
         return None
